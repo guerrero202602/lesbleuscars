@@ -1433,6 +1433,48 @@ function simUp(){document.getElementById('upz').classList.add('ok');document.get
 function cpyCod(){navigator.clipboard.writeText(document.getElementById('lbcode').textContent).then(()=>{const b=document.querySelector('.cpb');b.textContent='✅ Copiado!';setTimeout(()=>b.textContent='📋 Copiar código',2000);});}
 function rCart(){cart=[];upDone=false;updCart();cModal();}
 
+// ══ AUTO-CORRECTOR TIENDA ══
+const STORE_CHECKS=[
+  {id:'pp',desc:'Catálogo de productos',fn:()=>typeof PP==='undefined'||!PP.length?'El catálogo PP no está cargado.':null},
+  {id:'grid',desc:'Grid de productos',fn:()=>!document.getElementById('grid')?'El contenedor de productos no existe en el DOM.':null},
+  {id:'cart',desc:'Carrito',fn:()=>typeof cart==='undefined'?'El carrito no está inicializado.':null},
+  {id:'countdown',desc:'Countdown inauguración',fn:()=>{const el=document.getElementById('countdown-bar');return el&&el.style.display==='none'?'El countdown expiró — las ofertas de inauguración terminaron.':null;}},
+  {id:'combos',desc:'Combos',fn:()=>typeof COMBOS==='undefined'||!COMBOS.length?'Los combos no están definidos.':null},
+  {id:'descuentos',desc:'Sistema de descuentos',fn:()=>typeof getDesc!=='function'?'La función de descuentos no está disponible.':null},
+  {id:'firebase',desc:'Firebase tienda',fn:()=>typeof db==='undefined'?'Firebase no inicializado en la tienda.':null},
+];
+
+async function autoCorrectorTienda(){
+  const errores=STORE_CHECKS.map(c=>({...c,error:c.fn()})).filter(c=>c.error);
+  const now=new Date().toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});
+
+  if(!errores.length){
+    console.log(`[${now}] ✅ Auto-corrector tienda: todo OK`);
+    return;
+  }
+
+  // Auto-corregir lo que se puede
+  for(const e of errores){
+    if(e.id==='grid'&&typeof PP!=='undefined'){
+      // Re-renderizar si el grid está vacío
+      const g=document.getElementById('grid');
+      if(g&&!g.innerHTML.trim()){
+        renderGrid(PP);
+        renderCombos();
+        console.log(`[${now}] 🔧 Auto-corrector: re-renderizó el catálogo`);
+      }
+    }
+    if(e.id==='cart'&&typeof cart==='undefined'){
+      window.cart=[];
+      updCart();
+      console.log(`[${now}] 🔧 Auto-corrector: reinició el carrito`);
+    }
+  }
+
+  // Reportar errores no corregibles en consola
+  errores.forEach(e=>console.warn(`[${now}] ⚠️ Tienda: ${e.error}`));
+}
+
 // ══ INIT ══
 loadImgsFromFirebase().then(()=>{
   renderGrid(PP);
