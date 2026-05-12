@@ -233,15 +233,12 @@ const S={
 };
 
 // ═══ BOOTSTRAP ═══
+const FB_CONFIG={apiKey:"AIzaSyAuYGm8PHPqNfMnBMNZBuC4CmWZ4pJs8yk",authDomain:"lesbleuscars-94e0c.firebaseapp.com",projectId:"lesbleuscars-94e0c",storageBucket:"lesbleuscars-94e0c.firebasestorage.app",messagingSenderId:"719264434324",appId:"1:719264434324:web:a51090a5fec7a0fe338c81"};
 window.addEventListener('load',()=>{
   const saved=localStorage.getItem('app_cfg');
   if(saved) try{Object.assign(S.cfg,JSON.parse(saved));}catch(e){}
-  const fbCfg=localStorage.getItem('fb_config');
-  if(!fbCfg){show('sc-setup');}
-  else{
-    if(fbCfg!=='SKIP') try{const p=JSON.parse(fbCfg);firebase.initializeApp(p);S.db=firebase.firestore();}catch(e){}
-    show('sc-login');applyBranding();
-  }
+  try{firebase.initializeApp(FB_CONFIG);S.db=firebase.firestore();}catch(e){console.warn('Firebase:',e);}
+  show('sc-login');applyBranding();
 });
 
 // ═══ FIREBASE SETUP ═══
