@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Portal Cliente</title>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+:root{
+  --bg:#f0f4fb;--surface:#fff;--surface2:#e8edf8;--border:#c8d0e8;
+  --accent:#2563eb;--accent2:#0d9488;--danger:#dc2626;--warn:#d97706;--success:#16a34a;
+  --text:#1e2235;--muted:#64748b;--font:'DM Sans',sans-serif;--mono:'DM Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.anim{animation:fadeUp .4s ease;}
+
+/* HEADER */
+header{background:var(--surface);border-bottom:1px solid var(--border);padding:0 24px;height:62px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 4px rgba(0,0,0,.06);position:sticky;top:0;z-index:10;}
+.logo{display:flex;align-items:center;gap:12px;}
+.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:19px;}
+.logo-text h1{font-size:16px;font-weight:700;}
+.logo-text p{font-size:11px;color:var(--muted);}
+.header-right{display:flex;align-items:center;gap:10px;}
+
+/* LAYOUT */
+main{max-width:680px;margin:36px auto;padding:0 16px 60px;}
+
+/* TABS */
+.tabs{display:flex;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:4px;margin-bottom:24px;}
+.tab{flex:1;padding:9px;border-radius:9px;border:none;background:transparent;font-family:var(--font);font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;}
+.tab.active{background:var(--accent);color:#fff;box-shadow:0 2px 8px rgba(37,99,235,.25);}
+
+/* CARDS */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.06);margin-bottom:20px;}
+.card h2{font-size:17px;font-weight:700;margin-bottom:6px;}
+.card .sub{font-size:13px;color:var(--muted);margin-bottom:20px;}
+
+/* FIELDS */
+.field{margin-bottom:14px;}
+.field label{display:block;font-size:11px;font-weight:700;color:var(--muted);margin-bottom:5px;letter-spacing:.5px;text-transform:uppercase;}
+.field input{width:100%;padding:11px 13px;background:var(--bg);border:1px solid var(--border);border-radius:9px;color:var(--text);font-size:14px;font-family:var(--font);outline:none;transition:border-color .2s;}
+.field input:focus{border-color:var(--accent);}
+
+/* BUTTONS */
+.btn{padding:11px 20px;border-radius:10px;border:none;font-family:var(--font);font-size:14px;font-weight:600;cursor:pointer;transition:opacity .2s,transform .1s;display:inline-flex;align-items:center;gap:7px;justify-content:center;}
+.btn:hover{opacity:.86;}.btn:active{transform:scale(.97);}
+.btn-full{width:100%;}
+.btn-primary{background:linear-gradient(135deg,var(--accent),#1d4ed8);color:#fff;}
+.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--muted);}
+.btn-mp{background:#009EE3;color:#fff;}
+.btn-brubank{background:#6C2BD9;color:#fff;}
+.btn-wa{background:#25D366;color:#fff;}
+.btn-sm{padding:8px 14px;font-size:13px;border-radius:8px;}
+
+/* ALERT */
+.alert{padding:10px 14px;border-radius:9px;font-size:13px;display:none;margin-top:10px;}
+.alert-error{background:#fee2e2;border:1px solid #fecaca;color:#991b1b;}
+.alert-info{background:#dbeafe;border:1px solid #bfdbfe;color:#1e40af;}
+
+/* STATUS PILLS */
+.pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase;}
+.s-pendiente{background:#fef3c7;color:#92400e;border:1px solid #fde68a;}
+.s-enproceso{background:#dbeafe;color:#1e40af;border:1px solid #bfdbfe;}
+.s-enviado{background:#dcfce7;color:#166534;border:1px solid #bbf7d0;}
+.s-entregado{background:#ccfbf1;color:#065f46;border:1px solid #99f6e4;}
+.s-cancelado{background:#fee2e2;color:#991b1b;border:1px solid #fecaca;}
+
+/* TRACKER CARD */
+.tracker{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.06);}
+.tracker-head{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+.tracker-prod{font-size:18px;font-weight:700;margin:4px 0;}
+.tracker-id{font-size:12px;color:var(--muted);}
+.tracker-monto{font-size:20px;font-weight:700;color:var(--accent2);white-space:nowrap;}
+
+/* TIMELINE */
+.timeline{padding:24px;}
+.tl-step{display:flex;gap:16px;margin-bottom:22px;align-items:flex-start;}
+.tl-step:last-child{margin-bottom:0;}
+.tl-left{display:flex;flex-direction:column;align-items:center;}
+.tl-dot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.tl-dot.done{background:#dcfce7;border:2px solid #16a34a;color:#16a34a;}
+.tl-dot.active{background:#dbeafe;border:2px solid var(--accent);box-shadow:0 0 0 4px rgba(37,99,235,.1);}
+.tl-dot.pending{background:var(--surface2);border:2px solid var(--border);opacity:.5;}
+.tl-line{width:2px;flex:1;min-height:22px;background:var(--border);margin:3px 0;}
+.tl-line.done{background:#16a34a;}
+.tl-label{font-size:14px;font-weight:600;padding-top:5px;}
+.tl-label.active{color:var(--accent);}
+.tl-label.done{color:#166534;}
+.tl-label.pending{color:var(--muted);}
+.tl-desc{font-size:12px;color:var(--muted);margin-top:2px;}
+.tl-date{font-size:11px;color:var(--accent);font-family:var(--mono);margin-top:3px;}
+
+/* INFO GRID */
+.info-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border);}
+.info-cell{padding:14px 20px;border-right:1px solid var(--border);}
+.info-cell:nth-child(even){border-right:none;}
+.info-cell:nth-child(n+3){border-top:1px solid var(--border);}
+.info-cell label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:700;}
+.info-cell p{font-size:13px;font-weight:600;margin-top:3px;}
+
+/* PAGO BOX */
+.pago-box{padding:18px 24px;border-top:1px solid var(--border);background:var(--surface2);}
+.pago-title{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;}
+.pago-btns{display:flex;gap:10px;flex-wrap:wrap;}
+
+/* SPINNER */
+.spin{width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .6s linear infinite;display:inline-block;vertical-align:middle;}
+
+/* EMPTY */
+.empty{text-align:center;padding:48px 20px;}
+.empty-icon{font-size:44px;margin-bottom:14px;}
+.empty h3{font-size:17px;font-weight:700;}
+.empty p{color:var(--muted);font-size:13px;margin-top:6px;}
+
+/* LOGGED IN HEADER */
+.session-bar{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 18px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;font-size:13px;}
+.session-bar span{color:var(--muted);}
+.session-bar b{color:var(--text);}
+
+@media(max-width:500px){
+  .info-grid{grid-template-columns:1fr;}
+  .info-cell{border-right:none!important;}
+  .info-cell:nth-child(n+2){border-top:1px solid var(--border);}
+  .pago-btns{flex-direction:column;}
+  .tabs{font-size:12px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon" id="h-logo">📦</div>
+    <div class="logo-text">
+      <h1 id="h-empresa">Portal Cliente</h1>
+      <p>Seguimiento de pedidos</p>
+    </div>
+  </div>
+  <div class="header-right" id="h-right">
+    <a href="index.html" style="font-size:13px;color:var(--muted);text-decoration:none">← Sistema</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- SIN FIREBASE -->
+  <div id="sc-nofb" style="display:none">
+    <div class="empty anim">
+      <div class="empty-icon">🔌</div>
+      <h3>Sistema no configurado</h3>
+      <p>El portal aún no está conectado a la base de datos.<br>Pedile al administrador que configure Firebase en el sistema.</p>
+      <br><a href="index.html" class="btn btn-primary btn-sm">← Ir al sistema</a>
+    </div>
+  </div>
+
+  <!-- TABS LOGIN / BUSCAR -->
+  <div id="sc-main" style="display:none">
+
+    <!-- Sesión activa -->
+    <div id="session-bar" class="session-bar anim" style="display:none">
+      <span>Hola, <b id="sb-nombre">—</b></span>
+      <button class="btn btn-ghost btn-sm" onclick="cerrarSesion()">↩ Cerrar sesión</button>
+    </div>
+
+    <!-- Tabs -->
+    <div id="tabs-wrap" class="tabs">
+      <button class="tab active" id="tab-login" onclick="switchTab('login')">🔑 Ingresar con mi cuenta</button>
+      <button class="tab" id="tab-buscar" onclick="switchTab('buscar')">🔍 Buscar pedido</button>
+    </div>
+
+    <!-- TAB LOGIN -->
+    <div id="panel-login" class="card anim">
+      <h2>Ingresá a tu cuenta</h2>
+      <div class="sub">Usá las credenciales que te enviaron por WhatsApp</div>
+      <div class="field"><label>Usuario</label><input type="text" id="l-user" placeholder="cli_juanperez_1234" autocomplete="username"/></div>
+      <div class="field"><label>Contraseña</label><input type="password" id="l-pass" placeholder="••••••••" autocomplete="current-password"/></div>
+      <button class="btn btn-primary btn-full" onclick="doLogin()" style="margin-top:4px">Ingresar</button>
+      <div class="alert alert-error" id="l-err"></div>
+    </div>
+
+    <!-- TAB BUSCAR -->
+    <div id="panel-buscar" style="display:none">
+      <div class="card anim">
+        <h2>Buscá tu pedido</h2>
+        <div class="sub">Ingresá el código que te enviaron al hacer la compra</div>
+        <div class="field"><label>Código de pedido</label><input type="text" id="inp-codigo" placeholder="Ej: abc123xyz" oninput="this.value=this.value.trim()"/></div>
+        <button class="btn btn-primary btn-full" onclick="buscarPorCodigo()">🔍 Buscar</button>
+        <div class="alert alert-error" id="b-err"></div>
+        <div class="alert alert-info" id="b-info"></div>
+      </div>
+    </div>
+
+    <!-- RESULTADOS -->
+    <div id="result-area"></div>
+
+  </div>
+</main>
+
+<script>
+// ═══ CONFIG ═══
+let db = null;
+let cfg = { empresa:'LESBLEUS', logo:'📦', waTel:'', cbu:'', alias:'' };
+let sessionUser = null;
+let clients = []; // para validar login
+
+// ═══ BOOTSTRAP ═══
+window.addEventListener('load', () => {
+  // Cargar config empresa
+  const saved = localStorage.getItem('app_cfg');
+  if(saved) try{ Object.assign(cfg, JSON.parse(saved)); }catch(e){}
+  applyBranding();
+
+  // Conectar Firebase
+  const fbCfg = localStorage.getItem('fb_config');
+  if(!fbCfg || fbCfg === 'SKIP') {
+    document.getElementById('sc-nofb').style.display = 'block';
+    return;
+  }
+  try {
+    const parsed = JSON.parse(fbCfg);
+    firebase.initializeApp(parsed);
+    db = firebase.firestore();
+    document.getElementById('sc-main').style.display = 'block';
+    // Precargar clientes dinámicos para login
+    db.collection('clients').get().then(snap => {
+      clients = snap.docs.map(d => ({ firestoreId: d.id, ...d.data() }));
+    }).catch(() => {});
+  } catch(e) {
+    document.getElementById('sc-nofb').style.display = 'block';
+  }
+});
+
+function applyBranding() {
+  const logo = cfg.logo || '📦';
+  const empresa = cfg.empresa || 'Portal Cliente';
+  document.getElementById('h-logo').textContent = logo;
+  document.getElementById('h-empresa').textContent = empresa;
+  document.getElementById('page-title').textContent = 'Portal · ' + empresa;
+}
+
+// ═══ TABS ═══
+function switchTab(tab) {
+  document.getElementById('panel-login').style.display  = tab === 'login'  ? 'block' : 'none';
+  document.getElementById('panel-buscar').style.display = tab === 'buscar' ? 'block' : 'none';
+  document.getElementById('tab-login').className  = 'tab' + (tab === 'login'  ? ' active' : '');
+  document.getElementById('tab-buscar').className = 'tab' + (tab === 'buscar' ? ' active' : '');
+  document.getElementById('result-area').innerHTML = '';
+}
+
+// ═══ LOGIN ═══
+document.addEventListener('keydown', e => { if(e.key === 'Enter') { if(document.getElementById('panel-login').style.display !== 'none') doLogin(); else buscarPorCodigo(); } });
+
+function h(s){let x=0;for(let c of s){x=((x<<5)-x)+c.charCodeAt(0);x|=0;}return x;}
+
+async function doLogin() {
+  const user = document.getElementById('l-user').value.trim();
+  const pass = document.getElementById('l-pass').value;
+  const errEl = document.getElementById('l-err');
+  errEl.style.display = 'none';
+  if(!user || !pass) { showErr('l-err', 'Completá usuario y contraseña.'); return; }
+
+  // Buscar en clients de Firestore
+  let found = clients.find(c => c.username === user && c.activo !== false);
+
+  // Si no está en caché, buscar en Firestore
+  if(!found && db) {
+    try {
+      const snap = await db.collection('clients').where('username', '==', user).limit(1).get();
+      if(!snap.empty) found = { firestoreId: snap.docs[0].id, ...snap.docs[0].data() };
+    } catch(e) {}
+  }
+
+  if(!found || found.passHash !== h(pass)) {
+    showErr('l-err', 'Usuario o contraseña incorrectos.');
+    return;
+  }
+
+  sessionUser = found;
+  document.getElementById('tabs-wrap').style.display = 'none';
+  document.getElementById('panel-login').style.display = 'none';
+  document.getElementById('panel-buscar').style.display = 'none';
+  document.getElementById('session-bar').style.display = 'flex';
+  document.getElementById('sb-nombre').textContent = found.name || user;
+  cargarMisPedidos();
+}
+
+function cerrarSesion() {
+  sessionUser = null;
+  document.getElementById('tabs-wrap').style.display = 'flex';
+  document.getElementById('session-bar').style.display = 'none';
+  document.getElementById('result-area').innerHTML = '';
+  switchTab('login');
+  document.getElementById('l-pass').value = '';
+}
+
+// ═══ MIS PEDIDOS (sesión activa) ═══
+async function cargarMisPedidos() {
+  const area = document.getElementById('result-area');
+  area.innerHTML = '<div style="text-align:center;padding:32px"><span class="spin"></span><p style="color:var(--muted);margin-top:12px;font-size:13px">Cargando tus pedidos...</p></div>';
+  try {
+    const snap = await db.collection('orders').where('cliente', '==', sessionUser.username).orderBy('createdAt', 'desc').get();
+    const orders = snap.docs.map(d => ({ firestoreId: d.id, ...d.data() }));
+    if(!orders.length) {
+      area.innerHTML = `<div class="empty anim"><div class="empty-icon">📭</div><h3>Sin pedidos aún</h3><p>No hay pedidos registrados para tu cuenta.</p></div>`;
+      return;
+    }
+    area.innerHTML = `<p style="font-size:13px;color:var(--muted);margin-bottom:14px">${orders.length} pedido(s) encontrado(s)</p>` + orders.map(o => renderTracker(o, o.firestoreId)).join('');
+  } catch(e) {
+    // Si no hay índice compuesto, buscar sin orderBy
+    try {
+      const snap2 = await db.collection('orders').where('cliente', '==', sessionUser.username).get();
+      const orders = snap2.docs.map(d => ({ firestoreId: d.id, ...d.data() }));
+      area.innerHTML = orders.length
+        ? `<p style="font-size:13px;color:var(--muted);margin-bottom:14px">${orders.length} pedido(s)</p>` + orders.map(o => renderTracker(o, o.firestoreId)).join('')
+        : `<div class="empty anim"><div class="empty-icon">📭</div><h3>Sin pedidos aún</h3></div>`;
+    } catch(e2) {
+      area.innerHTML = `<div class="empty"><div class="empty-icon">⚠️</div><h3>Error al cargar</h3><p>${e2.message}</p></div>`;
+    }
+  }
+}
+
+// ═══ BUSCAR POR CÓDIGO ═══
+async function buscarPorCodigo() {
+  const codigo = document.getElementById('inp-codigo').value.trim();
+  const area = document.getElementById('result-area');
+  document.getElementById('b-err').style.display = 'none';
+  document.getElementById('b-info').style.display = 'none';
+  if(!codigo) { showErr('b-err', 'Ingresá el código de pedido.'); return; }
+
+  area.innerHTML = '<div style="text-align:center;padding:28px"><span class="spin"></span></div>';
+
+  try {
+    // Buscar por Firestore doc ID
+    const docRef = await db.collection('orders').doc(codigo).get();
+    if(docRef.exists) {
+      const o = { firestoreId: docRef.id, ...docRef.data() };
+      area.innerHTML = renderTracker(o, docRef.id);
+      return;
+    }
+    // Buscar por campo id (modo local)
+    const snap = await db.collection('orders').where('id', '==', codigo.toUpperCase()).limit(1).get();
+    if(!snap.empty) {
+      const o = { firestoreId: snap.docs[0].id, ...snap.docs[0].data() };
+      area.innerHTML = renderTracker(o, snap.docs[0].id);
+      return;
+    }
+    area.innerHTML = `<div class="empty anim"><div class="empty-icon">❌</div><h3>Pedido no encontrado</h3><p>No existe ningún pedido con el código <b>${codigo}</b>.<br>Verificá el código o contactá a tu agente.</p></div>`;
+  } catch(e) {
+    area.innerHTML = `<div class="empty"><div class="empty-icon">⚠️</div><h3>Error de conexión</h3><p>${e.message}</p></div>`;
+  }
+}
+
+// ═══ RENDER TRACKER ═══
+function renderTracker(o, code) {
+  const steps = [
+    { key:'pendiente', icon:'📝', label:'Pedido recibido',  desc:'Tu pedido fue registrado en el sistema.' },
+    { key:'enproceso', icon:'🔄', label:'En preparación',   desc:'Un agente está preparando tu pedido.' },
+    { key:'enviado',   icon:'🚚', label:'En camino',         desc:'Tu pedido ya fue enviado y está en camino.' },
+    { key:'entregado', icon:'✅', label:'Entregado',         desc:'¡Pedido recibido! Gracias por tu compra.' },
+  ];
+  const stateOrder = ['pendiente','enproceso','enviado','entregado'];
+  const curIdx = stateOrder.indexOf(o.estado);
+
+  let timeline = '';
+  if(o.estado === 'cancelado') {
+    timeline = `<div style="text-align:center;padding:24px"><div style="font-size:36px;margin-bottom:10px">❌</div>
+    <p style="font-weight:700;color:var(--danger);font-size:15px">Pedido cancelado</p>
+    <p style="color:var(--muted);font-size:13px;margin-top:6px">Contactá con tu agente para más información.</p></div>`;
+  } else {
+    steps.forEach((s, i) => {
+      const cls = i < curIdx ? 'done' : i === curIdx ? 'active' : 'pending';
+      const isLast = i === steps.length - 1;
+      timeline += `<div class="tl-step">
+        <div class="tl-left">
+          <div class="tl-dot ${cls}">${cls==='done'?'✓':s.icon}</div>
+          ${!isLast?`<div class="tl-line ${i<curIdx?'done':''}"></div>`:''}
+        </div>
+        <div>
+          <div class="tl-label ${cls}">${s.label}</div>
+          <div class="tl-desc">${s.desc}</div>
+          ${cls==='active'?`<div class="tl-date">Estado actual · ${o.fecha||'—'}</div>`:''}
+        </div>
+      </div>`;
+    });
+  }
+
+  // Pagos
+  const cbu = cfg.cbu || '1430000172504840794001';
+  const alias = cfg.alias || 'lesbleuscars';
+  const waTel = cfg.waTel || '541136525215';
+  const monto = o.monto || '';
+  const msgWA = encodeURIComponent(`Hola! Quiero pagar mi pedido *${o.id||code}* (${o.producto}) por ${monto}. ¿Me confirman los datos?`);
+
+  let pagoHtml = '';
+  if(o.pagado) {
+    pagoHtml = `<div class="pago-box"><div class="pago-title">Estado de pago</div>
+    <span class="pill s-entregado">✅ Pagado</span></div>`;
+  } else {
+    pagoHtml = `<div class="pago-box">
+    <div class="pago-title">Opciones de pago · ${monto}</div>
+    <div class="pago-btns">
+      ${o.linkPago?`<a href="${o.linkPago}" target="_blank" class="btn btn-mp btn-sm">💳 Pagar con tarjeta / cuotas</a>`:''}
+      <button class="btn btn-brubank btn-sm" onclick="mostrarCBU('${alias}','${cbu}','${monto}')">🏦 Transferir a LESBLEUS</button>
+      ${waTel?`<a href="https://wa.me/${waTel.replace(/\D/g,'')}?text=${msgWA}" target="_blank" class="btn btn-wa btn-sm">💬 Consultar por WA</a>`:''}
+    </div>
+    </div>`;
+  }
+
+  const lblEst = {pendiente:'Pendiente',enproceso:'En proceso',enviado:'Enviado',entregado:'Entregado',cancelado:'Cancelado'};
+
+  return `<div class="tracker anim">
+    <div class="tracker-head">
+      <div>
+        <div class="tracker-id">Código: ${o.id||code}</div>
+        <div class="tracker-prod">${o.producto||'—'}</div>
+        <div style="margin-top:6px"><span class="pill s-${o.estado}">${lblEst[o.estado]||o.estado}</span></div>
+      </div>
+      <div class="tracker-monto">${monto}</div>
+    </div>
+    <div class="timeline">${timeline}</div>
+    <div class="info-grid">
+      <div class="info-cell"><label>Cliente</label><p>${o.clienteNombre||o.cliente||'—'}</p></div>
+      <div class="info-cell"><label>Agente</label><p>${o.agente||'Sin asignar'}</p></div>
+      <div class="info-cell"><label>Fecha</label><p>${o.fecha||'—'}</p></div>
+      <div class="info-cell"><label>Descripción</label><p>${o.descripcion||'—'}</p></div>
+    </div>
+    ${pagoHtml}
+  </div>`;
+}
+
+// ═══ MODAL CBU ═══
+function mostrarCBU(alias, cbu, monto) {
+  const old = document.getElementById('cbu-modal');
+  if(old) old.remove();
+  const div = document.createElement('div');
+  div.id = 'cbu-modal';
+  div.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px';
+  div.innerHTML = `<div style="background:#fff;border-radius:16px;padding:28px;width:100%;max-width:380px;box-shadow:0 16px 48px rgba(0,0,0,.18)">
+    <h3 style="font-size:17px;font-weight:700;margin-bottom:6px">🏦 Transferencia bancaria</h3>
+    <p style="font-size:13px;color:#64748b;margin-bottom:20px">Transferí el monto exacto a la siguiente cuenta Brubank:</p>
+    <div style="background:#f0f4fb;border-radius:10px;padding:14px;margin-bottom:14px;font-size:13px">
+      <div style="margin-bottom:8px"><span style="color:#64748b;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px">Titular</span><br><b>LESBLEUS S.A.</b></div>
+      <div style="margin-bottom:8px"><span style="color:#64748b;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px">Alias</span><br><b style="color:#6C2BD9;font-size:16px">${alias}</b></div>
+      <div style="margin-bottom:8px"><span style="color:#64748b;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px">CBU</span><br><b style="font-family:monospace;font-size:13px">${cbu}</b></div>
+      <div><span style="color:#64748b;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px">CUIT</span><br><b>30-71172591-8</b></div>
+    </div>
+    ${monto?`<div style="background:#dcfce7;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:13px;color:#166534;font-weight:600">💰 Monto a transferir: ${monto}</div>`:''}
+    <p style="font-size:12px;color:#64748b;margin-bottom:16px">⚠️ Guardá el comprobante y enviánoslo por WhatsApp para confirmar tu pago.</p>
+    <div style="display:flex;gap:8px">
+      <button onclick="navigator.clipboard.writeText('${alias}').then(()=>alert('Alias copiado!'))" style="flex:1;padding:10px;border-radius:8px;border:1px solid #c8d0e8;background:#fff;font-weight:600;font-size:13px;cursor:pointer">📋 Copiar alias</button>
+      <button onclick="document.getElementById('cbu-modal').remove()" style="flex:1;padding:10px;border-radius:8px;border:none;background:#2563eb;color:#fff;font-weight:600;font-size:13px;cursor:pointer">Cerrar</button>
+    </div>
+  </div>`;
+  div.onclick = e => { if(e.target === div) div.remove(); };
+  document.body.appendChild(div);
+}
+
+// ═══ UTILS ═══
+function showErr(elId, msg){ const e=document.getElementById(elId); if(e){e.style.display='block';e.textContent=msg;} }
+</script>
+</body>
+</html>
