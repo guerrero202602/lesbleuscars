@@ -991,7 +991,19 @@ const CC={
 function gc(cat){return CC[cat]||CC.espejos;}
 
 // ══ IMÁGENES ══
-function getProdImg(id){return localStorage.getItem('img_'+id)||null;}
+let imgCache={};
+async function loadImgsFromFirebase(){
+  if(!db||db==='SKIP'){
+    // Fallback localStorage
+    for(let k in localStorage){ if(k.startsWith('img_')) imgCache[k.replace('img_','')]=localStorage.getItem(k); }
+    return;
+  }
+  try{
+    const snap=await db.collection('product_images').get();
+    snap.docs.forEach(d=>{ imgCache[d.id]=d.data().url; });
+  }catch(e){ console.warn('Imgs:',e); }
+}
+function getProdImg(id){return imgCache[String(id)]||null;}
 function imgHtml(p,size=52){
   const img=getProdImg(p.id);
   if(img) return `<img src="${img}" style="width:${size}px;height:${size}px;object-fit:contain;border-radius:6px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.1))" onerror="this.outerHTML='<span style=\\'font-size:${size}px\\'>${p.e}</span>'">`;
@@ -1028,7 +1040,6 @@ function precioHtml(p,colorClass){
 function card(p){
   const c=gc(p.cat);
   const stk=p.ok?`<span class="sok">✓ Stock</span>`:`<span class="sno">Sin stock</span>`;
-  const btnA=p.ok?`<button class="ba" onclick="event.stopPropagation();addC(${p.id})">+ Carrito</button>`:'';
   const btnA=p.ok?`<button class="ba" onclick="addC(${p.id})">+ Carrito</button>`:'';
   const btnG=p.ok?`<button class="bag" onclick="addC(${p.id})">+ Carrito</button>`:'';
   const btnW=p.ok?`<button class="baw" onclick="addC(${p.id})">+ Carrito</button>`:'';
@@ -1423,8 +1434,10 @@ function cpyCod(){navigator.clipboard.writeText(document.getElementById('lbcode'
 function rCart(){cart=[];upDone=false;updCart();cModal();}
 
 // ══ INIT ══
-renderGrid(PP);
-renderCombos();
+loadImgsFromFirebase().then(()=>{
+  renderGrid(PP);
+  renderCombos();
+});
 updCart();
 </script>
 </body>
