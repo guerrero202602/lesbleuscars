@@ -1326,28 +1326,6 @@ async function runImagenLote(){
   toast(`${encontradas} imágenes guardadas en la tienda.`,'ok');
 }
 
-
-  const sinFact=S.orders.filter(o=>o.pagado&&!o.facturaEmitida);
-  const el=document.getElementById('res-facturador');
-  el.style.display='block';
-  if(!sinFact.length){el.textContent='✅ Todos los pedidos pagados tienen factura emitida.';return;}
-  if(!S.cfg.cuit||!S.cfg.razonSocial){el.textContent='⚠️ Completá los datos fiscales en Configuración antes de facturar.';return;}
-  el.textContent=`📄 Emitiendo ${sinFact.length} factura(s)...\n`;
-  let count=0;
-  for(const o of sinFact){
-    generarFactura(oid(o));
-    count++;
-    el.textContent+=`✅ Factura emitida para: ${o.clienteNombre||o.cliente} — ${o.producto}\n`;
-    await new Promise(r=>setTimeout(r,300));
-  }
-  el.textContent+=`\n🎉 ${count} facturas generadas correctamente.`;
-  toast(`${count} facturas emitidas por el Agente IA.`,'ok');
-}
-
-
-  document.getElementById('m-user-preview').style.display=cb.checked?'block':'none';
-}
-
 // ═══ FACTURA ═══
 function generarFactura(o_id){
   const o=findO(o_id);if(!o)return;
