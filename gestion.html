@@ -1264,19 +1264,23 @@ async function runImagenUno(){
   }
 }
 
+async function saveImgFirebase(id,url){
+  localStorage.setItem('img_'+id,url);
+  if(S.db&&S.db!=='SKIP'){
+    try{await S.db.collection('product_images').doc(String(id)).set({url,updatedAt:firebase.firestore.Timestamp.now()});}
+    catch(e){console.warn('Img Firebase:',e);}
+  }
+}
+
 function guardarImagenManual(url){
-  const query=document.getElementById('img-buscar')?.value?.trim()||'';
-  // Buscar producto en PP del index (si está disponible en gestion)
   const clave=prompt('Ingresá el ID numérico del producto para guardar la imagen:');
   if(!clave)return;
-  localStorage.setItem('img_'+clave,url);
-  toast('✅ Imagen guardada. Se mostrará en la tienda automáticamente.');
+  saveImgFirebase(clave,url).then(()=>toast('✅ Imagen guardada en Firebase. Todos los usuarios la verán en la tienda.'));
 }
 
 async function runImagenLote(){
   const el=document.getElementById('res-imagen');
   el.style.display='block';
-  // Productos de muestra para buscar (los más vendidos)
   const muestra=[
     {id:90004,q:'Monroe MON749166SP amortiguador VW Fox Suran'},
     {id:90007,q:'Monroe MON749355SP amortiguador Chevrolet Corsa'},
@@ -1293,7 +1297,7 @@ async function runImagenLote(){
   let encontradas=0;
   for(const item of muestra){
     const cached=localStorage.getItem('img_'+item.id);
-    if(cached){el.innerHTML+=`✅ ID ${item.id} — ya tiene imagen en caché<br>`;encontradas++;continue;}
+    if(cached){el.innerHTML+=`✅ ID ${item.id} — ya tiene imagen<br>`;encontradas++;continue;}
     el.innerHTML+=`<span class="spin-sm"></span> Buscando: ${item.q.slice(0,40)}...<br>`;
     try{
       const resp=await fetch('https://api.anthropic.com/v1/messages',{
@@ -1310,8 +1314,8 @@ async function runImagenLote(){
       const txt=data.content?.map(c=>c.text||'').join('').trim();
       const urlMatch=txt.match(/https?:\/\/[^\s"'<>]+\.(?:jpg|jpeg|png|webp)/i);
       if(urlMatch){
-        localStorage.setItem('img_'+item.id,urlMatch[0]);
-        el.innerHTML+=`✅ ID ${item.id} — imagen guardada<br>`;
+        await saveImgFirebase(item.id,urlMatch[0]);
+        el.innerHTML+=`✅ ID ${item.id} — guardada en Firebase<br>`;
         encontradas++;
       } else {
         el.innerHTML+=`⚠️ ID ${item.id} — no encontrada<br>`;
