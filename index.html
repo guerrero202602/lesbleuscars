@@ -1212,12 +1212,9 @@ function addCombo(cbId){
 }
 
 
-let db = null;
-(function initFB(){
-  const fbCfg = localStorage.getItem('fb_config');
-  if(!fbCfg || fbCfg === 'SKIP') return;
-  try{ const p=JSON.parse(fbCfg); firebase.initializeApp(p); db=firebase.firestore(); }catch(e){}
-})();
+const FB_CONFIG={apiKey:"AIzaSyAuYGm8PHPqNfMnBMNZBuC4CmWZ4pJs8yk",authDomain:"lesbleuscars-94e0c.firebaseapp.com",projectId:"lesbleuscars-94e0c",storageBucket:"lesbleuscars-94e0c.firebasestorage.app",messagingSenderId:"719264434324",appId:"1:719264434324:web:a51090a5fec7a0fe338c81"};
+let db=null;
+try{firebase.initializeApp(FB_CONFIG);db=firebase.firestore();}catch(e){console.warn('Firebase:',e);}
 
 function hsh(s){let x=0;for(let c of s){x=((x<<5)-x)+c.charCodeAt(0);x|=0;}return x;}
 
