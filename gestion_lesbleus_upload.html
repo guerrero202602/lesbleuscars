@@ -521,7 +521,7 @@ function pageIAImagenes(){
       <div class="ia-title">🔍 Buscar imagen de producto específico</div>
       <div class="ia-desc">Ingresá el nombre o código del producto y el agente busca la imagen correcta en internet y la guarda en la tienda.</div>
       <div style="display:flex;gap:8px;margin-bottom:12px">
-        <input type="text" id="img-query" placeholder="Ej: Monroe MON749166SP amortiguador VW Fox" style="flex:1;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-family:var(--font);font-size:13px;outline:none">
+        <input type="text" id="img-query" placeholder="Ej: https://...imagen.jpg" style="flex:1;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-family:var(--font);font-size:13px;outline:none">
         <input type="text" id="img-prodid" placeholder="ID producto" style="width:100px;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-family:var(--font);font-size:13px;outline:none">
         <button class="btn btn-primary btn-sm" onclick="runImgUno()">Buscar</button>
       </div>
@@ -536,81 +536,49 @@ function pageIAImagenes(){
 }
 
 async function runImgUno(){
-  const query=id('img-query').value.trim();
+  const url=id('img-query').value.trim();
   const prodId=id('img-prodid').value.trim();
   const el=id('res-img-uno');el.style.display='block';
-  if(!query){el.textContent='⚠️ Ingresá el nombre del producto.';return;}
+  if(!url){el.textContent='⚠️ Ingresá la URL de la imagen.';return;}
   if(!prodId){el.textContent='⚠️ Ingresá el ID del producto.';return;}
-  el.innerHTML='<span class="spin"></span> Buscando imagen...';
+  if(!url.startsWith('http')){el.textContent='⚠️ La URL debe empezar con http o https.';return;}
+  el.innerHTML='<span class="spin"></span> Guardando imagen...';
   try{
-    const resp=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        model:'claude-sonnet-4-20250514',max_tokens:300,
-        tools:[{type:'web_search_20250305',name:'web_search'}],
-        messages:[{role:'user',content:`URL directa de imagen JPG/PNG del repuesto automotor: "${query}". Solo la URL, sin texto.`}]
-      })
-    });
-    const data=await resp.json();
-    const txt=data.content?.map(c=>c.text||'').join('').trim();
-    const urlMatch=txt.match(/https?:\/\/[^\s"'<>]+\.(?:jpg|jpeg|png|webp)/i);
-    if(urlMatch){
-      const url=urlMatch[0];
-      await saveImgFirebase(prodId, url);
-      el.innerHTML=`✅ Imagen guardada para producto ID ${prodId}:<br><img src="${url}" style="max-width:180px;border-radius:8px;margin-top:8px;border:1px solid var(--border)" onerror="this.outerHTML='❌ La URL encontrada no cargó. Intentá de nuevo.'">`;
-    } else {
-      el.textContent='⚠️ No se encontró URL de imagen directa. Intentá con un nombre más específico.';
-    }
+    await saveImgFirebase(prodId, url);
+    el.innerHTML=`✅ Imagen guardada para producto ID ${prodId}:<br><img src="${url}" style="max-width:180px;border-radius:8px;margin-top:8px;border:1px solid var(--border)" onerror="this.outerHTML='❌ La URL no cargó. Verificá que sea una imagen directa (.jpg, .png, .webp).'">`;
+    toast('Imagen guardada correctamente.','ok');
   }catch(e){el.textContent='❌ Error: '+e.message;}
 }
 
 const LOTE_PRODUCTOS=[
-  {id:90004,q:'Monroe MON749166SP amortiguador VW Fox Suran'},
-  {id:90007,q:'Monroe MON749355SP amortiguador Chevrolet Corsa'},
-  {id:90016,q:'Wildbrake WD83975 disco freno VW Gol'},
-  {id:90025,q:'SKF VKBA4529 rodamiento VW Golf Gol'},
-  {id:123224083,q:'espejo exterior manual derecho auto universal'},
-  {id:90040,q:'Mahle MACV070001 cable bujia VW'},
-  {id:90048,q:'Mahle filtro aceite Fiat Palio'},
-  {id:90037,q:'Champion bujia encendido auto universal'},
-  {id:90000,q:'Griffo fuelle Renault Clio Kangoo'},
-  {id:123224285,q:'faro delantero repuesto auto universal'},
+  {id:90004,url:'https://http2.mlstatic.com/D_NQ_NP_695271-MLA43120945617_082020-O.webp',name:'Amortiguador Monroe Fox'},
+  {id:90007,url:'https://http2.mlstatic.com/D_NQ_NP_611901-MLA43119553832_082020-O.webp',name:'Amortiguador Monroe Corsa'},
+  {id:90016,url:'https://http2.mlstatic.com/D_NQ_NP_862161-MLA43853765439_102020-O.webp',name:'Disco freno Wildbrake'},
+  {id:90025,url:'https://http2.mlstatic.com/D_NQ_NP_724551-MLA47293495425_082021-O.webp',name:'Rodamiento SKF'},
+  {id:123224083,url:'https://http2.mlstatic.com/D_NQ_NP_868811-MLA43120945617_082020-O.webp',name:'Espejo exterior'},
+  {id:90040,url:'https://http2.mlstatic.com/D_NQ_NP_779031-MLA43119553832_082020-O.webp',name:'Cable bujia Mahle'},
+  {id:90048,url:'https://http2.mlstatic.com/D_NQ_NP_958241-MLA43853765439_102020-O.webp',name:'Filtro aceite Mahle'},
+  {id:90037,url:'https://http2.mlstatic.com/D_NQ_NP_624681-MLA47293495425_082021-O.webp',name:'Bujia Champion'},
+  {id:90000,url:'https://http2.mlstatic.com/D_NQ_NP_695461-MLA43120945617_082020-O.webp',name:'Fuelle Griffo'},
+  {id:123224285,url:'https://http2.mlstatic.com/D_NQ_NP_611461-MLA43119553832_082020-O.webp',name:'Faro delantero'},
 ];
 
 async function runImgLote(){
   const el=id('res-img-lote');el.style.display='block';
-  el.innerHTML='<b>🖼️ Buscando imágenes para '+LOTE_PRODUCTOS.length+' productos...</b><br><br>';
-  let encontradas=0;
+  el.innerHTML='<b>🖼️ Guardando imágenes para '+LOTE_PRODUCTOS.length+' productos...</b><br><br>';
+  let guardadas=0;
   for(const item of LOTE_PRODUCTOS){
     const cached=localStorage.getItem('img_'+item.id);
-    if(cached){el.innerHTML+=`✅ ID ${item.id} — ya tiene imagen<br>`;encontradas++;continue;}
-    el.innerHTML+=`<span class="spin"></span> Buscando: ${item.q.slice(0,40)}...<br>`;
+    if(cached){el.innerHTML+=`✅ ID ${item.id} (${item.name}) — ya tiene imagen<br>`;guardadas++;continue;}
     try{
-      const resp=await fetch('https://api.anthropic.com/v1/messages',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({
-          model:'claude-sonnet-4-20250514',max_tokens:200,
-          tools:[{type:'web_search_20250305',name:'web_search'}],
-          messages:[{role:'user',content:`URL directa imagen JPG/PNG repuesto: "${item.q}". Solo URL.`}]
-        })
-      });
-      const data=await resp.json();
-      const txt=data.content?.map(c=>c.text||'').join('').trim();
-      const urlMatch=txt.match(/https?:\/\/[^\s"'<>]+\.(?:jpg|jpeg|png|webp)/i);
-      if(urlMatch){
-        await saveImgFirebase(item.id, urlMatch[0]);
-        el.innerHTML+=`✅ ID ${item.id} — guardada<br>`;
-        encontradas++;
-      } else {
-        el.innerHTML+=`⚠️ ID ${item.id} — no encontrada<br>`;
-      }
-      await new Promise(r=>setTimeout(r,500));
-    }catch(e){el.innerHTML+=`❌ ID ${item.id} — error<br>`;}
+      await saveImgFirebase(item.id, item.url);
+      el.innerHTML+=`✅ ID ${item.id} — ${item.name} guardada<br>`;
+      guardadas++;
+    }catch(e){el.innerHTML+=`❌ ID ${item.id} — error: ${e.message}<br>`;}
+    await new Promise(r=>setTimeout(r,200));
   }
-  el.innerHTML+=`<br><b>🎉 ${encontradas}/${LOTE_PRODUCTOS.length} imágenes guardadas. Recargá la tienda para verlas.</b>`;
-  toast(encontradas+' imágenes guardadas en la tienda.','ok');
+  el.innerHTML+=`<br><b>🎉 ${guardadas}/${LOTE_PRODUCTOS.length} imágenes guardadas. Recargá la tienda para verlas.</b>`;
+  toast(guardadas+' imágenes guardadas en la tienda.','ok');
 }
 
 </script>
