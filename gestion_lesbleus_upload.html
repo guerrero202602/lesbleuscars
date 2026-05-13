@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIALESBLEUS · Gestión</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0f;--surface:#111118;--card:#16161f;--border:#2a2a3a;
+  --accent:#6c63ff;--accent2:#00d4aa;--danger:#ff4f6a;--warn:#f7b74f;--ok:#4fff7a;
+  --text:#f0f0ff;--muted:#6b6b8a;--font:'Space Grotesk',sans-serif;--mono:'Space Mono',monospace;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh}
+/* LOGIN */
+#login{min-height:100vh;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 60% 40%,#1a0a3e 0%,var(--bg) 70%)}
+.login-box{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:48px 40px;width:380px;max-width:calc(100vw - 32px)}
+.login-logo{font-size:32px;font-weight:700;letter-spacing:-1px;margin-bottom:4px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.login-sub{color:var(--muted);font-size:13px;margin-bottom:32px}
+label{display:block;font-size:11px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+input{width:100%;padding:12px 14px;background:var(--surface);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;font-family:var(--font);outline:none;transition:border-color .2s}
+input:focus{border-color:var(--accent)}
+.field{margin-bottom:18px}
+.btn{padding:12px 20px;border-radius:10px;border:none;font-family:var(--font);font-size:14px;font-weight:600;cursor:pointer;transition:opacity .2s,transform .1s;display:inline-flex;align-items:center;gap:8px}
+.btn:hover{opacity:.88}.btn:active{transform:scale(.97)}
+.btn-primary{background:linear-gradient(135deg,var(--accent),#8b63ff);color:#fff;width:100%}
+.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--muted)}
+.btn-ghost:hover{border-color:var(--text);color:var(--text)}
+.btn-sm{padding:7px 13px;font-size:12px;border-radius:8px}
+.btn-danger{background:var(--danger);color:#fff}
+.btn-ok{background:var(--ok);color:#000}
+.btn-wa{background:#25D366;color:#fff}
+.err-box{background:rgba(255,79,106,.12);border:1px solid rgba(255,79,106,.3);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--danger);display:none;margin-top:12px}
+/* DASHBOARD */
+#dash{display:none;min-height:100vh}
+.topbar{height:56px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:100}
+.brand{font-size:17px;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.badge-role{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:rgba(108,99,255,.15);color:var(--accent);border:1px solid rgba(108,99,255,.3)}
+.layout{display:flex;min-height:calc(100vh - 56px)}
+.sidebar{width:200px;background:var(--surface);border-right:1px solid var(--border);padding:16px 8px;flex-shrink:0}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;font-size:13px;font-weight:500;color:var(--muted);margin-bottom:2px;transition:all .15s}
+.nav-item:hover{background:var(--card);color:var(--text)}
+.nav-item.active{background:rgba(108,99,255,.15);color:var(--accent)}
+.main{flex:1;padding:28px 32px;overflow-y:auto;background:var(--bg)}
+/* CARDS */
+.page-title{font-size:22px;font-weight:700;margin-bottom:4px}
+.page-sub{color:var(--muted);font-size:13px;margin-bottom:24px}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:24px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px}
+.stat-icon{font-size:20px;margin-bottom:8px}
+.stat-lbl{font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.stat-val{font-size:28px;font-weight:700;margin-top:4px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:20px}
+.card-head{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.card-head h3{font-size:15px;font-weight:600}
+table{width:100%;border-collapse:collapse}
+th{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;padding:11px 16px;text-align:left;border-bottom:1px solid var(--border)}
+td{padding:12px 16px;font-size:13px;border-bottom:1px solid rgba(42,42,58,.5)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(108,99,255,.04)}
+.pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;text-transform:uppercase}
+.s-pendiente{background:#fef3c7;color:#92400e}
+.s-enproceso{background:#dbeafe;color:#1e40af}
+.s-enviado{background:#dcfce7;color:#166534}
+.s-entregado{background:#ccfbf1;color:#065f46}
+.s-cancelado{background:#fee2e2;color:#991b1b}
+.td-actions{display:flex;gap:6px;flex-wrap:wrap}
+/* MODAL */
+#modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1000;display:none;align-items:center;justify-content:center}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:28px;width:500px;max-width:94vw;max-height:90vh;overflow-y:auto}
+.modal h3{font-size:17px;font-weight:700;margin-bottom:20px}
+.modal-footer{display:flex;gap:8px;justify-content:flex-end;margin-top:20px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+select{width:100%;padding:12px 14px;background:var(--surface);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;font-family:var(--font);outline:none}
+select:focus{border-color:var(--accent)}
+textarea{width:100%;padding:12px 14px;background:var(--surface);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;font-family:var(--font);outline:none;resize:vertical;min-height:70px}
+/* TOAST */
+#toast-wrap{position:fixed;top:64px;right:16px;z-index:9999;display:flex;flex-direction:column;gap:8px}
+.toast{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 16px;font-size:13px;min-width:240px;display:flex;align-items:center;gap:10px;animation:fadeUp .3s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+/* IA */
+.ia-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px}
+.ia-title{font-size:15px;font-weight:700;margin-bottom:6px}
+.ia-desc{font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.5}
+.ia-result{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;font-size:13px;line-height:1.6;white-space:pre-wrap;display:none;margin-top:12px}
+.spin{width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .6s linear infinite;display:inline-block;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+.filter-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.filter-bar input,.filter-bar select{padding:8px 12px;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;font-family:var(--font);outline:none;width:auto}
+.filter-bar input{flex:1;min-width:160px}
+</style>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login">
+  <div class="login-box">
+    <div class="login-logo">VIALESBLEUS</div>
+    <div class="login-sub">Sistema de gestión · LESBLEUS S.A.</div>
+    <div class="field"><label>Usuario</label><input type="text" id="l-user" placeholder="encargado1" autocomplete="username"></div>
+    <div class="field"><label>Contraseña</label><input type="password" id="l-pass" placeholder="••••••••" autocomplete="current-password"></div>
+    <button class="btn btn-primary" onclick="login()">Ingresar →</button>
+    <div class="err-box" id="l-err"></div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dash">
+  <div class="topbar">
+    <div class="brand">VIALESBLEUS</div>
+    <div class="topbar-right">
+      <span id="tb-user" style="font-size:13px;color:var(--muted)"></span>
+      <span class="badge-role" id="tb-role"></span>
+      <button class="btn btn-ghost btn-sm" onclick="logout()">Salir</button>
+    </div>
+  </div>
+  <div class="layout">
+    <div class="sidebar" id="sidebar"></div>
+    <div class="main" id="main"></div>
+  </div>
+</div>
+
+<div id="modal-bg"><div class="modal" id="modal"></div></div>
+<div id="toast-wrap"></div>
+
+<script>
+const USERS={
+  encargado1:{pass:'encargado123',role:'encargado',name:'Encargado Rivera'},
+  encargado2:{pass:'encargado456',role:'encargado',name:'Encargado Gómez'},
+  agente1:{pass:'agente123',role:'agente',name:'Agente López'},
+  agente2:{pass:'agente456',role:'agente',name:'Agente García'},
+  cliente1:{pass:'cliente123',role:'cliente',name:'Cliente Principal'},
+};
+
+let S={session:null,orders:[],page:'inicio'};
+const FB_CONFIG={apiKey:"AIzaSyAuYGm8PHPqNfMnBMNZBuC4CmWZ4pJs8yk",authDomain:"lesbleuscars-94e0c.firebaseapp.com",projectId:"lesbleuscars-94e0c",storageBucket:"lesbleuscars-94e0c.firebasestorage.app",messagingSenderId:"719264434324",appId:"1:719264434324:web:a51090a5fec7a0fe338c81"};
+let fbdb=null;
+if(typeof firebase!=='undefined'){try{firebase.initializeApp(FB_CONFIG);fbdb=firebase.firestore();}catch(e){}}
+
+async function saveImgFirebase(prodId, url){
+  if(fbdb){
+    try{await fbdb.collection('product_images').doc(String(prodId)).set({url,updatedAt:firebase.firestore.Timestamp.now()});}
+    catch(e){console.warn('Firebase img:',e);}
+  }
+  localStorage.setItem('img_'+prodId, url);
+}
+
+
+function login(){
+  const u=document.getElementById('l-user').value.trim();
+  const p=document.getElementById('l-pass').value.trim();
+  const usr=USERS[u];
+  if(!usr||usr.pass!==p){
+    const e=document.getElementById('l-err');e.style.display='block';e.textContent='Usuario o contraseña incorrectos.';return;
+  }
+  S.session={user:u,...usr};
+  loadOrders();
+  document.getElementById('login').style.display='none';
+  document.getElementById('dash').style.display='block';
+  document.getElementById('tb-user').textContent=usr.name;
+  document.getElementById('tb-role').textContent={encargado:'Encargado',agente:'Agente',cliente:'Cliente'}[usr.role];
+  renderSidebar();navigate('inicio');
+}
+
+function logout(){S.session=null;document.getElementById('login').style.display='flex';document.getElementById('dash').style.display='none';}
+
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&document.getElementById('login').style.display!=='none')login();});
+
+// STORAGE
+function saveOrders(){localStorage.setItem('viales_orders',JSON.stringify(S.orders));}
+function loadOrders(){try{S.orders=JSON.parse(localStorage.getItem('viales_orders')||'[]');}catch(e){S.orders=[];}}
+
+// SIDEBAR
+const NAV={
+  encargado:[{p:'inicio',i:'🏠',l:'Inicio'},{p:'pedidos',i:'📦',l:'Pedidos'},{p:'agentes',i:'👥',l:'Agentes'},{p:'reportes',i:'📊',l:'Reportes'},{p:'ia-gestion',i:'🤖',l:'Agente IA'},{p:'ia-factura',i:'🧾',l:'Facturación IA'},{p:'ia-imagenes',i:'🖼️',l:'Imágenes IA'}],
+  agente:[{p:'inicio',i:'🏠',l:'Inicio'},{p:'bandeja',i:'📥',l:'Bandeja'},{p:'mis-pedidos',i:'📦',l:'Mis pedidos'},{p:'wa',i:'💬',l:'WhatsApp'}],
+  cliente:[{p:'inicio',i:'🏠',l:'Inicio'},{p:'mi-pedido',i:'📦',l:'Mi pedido'}],
+};
+function renderSidebar(){
+  const nav=NAV[S.session.role]||[];
+  document.getElementById('sidebar').innerHTML=nav.map(n=>`<div class="nav-item${S.page===n.p?' active':''}" onclick="navigate('${n.p}')">${n.i} ${n.l}</div>`).join('');
+}
+function navigate(p){S.page=p;renderSidebar();const pages={inicio:pageInicio,pedidos:pagePedidos,bandeja:pageBandeja,'mis-pedidos':pageMisPedidos,'mi-pedido':pageMiPedido,agentes:pageAgentes,reportes:pageReportes,wa:pageWA,'ia-gestion':pageIAGestion,'ia-factura':pageIAFactura,'ia-imagenes':pageIAImagenes};(pages[p]||pageInicio)();}
+
+// UTILS
+function id(i){return document.getElementById(i);}
+function ls(s){return{pendiente:'Pendiente',enproceso:'En proceso',enviado:'Enviado',entregado:'Entregado',cancelado:'Cancelado'}[s]||s;}
+function num(m){return parseFloat((m||'').replace(/[^\d.,]/g,'').replace(',','.')||0);}
+function oid(o){return o.id||'';}
+function findO(i){return S.orders.find(o=>o.id===i);}
+function toast(msg,type='ok'){const w=id('toast-wrap'),t=document.createElement('div');t.className='toast';t.innerHTML=`<span>${{ok:'✅',err:'❌',warn:'⚠️',info:'ℹ️'}[type]||'ℹ️'}</span><span>${msg}</span>`;w.appendChild(t);setTimeout(()=>{t.style.opacity='0';setTimeout(()=>t.remove(),300)},3000);}
+function openModal(html){id('modal-bg').style.display='flex';id('modal').innerHTML=html;}
+function closeModal(){id('modal-bg').style.display='none';}
+id('modal-bg').addEventListener('click',e=>{if(e.target===id('modal-bg'))closeModal();});
+
+// PAGES
+function pageInicio(){
+  const role=S.session.role;
+  const t={pendiente:0,enproceso:0,enviado:0,entregado:0,cancelado:0};
+  S.orders.forEach(o=>{if(t[o.estado]!==undefined)t[o.estado]++;});
+  let stats='';
+  if(role!=='cliente'){
+    stats=`<div class="stat-grid">
+      <div class="stat"><div class="stat-icon">📦</div><div class="stat-lbl">Total</div><div class="stat-val">${S.orders.length}</div></div>
+      <div class="stat"><div class="stat-icon">⏳</div><div class="stat-lbl">Pendientes</div><div class="stat-val" style="color:var(--warn)">${t.pendiente}</div></div>
+      <div class="stat"><div class="stat-icon">🔄</div><div class="stat-lbl">En proceso</div><div class="stat-val" style="color:var(--accent)">${t.enproceso}</div></div>
+      <div class="stat"><div class="stat-icon">✅</div><div class="stat-lbl">Entregados</div><div class="stat-val" style="color:var(--ok)">${t.entregado}</div></div>
+    </div>`;
+  }
+  id('main').innerHTML=`<div class="page-title">Hola, ${S.session.name.split(' ')[0]} 👋</div><div class="page-sub">Bienvenido al sistema VIALESBLEUS</div>${stats}`;
+}
+
+function pagePedidos(){
+  const isEnc=S.session.role==='encargado';
+  const filtro=(window._filtro||'').toLowerCase();
+  const filtroEst=window._filtroEst||'';
+  let list=S.orders;
+  if(filtro)list=list.filter(o=>(o.producto||'').toLowerCase().includes(filtro)||(o.clienteNombre||'').toLowerCase().includes(filtro)||(o.id||'').toLowerCase().includes(filtro));
+  if(filtroEst)list=list.filter(o=>o.estado===filtroEst);
+  const rows=list.map(o=>`<tr>
+    <td><b>${o.id}</b></td><td>${o.producto}</td><td>${o.clienteNombre||''}</td>
+    <td><span class="pill s-${o.estado}">${ls(o.estado)}</span></td>
+    <td>${o.fecha||''}</td><td>${o.monto||''}</td>
+    <td class="td-actions">
+      <button class="btn btn-ghost btn-sm" onclick="modalEditar('${o.id}')">✏️</button>
+      ${o.tel?`<button class="btn btn-wa btn-sm" onclick="waNotif('${o.id}')">💬</button>`:''}
+      ${isEnc?`<button class="btn btn-danger btn-sm" onclick="eliminar('${o.id}')">🗑</button>`:''}
+    </td>
+  </tr>`).join('')||`<tr><td colspan="7" style="text-align:center;padding:28px;color:var(--muted)">Sin resultados.</td></tr>`;
+  id('main').innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px">
+      <div><div class="page-title">📦 Pedidos</div><div class="page-sub">${list.length} de ${S.orders.length} registros</div></div>
+      <div style="display:flex;gap:8px">
+        ${isEnc?`<button class="btn btn-ghost btn-sm" onclick="exportCSV()">⬇️ CSV</button>`:''}
+        ${isEnc?`<button class="btn btn-primary btn-sm" onclick="modalNuevo()">+ Nuevo pedido</button>`:''}
+      </div>
+    </div>
+    <div class="filter-bar">
+      <input type="text" placeholder="🔍 Buscar..." value="${window._filtro||''}" oninput="window._filtro=this.value;pagePedidos()">
+      <select onchange="window._filtroEst=this.value;pagePedidos()">
+        <option value="">Todos los estados</option>
+        ${['pendiente','enproceso','enviado','entregado','cancelado'].map(s=>`<option value="${s}"${filtroEst===s?' selected':''}>${ls(s)}</option>`).join('')}
+      </select>
+      ${(filtro||filtroEst)?`<button class="btn btn-ghost btn-sm" onclick="window._filtro='';window._filtroEst='';pagePedidos()">✕ Limpiar</button>`:''}
+    </div>
+    <div class="card"><div class="card-head"><h3>Listado</h3></div>
+    <table><thead><tr><th>ID</th><th>Producto</th><th>Cliente</th><th>Estado</th><th>Fecha</th><th>Monto</th><th>Acciones</th></tr></thead>
+    <tbody>${rows}</tbody></table></div>`;
+}
+
+function pageBandeja(){
+  const pend=S.orders.filter(o=>o.estado==='pendiente');
+  const rows=pend.map(o=>`<tr>
+    <td><b>${o.id}</b></td><td>${o.producto}</td><td>${o.clienteNombre||''}</td><td>${o.fecha||''}</td><td>${o.monto||''}</td>
+    <td><button class="btn btn-ok btn-sm" onclick="tomarPedido('${o.id}')">✔ Tomar</button></td>
+  </tr>`).join('')||`<tr><td colspan="6" style="text-align:center;padding:28px;color:var(--muted)">Sin pedidos pendientes 🎉</td></tr>`;
+  id('main').innerHTML=`<div class="page-title">📥 Bandeja de entrada</div><div class="page-sub">${pend.length} pedidos sin asignar</div>
+    <div class="card"><div class="card-head"><h3>Pendientes</h3></div>
+    <table><thead><tr><th>ID</th><th>Producto</th><th>Cliente</th><th>Fecha</th><th>Monto</th><th>Acción</th></tr></thead>
+    <tbody>${rows}</tbody></table></div>`;
+}
+
+function pageMisPedidos(){
+  const mine=S.orders.filter(o=>o.agente===S.session.user);
+  const rows=mine.map(o=>`<tr>
+    <td><b>${o.id}</b></td><td>${o.producto}</td><td>${o.clienteNombre||''}</td>
+    <td><span class="pill s-${o.estado}">${ls(o.estado)}</span></td>
+    <td>${o.monto||''}</td>
+    <td class="td-actions">
+      <button class="btn btn-ghost btn-sm" onclick="modalEditar('${o.id}')">✏️</button>
+      ${o.tel?`<button class="btn btn-wa btn-sm" onclick="waNotif('${o.id}')">💬</button>`:''}
+    </td>
+  </tr>`).join('')||`<tr><td colspan="6" style="text-align:center;padding:28px;color:var(--muted)">Sin pedidos asignados.</td></tr>`;
+  id('main').innerHTML=`<div class="page-title">📦 Mis pedidos</div><div class="page-sub">${mine.length} pedidos asignados a vos</div>
+    <div class="card"><div class="card-head"><h3>Mis pedidos</h3></div>
+    <table><thead><tr><th>ID</th><th>Producto</th><th>Cliente</th><th>Estado</th><th>Monto</th><th>Acciones</th></tr></thead>
+    <tbody>${rows}</tbody></table></div>`;
+}
+
+function pageMiPedido(){
+  const mine=S.orders.filter(o=>o.cliente===S.session.user);
+  const rows=mine.map(o=>`<tr>
+    <td><b>${o.id}</b></td><td>${o.producto}</td>
+    <td><span class="pill s-${o.estado}">${ls(o.estado)}</span></td>
+    <td>${o.fecha||''}</td><td>${o.monto||''}</td>
+    <td>${o.linkPago?`<a href="${o.linkPago}" target="_blank" class="btn btn-primary btn-sm">💳 Pagar</a>`:'-'}</td>
+  </tr>`).join('')||`<tr><td colspan="6" style="text-align:center;padding:28px;color:var(--muted)">No tenés pedidos registrados.</td></tr>`;
+  id('main').innerHTML=`<div class="page-title">📦 Mi pedido</div><div class="page-sub">Estado de tus compras</div>
+    <div class="card"><div class="card-head"><h3>Mis pedidos</h3></div>
+    <table><thead><tr><th>ID</th><th>Producto</th><th>Estado</th><th>Fecha</th><th>Monto</th><th>Pago</th></tr></thead>
+    <tbody>${rows}</tbody></table></div>`;
+}
+
+function pageAgentes(){
+  const agentes=Object.entries(USERS).filter(([k,v])=>v.role==='agente').map(([k,v])=>({key:k,...v}));
+  const rows=agentes.map(a=>{
+    const pedidos=S.orders.filter(o=>o.agente===a.key);
+    const enproc=pedidos.filter(o=>o.estado==='enproceso').length;
+    return`<tr><td><b>${a.name}</b></td><td><span style="font-family:var(--mono);font-size:12px;background:var(--surface);padding:2px 8px;border-radius:6px">${a.key}</span></td><td>${pedidos.length}</td><td style="color:var(--accent)">${enproc}</td></tr>`;
+  }).join('');
+  id('main').innerHTML=`<div class="page-title">👥 Agentes</div><div class="page-sub">${agentes.length} agentes en el sistema</div>
+    <div class="card"><div class="card-head"><h3>Listado de agentes</h3></div>
+    <table><thead><tr><th>Nombre</th><th>Usuario</th><th>Total pedidos</th><th>En proceso</th></tr></thead>
+    <tbody>${rows}</tbody></table></div>`;
+}
+
+function pageReportes(){
+  const t={pendiente:0,enproceso:0,enviado:0,entregado:0,cancelado:0};
+  let total=0,cobrado=0;
+  S.orders.forEach(o=>{if(t[o.estado]!==undefined)t[o.estado]++;const m=num(o.monto);total+=m;if(o.pagado)cobrado+=m;});
+  id('main').innerHTML=`<div class="page-title">📊 Reportes</div><div class="page-sub">Resumen de actividad</div>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-icon">💰</div><div class="stat-lbl">Total facturado</div><div class="stat-val" style="font-size:20px;color:var(--ok)">$${total.toLocaleString('es-AR')}</div></div>
+      <div class="stat"><div class="stat-icon">✅</div><div class="stat-lbl">Cobrado</div><div class="stat-val" style="font-size:20px;color:var(--accent2)">$${cobrado.toLocaleString('es-AR')}</div></div>
+      <div class="stat"><div class="stat-icon">⏳</div><div class="stat-lbl">Pendiente cobro</div><div class="stat-val" style="font-size:20px;color:var(--warn)">$${(total-cobrado).toLocaleString('es-AR')}</div></div>
+    </div>
+    <div class="card"><div class="card-head"><h3>Estados</h3></div><div style="padding:18px">
+      ${Object.entries(t).map(([k,v])=>`<div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+        <span style="width:90px;color:var(--muted);font-size:12px">${ls(k)}</span>
+        <div style="flex:1;background:var(--surface);border-radius:4px;height:18px;overflow:hidden">
+          <div style="width:${S.orders.length?Math.round(v/S.orders.length*100):0}%;height:100%;background:var(--accent);border-radius:4px;display:flex;align-items:center;padding:0 8px;font-size:11px;font-weight:700;color:#fff">${v>0?v:''}</div>
+        </div>
+        <span style="min-width:24px;text-align:right;font-size:12px;color:var(--muted)">${v}</span>
+      </div>`).join('')}
+    </div></div>`;
+}
+
+function pageWA(){
+  const list=S.orders.filter(o=>o.tel);
+  const cards=list.map(o=>{
+    const tel=o.tel.replace(/\D/g,'');
+    const msgs={pendiente:`Hola ${o.clienteNombre}! 📦 Tu pedido *${o.producto}* fue recibido y está pendiente. Te avisamos cuando avance.`,enproceso:`Hola ${o.clienteNombre}! 🔄 Tu pedido *${o.producto}* está en preparación. Pronto te confirmamos el envío.`,enviado:`Hola ${o.clienteNombre}! 🚀 Tu pedido *${o.producto}* fue enviado y está en camino. ¡Pronto lo recibís!`,entregado:`Hola ${o.clienteNombre}! ✅ Tu pedido *${o.producto}* fue entregado. ¡Gracias por tu compra!`,cancelado:`Hola ${o.clienteNombre}! ❌ Tu pedido *${o.producto}* fue cancelado. Contactanos para más info.`};
+    return`<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:14px">
+      <div><b>${o.id} · ${o.producto}</b><br><span style="font-size:12px;color:var(--muted)">${o.clienteNombre||''} · <span class="pill s-${o.estado}">${ls(o.estado)}</span> · 📱 +${tel}</span></div>
+      <div style="display:flex;gap:6px;flex-shrink:0">
+        <a href="https://wa.me/${tel}?text=${encodeURIComponent(msgs[o.estado]||'')}" target="_blank" class="btn btn-wa btn-sm">💬 Notificar</a>
+        ${o.linkPago?`<a href="https://wa.me/${tel}?text=${encodeURIComponent('💳 Link de pago: '+o.linkPago)}" target="_blank" class="btn btn-ghost btn-sm">💳 Enviar link</a>`:''}
+      </div>
+    </div>`;
+  }).join('')||`<div style="text-align:center;padding:40px;color:var(--muted)">Agregá teléfonos a los pedidos para notificar desde acá.</div>`;
+  id('main').innerHTML=`<div class="page-title">💬 WhatsApp</div><div class="page-sub">Notificá a tus clientes con un clic</div>${cards}`;
+}
+
+// IA GESTION
+function pageIAGestion(){
+  id('main').innerHTML=`<div class="page-title">🤖 Agente de Gestión IA</div><div class="page-sub">Automatización inteligente de pedidos</div>
+    <div class="ia-card">
+      <div class="ia-title">📊 Supervisor de pedidos</div>
+      <div class="ia-desc">Analiza todos los pedidos, detecta cuellos de botella y genera recomendaciones concretas.</div>
+      <button class="btn btn-primary btn-sm" onclick="runSupervisor()">▶ Ejecutar análisis</button>
+      <div class="ia-result" id="res-supervisor"></div>
+    </div>
+    <div class="ia-card">
+      <div class="ia-title">👥 Auto-asignador</div>
+      <div class="ia-desc">Distribuye automáticamente los pedidos pendientes entre los agentes activos según su carga de trabajo.</div>
+      <button class="btn btn-primary btn-sm" onclick="runAsignador()">▶ Auto-asignar ahora</button>
+      <div class="ia-result" id="res-asignador"></div>
+    </div>
+    <div class="ia-card">
+      <div class="ia-title">💬 Generador de mensajes WA</div>
+      <div class="ia-desc">Redacta mensajes personalizados de WhatsApp para todos los clientes con pedidos activos.</div>
+      <button class="btn btn-primary btn-sm" onclick="runComunicador()">▶ Generar mensajes</button>
+      <div class="ia-result" id="res-comunicador"></div>
+    </div>`;
+}
+
+function pageIAFactura(){
+  id('main').innerHTML=`<div class="page-title">🧾 Agente de Facturación IA</div><div class="page-sub">Generación automática de facturas y remitos</div>
+    <div class="ia-card">
+      <div class="ia-title">🧾 Facturador automático</div>
+      <div class="ia-desc">Detecta pedidos pagados sin factura y genera el texto de la factura C (monotributista) listo para imprimir.</div>
+      <button class="btn btn-primary btn-sm" onclick="runFacturador()">▶ Revisar ahora</button>
+      <div class="ia-result" id="res-facturador"></div>
+    </div>
+    <div class="ia-card">
+      <div class="ia-title">📦 Generador de remitos</div>
+      <div class="ia-desc">Genera el texto del remito para los pedidos en estado "enviado" listos para despachar.</div>
+      <button class="btn btn-primary btn-sm" onclick="runRemito()">▶ Generar remitos</button>
+      <div class="ia-result" id="res-remito"></div>
+    </div>`;
+}
+
+async function callIA(prompt,resId){
+  const el=id(resId);if(!el)return;
+  el.style.display='block';el.innerHTML='<span class="spin"></span> Agente procesando...';
+  try{
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})
+    });
+    const data=await resp.json();
+    el.textContent=data.content?.map(c=>c.text||'').join('')||'Sin respuesta.';
+  }catch(e){el.textContent='Error al conectar con el agente IA: '+e.message;}
+}
+
+async function runSupervisor(){
+  const stats={total:S.orders.length,pendiente:S.orders.filter(o=>o.estado==='pendiente').length,enproceso:S.orders.filter(o=>o.estado==='enproceso').length,enviado:S.orders.filter(o=>o.estado==='enviado').length,sinAgente:S.orders.filter(o=>o.estado==='pendiente'&&!o.agente).length,sinFactura:S.orders.filter(o=>o.pagado&&!o.facturaEmitida).length};
+  await callIA(`Sos el supervisor de pedidos de LESBLEUS S.A., empresa de repuestos automotores argentina. Analizá estos datos y generá un reporte ejecutivo en español con alertas urgentes y recomendaciones concretas: ${JSON.stringify(stats)}`,'res-supervisor');
+}
+
+async function runAsignador(){
+  const pend=S.orders.filter(o=>o.estado==='pendiente'&&!o.agente);
+  const agentes=Object.entries(USERS).filter(([k,v])=>v.role==='agente').map(([k,v])=>({user:k,name:v.name,carga:S.orders.filter(o=>o.agente===k&&o.estado==='enproceso').length}));
+  if(!pend.length){const el=id('res-asignador');el.style.display='block';el.textContent='✅ No hay pedidos pendientes sin asignar.';return;}
+  // Auto-asignar round-robin por carga
+  let asignados=[];
+  for(const o of pend){
+    agentes.sort((a,b)=>a.carga-b.carga);
+    const ag=agentes[0];
+    o.agente=ag.user;o.estado='enproceso';ag.carga++;
+    asignados.push(`${o.id} → ${ag.name}`);
+  }
+  saveOrders();
+  const el=id('res-asignador');el.style.display='block';
+  el.textContent=`✅ ${asignados.length} pedidos asignados automáticamente:\n\n${asignados.join('\n')}`;
+  toast(`IA asignó ${asignados.length} pedidos.`);
+}
+
+async function runComunicador(){
+  const activos=S.orders.filter(o=>['pendiente','enproceso','enviado'].includes(o.estado)&&o.tel);
+  if(!activos.length){const el=id('res-comunicador');el.style.display='block';el.textContent='No hay pedidos activos con teléfono registrado.';return;}
+  const lista=activos.map(o=>`- ${o.clienteNombre} (${o.producto}, estado: ${ls(o.estado)})`).join('\n');
+  await callIA(`Sos el agente comunicador de LESBLEUS S.A. Generá un mensaje de WhatsApp personalizado para cada cliente, adaptado a su estado de pedido. Sé amigable y profesional. Clientes:\n${lista}`,'res-comunicador');
+}
+
+async function runFacturador(){
+  const sinFact=S.orders.filter(o=>o.pagado&&!o.facturaEmitida);
+  const el=id('res-facturador');el.style.display='block';
+  if(!sinFact.length){el.textContent='✅ Todos los pedidos pagados tienen factura emitida.';return;}
+  const lista=sinFact.map(o=>`Pedido ${o.id}: ${o.clienteNombre}, ${o.producto}, $${o.monto}`).join('\n');
+  await callIA(`Sos el agente de facturación de LESBLEUS S.A. (CUIT 30711725918, Monotributista, Colombia 104 Villa Martelli). Generá el texto de la Factura C para cada uno de estos pedidos en formato legal argentino:\n${lista}\n\nIncluí: razón social, CUIT, fecha de hoy, descripción del producto, monto, y leyenda "CAE pendiente de validación AFIP".`,'res-facturador');
+}
+
+async function runRemito(){
+  const enviados=S.orders.filter(o=>o.estado==='enviado');
+  const el=id('res-remito');el.style.display='block';
+  if(!enviados.length){el.textContent='No hay pedidos en estado "enviado" para generar remitos.';return;}
+  const lista=enviados.map(o=>`Pedido ${o.id}: ${o.clienteNombre}, ${o.producto}`).join('\n');
+  await callIA(`Sos el agente de remitos de LESBLEUS S.A. (CUIT 30711725918, Colombia 104 Villa Martelli). Generá el texto del remito para cada uno de estos despachos:\n${lista}\n\nIncluí: número de remito, fecha, emisor, destinatario, descripción del producto, y espacio para firma.`,'res-remito');
+}
+
+// ACTIONS
+function tomarPedido(oid){const o=findO(oid);if(!o)return;o.agente=S.session.user;o.estado='enproceso';saveOrders();toast('Pedido tomado ✅');pageBandeja();}
+function waNotif(oid){const o=findO(oid);if(!o||!o.tel)return;const tel=o.tel.replace(/\D/g,'');const msg=`Hola ${o.clienteNombre}! Estado de tu pedido *${o.producto}*: ${ls(o.estado)}.`;window.open(`https://wa.me/${tel}?text=${encodeURIComponent(msg)}`);}
+function exportCSV(){const h=['ID','Producto','Cliente','Estado','Fecha','Monto','Agente','Pagado'];const r=S.orders.map(o=>[o.id,o.producto,o.clienteNombre||'',o.estado,o.fecha||'',o.monto||'',o.agente||'',o.pagado?'Sí':'No']);const csv=[h,...r].map(row=>row.map(v=>'"'+String(v||'').replace(/"/g,'""')+'"').join(',')).join('\n');const b=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='pedidos_'+new Date().toISOString().split('T')[0]+'.csv';a.click();toast('CSV descargado.');}
+function eliminar(oid){if(!confirm('¿Eliminar este pedido?'))return;S.orders=S.orders.filter(o=>o.id!==oid);saveOrders();toast('Pedido eliminado.','warn');pagePedidos();}
+
+function modalNuevo(){
+  const today=new Date().toISOString().split('T')[0];
+  openModal(`<h3>+ Nuevo pedido</h3>
+    <div class="field-row">
+      <div class="field"><label>Producto</label><input type="text" id="m-prod" placeholder="Ej: Amortiguador Monroe"></div>
+      <div class="field"><label>Monto ($)</label><input type="text" id="m-monto" placeholder="$850"></div>
+    </div>
+    <div class="field"><label>Descripción</label><textarea id="m-desc" placeholder="Detalle, modelo..."></textarea></div>
+    <div class="field-row">
+      <div class="field"><label>Nombre cliente</label><input type="text" id="m-cnombre" placeholder="Juan Pérez"></div>
+      <div class="field"><label>Teléfono WA</label><input type="text" id="m-tel" placeholder="5491112345678"></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>Fecha</label><input type="date" id="m-fecha" value="${today}"></div>
+      <div class="field"><label>Link pago MP</label><input type="text" id="m-link" placeholder="https://mpago.la/..."></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal()">Cancelar</button>
+      <button class="btn btn-primary" onclick="crearPedido()">+ Crear pedido</button>
+    </div>`);
+}
+
+function crearPedido(){
+  const prod=id('m-prod').value.trim(),monto=id('m-monto').value.trim(),cnombre=id('m-cnombre').value.trim();
+  if(!prod||!monto||!cnombre){toast('Completá producto, monto y nombre.','err');return;}
+  const newId='ORD-'+String(Date.now()).slice(-6);
+  S.orders.unshift({id:newId,producto:prod,monto,descripcion:id('m-desc').value.trim(),clienteNombre:cnombre,cliente:'cliente1',tel:id('m-tel').value.trim(),fecha:id('m-fecha').value,linkPago:id('m-link').value.trim(),estado:'pendiente',agente:'',pagado:false,facturaEmitida:false});
+  saveOrders();closeModal();toast('Pedido creado ✅');pagePedidos();
+}
+
+function modalEditar(oid){
+  const o=findO(oid);if(!o)return;
+  openModal(`<h3>✏️ Editar pedido ${o.id}</h3>
+    <div class="field-row">
+      <div class="field"><label>Producto</label><input type="text" id="e-prod" value="${o.producto||''}"></div>
+      <div class="field"><label>Monto</label><input type="text" id="e-monto" value="${o.monto||''}"></div>
+    </div>
+    <div class="field"><label>Nombre cliente</label><input type="text" id="e-cnombre" value="${o.clienteNombre||''}"></div>
+    <div class="field"><label>Teléfono WA</label><input type="text" id="e-tel" value="${o.tel||''}"></div>
+    <div class="field-row">
+      <div class="field"><label>Estado</label>
+        <select id="e-estado">${['pendiente','enproceso','enviado','entregado','cancelado'].map(s=>`<option value="${s}"${o.estado===s?' selected':''}>${ls(s)}</option>`).join('')}</select>
+      </div>
+      <div class="field"><label>Fecha</label><input type="date" id="e-fecha" value="${o.fecha||''}"></div>
+    </div>
+    <div class="field"><label>Link pago MP</label><input type="text" id="e-link" value="${o.linkPago||''}"></div>
+    <div class="field" style="display:flex;align-items:center;gap:8px">
+      <input type="checkbox" id="e-pagado"${o.pagado?' checked':''} style="width:auto">
+      <label style="text-transform:none;letter-spacing:0;font-size:13px">Marcar como pagado</label>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal()">Cancelar</button>
+      <button class="btn btn-primary" onclick="guardarEdicion('${oid}')">💾 Guardar</button>
+    </div>`);
+}
+
+function guardarEdicion(oid){
+  const o=findO(oid);if(!o)return;
+  o.producto=id('e-prod').value.trim();o.monto=id('e-monto').value.trim();
+  o.clienteNombre=id('e-cnombre').value.trim();o.tel=id('e-tel').value.trim();
+  o.estado=id('e-estado').value;o.fecha=id('e-fecha').value;
+  o.linkPago=id('e-link').value.trim();o.pagado=id('e-pagado').checked;
+  saveOrders();closeModal();toast('Pedido guardado ✅');pagePedidos();
+}
+
+function pageIAImagenes(){
+  id('main').innerHTML=`<div class="page-title">🖼️ Agente de Imágenes</div><div class="page-sub">Busca y guarda imágenes reales de productos en la tienda</div>
+    <div class="ia-card">
+      <div class="ia-title">🔍 Buscar imagen de producto específico</div>
+      <div class="ia-desc">Ingresá el nombre o código del producto y el agente busca la imagen correcta en internet y la guarda en la tienda.</div>
+      <div style="display:flex;gap:8px;margin-bottom:12px">
+        <input type="text" id="img-query" placeholder="Ej: Monroe MON749166SP amortiguador VW Fox" style="flex:1;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-family:var(--font);font-size:13px;outline:none">
+        <input type="text" id="img-prodid" placeholder="ID producto" style="width:100px;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-family:var(--font);font-size:13px;outline:none">
+        <button class="btn btn-primary btn-sm" onclick="runImgUno()">Buscar</button>
+      </div>
+      <div class="ia-result" id="res-img-uno"></div>
+    </div>
+    <div class="ia-card">
+      <div class="ia-title">⚡ Buscar lote de imágenes (10 productos)</div>
+      <div class="ia-desc">El agente busca automáticamente imágenes para los 10 productos más vendidos de la tienda y las guarda en Firebase para que aparezcan de inmediato.</div>
+      <button class="btn btn-primary btn-sm" onclick="runImgLote()">▶ Buscar lote ahora</button>
+      <div class="ia-result" id="res-img-lote"></div>
+    </div>`;
+}
+
+async function runImgUno(){
+  const query=id('img-query').value.trim();
+  const prodId=id('img-prodid').value.trim();
+  const el=id('res-img-uno');el.style.display='block';
+  if(!query){el.textContent='⚠️ Ingresá el nombre del producto.';return;}
+  if(!prodId){el.textContent='⚠️ Ingresá el ID del producto.';return;}
+  el.innerHTML='<span class="spin"></span> Buscando imagen...';
+  try{
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',max_tokens:300,
+        tools:[{type:'web_search_20250305',name:'web_search'}],
+        messages:[{role:'user',content:`URL directa de imagen JPG/PNG del repuesto automotor: "${query}". Solo la URL, sin texto.`}]
+      })
+    });
+    const data=await resp.json();
+    const txt=data.content?.map(c=>c.text||'').join('').trim();
+    const urlMatch=txt.match(/https?:\/\/[^\s"'<>]+\.(?:jpg|jpeg|png|webp)/i);
+    if(urlMatch){
+      const url=urlMatch[0];
+      await saveImgFirebase(prodId, url);
+      el.innerHTML=`✅ Imagen guardada para producto ID ${prodId}:<br><img src="${url}" style="max-width:180px;border-radius:8px;margin-top:8px;border:1px solid var(--border)" onerror="this.outerHTML='❌ La URL encontrada no cargó. Intentá de nuevo.'">`;
+    } else {
+      el.textContent='⚠️ No se encontró URL de imagen directa. Intentá con un nombre más específico.';
+    }
+  }catch(e){el.textContent='❌ Error: '+e.message;}
+}
+
+const LOTE_PRODUCTOS=[
+  {id:90004,q:'Monroe MON749166SP amortiguador VW Fox Suran'},
+  {id:90007,q:'Monroe MON749355SP amortiguador Chevrolet Corsa'},
+  {id:90016,q:'Wildbrake WD83975 disco freno VW Gol'},
+  {id:90025,q:'SKF VKBA4529 rodamiento VW Golf Gol'},
+  {id:123224083,q:'espejo exterior manual derecho auto universal'},
+  {id:90040,q:'Mahle MACV070001 cable bujia VW'},
+  {id:90048,q:'Mahle filtro aceite Fiat Palio'},
+  {id:90037,q:'Champion bujia encendido auto universal'},
+  {id:90000,q:'Griffo fuelle Renault Clio Kangoo'},
+  {id:123224285,q:'faro delantero repuesto auto universal'},
+];
+
+async function runImgLote(){
+  const el=id('res-img-lote');el.style.display='block';
+  el.innerHTML='<b>🖼️ Buscando imágenes para '+LOTE_PRODUCTOS.length+' productos...</b><br><br>';
+  let encontradas=0;
+  for(const item of LOTE_PRODUCTOS){
+    const cached=localStorage.getItem('img_'+item.id);
+    if(cached){el.innerHTML+=`✅ ID ${item.id} — ya tiene imagen<br>`;encontradas++;continue;}
+    el.innerHTML+=`<span class="spin"></span> Buscando: ${item.q.slice(0,40)}...<br>`;
+    try{
+      const resp=await fetch('https://api.anthropic.com/v1/messages',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          model:'claude-sonnet-4-20250514',max_tokens:200,
+          tools:[{type:'web_search_20250305',name:'web_search'}],
+          messages:[{role:'user',content:`URL directa imagen JPG/PNG repuesto: "${item.q}". Solo URL.`}]
+        })
+      });
+      const data=await resp.json();
+      const txt=data.content?.map(c=>c.text||'').join('').trim();
+      const urlMatch=txt.match(/https?:\/\/[^\s"'<>]+\.(?:jpg|jpeg|png|webp)/i);
+      if(urlMatch){
+        await saveImgFirebase(item.id, urlMatch[0]);
+        el.innerHTML+=`✅ ID ${item.id} — guardada<br>`;
+        encontradas++;
+      } else {
+        el.innerHTML+=`⚠️ ID ${item.id} — no encontrada<br>`;
+      }
+      await new Promise(r=>setTimeout(r,500));
+    }catch(e){el.innerHTML+=`❌ ID ${item.id} — error<br>`;}
+  }
+  el.innerHTML+=`<br><b>🎉 ${encontradas}/${LOTE_PRODUCTOS.length} imágenes guardadas. Recargá la tienda para verlas.</b>`;
+  toast(encontradas+' imágenes guardadas en la tienda.','ok');
+}
+
+</script>
+</body>
+</html>
