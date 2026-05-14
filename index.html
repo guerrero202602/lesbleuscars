@@ -1067,7 +1067,7 @@ const CC={
 };
 function gc(cat){return CC[cat]||CC.espejos;}
 
-// ══ IMÁGENES — AUTO LOAD ══
+// ══ IMÁGENES — BATCH LOAD ══
 let imgCache={};
 
 function loadImgCache(){
@@ -1079,55 +1079,52 @@ function getProdImg(id){return imgCache[String(id)]||null;}
 function imgHtml(p,size=52){
   const img=getProdImg(p.id);
   if(img)return`<img src="${img}" style="width:${size}px;height:${size}px;object-fit:contain;border-radius:6px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.1))" onerror="this.style.display='none'">`;
-  return`<span class="img-lazy" data-id="${p.id}" data-ml="${p.ml}" data-nm="${encodeURIComponent(p.m+' '+p.n.slice(0,30))}" data-sz="${size}" style="font-size:${size}px;display:inline-block">${p.e}</span>`;
-}
-
-async function fetchMLImg(id,mlId,nm,size){
-  if(imgCache[String(id)]){updateImgEl(id,imgCache[String(id)],size);return;}
-  const ctrl=new AbortController();
-  const timer=setTimeout(()=>ctrl.abort(),7000);
-  try{
-    let url=null;
-    if(mlId&&mlId.startsWith('MLA')){
-      const r=await fetch(`https://api.mercadolibre.com/items/${mlId}`,{signal:ctrl.signal});
-      if(r.ok){const d=await r.json();url=d.thumbnail||(d.pictures&&d.pictures[0]?.secure_url);}
-    } else {
-      const q=encodeURIComponent(decodeURIComponent(nm));
-      const r=await fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${q}&limit=1`,{signal:ctrl.signal});
-      if(r.ok){const d=await r.json();url=d.results&&d.results[0]?.thumbnail;}
-    }
-    if(url){
-      url=url.replace('http:','https:').replace(/-[A-Z]\.jpg$/,'-O.jpg').replace(/-[A-Z]\.webp$/,'-O.webp');
-      imgCache[String(id)]=url;
-      try{localStorage.setItem('img_'+id,url);}catch(e){}
-      updateImgEl(id,url,size);
-    }
-  }catch(e){}finally{clearTimeout(timer);}
+  return`<span class="img-ph" data-id="${p.id}" data-ml="${p.ml}" data-nm="${encodeURIComponent((p.m+' '+p.n).slice(0,50))}" data-sz="${size}" style="font-size:${size}px;display:inline-block">${p.e}</span>`;
 }
 
 function updateImgEl(id,url,size){
   document.querySelectorAll(`[data-id="${id}"]`).forEach(el=>{
-    const sz=size||el.dataset.sz||52;
+    const sz=parseInt(size||el.dataset.sz||52);
     const img=document.createElement('img');
-    img.src=url;img.style.cssText=`width:${sz}px;height:${sz}px;object-fit:contain;border-radius:6px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.1));animation:fadeImg .4s ease`;
-    img.onerror=()=>img.remove();el.replaceWith(img);
+    img.src=url;
+    img.style.cssText=`width:${sz}px;height:${sz}px;object-fit:contain;border-radius:6px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.1))`;
+    img.onerror=()=>img.remove();
+    el.replaceWith(img);
   });
 }
 
-function initLazyImages(){
-  const seen=new Set();
-  const obs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(!e.isIntersecting)return;
-      const el=e.target,id=el.dataset.id;
-      if(seen.has(id))return;seen.add(id);obs.unobserve(el);
-      fetchMLImg(id,el.dataset.ml,el.dataset.nm,el.dataset.sz);
-    });
-  },{rootMargin:'400px'});
-  document.querySelectorAll('.img-lazy').forEach(el=>obs.observe(el));
+async function loadOneImg(el){
+  const id=el.dataset.id,mlId=el.dataset.ml,nm=el.dataset.nm,sz=el.dataset.sz;
+  if(imgCache[id]){updateImgEl(id,imgCache[id],sz);return;}
+  try{
+    let url=null;
+    if(mlId&&mlId.startsWith('MLA')){
+      const r=await fetch(`https://api.mercadolibre.com/items/${mlId}`);
+      if(r.ok){const d=await r.json();url=d.thumbnail||(d.pictures?.[0]?.secure_url);}
+    }else{
+      const q=encodeURIComponent(decodeURIComponent(nm));
+      const r=await fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${q}&limit=1`);
+      if(r.ok){const d=await r.json();url=d.results?.[0]?.thumbnail;}
+    }
+    if(url){
+      url=url.replace('http:','https:');
+      imgCache[id]=url;
+      try{localStorage.setItem('img_'+id,url);}catch(e){}
+      updateImgEl(id,url,sz);
+    }
+  }catch(e){}
 }
 
-(()=>{const s=document.createElement('style');s.textContent='@keyframes fadeImg{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}';document.head.appendChild(s);})();
+async function initImageLoading(){
+  await new Promise(r=>setTimeout(r,300));
+  const els=[...document.querySelectorAll('.img-ph')];
+  const BATCH=6;
+  for(let i=0;i<els.length;i+=BATCH){
+    await Promise.all(els.slice(i,i+BATCH).map(loadOneImg));
+    await new Promise(r=>setTimeout(r,200));
+  }
+}
+
 
 
 // ══ DESCUENTOS ══
@@ -1596,7 +1593,7 @@ async function autoCorrectorTienda(){
 loadImgCache();
 renderGrid(PP);
 renderCombos();
-initLazyImages();
+initImageLoading();
 updCart();
 
 </script>
