@@ -847,7 +847,7 @@ function calcCuotas(){
     </div>
     <div class="mst" id="ms4">
       <div style="text-align:center;margin-bottom:1.25rem"><div style="font-size:48px;margin-bottom:.75rem">🎉</div><div style="font-family:'Cinzel',serif;font-size:21px;font-weight:600;color:var(--nv);margin-bottom:5px">¡Pedido Confirmado!</div><div style="font-size:13px;color:var(--tx2)">Tu código de compra LesBleus Cars:</div></div>
-      <div class="lbb"><div style="font-size:10px;font-weight:700;color:var(--nv2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">🏷️ Código LesBleus</div><div class="lbc" id="lbcode">LB-2026-000001</div><div style="font-size:11.5px;color:var(--tx3)">Usalo en vialesbleus.com para seguir tu envío</div><button class="cpb" onclick="cpyCod()">📋 Copiar código</button></div>
+      <div class="lbb"><div style="font-size:10px;font-weight:700;color:var(--nv2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">🏷️ Código LesBleus</div><div class="lbc" id="lbcode">LB-2026-000001</div><div style="font-size:11.5px;color:var(--tx3)">Usalo en lesbleuscars.com para seguir tu envío</div><button class="cpb" onclick="cpyCod()">📋 Copiar código</button></div>
       <div id="lb-creds"></div>
       <div style="font-size:12.5px;color:var(--tx2);margin-bottom:1rem;text-align:center;line-height:1.6">Te avisamos por WhatsApp cuando el pedido esté verificado y en camino.</div>
       <a class="wab" id="lb-wa" href="#" target="_blank" style="display:none">💬 Recibir datos por WhatsApp</a>
@@ -1067,25 +1067,75 @@ const CC={
 };
 function gc(cat){return CC[cat]||CC.espejos;}
 
-// ══ IMÁGENES ══
+// ══ IMÁGENES — ML API LAZY LOAD ══
 let imgCache={};
-async function loadImgsFromFirebase(){
-  if(!db||db==='SKIP'){
-    // Fallback localStorage
-    for(let k in localStorage){ if(k.startsWith('img_')) imgCache[k.replace('img_','')]=localStorage.getItem(k); }
-    return;
-  }
+
+function loadImgCache(){
   try{
-    const snap=await db.collection('product_images').get();
-    snap.docs.forEach(d=>{ imgCache[d.id]=d.data().url; });
-  }catch(e){ console.warn('Imgs:',e); }
+    for(let i=0;i<localStorage.length;i++){
+      const k=localStorage.key(i);
+      if(k&&k.startsWith('img_')) imgCache[k.slice(4)]=localStorage.getItem(k);
+    }
+  }catch(e){}
 }
+
 function getProdImg(id){return imgCache[String(id)]||null;}
+
 function imgHtml(p,size=52){
   const img=getProdImg(p.id);
-  if(img) return `<img src="${img}" style="width:${size}px;height:${size}px;object-fit:contain;border-radius:6px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.1))" onerror="this.outerHTML='<span style=\\'font-size:${size}px\\'>${p.e}</span>'">`;
-  return `<span style="font-size:${size}px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.1))">${p.e}</span>`;
+  if(img) return `<img src="${img}" style="width:${size}px;height:${size}px;object-fit:contain;border-radius:6px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.1))" onerror="this.style.display='none'">`;
+  return `<span class="img-lazy" data-id="${p.id}" data-ml="${p.ml}" data-e="${p.e}" data-sz="${size}" style="font-size:${size}px;display:inline-block">${p.e}</span>`;
 }
+
+async function fetchMLImg(id,mlId,size){
+  if(!mlId||!mlId.startsWith('MLA')) return;
+  if(imgCache[String(id)]){updateImgEl(id,imgCache[String(id)],size);return;}
+  try{
+    const resp=await fetch(`https://api.mercadolibre.com/items/${mlId}`,{signal:AbortSignal.timeout(8000)});
+    if(!resp.ok) return;
+    const data=await resp.json();
+    let url=data.thumbnail||(data.pictures&&data.pictures[0]?.secure_url);
+    if(url){
+      url=url.replace('http:','https:').replace(/-[A-Z]\.jpg$/,'-O.jpg').replace(/-[A-Z]\.webp$/,'-O.webp');
+      imgCache[String(id)]=url;
+      try{localStorage.setItem('img_'+id,url);}catch(e){}
+      updateImgEl(id,url,size);
+    }
+  }catch(e){}
+}
+
+function updateImgEl(id,url,size){
+  document.querySelectorAll(`[data-id="${id}"]`).forEach(el=>{
+    const sz=size||el.dataset.sz||52;
+    const img=document.createElement('img');
+    img.src=url;
+    img.style.cssText=`width:${sz}px;height:${sz}px;object-fit:contain;border-radius:6px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.1));animation:fadeImg .4s ease`;
+    img.onerror=()=>img.remove();
+    el.replaceWith(img);
+  });
+}
+
+function initLazyImages(){
+  const els=document.querySelectorAll('.img-lazy');
+  if(!els.length) return;
+  const seen=new Set();
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const el=e.target;
+      const id=el.dataset.id;
+      if(seen.has(id)) return;
+      seen.add(id);
+      obs.unobserve(el);
+      fetchMLImg(id,el.dataset.ml,el.dataset.sz);
+    });
+  },{rootMargin:'300px'});
+  els.forEach(el=>obs.observe(el));
+}
+
+// CSS animación imagen
+(()=>{const s=document.createElement('style');s.textContent='@keyframes fadeImg{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}';document.head.appendChild(s);})();
+
 
 // ══ DESCUENTOS ══
 function getDesc(p){
@@ -1367,7 +1417,7 @@ async function confirmar(){
       <div style="font-weight:700;color:#1E3A5F;margin-bottom:8px">👤 Tu acceso al portal de seguimiento:</div>
       <div style="font-family:'DM Mono',monospace;margin-bottom:4px">Usuario: <b style="color:#0D1B3E">${clienteUser}</b></div>
       <div style="font-family:'DM Mono',monospace;margin-bottom:10px">Contraseña: <b style="color:#0D1B3E">${clientePass}</b></div>
-      <div style="font-size:11px;color:#475569">⚠️ Guardá estas credenciales. Accedé en <a href="portal_cliente.html" style="color:#2563EB;font-weight:700">vialesbleus.com</a></div>
+      <div style="font-size:11px;color:#475569">⚠️ Guardá estas credenciales. Accedé en <a href="portal_cliente.html" style="color:#2563EB;font-weight:700">lesbleuscars.com</a></div>
     </div>`;
       const waEl=document.getElementById('lb-wa');
       if(waEl){
@@ -1550,10 +1600,10 @@ async function autoCorrectorTienda(){
 }
 
 // ══ INIT ══
-loadImgsFromFirebase().then(()=>{
-  renderGrid(PP);
-  renderCombos();
-});
+loadImgCache();
+renderGrid(PP);
+renderCombos();
+initLazyImages();
 updCart();
 </script>
 </body>
