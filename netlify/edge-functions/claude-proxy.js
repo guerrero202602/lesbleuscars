@@ -1,59 +1,34 @@
-export default async (request, context) => {
-  if (request.method === 'OPTIONS') {
-    return new Response(null, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type',
-      },
-    });
-  }
+export default async (request) => {
+  const url = new URL(request.url);
+  const mlId = url.searchParams.get('id');
 
-  if (request.method !== 'POST') {
-    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
-      status: 405,
-      headers: { 'Content-Type': 'application/json' },
-    });
-  }
-
-  const apiKey = Deno.env.get('ANTHROPIC_API_KEY');
-  if (!apiKey) {
-    return new Response(JSON.stringify({ error: 'API key no configurada en Netlify' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+  if (!mlId || !mlId.startsWith('MLA')) {
+    return new Response(JSON.stringify({ error: 'ID inválido' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
     });
   }
 
   try {
-    const body = await request.json();
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01',
-      },
-      body: JSON.stringify({
-        model: body.model || 'claude-haiku-4-5-20251001',
-        max_tokens: body.max_tokens || 1000,
-        messages: body.messages,
-      }),
+    const resp = await fetch(`https://api.mercadolibre.com/items/${mlId}`);
+    if (!resp.ok) return new Response(JSON.stringify({ error: 'No encontrado' }), {
+      status: 404,
+      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
     });
 
-    const data = await response.json();
-    return new Response(JSON.stringify(data), {
-      status: response.status,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
+    const data = await resp.json();
+    const img = data.thumbnail || (data.pictures && data.pictures[0]?.secure_url) || null;
+
+    return new Response(JSON.stringify({ img: img ? img.replace('http:', 'https:') : null }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Cache-Control': 'public, max-age=86400' }
     });
-  } catch (err) {
-    return new Response(JSON.stringify({ error: err.message }), {
+  } catch (e) {
+    return new Response(JSON.stringify({ error: e.message }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
     });
   }
 };
 
-export const config = { path: '/api/claude' };
+export const config = { path: '/api/img' };
