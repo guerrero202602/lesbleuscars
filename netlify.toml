@@ -1,3 +1,7 @@
 [[edge_functions]]
   path = "/api/claude"
   function = "claude-proxy"
+
+[[edge_functions]]
+  path = "/api/img"
+  function = "img-proxy"
