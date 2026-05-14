@@ -5,3 +5,7 @@
 [[edge_functions]]
   path = "/api/img"
   function = "img-proxy"
+
+[[edge_functions]]
+  path = "/api/catimg"
+  function = "img-cat-proxy"
