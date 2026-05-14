@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VIALESBLEUS · Gestión</title>
+<title>LESBLEUS S.A. · Gestión</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
@@ -99,8 +99,8 @@ textarea{width:100%;padding:12px 14px;background:var(--surface);border:1px solid
 <!-- LOGIN -->
 <div id="login">
   <div class="login-box">
-    <div class="login-logo">VIALESBLEUS</div>
-    <div class="login-sub">Sistema de gestión · LESBLEUS S.A.</div>
+    <div class="login-logo">LESBLEUS S.A.</div>
+    <div class="login-sub">Sistema de gestión interno</div>
     <div class="field"><label>Usuario</label><input type="text" id="l-user" placeholder="encargado1" autocomplete="username"></div>
     <div class="field"><label>Contraseña</label><input type="password" id="l-pass" placeholder="••••••••" autocomplete="current-password"></div>
     <button class="btn btn-primary" onclick="login()">Ingresar →</button>
@@ -111,7 +111,7 @@ textarea{width:100%;padding:12px 14px;background:var(--surface);border:1px solid
 <!-- DASHBOARD -->
 <div id="dash">
   <div class="topbar">
-    <div class="brand">VIALESBLEUS</div>
+    <div class="brand">LESBLEUS S.A.</div>
     <div class="topbar-right">
       <span id="tb-user" style="font-size:13px;color:var(--muted)"></span>
       <span class="badge-role" id="tb-role"></span>
@@ -171,9 +171,8 @@ function logout(){S.session=null;document.getElementById('login').style.display=
 document.addEventListener('keydown',e=>{if(e.key==='Enter'&&document.getElementById('login').style.display!=='none')login();});
 
 // STORAGE
-function saveOrders(){localStorage.setItem('viales_orders',JSON.stringify(S.orders));}
-function loadOrders(){try{S.orders=JSON.parse(localStorage.getItem('viales_orders')||'[]');}catch(e){S.orders=[];}}
-
+function saveOrders(){localStorage.setItem('lesbleus_orders',JSON.stringify(S.orders));}
+function loadOrders(){try{S.orders=JSON.parse(localStorage.getItem('lesbleus_orders')||localStorage.getItem('viales_orders')||'[]');}catch(e){S.orders=[];}}
 // SIDEBAR
 const NAV={
   encargado:[{p:'inicio',i:'🏠',l:'Inicio'},{p:'pedidos',i:'📦',l:'Pedidos'},{p:'agentes',i:'👥',l:'Agentes'},{p:'reportes',i:'📊',l:'Reportes'},{p:'ia-gestion',i:'🤖',l:'Agente IA'},{p:'ia-factura',i:'🧾',l:'Facturación IA'},{p:'ia-imagenes',i:'🖼️',l:'Imágenes IA'}],
@@ -211,7 +210,7 @@ function pageInicio(){
       <div class="stat"><div class="stat-icon">✅</div><div class="stat-lbl">Entregados</div><div class="stat-val" style="color:var(--ok)">${t.entregado}</div></div>
     </div>`;
   }
-  id('main').innerHTML=`<div class="page-title">Hola, ${S.session.name.split(' ')[0]} 👋</div><div class="page-sub">Bienvenido al sistema VIALESBLEUS</div>${stats}`;
+  id('main').innerHTML=`<div class="page-title">Hola, ${S.session.name.split(' ')[0]} 👋</div><div class="page-sub">Bienvenido al sistema LESBLEUS S.A.</div>${stats}`;
 }
 
 function pagePedidos(){
