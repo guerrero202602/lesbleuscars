@@ -387,14 +387,15 @@ async function callIA(prompt,resId){
   const el=id(resId);if(!el)return;
   el.style.display='block';el.innerHTML='<span class="spin"></span> Agente procesando...';
   try{
-    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+    const resp=await fetch('/api/claude',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})
     });
     const data=await resp.json();
+    if(data.error){el.textContent='❌ '+data.error;return;}
     el.textContent=data.content?.map(c=>c.text||'').join('')||'Sin respuesta.';
-  }catch(e){el.textContent='Error al conectar con el agente IA: '+e.message;}
+  }catch(e){el.textContent='❌ Error al conectar con el agente IA: '+e.message;}
 }
 
 async function runSupervisor(){
