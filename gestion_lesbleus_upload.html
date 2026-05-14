@@ -1009,71 +1009,241 @@ function guardarEdicion(oid){
   saveOrders();closeModal();toast('Pedido guardado ✅');pagePedidos();
 }
 
+// ══ BANCO DE IMÁGENES ══
+const MLA_CATALOG=[
+  {id:123224098,ml:'MLA2692130086',n:'Faro delantero TYC',cat:'opticas'},
+  {id:123224105,ml:'MLA2692181474',n:'Optica Izq Conductor TYC',cat:'opticas'},
+  {id:123224107,ml:'MLA2691897116',n:'Optica Izq Chevrolet Astra',cat:'opticas'},
+  {id:123224124,ml:'MLA2691857496',n:'Optica Der Pasajero TYC',cat:'opticas'},
+  {id:123224126,ml:'MLA2692169538',n:'Optica Der Chevrolet Astra',cat:'opticas'},
+  {id:123224139,ml:'MLA2692116846',n:'Optica fondo negro TYC',cat:'opticas'},
+  {id:123224081,ml:'MLA2692027028',n:'Optica fondo gris TYC Izq',cat:'opticas'},
+  {id:123224075,ml:'MLA2692168824',n:'Optica fondo gris TYC',cat:'opticas'},
+  {id:123224168,ml:'MLA2691883384',n:'Faro trasero ext Der TYC',cat:'opticas'},
+  {id:123224170,ml:'MLA2692104606',n:'Faro trasero Toyota Corolla',cat:'opticas'},
+  {id:123224190,ml:'MLA2692181478',n:'Faro delantero TYC B',cat:'opticas'},
+  {id:123224203,ml:'MLA2692000296',n:'Faro delantero TYC C',cat:'opticas'},
+  {id:123224212,ml:'MLA2692026230',n:'Faro delantero TYC D',cat:'opticas'},
+  {id:123224248,ml:'MLA2691896400',n:'Faro delantero japon TYC',cat:'opticas'},
+  {id:123224261,ml:'MLA2691857510',n:'Faro delantero TYC E',cat:'opticas'},
+  {id:123224268,ml:'MLA2691883408',n:'Faro trasero 4p Der TYC',cat:'opticas'},
+  {id:123224270,ml:'MLA2692104628',n:'Faro trasero Ford Focus III',cat:'opticas'},
+  {id:123224285,ml:'MLA2692000308',n:'Faro delantero duty',cat:'opticas'},
+  {id:123224291,ml:'MLA2692116864',n:'Faro delantero duty B',cat:'opticas'},
+  {id:123224083,ml:'MLA2692090954',n:'Espejo manual Der Giving',cat:'espejos'},
+  {id:123224084,ml:'MLA2692130848',n:'Espejo elec chico Der Audi A3',cat:'espejos'},
+  {id:123224099,ml:'MLA2692130090',n:'Espejo con control Izq Giving',cat:'espejos'},
+  {id:123224101,ml:'MLA2692130852',n:'Espejo con control Peugeot Expert',cat:'espejos'},
+  {id:123224109,ml:'MLA2692130102',n:'Espejo con control Der Giving',cat:'espejos'},
+  {id:123224111,ml:'MLA2691884220',n:'Espejo con control Peugeot Expert Der',cat:'espejos'},
+  {id:123224128,ml:'MLA2692052236',n:'Espejo electrico Der Giving',cat:'espejos'},
+  {id:123224130,ml:'MLA2692130862',n:'Espejo electrico Citroën C3',cat:'espejos'},
+  {id:123224135,ml:'MLA2691857506',n:'Espejo manual Izq Giving',cat:'espejos'},
+  {id:123224138,ml:'MLA2691884232',n:'Espejo manual Toyota Hilux',cat:'espejos'},
+  {id:123224143,ml:'MLA2691897126',n:'Espejo manual Toyota Hilux 05/15',cat:'espejos'},
+  {id:123224187,ml:'MLA2691857508',n:'Espejo con control Izq Giving B',cat:'espejos'},
+  {id:123224192,ml:'MLA2691858238',n:'Espejo con control Ford Focus',cat:'espejos'},
+  {id:123224193,ml:'MLA2692090966',n:'Espejo manual Der Giving B',cat:'espejos'},
+  {id:123224076,ml:'MLA2691883364',n:'Espejo elec chico Der Giving',cat:'espejos'},
+  {id:123224176,ml:'MLA2691896390',n:'Maquina levanta cristal Vespoli',cat:'levanta-cristal'},
+  {id:123224179,ml:'MLA2692001034',n:'Maquina levanta cristal del Vespoli',cat:'levanta-cristal'},
+  {id:123224210,ml:'MLA2692026232',n:'Maquina levanta cristal Vespoli B',cat:'levanta-cristal'},
+  {id:123224216,ml:'MLA2691897134',n:'Maquina levanta VW Point',cat:'levanta-cristal'},
+  {id:123224219,ml:'MLA2692001040',n:'Maquina levanta Ford Orion',cat:'levanta-cristal'},
+  {id:123224251,ml:'MLA2692116860',n:'Maquina levanta Vespoli C',cat:'levanta-cristal'},
+  {id:123224267,ml:'MLA2692052246',n:'Maquina levanta 5p Vespoli',cat:'levanta-cristal'},
+  {id:123224276,ml:'MLA2692116866',n:'Maquina levanta electrica Taiwan',cat:'levanta-cristal'},
+  {id:123224281,ml:'MLA2692109636',n:'Maquina levanta 5p Vespoli B',cat:'levanta-cristal'},
+  {id:123224286,ml:'MLA2692168864',n:'Maquina levanta 5p C-Orig',cat:'levanta-cristal'},
+  {id:123224298,ml:'MLA2692000314',n:'Maquina levanta Vespoli D',cat:'levanta-cristal'},
+  {id:123224100,ml:'MLA2692052230',n:'Manija interior negra metal Izq',cat:'manijas'},
+  {id:123224102,ml:'MLA2692117592',n:'Manija interior Ford F-150',cat:'manijas'},
+  {id:123224118,ml:'MLA2691857492',n:'Manija exterior duty Izq',cat:'manijas'},
+  {id:123224151,ml:'MLA2691883374',n:'Manija exterior cromada Der',cat:'manijas'},
+  {id:123224158,ml:'MLA2692181476',n:'Manija exterior del Der',cat:'manijas'},
+  {id:123224162,ml:'MLA2692169546',n:'Manija exterior Fiat Punto',cat:'manijas'},
+  {id:123225076,ml:'MLA2692026384',n:'Manija porton lateral',cat:'manijas'},
+  {id:123225103,ml:'MLA2692000414',n:'Manija interior Izq',cat:'manijas'},
+  {id:123225114,ml:'MLA2692104042',n:'Manija interior gris Der C-Orig',cat:'manijas'},
+  {id:123225131,ml:'MLA2692181618',n:'Manija interior negro Izq C-Orig',cat:'manijas'},
+];
+
+const IMG_BANK={};
+function loadBankFromStorage(){
+  MLA_CATALOG.forEach(p=>{const v=localStorage.getItem('img_'+p.id);if(v)IMG_BANK[p.id]=v;});
+}
+
 function pageIAImagenes(){
-  id('main').innerHTML=`<div class="page-title">🖼️ Agente de Imágenes</div><div class="page-sub">Busca y guarda imágenes reales de productos en la tienda</div>
-    <div class="ia-card">
-      <div class="ia-title">🔍 Buscar imagen de producto específico</div>
-      <div class="ia-desc">Ingresá el nombre o código del producto y el agente busca la imagen correcta en internet y la guarda en la tienda.</div>
-      <div style="display:flex;gap:8px;margin-bottom:12px">
-        <input type="text" id="img-query" placeholder="Ej: https://...imagen.jpg" style="flex:1;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-family:var(--font);font-size:13px;outline:none">
-        <input type="text" id="img-prodid" placeholder="ID producto" style="width:100px;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-family:var(--font);font-size:13px;outline:none">
-        <button class="btn btn-primary btn-sm" onclick="runImgUno()">Buscar</button>
-      </div>
-      <div class="ia-result" id="res-img-uno"></div>
+  loadBankFromStorage();
+  const done=Object.keys(IMG_BANK).length;
+  const total=MLA_CATALOG.length;
+  const pct=Math.round(done/total*100);
+
+  const rows=MLA_CATALOG.map(p=>{
+    const img=IMG_BANK[p.id];
+    return`<tr>
+      <td><b style="font-size:12px">${p.id}</b></td>
+      <td style="font-size:12px">${p.n}</td>
+      <td style="font-size:11px;color:var(--muted2)">${p.cat}</td>
+      <td>
+        ${img
+          ?`<img src="${img}" style="width:40px;height:40px;object-fit:contain;border-radius:6px;border:1px solid var(--border)">`
+          :`<span style="font-size:11px;color:var(--muted)">Sin imagen</span>`}
+      </td>
+      <td class="td-actions">
+        ${img?`<button class="btn btn-danger btn-sm" onclick="borrarImg(${p.id})">🗑️</button>`:''}
+        <button class="btn btn-ghost btn-sm" onclick="buscarUna(${p.id},'${p.ml}')">🔍</button>
+        <button class="btn btn-ghost btn-sm" onclick="urlManual(${p.id})">✏️</button>
+      </td>
+    </tr>`;
+  }).join('');
+
+  id('main').innerHTML=`
+    <div class="page-title">🖼️ Banco de Imágenes</div>
+    <div class="page-sub">Imágenes propias en Firebase · ${done}/${total} productos</div>
+    <div class="stat-grid" style="margin-bottom:20px">
+      <div class="stat c-ok"><div class="stat-icon">✅</div><div class="stat-lbl">Con imagen</div><div class="stat-val" style="color:var(--ok)">${done}</div></div>
+      <div class="stat c-warn"><div class="stat-icon">⏳</div><div class="stat-lbl">Sin imagen</div><div class="stat-val" style="color:var(--warn)">${total-done}</div></div>
+      <div class="stat c-accent"><div class="stat-icon">📊</div><div class="stat-lbl">Completado</div><div class="stat-val">${pct}%</div></div>
     </div>
-    <div class="ia-card">
-      <div class="ia-title">⚡ Buscar lote de imágenes (10 productos)</div>
-      <div class="ia-desc">El agente busca automáticamente imágenes para los 10 productos más vendidos de la tienda y las guarda en Firebase para que aparezcan de inmediato.</div>
-      <button class="btn btn-primary btn-sm" onclick="runImgLote()">▶ Buscar lote ahora</button>
-      <div class="ia-result" id="res-img-lote"></div>
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-head">
+        <h3>🚀 Búsqueda automática</h3>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-ghost btn-sm" id="btn-stop" onclick="stopBusqueda()" style="display:none">⏹ Detener</button>
+          <button class="btn btn-primary btn-sm" id="btn-buscar" onclick="buscarTodas()">▶ Buscar todas (${total-done} faltantes)</button>
+        </div>
+      </div>
+      <div style="padding:16px">
+        <div style="background:var(--surface);border-radius:8px;height:8px;overflow:hidden;margin-bottom:8px">
+          <div id="img-bar" style="height:100%;background:var(--ok);width:${pct}%;transition:width .4s"></div>
+        </div>
+        <div id="img-log" style="font-size:12px;color:var(--muted2);max-height:120px;overflow-y:auto"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-head"><h3>✏️ URL manual</h3></div>
+      <div style="padding:16px;display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end">
+        <div style="flex:1;min-width:200px">
+          <label style="font-size:11px;color:var(--muted2);display:block;margin-bottom:4px">ID PRODUCTO</label>
+          <input type="text" id="m-id" placeholder="123224099" style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--border2);background:var(--surface);color:var(--text);font-size:13px;outline:none">
+        </div>
+        <div style="flex:3;min-width:300px">
+          <label style="font-size:11px;color:var(--muted2);display:block;margin-bottom:4px">URL DE IMAGEN (.jpg / .png / .webp)</label>
+          <input type="text" id="m-url" placeholder="https://..." style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--border2);background:var(--surface);color:var(--text);font-size:13px;outline:none">
+        </div>
+        <button class="btn btn-ok btn-sm" onclick="guardarManual()">💾 Guardar</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>Catálogo de imágenes (${total} productos MercadoLibre)</h3></div>
+      <table><thead><tr><th>ID</th><th>Producto</th><th>Cat.</th><th>Imagen</th><th>Acciones</th></tr></thead>
+      <tbody>${rows}</tbody></table>
     </div>`;
 }
 
-async function runImgUno(){
-  const url=id('img-query').value.trim();
-  const prodId=id('img-prodid').value.trim();
-  const el=id('res-img-uno');el.style.display='block';
-  if(!url){el.textContent='⚠️ Ingresá la URL de la imagen.';return;}
-  if(!prodId){el.textContent='⚠️ Ingresá el ID del producto.';return;}
-  if(!url.startsWith('http')){el.textContent='⚠️ La URL debe empezar con http o https.';return;}
-  el.innerHTML='<span class="spin"></span> Guardando imagen...';
-  try{
-    await saveImgFirebase(prodId, url);
-    el.innerHTML=`✅ Imagen guardada para producto ID ${prodId}:<br><img src="${url}" style="max-width:180px;border-radius:8px;margin-top:8px;border:1px solid var(--border)" onerror="this.outerHTML='❌ La URL no cargó. Verificá que sea una imagen directa (.jpg, .png, .webp).'">`;
-    toast('Imagen guardada correctamente.','ok');
-  }catch(e){el.textContent='❌ Error: '+e.message;}
-}
+let _stopImg=false;
+function stopBusqueda(){_stopImg=true;}
 
-const LOTE_PRODUCTOS=[
-  {id:90004,url:'https://http2.mlstatic.com/D_NQ_NP_695271-MLA43120945617_082020-O.webp',name:'Amortiguador Monroe Fox'},
-  {id:90007,url:'https://http2.mlstatic.com/D_NQ_NP_611901-MLA43119553832_082020-O.webp',name:'Amortiguador Monroe Corsa'},
-  {id:90016,url:'https://http2.mlstatic.com/D_NQ_NP_862161-MLA43853765439_102020-O.webp',name:'Disco freno Wildbrake'},
-  {id:90025,url:'https://http2.mlstatic.com/D_NQ_NP_724551-MLA47293495425_082021-O.webp',name:'Rodamiento SKF'},
-  {id:123224083,url:'https://http2.mlstatic.com/D_NQ_NP_868811-MLA43120945617_082020-O.webp',name:'Espejo exterior'},
-  {id:90040,url:'https://http2.mlstatic.com/D_NQ_NP_779031-MLA43119553832_082020-O.webp',name:'Cable bujia Mahle'},
-  {id:90048,url:'https://http2.mlstatic.com/D_NQ_NP_958241-MLA43853765439_102020-O.webp',name:'Filtro aceite Mahle'},
-  {id:90037,url:'https://http2.mlstatic.com/D_NQ_NP_624681-MLA47293495425_082021-O.webp',name:'Bujia Champion'},
-  {id:90000,url:'https://http2.mlstatic.com/D_NQ_NP_695461-MLA43120945617_082020-O.webp',name:'Fuelle Griffo'},
-  {id:123224285,url:'https://http2.mlstatic.com/D_NQ_NP_611461-MLA43119553832_082020-O.webp',name:'Faro delantero'},
-];
-
-async function runImgLote(){
-  const el=id('res-img-lote');el.style.display='block';
-  el.innerHTML='<b>🖼️ Guardando imágenes para '+LOTE_PRODUCTOS.length+' productos...</b><br><br>';
-  let guardadas=0;
-  for(const item of LOTE_PRODUCTOS){
-    const cached=localStorage.getItem('img_'+item.id);
-    if(cached){el.innerHTML+=`✅ ID ${item.id} (${item.name}) — ya tiene imagen<br>`;guardadas++;continue;}
-    try{
-      await saveImgFirebase(item.id, item.url);
-      el.innerHTML+=`✅ ID ${item.id} — ${item.name} guardada<br>`;
-      guardadas++;
-    }catch(e){el.innerHTML+=`❌ ID ${item.id} — error: ${e.message}<br>`;}
-    await new Promise(r=>setTimeout(r,200));
+async function buscarTodas(){
+  _stopImg=false;
+  id('btn-buscar').style.display='none';
+  id('btn-stop').style.display='inline-flex';
+  const log=id('img-log');const bar=id('img-bar');
+  const faltantes=MLA_CATALOG.filter(p=>!IMG_BANK[p.id]);
+  let ok=0,total=MLA_CATALOG.length;
+  log.innerHTML='Iniciando búsqueda...<br>';
+  for(const p of faltantes){
+    if(_stopImg)break;
+    log.innerHTML+=`🔍 Buscando: ${p.n}...<br>`;
+    log.scrollTop=log.scrollHeight;
+    const url=await buscarUnaUrl(p.ml);
+    if(url){
+      await saveImgFirebase(p.id,url);
+      IMG_BANK[p.id]=url;
+      ok++;
+      log.innerHTML+=`✅ ${p.n}<br>`;
+    }else{
+      log.innerHTML+=`⚠️ No encontrada: ${p.n}<br>`;
+    }
+    const pct=Math.round((Object.keys(IMG_BANK).length)/total*100);
+    if(bar)bar.style.width=pct+'%';
+    await new Promise(r=>setTimeout(r,300));
   }
-  el.innerHTML+=`<br><b>🎉 ${guardadas}/${LOTE_PRODUCTOS.length} imágenes guardadas. Recargá la tienda para verlas.</b>`;
-  toast(guardadas+' imágenes guardadas en la tienda.','ok');
+  id('btn-buscar').style.display='inline-flex';
+  id('btn-stop').style.display='none';
+  log.innerHTML+=`<b>✅ Terminado. ${ok} nuevas imágenes guardadas.</b>`;
+  toast(ok+' imágenes guardadas en la tienda','ok');
+  setTimeout(()=>navigate('ia-imagenes'),1500);
 }
+
+async function buscarUnaUrl(mlId){
+  try{
+    const r=await fetch('/api/img?id='+mlId);
+    if(!r.ok)return null;
+    const d=await r.json();
+    return d.img||null;
+  }catch(e){return null;}
+}
+
+async function buscarUna(prodId,mlId){
+  toast('Buscando imagen...','info');
+  const url=await buscarUnaUrl(mlId);
+  if(url){
+    await saveImgFirebase(prodId,url);
+    IMG_BANK[prodId]=url;
+    toast('Imagen encontrada y guardada ✅','ok');
+    navigate('ia-imagenes');
+  }else{
+    toast('No se encontró imagen para este producto','err');
+  }
+}
+
+function urlManual(prodId){
+  openModal(`<h3>✏️ URL de imagen manual</h3>
+    <p style="font-size:13px;color:var(--muted2);margin-bottom:16px">Producto ID: <b>${prodId}</b></p>
+    <div class="field"><label>URL de la imagen</label><input type="text" id="modal-url" placeholder="https://...imagen.jpg" style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--border2);background:var(--surface);color:var(--text);font-size:13px;outline:none"></div>
+    <div id="modal-preview" style="margin-top:12px"></div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal()">Cancelar</button>
+      <button class="btn btn-primary" onclick="guardarUrlModal(${prodId})">💾 Guardar</button>
+    </div>`);
+  document.getElementById('modal-url').addEventListener('input',function(){
+    const prev=document.getElementById('modal-preview');
+    if(this.value.startsWith('http'))prev.innerHTML=`<img src="${this.value}" style="max-width:150px;border-radius:8px;border:1px solid var(--border)" onerror="this.outerHTML='<span style=color:var(--danger)>❌ URL inválida</span>'">`;
+  });
+}
+
+async function guardarUrlModal(prodId){
+  const url=document.getElementById('modal-url')?.value.trim();
+  if(!url||!url.startsWith('http')){toast('URL inválida','err');return;}
+  await saveImgFirebase(prodId,url);
+  IMG_BANK[prodId]=url;
+  closeModal();toast('Imagen guardada ✅','ok');
+  navigate('ia-imagenes');
+}
+
+async function guardarManual(){
+  const prodId=id('m-id').value.trim();
+  const url=id('m-url').value.trim();
+  if(!prodId){toast('Ingresá el ID del producto','err');return;}
+  if(!url||!url.startsWith('http')){toast('URL inválida','err');return;}
+  await saveImgFirebase(prodId,url);
+  IMG_BANK[prodId]=url;
+  toast('Imagen guardada para producto '+prodId+' ✅','ok');
+  navigate('ia-imagenes');
+}
+
+async function borrarImg(prodId){
+  if(!confirm('¿Borrar imagen del producto '+prodId+'?'))return;
+  delete IMG_BANK[prodId];
+  localStorage.removeItem('img_'+prodId);
+  if(fbdb)try{await fbdb.collection('product_images').doc(String(prodId)).delete();}catch(e){}
+  toast('Imagen eliminada','warn');
+  navigate('ia-imagenes');
+}
+// ══ FIN BANCO DE IMÁGENES ══
+
 
 </script>
 </body>
