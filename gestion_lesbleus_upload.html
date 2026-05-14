@@ -195,9 +195,10 @@ const USERS={
   agente1:{pass:'agente123',role:'agente',name:'Agente López'},
   agente2:{pass:'agente456',role:'agente',name:'Agente García'},
   cliente1:{pass:'cliente123',role:'cliente',name:'Cliente Principal'},
+  com1:{pass:'com123',role:'comunicaciones',name:'Comunicaciones'},
 };
 
-let S={session:null,orders:[],page:'inicio'};
+let S={session:null,orders:[],tickets:[],clients:[],page:'inicio'};
 const FB_CONFIG={apiKey:"AIzaSyAuYGm8PHPqNfMnBMNZBuC4CmWZ4pJs8yk",authDomain:"lesbleuscars-94e0c.firebaseapp.com",projectId:"lesbleuscars-94e0c",storageBucket:"lesbleuscars-94e0c.firebasestorage.app",messagingSenderId:"719264434324",appId:"1:719264434324:web:a51090a5fec7a0fe338c81"};
 let fbdb=null;
 if(typeof firebase!=='undefined'){try{firebase.initializeApp(FB_CONFIG);fbdb=firebase.firestore();}catch(e){}}
@@ -237,21 +238,23 @@ let unsubscribeOrders=null;
 
 async function saveOrders(){
   localStorage.setItem('lesbleus_orders',JSON.stringify(S.orders));
+  localStorage.setItem('lesbleus_tickets',JSON.stringify(S.tickets));
+  localStorage.setItem('lesbleus_clients',JSON.stringify(S.clients));
   if(fbdb){
     try{
       const batch=fbdb.batch();
-      S.orders.forEach(o=>{
-        const ref=fbdb.collection('orders').doc(o.id);
-        batch.set(ref,{...o,_ts:firebase.firestore.Timestamp.now()});
-      });
+      S.orders.forEach(o=>{batch.set(fbdb.collection('orders').doc(o.id),{...o,_ts:firebase.firestore.Timestamp.now()});});
+      S.tickets.forEach(t=>{batch.set(fbdb.collection('tickets').doc(t.id),{...t,_ts:firebase.firestore.Timestamp.now()});});
+      S.clients.forEach(c=>{batch.set(fbdb.collection('clients').doc(c.id),{...c,_ts:firebase.firestore.Timestamp.now()});});
       await batch.commit();
     }catch(e){console.warn('Firestore save:',e);}
   }
 }
 
 function loadOrders(){
-  try{S.orders=JSON.parse(localStorage.getItem('lesbleus_orders')||localStorage.getItem('viales_orders')||'[]');}
-  catch(e){S.orders=[];}
+  try{S.orders=JSON.parse(localStorage.getItem('lesbleus_orders')||localStorage.getItem('viales_orders')||'[]');}catch(e){S.orders=[];}
+  try{S.tickets=JSON.parse(localStorage.getItem('lesbleus_tickets')||'[]');}catch(e){S.tickets=[];}
+  try{S.clients=JSON.parse(localStorage.getItem('lesbleus_clients')||'[]');}catch(e){S.clients=[];}
 }
 
 function startFirestoreSync(){
@@ -280,8 +283,9 @@ function startFirestoreSync(){
 }
 // SIDEBAR
 const NAV={
-  encargado:[{p:'inicio',i:'🏠',l:'Inicio'},{p:'pedidos',i:'📦',l:'Pedidos'},{p:'agentes',i:'👥',l:'Agentes'},{p:'reportes',i:'📊',l:'Reportes'},{p:'ia-gestion',i:'🤖',l:'Agente IA'},{p:'ia-factura',i:'🧾',l:'Facturación IA'},{p:'ia-imagenes',i:'🖼️',l:'Imágenes IA'}],
-  agente:[{p:'inicio',i:'🏠',l:'Inicio'},{p:'bandeja',i:'📥',l:'Bandeja'},{p:'mis-pedidos',i:'📦',l:'Mis pedidos'},{p:'wa',i:'💬',l:'WhatsApp'}],
+  encargado:[{p:'inicio',i:'🏠',l:'Inicio'},{p:'pedidos',i:'📦',l:'Pedidos'},{p:'clientes',i:'👤',l:'Clientes'},{p:'tickets',i:'🎫',l:'Tickets'},{p:'agentes',i:'👥',l:'Agentes'},{p:'reportes',i:'📊',l:'Reportes'},{p:'ia-gestion',i:'🤖',l:'Agente IA'},{p:'ia-factura',i:'🧾',l:'Facturación IA'},{p:'ia-imagenes',i:'🖼️',l:'Imágenes IA'}],
+  agente:[{p:'inicio',i:'🏠',l:'Inicio'},{p:'bandeja',i:'📥',l:'Bandeja'},{p:'mis-pedidos',i:'📦',l:'Mis pedidos'},{p:'mis-tickets',i:'🎫',l:'Mis tickets'}],
+  comunicaciones:[{p:'inicio',i:'🏠',l:'Inicio'},{p:'comunicaciones',i:'💬',l:'Para notificar'}],
   cliente:[{p:'inicio',i:'🏠',l:'Inicio'},{p:'mi-pedido',i:'📦',l:'Mi pedido'}],
 };
 function renderSidebar(){
@@ -291,7 +295,7 @@ function renderSidebar(){
     ${nav.map(n=>`<div class="nav-item${S.page===n.p?' active':''}" onclick="navigate('${n.p}')"><span class="nav-icon">${n.i}</span><span class="nav-label">${n.l}</span></div>`).join('')}
     <div class="sidebar-footer"><div style="font-size:11px;color:var(--muted);text-align:center">LESBLEUS S.A. · v2.0</div></div>`;
 }
-function navigate(p){S.page=p;renderSidebar();const pages={inicio:pageInicio,pedidos:pagePedidos,bandeja:pageBandeja,'mis-pedidos':pageMisPedidos,'mi-pedido':pageMiPedido,agentes:pageAgentes,reportes:pageReportes,wa:pageWA,'ia-gestion':pageIAGestion,'ia-factura':pageIAFactura,'ia-imagenes':pageIAImagenes};(pages[p]||pageInicio)();}
+function navigate(p){S.page=p;renderSidebar();const pages={inicio:pageInicio,pedidos:pagePedidos,clientes:pageClientes,bandeja:pageBandeja,'mis-pedidos':pageMisPedidos,'mi-pedido':pageMiPedido,agentes:pageAgentes,reportes:pageReportes,tickets:pageTickets,'mis-tickets':pageMisTickets,comunicaciones:pageComunicaciones,'ia-gestion':pageIAGestion,'ia-factura':pageIAFactura,'ia-imagenes':pageIAImagenes};(pages[p]||pageInicio)();}
 
 // UTILS
 function id(i){return document.getElementById(i);}
@@ -383,16 +387,27 @@ function pageBandeja(){
 
 function pageMisPedidos(){
   const mine=S.orders.filter(o=>o.agente===S.session.user);
-  const rows=mine.map(o=>`<tr>
-    <td><b>${o.id}</b></td><td>${o.producto}</td><td>${o.clienteNombre||''}</td>
-    <td><span class="pill s-${o.estado}">${ls(o.estado)}</span></td>
-    <td>${o.monto||''}</td>
-    <td class="td-actions">
-      <button class="btn btn-ghost btn-sm" onclick="modalEditar('${o.id}')">✏️</button>
-      ${o.tel?`<button class="btn btn-wa btn-sm" onclick="waNotif('${o.id}')">💬</button>`:''}
-    </td>
-  </tr>`).join('')||`<tr><td colspan="6" style="text-align:center;padding:28px;color:var(--muted)">Sin pedidos asignados.</td></tr>`;
-  id('main').innerHTML=`<div class="page-title">📦 Mis pedidos</div><div class="page-sub">${mine.length} pedidos asignados a vos</div>
+  const rows=mine.map(o=>{
+    const ticketEmitido=S.tickets.find(t=>t.orderId===o.id);
+    return`<tr>
+      <td><b>${o.id}</b></td><td>${o.producto}</td><td>${o.clienteNombre||''}</td>
+      <td><span class="pill s-${o.estado}">${ls(o.estado)}</span></td>
+      <td>${o.monto||''}</td>
+      <td class="td-actions">
+        ${!ticketEmitido&&o.estado!=='cancelado'?`<button class="btn btn-ok btn-sm" onclick="modalEmitirTicket('${o.id}')">🎫 Emitir ticket</button>`:''}
+        ${ticketEmitido?`<span style="font-size:12px;color:var(--ok)">✅ Ticket #${ticketEmitido.id}</span>`:''}
+        <button class="btn btn-ghost btn-sm" onclick="modalEditar('${o.id}')">✏️</button>
+      </td>
+    </tr>`;
+  }).join('')||`<tr><td colspan="6" style="text-align:center;padding:28px;color:var(--muted)">Sin pedidos asignados.</td></tr>`;
+  id('main').innerHTML=`
+    <div class="page-title">📦 Mis pedidos</div>
+    <div class="page-sub">${mine.length} pedidos asignados · Tu trabajo finaliza al emitir el ticket</div>
+    <div class="card" style="margin-bottom:12px;border-color:rgba(124,109,250,.2);background:rgba(124,109,250,.04)">
+      <div style="padding:12px 18px;font-size:13px;color:var(--muted2)">
+        🎫 <b style="color:var(--text)">Flujo de trabajo:</b> Tomá el pedido → procesalo → emitir ticket para encomiendas → listo. No notificás al cliente.
+      </div>
+    </div>
     <div class="card"><div class="card-head"><h3>Mis pedidos</h3></div>
     <table><thead><tr><th>ID</th><th>Producto</th><th>Cliente</th><th>Estado</th><th>Monto</th><th>Acciones</th></tr></thead>
     <tbody>${rows}</tbody></table></div>`;
@@ -411,6 +426,161 @@ function pageMiPedido(){
     <table><thead><tr><th>ID</th><th>Producto</th><th>Estado</th><th>Fecha</th><th>Monto</th><th>Pago</th></tr></thead>
     <tbody>${rows}</tbody></table></div>`;
 }
+
+// ==================== CLIENTES ====================
+function pageClientes(){
+  const q=(window._clientQ||'').toLowerCase();
+  let list=S.clients.filter(c=>!q||(c.nombre+c.tel+c.email+c.localidad+c.dni).toLowerCase().includes(q));
+  list=[...list].sort((a,b)=>a.nombre.localeCompare(b.nombre));
+  const rows=list.map(c=>{
+    const pedidos=S.orders.filter(o=>o.clienteId===c.id);
+    const ultimo=pedidos.sort((a,b)=>b.id.localeCompare(a.id))[0];
+    return`<tr>
+      <td><div style="font-weight:600">${c.nombre}</div><div style="font-size:11px;color:var(--muted2)">${c.dni||''}</div></td>
+      <td>${c.tel?`<a href="https://wa.me/${c.tel.replace(/\D/g,'')}" target="_blank" style="color:var(--ok);text-decoration:none">📱 ${c.tel}</a>`:'<span style="color:var(--muted)">-</span>'}</td>
+      <td style="font-size:12px">${c.email||'<span style="color:var(--muted)">-</span>'}</td>
+      <td style="font-size:12px">${c.localidad||'<span style="color:var(--muted)">-</span>'}</td>
+      <td style="font-size:12px">${c.auto||'<span style="color:var(--muted)">-</span>'}</td>
+      <td><span style="font-size:13px;font-weight:600;color:var(--accent)">${pedidos.length}</span>${ultimo?`<span style="font-size:11px;color:var(--muted2);margin-left:6px">últ: ${ultimo.id}</span>`:''}</td>
+      <td><span class="pill ${c.tipo==='mayorista'?'s-enproceso':c.tipo==='vip'?'s-enviado':'s-pendiente'}" style="font-size:10px">${c.tipo||'minorista'}</span></td>
+      <td class="td-actions">
+        <button class="btn btn-ghost btn-sm" onclick="modalVerCliente('${c.id}')">👁️</button>
+        <button class="btn btn-ghost btn-sm" onclick="modalEditarCliente('${c.id}')">✏️</button>
+        <button class="btn btn-danger btn-sm" onclick="eliminarCliente('${c.id}')">🗑️</button>
+      </td>
+    </tr>`;
+  }).join('')||`<tr><td colspan="8" style="text-align:center;padding:40px;color:var(--muted2)">${q?'Sin resultados para "'+q+'"':'No hay clientes registrados todavía. Hacé clic en "+ Nuevo cliente".'}</td></tr>`;
+  id('main').innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:10px">
+      <div><div class="page-title">👤 Clientes</div><div class="page-sub">${S.clients.length} clientes registrados</div></div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-ghost btn-sm" onclick="exportClientesCSV()">⬇️ CSV</button>
+        <button class="btn btn-primary btn-sm" onclick="modalNuevoCliente()">+ Nuevo cliente</button>
+      </div>
+    </div>
+    <div class="stat-grid" style="margin-bottom:20px">
+      <div class="stat c-accent"><div class="stat-icon">👥</div><div class="stat-lbl">Total</div><div class="stat-val">${S.clients.length}</div></div>
+      <div class="stat c-ok"><div class="stat-icon">⭐</div><div class="stat-lbl">VIP</div><div class="stat-val" style="color:var(--ok)">${S.clients.filter(c=>c.tipo==='vip').length}</div></div>
+      <div class="stat c-warn"><div class="stat-icon">🏪</div><div class="stat-lbl">Mayoristas</div><div class="stat-val" style="color:var(--warn)">${S.clients.filter(c=>c.tipo==='mayorista').length}</div></div>
+      <div class="stat c-accent"><div class="stat-icon">📦</div><div class="stat-lbl">Con pedidos</div><div class="stat-val">${S.clients.filter(c=>S.orders.some(o=>o.clienteId===c.id)).length}</div></div>
+    </div>
+    <div class="filter-bar">
+      <input type="text" placeholder="🔍 Buscar por nombre, teléfono, email, vehículo..." value="${window._clientQ||''}" oninput="window._clientQ=this.value;pageClientes()">
+      ${window._clientQ?`<button class="btn btn-ghost btn-sm" onclick="window._clientQ='';pageClientes()">✕ Limpiar</button>`:''}
+    </div>
+    <div class="card"><div class="card-head"><h3>Listado de clientes</h3><span style="font-size:12px;color:var(--muted2)">${list.length} resultado${list.length!==1?'s':''}</span></div>
+    <table><thead><tr><th>Nombre</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Vehículo</th><th>Pedidos</th><th>Tipo</th><th>Acciones</th></tr></thead>
+    <tbody>${rows}</tbody></table></div>`;
+}
+
+function modalNuevoCliente(){
+  openModal(`
+    <h3>👤 Nuevo cliente</h3>
+    <div class="field"><label>Nombre completo *</label><input type="text" id="cl-nombre" placeholder="Juan Pérez"></div>
+    <div class="field-row">
+      <div class="field"><label>Teléfono / WhatsApp</label><input type="text" id="cl-tel" placeholder="541155667788"></div>
+      <div class="field"><label>Email</label><input type="email" id="cl-email" placeholder="juan@email.com"></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>DNI / CUIT</label><input type="text" id="cl-dni" placeholder="20-12345678-9"></div>
+      <div class="field"><label>Tipo</label><select id="cl-tipo"><option value="minorista">Minorista</option><option value="mayorista">Mayorista</option><option value="vip">VIP</option></select></div>
+    </div>
+    <div class="field"><label>Dirección</label><input type="text" id="cl-dir" placeholder="Av. Siempreviva 742"></div>
+    <div class="field-row">
+      <div class="field"><label>Localidad</label><input type="text" id="cl-loc" placeholder="Villa Martelli, Bs.As."></div>
+      <div class="field"><label>Vehículo(s)</label><input type="text" id="cl-auto" placeholder="Toyota Corolla 2018"></div>
+    </div>
+    <div class="field"><label>Notas internas</label><textarea id="cl-notas" placeholder="Descuentos especiales, observaciones..."></textarea></div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal()">Cancelar</button>
+      <button class="btn btn-primary" onclick="guardarCliente()">💾 Guardar cliente</button>
+    </div>`);
+}
+
+function modalEditarCliente(cid){
+  const c=S.clients.find(x=>x.id===cid);if(!c)return;
+  openModal(`
+    <h3>✏️ Editar — ${c.nombre}</h3>
+    <div class="field"><label>Nombre completo *</label><input type="text" id="cl-nombre" value="${c.nombre||''}"></div>
+    <div class="field-row">
+      <div class="field"><label>Teléfono / WhatsApp</label><input type="text" id="cl-tel" value="${c.tel||''}"></div>
+      <div class="field"><label>Email</label><input type="email" id="cl-email" value="${c.email||''}"></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>DNI / CUIT</label><input type="text" id="cl-dni" value="${c.dni||''}"></div>
+      <div class="field"><label>Tipo</label><select id="cl-tipo"><option value="minorista"${c.tipo==='minorista'?' selected':''}>Minorista</option><option value="mayorista"${c.tipo==='mayorista'?' selected':''}>Mayorista</option><option value="vip"${c.tipo==='vip'?' selected':''}>VIP</option></select></div>
+    </div>
+    <div class="field"><label>Dirección</label><input type="text" id="cl-dir" value="${c.direccion||''}"></div>
+    <div class="field-row">
+      <div class="field"><label>Localidad</label><input type="text" id="cl-loc" value="${c.localidad||''}"></div>
+      <div class="field"><label>Vehículo(s)</label><input type="text" id="cl-auto" value="${c.auto||''}"></div>
+    </div>
+    <div class="field"><label>Notas internas</label><textarea id="cl-notas">${c.notas||''}</textarea></div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal()">Cancelar</button>
+      <button class="btn btn-primary" onclick="guardarCliente('${cid}')">💾 Guardar cambios</button>
+    </div>`);
+}
+
+function modalVerCliente(cid){
+  const c=S.clients.find(x=>x.id===cid);if(!c)return;
+  const pedidos=S.orders.filter(o=>o.clienteId===cid);
+  const totalGastado=pedidos.reduce((a,o)=>a+parseFloat((o.monto||'').replace(/[^\d.,]/g,'').replace(',','.')||0),0);
+  const rowsPed=pedidos.map(o=>`<tr>
+    <td style="font-size:12px"><b>${o.id}</b></td><td style="font-size:12px">${o.producto}</td>
+    <td><span class="pill s-${o.estado}" style="font-size:10px">${ls(o.estado)}</span></td>
+    <td style="font-size:12px">${o.monto||'-'}</td><td style="font-size:12px">${o.fecha||'-'}</td>
+  </tr>`).join('')||`<tr><td colspan="5" style="text-align:center;padding:16px;color:var(--muted2);font-size:13px">Sin pedidos todavía</td></tr>`;
+  openModal(`
+    <h3>👤 ${c.nombre}</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;font-size:13px">
+      <div><span style="color:var(--muted2)">📱</span> ${c.tel?`<a href="https://wa.me/${c.tel.replace(/\D/g,'')}" target="_blank" style="color:var(--ok)">${c.tel}</a>`:'-'}</div>
+      <div><span style="color:var(--muted2)">📧</span> ${c.email||'-'}</div>
+      <div><span style="color:var(--muted2)">🪪</span> ${c.dni||'-'}</div>
+      <div><span style="color:var(--muted2)">🏷️</span> <span class="pill ${c.tipo==='mayorista'?'s-enproceso':c.tipo==='vip'?'s-enviado':'s-pendiente'}" style="font-size:10px">${c.tipo||'minorista'}</span></div>
+      <div><span style="color:var(--muted2)">📍</span> ${c.direccion||'-'}</div>
+      <div><span style="color:var(--muted2)">🏙️</span> ${c.localidad||'-'}</div>
+      <div><span style="color:var(--muted2)">🚗</span> ${c.auto||'-'}</div>
+      <div><span style="color:var(--muted2)">💰 Total comprado:</span> <b style="color:var(--ok)">$${totalGastado.toLocaleString('es-AR')}</b></div>
+    </div>
+    ${c.notas?`<div style="background:var(--surface);border-radius:8px;padding:12px;font-size:13px;color:var(--muted2);margin-bottom:16px">📝 ${c.notas}</div>`:''}
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted2);margin-bottom:10px">Historial (${pedidos.length} pedido${pedidos.length!==1?'s':''})</div>
+    <table><thead><tr><th>ID</th><th>Producto</th><th>Estado</th><th>Monto</th><th>Fecha</th></tr></thead><tbody>${rowsPed}</tbody></table>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal()">Cerrar</button>
+      <button class="btn btn-primary" onclick="closeModal();modalEditarCliente('${cid}')">✏️ Editar</button>
+    </div>`);
+}
+
+async function guardarCliente(cid){
+  const nombre=id('cl-nombre').value.trim();
+  if(!nombre){toast('El nombre es obligatorio','err');return;}
+  const data={nombre,tel:id('cl-tel').value.trim(),email:id('cl-email').value.trim(),dni:id('cl-dni').value.trim(),tipo:id('cl-tipo').value,direccion:id('cl-dir').value.trim(),localidad:id('cl-loc').value.trim(),auto:id('cl-auto').value.trim(),notas:id('cl-notas').value.trim(),updatedAt:new Date().toLocaleString('es-AR')};
+  if(cid){
+    const c=S.clients.find(x=>x.id===cid);if(!c)return;
+    Object.assign(c,data);toast('Cliente actualizado ✅','ok');
+  }else{
+    data.id='CLI-'+Date.now().toString(36).toUpperCase();data.createdAt=data.updatedAt;
+    S.clients.push(data);toast('Cliente registrado ✅','ok');
+  }
+  await saveOrders();closeModal();navigate('clientes');
+}
+
+async function eliminarCliente(cid){
+  const c=S.clients.find(x=>x.id===cid);if(!c)return;
+  const pedidos=S.orders.filter(o=>o.clienteId===cid).length;
+  if(!confirm(`¿Eliminar a "${c.nombre}"?${pedidos?` Tiene ${pedidos} pedido(s) vinculado(s).`:''}`))return;
+  S.clients=S.clients.filter(x=>x.id!==cid);
+  await saveOrders();toast('Cliente eliminado','warn');navigate('clientes');
+}
+
+function exportClientesCSV(){
+  const h='ID,Nombre,Teléfono,Email,DNI/CUIT,Tipo,Dirección,Localidad,Vehículo,Pedidos,Notas,Registrado';
+  const rows=S.clients.map(c=>{const p=S.orders.filter(o=>o.clienteId===c.id).length;return[c.id,c.nombre,c.tel,c.email,c.dni,c.tipo,c.direccion,c.localidad,c.auto,p,c.notas,c.createdAt].map(v=>`"${v||''}"`).join(',');});
+  const blob=new Blob([[h,...rows].join('\n')],{type:'text/csv;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='clientes_lesbleus.csv';a.click();
+}
+// ==================== FIN CLIENTES ====================
 
 function pageAgentes(){
   const agentes=Object.entries(USERS).filter(([k,v])=>v.role==='agente').map(([k,v])=>({key:k,...v}));
@@ -446,21 +616,217 @@ function pageReportes(){
     </div></div>`;
 }
 
-function pageWA(){
-  const list=S.orders.filter(o=>o.tel);
-  const cards=list.map(o=>{
-    const tel=o.tel.replace(/\D/g,'');
-    const msgs={pendiente:`Hola ${o.clienteNombre}! 📦 Tu pedido *${o.producto}* fue recibido y está pendiente. Te avisamos cuando avance.`,enproceso:`Hola ${o.clienteNombre}! 🔄 Tu pedido *${o.producto}* está en preparación. Pronto te confirmamos el envío.`,enviado:`Hola ${o.clienteNombre}! 🚀 Tu pedido *${o.producto}* fue enviado y está en camino. ¡Pronto lo recibís!`,entregado:`Hola ${o.clienteNombre}! ✅ Tu pedido *${o.producto}* fue entregado. ¡Gracias por tu compra!`,cancelado:`Hola ${o.clienteNombre}! ❌ Tu pedido *${o.producto}* fue cancelado. Contactanos para más info.`};
-    return`<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:14px">
-      <div><b>${o.id} · ${o.producto}</b><br><span style="font-size:12px;color:var(--muted)">${o.clienteNombre||''} · <span class="pill s-${o.estado}">${ls(o.estado)}</span> · 📱 +${tel}</span></div>
-      <div style="display:flex;gap:6px;flex-shrink:0">
-        <a href="https://wa.me/${tel}?text=${encodeURIComponent(msgs[o.estado]||'')}" target="_blank" class="btn btn-wa btn-sm">💬 Notificar</a>
-        ${o.linkPago?`<a href="https://wa.me/${tel}?text=${encodeURIComponent('💳 Link de pago: '+o.linkPago)}" target="_blank" class="btn btn-ghost btn-sm">💳 Enviar link</a>`:''}
+function pageTickets(){
+  const lsTicket=s=>({emitido:'⏳ Emitido',con_tracking:'📬 Con tracking',derivado:'✅ Derivado'}[s]||s);
+  const rows=S.tickets.map(t=>{
+    const o=findO(t.orderId)||{};
+    return`<tr>
+      <td><b>${t.id}</b></td>
+      <td style="font-family:var(--mono);font-size:12px">${t.orderId}</td>
+      <td>${o.producto||t.producto||''}</td>
+      <td style="font-size:12px">${t.destino||''}</td>
+      <td style="font-size:12px;color:var(--muted2)">${t.agente||''}</td>
+      <td>${t.tracking?`<span style="font-family:var(--mono);font-size:12px;color:var(--ok)">${t.tracking}</span>`:'<span style="color:var(--muted)">-</span>'}</td>
+      <td><span class="pill ${t.estadoTicket==='derivado'?'s-entregado':t.estadoTicket==='con_tracking'?'s-enproceso':'s-pendiente'}">${lsTicket(t.estadoTicket||'emitido')}</span></td>
+      <td class="td-actions">
+        ${t.estadoTicket!=='derivado'?`<button class="btn btn-ghost btn-sm" onclick="modalTracking('${t.id}')">📬 Tracking</button>`:''}
+        ${t.estadoTicket==='con_tracking'?`<button class="btn btn-ok btn-sm" onclick="derivarTicket('${t.id}')">➡️ Derivar</button>`:''}
+        <button class="btn btn-ghost btn-sm" onclick="imprimirTicket('${t.id}')">🖨️</button>
+      </td>
+    </tr>`;
+  }).join('')||`<tr><td colspan="8" style="text-align:center;padding:28px;color:var(--muted)">Sin tickets emitidos todavía.</td></tr>`;
+
+  const pendTracking=S.tickets.filter(t=>!t.estadoTicket||t.estadoTicket==='emitido').length;
+  const pendDerivar=S.tickets.filter(t=>t.estadoTicket==='con_tracking').length;
+
+  id('main').innerHTML=`
+    <div class="page-title">🎫 Tickets de encomiendas</div>
+    <div class="page-sub">${S.tickets.length} tickets · Tu tarea: cargar tracking de encomiendas y derivar a Comunicaciones</div>
+    <div class="stat-grid" style="margin-bottom:20px">
+      <div class="stat c-warn"><div class="stat-icon">⏳</div><div class="stat-lbl">Sin tracking</div><div class="stat-val" style="color:var(--warn)">${pendTracking}</div></div>
+      <div class="stat c-accent"><div class="stat-icon">📬</div><div class="stat-lbl">Para derivar</div><div class="stat-val" style="color:var(--accent)">${pendDerivar}</div></div>
+      <div class="stat c-ok"><div class="stat-icon">✅</div><div class="stat-lbl">Derivados</div><div class="stat-val" style="color:var(--ok)">${S.tickets.filter(t=>t.estadoTicket==='derivado').length}</div></div>
+    </div>
+    <div class="card"><div class="card-head"><h3>Todos los tickets</h3><button class="btn btn-ghost btn-sm" onclick="exportTicketsCSV()">⬇️ CSV</button></div>
+    <table><thead><tr><th>Ticket</th><th>Pedido</th><th>Producto</th><th>Destino</th><th>Agente</th><th>Tracking</th><th>Estado</th><th>Acciones</th></tr></thead>
+    <tbody>${rows}</tbody></table></div>`;
+}
+
+function modalTracking(tid){
+  const t=S.tickets.find(x=>x.id===tid);if(!t)return;
+  openModal(`
+    <h3>📬 Cargar información de encomiendas</h3>
+    <p style="font-size:13px;color:var(--muted2);margin-bottom:20px">Ticket <b>${tid}</b> · Ingresá los datos que te dio encomiendas</p>
+    <div class="field"><label>Número de tracking *</label><input type="text" id="tr-tracking" placeholder="Ej: OCA-123456789" value="${t.tracking||''}"></div>
+    <div class="field"><label>Empresa de encomiendas</label><input type="text" id="tr-empresa" placeholder="Ej: OCA, Andreani, Correo" value="${t.empresa||''}"></div>
+    <div class="field"><label>Fecha estimada de entrega</label><input type="text" id="tr-eta" placeholder="Ej: 3-5 días hábiles" value="${t.eta||''}"></div>
+    <div class="field"><label>Observaciones</label><textarea id="tr-obs" placeholder="Info adicional de encomiendas...">${t.obsTracking||''}</textarea></div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal()">Cancelar</button>
+      <button class="btn btn-primary" onclick="guardarTracking('${tid}')">💾 Guardar</button>
+    </div>`);
+}
+
+async function guardarTracking(tid){
+  const tracking=id('tr-tracking').value.trim();
+  if(!tracking){toast('Ingresá el número de tracking','err');return;}
+  const t=S.tickets.find(x=>x.id===tid);if(!t)return;
+  t.tracking=tracking;
+  t.empresa=id('tr-empresa').value.trim();
+  t.eta=id('tr-eta').value.trim();
+  t.obsTracking=id('tr-obs').value.trim();
+  t.estadoTicket='con_tracking';
+  await saveOrders();
+  closeModal();
+  toast('Tracking cargado — ya podés derivar a Comunicaciones ✅','ok');
+  navigate('tickets');
+}
+
+async function derivarTicket(tid){
+  const t=S.tickets.find(x=>x.id===tid);if(!t)return;
+  if(!t.tracking){toast('Primero cargá el tracking de encomiendas','err');return;}
+  t.estadoTicket='derivado';
+  t.derivadoBy=S.session.name;
+  t.derivadoAt=new Date().toLocaleString('es-AR');
+  await saveOrders();
+  toast(`Ticket ${tid} derivado a Comunicaciones ✅`,'ok');
+  navigate('tickets');
+}
+
+function pageMisTickets(){
+  const mine=S.tickets.filter(t=>t.agenteUser===S.session.user);
+  const rows=mine.map(t=>{
+    const o=findO(t.orderId)||{};
+    return`<tr>
+      <td><b>${t.id}</b></td>
+      <td>${t.orderId}</td>
+      <td>${o.producto||t.producto||''}</td>
+      <td>${t.destino||''}</td>
+      <td><span style="font-size:12px;color:var(--muted2)">${t.fecha||''}</span></td>
+      <td>${t.obs||'-'}</td>
+      <td><button class="btn btn-ghost btn-sm" onclick="imprimirTicket('${t.id}')">🖨️</button></td>
+    </tr>`;
+  }).join('')||`<tr><td colspan="7" style="text-align:center;padding:28px;color:var(--muted)">No emitiste tickets todavía.</td></tr>`;
+  id('main').innerHTML=`
+    <div class="page-title">🎫 Mis tickets</div>
+    <div class="page-sub">${mine.length} tickets emitidos por vos</div>
+    <div class="card"><div class="card-head"><h3>Mis tickets emitidos</h3></div>
+    <table><thead><tr><th>Ticket</th><th>Pedido</th><th>Producto</th><th>Destino</th><th>Fecha</th><th>Obs.</th><th></th></tr></thead>
+    <tbody>${rows}</tbody></table></div>`;
+}
+
+function modalEmitirTicket(orderId){
+  const o=findO(orderId);if(!o)return;
+  openModal(`
+    <h3>🎫 Emitir ticket de encomienda</h3>
+    <p style="font-size:13px;color:var(--muted2);margin-bottom:20px">Pedido <b>${orderId}</b> · ${o.producto}</p>
+    <div class="field"><label>Dirección de destino *</label><input type="text" id="tk-destino" placeholder="Calle 123, Ciudad, Provincia"></div>
+    <div class="field-row">
+      <div class="field"><label>Bultos / piezas</label><input type="text" id="tk-bultos" placeholder="1 caja"></div>
+      <div class="field"><label>Peso aprox.</label><input type="text" id="tk-peso" placeholder="2 kg"></div>
+    </div>
+    <div class="field"><label>Observaciones para encomiendas</label><textarea id="tk-obs" placeholder="Fragil, requiere refrigeración, etc."></textarea></div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal()">Cancelar</button>
+      <button class="btn btn-primary" onclick="confirmarTicket('${orderId}')">🎫 Emitir ticket</button>
+    </div>`);
+}
+
+async function confirmarTicket(orderId){
+  const destino=id('tk-destino').value.trim();
+  if(!destino){toast('Ingresá la dirección de destino','err');return;}
+  const o=findO(orderId);if(!o)return;
+  const tid='TK-'+Date.now().toString(36).toUpperCase();
+  const fecha=new Date().toLocaleString('es-AR');
+  const ticket={
+    id:tid, orderId, producto:o.producto,
+    clienteNombre:o.clienteNombre||'', destino,
+    bultos:id('tk-bultos').value.trim(),
+    peso:id('tk-peso').value.trim(),
+    obs:id('tk-obs').value.trim(),
+    agente:S.session.name, agenteUser:S.session.user,
+    fecha, estado:'emitido'
+  };
+  S.tickets.push(ticket);
+  o.estado='enviado';
+  await saveOrders();
+  closeModal();
+  toast(`Ticket ${tid} emitido y reportado a administración ✅`,'ok');
+  navigate('mis-pedidos');
+}
+
+function imprimirTicket(tid){
+  const t=S.tickets.find(x=>x.id===tid);if(!t)return;
+  const win=window.open('','_blank','width=400,height=500');
+  win.document.write(`<html><head><title>Ticket ${t.id}</title>
+  <style>body{font-family:monospace;padding:24px;font-size:13px}h2{margin-bottom:16px}hr{margin:10px 0}b{display:inline-block;width:100px}</style></head><body>
+  <h2>🎫 TICKET ENCOMIENDA</h2>
+  <hr>
+  <p><b>Ticket:</b> ${t.id}</p>
+  <p><b>Pedido:</b> ${t.orderId}</p>
+  <p><b>Producto:</b> ${t.producto}</p>
+  <p><b>Cliente:</b> ${t.clienteNombre}</p>
+  <p><b>Destino:</b> ${t.destino}</p>
+  <p><b>Bultos:</b> ${t.bultos||'-'}</p>
+  <p><b>Peso:</b> ${t.peso||'-'}</p>
+  <p><b>Obs.:</b> ${t.obs||'-'}</p>
+  <hr>
+  <p><b>Agente:</b> ${t.agente}</p>
+  <p><b>Fecha:</b> ${t.fecha}</p>
+  <hr>
+  <p style="text-align:center;margin-top:16px">LESBLEUS S.A. · lesbleuscars.com</p>
+  </body></html>`);
+  win.print();
+}
+
+function exportTicketsCSV(){
+  const h='Ticket,Pedido,Producto,Cliente,Destino,Bultos,Peso,Agente,Fecha,Obs';
+  const rows=S.tickets.map(t=>[t.id,t.orderId,t.producto,t.clienteNombre,t.destino,t.bultos,t.peso,t.agente,t.fecha,t.obs].map(v=>`"${v||''}"`).join(','));
+  const blob=new Blob([[h,...rows].join('\n')],{type:'text/csv'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='tickets_lesbleus.csv';a.click();
+}
+
+function pageComunicaciones(){
+  const derivados=S.tickets.filter(t=>t.estadoTicket==='derivado');
+  const cards=derivados.map(t=>{
+    const o=findO(t.orderId)||{};
+    const tel=(o.tel||'').replace(/\D/g,'');
+    const msg=`Hola ${o.clienteNombre||''}! 🚀 Tu pedido *${t.producto}* fue enviado por ${t.empresa||'encomiendas'}.`
+      +(t.tracking?`\n📦 Tracking: *${t.tracking}*`:'')
+      +(t.eta?`\n⏱ Entrega estimada: ${t.eta}`:'')
+      +`\n\nAnte cualquier consulta escribinos. ¡Gracias por elegirnos! 💙\n— LESBLEUS S.A.`;
+    return`<div class="card" style="margin-bottom:12px">
+      <div class="card-head">
+        <div>
+          <b style="font-size:14px">${t.id} · ${t.producto}</b>
+          <div style="font-size:12px;color:var(--muted2);margin-top:3px">
+            👤 ${o.clienteNombre||'Sin nombre'} · 
+            📬 Tracking: <span style="font-family:var(--mono);color:var(--ok)">${t.tracking}</span> (${t.empresa||''}) · 
+            📅 ${t.derivadoAt||''}
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;flex-shrink:0">
+          ${tel?`<a href="https://wa.me/${tel}?text=${encodeURIComponent(msg)}" target="_blank" class="btn btn-wa btn-sm">💬 Notificar cliente</a>`:'<span style="font-size:12px;color:var(--muted)">Sin teléfono</span>'}
+          <button class="btn btn-ghost btn-sm" onclick="imprimirTicket('${t.id}')">🖨️</button>
+        </div>
+      </div>
+      <div style="padding:14px 18px;background:var(--surface);border-top:1px solid var(--border)">
+        <div style="font-size:11px;color:var(--muted2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px">Mensaje a enviar:</div>
+        <div style="font-size:13px;line-height:1.7;color:var(--text);white-space:pre-wrap">${msg}</div>
       </div>
     </div>`;
-  }).join('')||`<div style="text-align:center;padding:40px;color:var(--muted)">Agregá teléfonos a los pedidos para notificar desde acá.</div>`;
-  id('main').innerHTML=`<div class="page-title">💬 WhatsApp</div><div class="page-sub">Notificá a tus clientes con un clic</div>${cards}`;
+  }).join('')||`<div style="text-align:center;padding:60px;color:var(--muted2)">
+    <div style="font-size:40px;margin-bottom:12px">💬</div>
+    <div style="font-size:15px;font-weight:600;margin-bottom:6px">Sin tickets derivados todavía</div>
+    <div style="font-size:13px">El encargado debe cargar el tracking y derivar los tickets para que aparezcan acá.</div>
+  </div>`;
+  id('main').innerHTML=`
+    <div class="page-title">💬 Para notificar</div>
+    <div class="page-sub">${derivados.length} ticket${derivados.length!==1?'s':''} listos para notificar al cliente · Solo vos te comunicás con ellos</div>
+    ${cards}`;
 }
+
+
 
 // IA GESTION
 function pageIAGestion(){
