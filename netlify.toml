@@ -9,3 +9,5 @@
 [[edge_functions]]
   path = "/api/catimg"
   function = "img-cat-proxy"
+
+# deploy trigger v2
