@@ -1452,6 +1452,8 @@ function fcat(cat,btn){
   if(btn){document.querySelectorAll('.fb,.na').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
   lista=cat==='todos'?[...PP]:PP.filter(p=>p.cat===cat);
   renderGrid(lista);
+  const _fbar=document.querySelector('.fbar');
+  if(_fbar) setTimeout(()=>_fbar.scrollIntoView({behavior:'smooth',block:'start'}),60);
 }
 function fmarca(m){lista=m==='todos'?[...PP]:PP.filter(p=>p.m===m);renderGrid(lista);}
 function busCod(){
