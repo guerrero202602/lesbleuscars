@@ -1098,7 +1098,7 @@ function loadImgCache(){
 function getProdImg(id){return imgCache[String(id)]||null;}
 
 function imgHtml(p,size=52){
-  const img=getProdImg(p.id);
+  const img=getProdImg(p.id)||(window.LB_CAT_IMGS&&window.LB_CAT_IMGS[p.cat])||null;
   if(img)return`<img src="${img}" style="width:${size}px;height:${size}px;object-fit:contain;border-radius:6px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.1))" onerror="this.outerHTML=this.dataset.fb" data-fb="${catSvg(p.cat,size).replace(/"/g,"'")}">`;
   if(!p.ml||!p.ml.startsWith('MLA'))return catSvg(p.cat,size);
   return`<span class="img-ph" data-id="${p.id}" data-ml="${p.ml}" data-cat="${p.cat}" data-sz="${size}" style="display:inline-block">${catSvg(p.cat,size)}</span>`;
@@ -1452,8 +1452,6 @@ function fcat(cat,btn){
   if(btn){document.querySelectorAll('.fb,.na').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
   lista=cat==='todos'?[...PP]:PP.filter(p=>p.cat===cat);
   renderGrid(lista);
-  const _fbar=document.querySelector('.fbar');
-  if(_fbar) setTimeout(()=>_fbar.scrollIntoView({behavior:'smooth',block:'start'}),60);
 }
 function fmarca(m){lista=m==='todos'?[...PP]:PP.filter(p=>p.m===m);renderGrid(lista);}
 function busCod(){
