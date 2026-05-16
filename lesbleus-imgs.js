@@ -1,7 +1,6 @@
-// lesbleus-imgs.js v8 — Les Bleus Cars
-// Fotos reales por categoría — Mayo 2026
+// lesbleus-imgs.js v8 — Les Bleus Cars — Fotos reales por categoría
 const LB_BASE='https://raw.githubusercontent.com/guerrero202602/lesbleuscars/main/';
-const LB_CAT_IMGS={
+window.LB_CAT_IMGS={
   opticas:'https://raw.githubusercontent.com/guerrero202602/lesbleuscars/main/faro-delantero.png',
   espejos:'https://raw.githubusercontent.com/guerrero202602/lesbleuscars/main/espejo-retrovisor-manual.png',
   frenos:'https://raw.githubusercontent.com/guerrero202602/lesbleuscars/main/disco-freno.png',
@@ -15,5 +14,4 @@ const LB_CAT_IMGS={
   bujes:'https://raw.githubusercontent.com/guerrero202602/lesbleuscars/main/buje-suspension.png',
   bieletas:'https://raw.githubusercontent.com/guerrero202602/lesbleuscars/main/link-barra-estabilizadora.png',
   fluidos:'https://raw.githubusercontent.com/guerrero202602/lesbleuscars/main/fluido-freno-dot4.png',
-  suspension:'https://raw.githubusercontent.com/guerrero202602/lesbleuscars/main/terminal-direccion-angulado.png',
 };
