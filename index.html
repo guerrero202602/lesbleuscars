@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>LesBleus Cars â Repuestos Multimarcas</title>
+<title>LesBleus Cars — Repuestos Multimarcas</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
@@ -99,8 +99,8 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
 /* GRID */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:3rem}
 
-/* ââ 5 CARD TYPES ââ */
-/* T1 â Classic White */
+/* ══ 5 CARD TYPES ══ */
+/* T1 — Classic White */
 .c1{background:var(--wh);border-radius:var(--rl);border:1px solid var(--bd);overflow:hidden;transition:all .25s;cursor:pointer;box-shadow:var(--s1)}
 .c1:hover{transform:translateY(-5px);box-shadow:var(--s2);border-color:var(--bd2)}
 .c1i{height:152px;display:flex;align-items:center;justify-content:center;position:relative}
@@ -110,7 +110,7 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
 .c1c{font-family:'DM Mono',monospace;font-size:9px;color:var(--tx3);margin-bottom:.65rem}
 .c1f{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .c1p{font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:var(--nv)}
-/* T2 â Dark Navy */
+/* T2 — Dark Navy */
 .c2{background:var(--nv);border-radius:var(--rl);overflow:hidden;transition:all .25s;cursor:pointer;box-shadow:0 4px 20px rgba(13,27,62,.2);position:relative}
 .c2::before{content:'';position:absolute;top:-15px;right:-15px;width:60px;height:60px;border-radius:50%;border:1px solid rgba(201,168,76,.1)}
 .c2:hover{transform:translateY(-5px);box-shadow:0 10px 36px rgba(13,27,62,.35)}
@@ -121,7 +121,7 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
 .c2n{font-size:13px;font-weight:700;color:#fff;line-height:1.35;margin-bottom:.75rem}
 .c2f{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .c2p{font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:var(--gd)}
-/* T3 â Horizontal */
+/* T3 — Horizontal */
 .c3{background:var(--wh);border-radius:var(--rl);border:1px solid var(--bd);overflow:hidden;transition:all .25s;cursor:pointer;box-shadow:var(--s1);display:flex}
 .c3:hover{transform:translateY(-4px);box-shadow:var(--s2)}
 .c3s{width:86px;display:flex;align-items:center;justify-content:center;flex-shrink:0;min-height:160px}
@@ -131,7 +131,7 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
 .c3c{font-family:'DM Mono',monospace;font-size:9px;color:var(--tx3);margin-bottom:.4rem}
 .c3p{font-family:'Cinzel',serif;font-size:17px;font-weight:700;color:var(--nv);margin-bottom:.5rem}
 .c3f{display:flex;gap:5px;flex-wrap:wrap}
-/* T4 â Accent Stripe */
+/* T4 — Accent Stripe */
 .c4{background:var(--wh);border-radius:var(--rl);border:1px solid var(--bd);overflow:hidden;transition:all .25s;cursor:pointer;box-shadow:var(--s1)}
 .c4:hover{transform:translateY(-5px);box-shadow:var(--s2)}
 .c4st{height:4px;width:100%}
@@ -141,7 +141,7 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
 .c4n{font-size:12.5px;color:var(--tx2);line-height:1.35;margin-bottom:.75rem}
 .c4f{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .c4p{font-family:'Cinzel',serif;font-size:21px;font-weight:700;color:var(--nv)}
-/* T5 â Border Left */
+/* T5 — Border Left */
 .c5{background:var(--wh);border-radius:var(--rl);border:1px solid var(--bd);border-left-width:4px;overflow:hidden;transition:all .25s;cursor:pointer;box-shadow:var(--s1);display:flex;flex-direction:column}
 .c5:hover{transform:translateY(-4px);box-shadow:var(--s2)}
 .c5i{height:130px;display:flex;align-items:center;justify-content:center;background:var(--bg)}
@@ -194,7 +194,7 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
 .hows{font-size:13px;color:rgba(255,255,255,.4);text-align:center;margin-bottom:2.75rem}
 .howg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
 .howst{text-align:center;padding:1.5rem;position:relative}
-.howst::after{content:'â';position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:18px;color:rgba(201,168,76,.2)}
+.howst::after{content:'→';position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:18px;color:rgba(201,168,76,.2)}
 .howst:last-child::after{display:none}
 .hown{width:50px;height:50px;border-radius:50%;border:2px solid rgba(201,168,76,.28);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-family:'Cinzel',serif;font-size:20px;font-weight:600;color:var(--gd)}
 .howico{font-size:25px;margin-bottom:.6rem}
@@ -302,29 +302,29 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
 <div class="ni">
   <a class="logo" href="#">
     <div class="li"><span class="lt">LB</span></div>
-    <div><div class="ln">LESBLEUS CARS</div><div class="ls">MULTIMARCAS Â· S.A.</div></div>
+    <div><div class="ln">LESBLEUS CARS</div><div class="ls">MULTIMARCAS · S.A.</div></div>
   </a>
   <div class="nav-links">
-    <button class="na on" onclick="fcat('todos',this)">CatÃ¡logo</button>
-    <button class="na" onclick="fcat('opticas',this)">Ãpticas</button>
+    <button class="na on" onclick="fcat('todos',this)">Catálogo</button>
+    <button class="na" onclick="fcat('opticas',this)">Ópticas</button>
     <button class="na" onclick="fcat('espejos',this)">Espejos</button>
     <button class="na" onclick="fcat('amortiguadores',this)">Amortiguadores</button>
     <button class="na" onclick="fcat('frenos',this)">Frenos</button>
     <button class="na" onclick="fcat('filtros',this)">Filtros</button>
   </div>
-  <button class="bc" onclick="aCart()">ð Carrito <div class="cn" id="cn">0</div></button>
+  <button class="bc" onclick="aCart()">🛒 Carrito <div class="cn" id="cn">0</div></button>
 </div>
 </nav>
 
 <!-- HERO -->
-<!-- COUNTDOWN INAUGURACIÃN -->
+<!-- COUNTDOWN INAUGURACIÓN -->
 <div id="countdown-bar" style="background:linear-gradient(135deg,#DC2626,#B91C1C);padding:10px 20px;text-align:center;position:relative;z-index:150">
   <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap">
-    <span style="font-size:13px;font-weight:900;color:#fff;letter-spacing:.05em">ð SEMANA DE INAUGURACIÃN Â· OFERTAS HASTA EL</span>
+    <span style="font-size:13px;font-weight:900;color:#fff;letter-spacing:.05em">🎉 SEMANA DE INAUGURACIÓN · OFERTAS HASTA EL</span>
     <div style="display:flex;gap:8px;align-items:center">
       <div style="background:rgba(0,0,0,.3);border-radius:7px;padding:4px 10px;text-align:center">
         <div id="cd-dias" style="font-family:'DM Mono',monospace;font-size:20px;font-weight:700;color:#fff;line-height:1">07</div>
-        <div style="font-size:9px;color:rgba(255,255,255,.7);letter-spacing:.08em">DÃAS</div>
+        <div style="font-size:9px;color:rgba(255,255,255,.7);letter-spacing:.08em">DÍAS</div>
       </div>
       <span style="color:#fff;font-weight:700;font-size:18px">:</span>
       <div style="background:rgba(0,0,0,.3);border-radius:7px;padding:4px 10px;text-align:center">
@@ -342,7 +342,7 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
         <div style="font-size:9px;color:rgba(255,255,255,.7);letter-spacing:.08em">SEG</div>
       </div>
     </div>
-    <span style="font-size:13px;font-weight:900;color:#FDE68A">Â· -20% EN TODA LA TIENDA ð¥</span>
+    <span style="font-size:13px;font-weight:900;color:#FDE68A">· -20% EN TODA LA TIENDA 🔥</span>
   </div>
 </div>
 
@@ -368,18 +368,18 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
 <section class="hero">
 <div class="hp"></div>
 <div class="hi">
-  <div class="hpill">ð ComprÃ¡s directo al distribuidor Â· Sin intermediarios Â· lesbleuscars.com</div>
-  <h1 class="hh1">El Repuesto Que NecesitÃ¡s<br>Al Precio Que MerecÃ©s</h1>
-  <p class="hs">Sin comisiones, sin intermediarios. ComprÃ¡s directo a nosotros y ese ahorro te lo trasladamos a vos. Porque el repuesto que necesitÃ¡s no tiene que costar mÃ¡s de lo que vale.</p>
+  <div class="hpill">🛞 Comprás directo al distribuidor · Sin intermediarios · lesbleuscars.com</div>
+  <h1 class="hh1">El Repuesto Que Necesitás<br>Al Precio Que Merecés</h1>
+  <p class="hs">Sin comisiones, sin intermediarios. Comprás directo a nosotros y ese ahorro te lo trasladamos a vos. Porque el repuesto que necesitás no tiene que costar más de lo que vale.</p>
   <div class="hbtns">
-    <button class="btp" onclick="document.querySelector('.ss').scrollIntoView({behavior:'smooth'})">ð Buscar mi repuesto</button>
-    <button class="bto" onclick="document.querySelector('.grid').scrollIntoView({behavior:'smooth'})">Ver catÃ¡logo completo</button>
+    <button class="btp" onclick="document.querySelector('.ss').scrollIntoView({behavior:'smooth'})">🔍 Buscar mi repuesto</button>
+    <button class="bto" onclick="document.querySelector('.grid').scrollIntoView({behavior:'smooth'})">Ver catálogo completo</button>
   </div>
   <div class="tr">
-    <div class="tri"><span>â</span>Precio justo garantizado</div>
-    <div class="tri"><span>ð</span>EnvÃ­o GRATIS desde $150.000</div>
-    <div class="tri"><span>ð¤</span>65 marcas Â· Stock real</div>
-    <div class="tri"><span>ð³</span>Cuotas con tarjeta</div>
+    <div class="tri"><span>✅</span>Precio justo garantizado</div>
+    <div class="tri"><span>🚚</span>Envío GRATIS desde $150.000</div>
+    <div class="tri"><span>🤝</span>65 marcas · Stock real</div>
+    <div class="tri"><span>💳</span>Cuotas con tarjeta</div>
   </div>
 </div>
 </section>
@@ -388,100 +388,100 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
 <section class="ss">
 <div class="si">
   <div class="stabs">
-    <button class="stab on" onclick="swSrch('v',this)">ð Por VehÃ­culo</button>
-    <button class="stab" onclick="swSrch('c',this)">ð Por CategorÃ­a</button>
-    <button class="stab" onclick="swSrch('m',this)">ð·ï¸ Por Marca</button>
+    <button class="stab on" onclick="swSrch('v',this)">🚗 Por Vehículo</button>
+    <button class="stab" onclick="swSrch('c',this)">📂 Por Categoría</button>
+    <button class="stab" onclick="swSrch('m',this)">🏷️ Por Marca</button>
   </div>
   <div class="sp on" id="spv">
-    <div class="sf"><label>Marca del auto</label><select class="ssel" id="smk" onchange="loadMod()"><option value="">Seleccionar...</option><option>Toyota</option><option>Volkswagen</option><option>Ford</option><option>Chevrolet</option><option>Renault</option><option>Peugeot</option><option>CitroÃ«n</option><option>Fiat</option><option>Honda</option><option>Nissan</option><option>Isuzu</option><option>Mercedes-Benz</option></select></div>
-    <div class="sf"><label>Modelo</label><select class="ssel" id="smd"><option value="">ElegÃ­ la marca</option></select></div>
-    <div class="sf" style="max-width:130px"><label>AÃ±o</label><select class="ssel"><option>AÃ±o</option><option>2024</option><option>2022</option><option>2020</option><option>2018</option><option>2016</option><option>2014</option><option>2012</option><option>2010</option><option>2008</option><option>2005</option><option>2001</option><option>1997</option></select></div>
-    <button class="bsrch" onclick="busVeh()">Buscar â</button>
+    <div class="sf"><label>Marca del auto</label><select class="ssel" id="smk" onchange="loadMod()"><option value="">Seleccionar...</option><option>Toyota</option><option>Volkswagen</option><option>Ford</option><option>Chevrolet</option><option>Renault</option><option>Peugeot</option><option>Citroën</option><option>Fiat</option><option>Honda</option><option>Nissan</option><option>Isuzu</option><option>Mercedes-Benz</option></select></div>
+    <div class="sf"><label>Modelo</label><select class="ssel" id="smd"><option value="">Elegí la marca</option></select></div>
+    <div class="sf" style="max-width:130px"><label>Año</label><select class="ssel"><option>Año</option><option>2024</option><option>2022</option><option>2020</option><option>2018</option><option>2016</option><option>2014</option><option>2012</option><option>2010</option><option>2008</option><option>2005</option><option>2001</option><option>1997</option></select></div>
+    <button class="bsrch" onclick="busVeh()">Buscar →</button>
   </div>
   <div class="sp" id="spc">
-    <div class="sf"><label>CategorÃ­a</label><select class="ssel" onchange="fcat(this.value||'todos')"><option value="">Todas</option><option value="opticas">Ãpticas y Faros</option><option value="espejos">Espejos</option><option value="levanta-cristal">Levanta Cristales</option><option value="manijas">Manijas</option><option value="amortiguadores">Amortiguadores</option><option value="frenos">Frenos y Discos</option><option value="rodamientos">Rodamientos SKF</option><option value="bujias">BujÃ­as</option><option value="filtros">Filtros</option><option value="correas">Correas y DistribuciÃ³n</option><option value="bieletas">Bieletas</option><option value="bujes">Bujes</option><option value="fluidos">Fluidos</option></select></div>
+    <div class="sf"><label>Categoría</label><select class="ssel" onchange="fcat(this.value||'todos')"><option value="">Todas</option><option value="opticas">Ópticas y Faros</option><option value="espejos">Espejos</option><option value="levanta-cristal">Levanta Cristales</option><option value="manijas">Manijas</option><option value="amortiguadores">Amortiguadores</option><option value="frenos">Frenos y Discos</option><option value="rodamientos">Rodamientos SKF</option><option value="bujias">Bujías</option><option value="filtros">Filtros</option><option value="correas">Correas y Distribución</option><option value="bieletas">Bieletas</option><option value="bujes">Bujes</option><option value="fluidos">Fluidos</option></select></div>
     <div class="sf"><label>Buscar</label><input class="sinp" type="text" placeholder="Ej: amortiguador Corsa..." id="stxt" oninput="busTxt()"></div>
-    <button class="bsrch" onclick="busTxt()">Buscar â</button>
+    <button class="bsrch" onclick="busTxt()">Buscar →</button>
   </div>
   <div class="sp" id="spm">
     <div class="sf"><label>Marca</label><select class="ssel" id="sel-marca" onchange="fmarca(this.value)"><option value="todos">Todas</option><option>Monroe</option><option>FRIC ROT MONROE</option><option>SKF</option><option>TYC</option><option>Giving</option><option>Vespoli</option><option>VTH</option><option>Mahle</option><option>Champion</option><option>Cobreq</option><option>Wildbrake</option><option>Nakata</option><option>Axios</option><option>Wagner Lockheed</option><option>Teknorot</option></select></div>
-    <div class="sf"><label>CÃ³digo</label><input class="sinp" type="text" id="sinp-cod" placeholder="Ej: MON749166SP, SKF-6203..." oninput="busCod()"></div>
-    <button class="bsrch" onclick="busCod()">Buscar â</button>
+    <div class="sf"><label>Código</label><input class="sinp" type="text" id="sinp-cod" placeholder="Ej: MON749166SP, SKF-6203..." oninput="busCod()"></div>
+    <button class="bsrch" onclick="busCod()">Buscar →</button>
   </div>
 </div>
 </section>
 
 <!-- MARQUEE -->
 <section class="mqs">
-<div class="mql">Marcas que comercializamos â 65 marcas multimarcas</div>
+<div class="mql">Marcas que comercializamos — 65 marcas multimarcas</div>
 <div class="mqt">
-  <div class="mlo"><div class="mn" style="color:#EB0A0A">TOYOTA</div><div class="mt" style="color:rgba(255,255,255,.45)">JapÃ³n</div></div>
+  <div class="mlo"><div class="mn" style="color:#EB0A0A">TOYOTA</div><div class="mt" style="color:rgba(255,255,255,.45)">Japón</div></div>
   <div class="mlo"><div class="mn" style="color:#0065B2">VOLKSWAGEN</div><div class="mt" style="color:rgba(255,255,255,.45)">Alemania</div></div>
   <div class="mlo"><div class="mn" style="color:#003087">FORD</div><div class="mt" style="color:rgba(255,255,255,.45)">EEUU</div></div>
   <div class="mlo"><div class="mn" style="color:#CE1126">CHEVROLET</div><div class="mt" style="color:rgba(255,255,255,.45)">EEUU</div></div>
   <div class="mlo"><div class="mn" style="color:#FF6600">RENAULT</div><div class="mt" style="color:rgba(255,255,255,.45)">Francia</div></div>
   <div class="mlo"><div class="mn" style="color:#0093C8">PEUGEOT</div><div class="mt" style="color:rgba(255,255,255,.45)">Francia</div></div>
   <div class="mlo"><div class="mn" style="color:#C9A84C">GIVING</div><div class="mt" style="color:rgba(255,255,255,.45)">Espejos</div></div>
-  <div class="mlo"><div class="mn" style="color:#059669">TYC</div><div class="mt" style="color:rgba(255,255,255,.45)">Ãpticas</div></div>
+  <div class="mlo"><div class="mn" style="color:#059669">TYC</div><div class="mt" style="color:rgba(255,255,255,.45)">Ópticas</div></div>
   <div class="mlo"><div class="mn" style="color:#1D4ED8">VESPOLI</div><div class="mt" style="color:rgba(255,255,255,.45)">Levanta cristal</div></div>
   <div class="mlo"><div class="mn" style="color:#F7941D">MONROE</div><div class="mt" style="color:rgba(255,255,255,.45)">Amortiguadores</div></div>
   <div class="mlo"><div class="mn" style="color:#1C69D4">SKF</div><div class="mt" style="color:rgba(255,255,255,.45)">Rodamientos</div></div>
   <div class="mlo"><div class="mn" style="color:#E4032E">MAHLE</div><div class="mt" style="color:rgba(255,255,255,.45)">Filtros</div></div>
-  <div class="mlo"><div class="mn" style="color:#E31E26">CHAMPION</div><div class="mt" style="color:rgba(255,255,255,.45)">BujÃ­as</div></div>
+  <div class="mlo"><div class="mn" style="color:#E31E26">CHAMPION</div><div class="mt" style="color:rgba(255,255,255,.45)">Bujías</div></div>
   <div class="mlo"><div class="mn" style="color:#DC2626">COBREQ</div><div class="mt" style="color:rgba(255,255,255,.45)">Frenos</div></div>
   <div class="mlo"><div class="mn" style="color:#7C3AED">NAKATA</div><div class="mt" style="color:rgba(255,255,255,.45)">Bieletas</div></div>
-  <div class="mlo"><div class="mn" style="color:#D97706">AXIOS</div><div class="mt" style="color:rgba(255,255,255,.45)">SuspensiÃ³n</div></div>
+  <div class="mlo"><div class="mn" style="color:#D97706">AXIOS</div><div class="mt" style="color:rgba(255,255,255,.45)">Suspensión</div></div>
   <div class="mlo"><div class="mn" style="color:#065F46">WILDBRAKE</div><div class="mt" style="color:rgba(255,255,255,.45)">Frenos</div></div>
-  <div class="mlo"><div class="mn" style="color:#E2001A">CITROÃN</div><div class="mt" style="color:rgba(255,255,255,.45)">Francia</div></div>
+  <div class="mlo"><div class="mn" style="color:#E2001A">CITROËN</div><div class="mt" style="color:rgba(255,255,255,.45)">Francia</div></div>
   <div class="mlo"><div class="mn" style="color:#E31E2D">FIAT</div><div class="mt" style="color:rgba(255,255,255,.45)">Italia</div></div>
-  <div class="mlo"><div class="mn" style="color:#CC0000">HONDA</div><div class="mt" style="color:rgba(255,255,255,.45)">JapÃ³n</div></div>
+  <div class="mlo"><div class="mn" style="color:#CC0000">HONDA</div><div class="mt" style="color:rgba(255,255,255,.45)">Japón</div></div>
   <div class="mlo"><div class="mn" style="color:#92400E">VTH</div><div class="mt" style="color:rgba(255,255,255,.45)">Bujes</div></div>
-  <div class="mlo"><div class="mn" style="color:#C0C0C0">TEKNOROT</div><div class="mt" style="color:rgba(255,255,255,.45)">DirecciÃ³n</div></div>
+  <div class="mlo"><div class="mn" style="color:#C0C0C0">TEKNOROT</div><div class="mt" style="color:rgba(255,255,255,.45)">Dirección</div></div>
   <!-- DUPLICADO PARA LOOP -->
-  <div class="mlo"><div class="mn" style="color:#EB0A0A">TOYOTA</div><div class="mt" style="color:rgba(255,255,255,.45)">JapÃ³n</div></div>
+  <div class="mlo"><div class="mn" style="color:#EB0A0A">TOYOTA</div><div class="mt" style="color:rgba(255,255,255,.45)">Japón</div></div>
   <div class="mlo"><div class="mn" style="color:#0065B2">VOLKSWAGEN</div><div class="mt" style="color:rgba(255,255,255,.45)">Alemania</div></div>
   <div class="mlo"><div class="mn" style="color:#003087">FORD</div><div class="mt" style="color:rgba(255,255,255,.45)">EEUU</div></div>
   <div class="mlo"><div class="mn" style="color:#CE1126">CHEVROLET</div><div class="mt" style="color:rgba(255,255,255,.45)">EEUU</div></div>
   <div class="mlo"><div class="mn" style="color:#FF6600">RENAULT</div><div class="mt" style="color:rgba(255,255,255,.45)">Francia</div></div>
   <div class="mlo"><div class="mn" style="color:#0093C8">PEUGEOT</div><div class="mt" style="color:rgba(255,255,255,.45)">Francia</div></div>
   <div class="mlo"><div class="mn" style="color:#C9A84C">GIVING</div><div class="mt" style="color:rgba(255,255,255,.45)">Espejos</div></div>
-  <div class="mlo"><div class="mn" style="color:#059669">TYC</div><div class="mt" style="color:rgba(255,255,255,.45)">Ãpticas</div></div>
+  <div class="mlo"><div class="mn" style="color:#059669">TYC</div><div class="mt" style="color:rgba(255,255,255,.45)">Ópticas</div></div>
   <div class="mlo"><div class="mn" style="color:#1D4ED8">VESPOLI</div><div class="mt" style="color:rgba(255,255,255,.45)">Levanta cristal</div></div>
   <div class="mlo"><div class="mn" style="color:#F7941D">MONROE</div><div class="mt" style="color:rgba(255,255,255,.45)">Amortiguadores</div></div>
   <div class="mlo"><div class="mn" style="color:#1C69D4">SKF</div><div class="mt" style="color:rgba(255,255,255,.45)">Rodamientos</div></div>
   <div class="mlo"><div class="mn" style="color:#E4032E">MAHLE</div><div class="mt" style="color:rgba(255,255,255,.45)">Filtros</div></div>
-  <div class="mlo"><div class="mn" style="color:#E31E26">CHAMPION</div><div class="mt" style="color:rgba(255,255,255,.45)">BujÃ­as</div></div>
+  <div class="mlo"><div class="mn" style="color:#E31E26">CHAMPION</div><div class="mt" style="color:rgba(255,255,255,.45)">Bujías</div></div>
   <div class="mlo"><div class="mn" style="color:#DC2626">COBREQ</div><div class="mt" style="color:rgba(255,255,255,.45)">Frenos</div></div>
   <div class="mlo"><div class="mn" style="color:#7C3AED">NAKATA</div><div class="mt" style="color:rgba(255,255,255,.45)">Bieletas</div></div>
-  <div class="mlo"><div class="mn" style="color:#D97706">AXIOS</div><div class="mt" style="color:rgba(255,255,255,.45)">SuspensiÃ³n</div></div>
+  <div class="mlo"><div class="mn" style="color:#D97706">AXIOS</div><div class="mt" style="color:rgba(255,255,255,.45)">Suspensión</div></div>
   <div class="mlo"><div class="mn" style="color:#065F46">WILDBRAKE</div><div class="mt" style="color:rgba(255,255,255,.45)">Frenos</div></div>
   <div class="mlo"><div class="mn" style="color:#92400E">VTH</div><div class="mt" style="color:rgba(255,255,255,.45)">Bujes</div></div>
-  <div class="mlo"><div class="mn" style="color:#C0C0C0">TEKNOROT</div><div class="mt" style="color:rgba(255,255,255,.45)">DirecciÃ³n</div></div>
-  <div class="mlo"><div class="mn" style="color:#E2001A">CITROÃN</div><div class="mt" style="color:rgba(255,255,255,.45)">Francia</div></div>
-  <div class="mlo"><div class="mn" style="color:#CC0000">HONDA</div><div class="mt" style="color:rgba(255,255,255,.45)">JapÃ³n</div></div>
+  <div class="mlo"><div class="mn" style="color:#C0C0C0">TEKNOROT</div><div class="mt" style="color:rgba(255,255,255,.45)">Dirección</div></div>
+  <div class="mlo"><div class="mn" style="color:#E2001A">CITROËN</div><div class="mt" style="color:rgba(255,255,255,.45)">Francia</div></div>
+  <div class="mlo"><div class="mn" style="color:#CC0000">HONDA</div><div class="mt" style="color:rgba(255,255,255,.45)">Japón</div></div>
 </div>
 </section>
 
-<!-- CATÃLOGO -->
+<!-- CATÁLOGO -->
 <div class="page">
   <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:10px">
-    <div><div class="sct">Productos Destacados</div><div class="scs"><span id="cnt">188</span> productos â 13 categorÃ­as â datos reales del catÃ¡logo LesBleus</div></div>
+    <div><div class="sct">Productos Destacados</div><div class="scs"><span id="cnt">188</span> productos — 13 categorías — datos reales del catálogo LesBleus</div></div>
   </div>
   <div class="fbar">
     <button class="fb on" onclick="fcat('todos',this)">Todos</button>
-    <button class="fb" onclick="fcat('opticas',this)">ð¡ Ãpticas</button>
-    <button class="fb" onclick="fcat('espejos',this)">ðª Espejos</button>
-    <button class="fb" onclick="fcat('levanta-cristal',this)">ð§ Levanta Cristal</button>
-    <button class="fb" onclick="fcat('manijas',this)">ðª Manijas</button>
-    <button class="fb" onclick="fcat('amortiguadores',this)">ð Amortiguadores</button>
-    <button class="fb" onclick="fcat('frenos',this)">ð Frenos</button>
-    <button class="fb" onclick="fcat('rodamientos',this)">âï¸ Rodamientos</button>
-    <button class="fb" onclick="fcat('bujias',this)">â¡ BujÃ­as</button>
-    <button class="fb" onclick="fcat('filtros',this)">ð© Filtros</button>
-    <button class="fb" onclick="fcat('correas',this)">ð Correas</button>
-    <button class="fb" onclick="fcat('bieletas',this)">ð§ Bieletas</button>
-    <button class="fb" onclick="fcat('bujes',this)">ð© Bujes</button>
-    <button class="fb" onclick="fcat('fluidos',this)">ð§ Fluidos</button>
+    <button class="fb" onclick="fcat('opticas',this)">💡 Ópticas</button>
+    <button class="fb" onclick="fcat('espejos',this)">🪞 Espejos</button>
+    <button class="fb" onclick="fcat('levanta-cristal',this)">🔧 Levanta Cristal</button>
+    <button class="fb" onclick="fcat('manijas',this)">🚪 Manijas</button>
+    <button class="fb" onclick="fcat('amortiguadores',this)">🚗 Amortiguadores</button>
+    <button class="fb" onclick="fcat('frenos',this)">🛑 Frenos</button>
+    <button class="fb" onclick="fcat('rodamientos',this)">⚙️ Rodamientos</button>
+    <button class="fb" onclick="fcat('bujias',this)">⚡ Bujías</button>
+    <button class="fb" onclick="fcat('filtros',this)">🔩 Filtros</button>
+    <button class="fb" onclick="fcat('correas',this)">🔄 Correas</button>
+    <button class="fb" onclick="fcat('bieletas',this)">🔧 Bieletas</button>
+    <button class="fb" onclick="fcat('bujes',this)">🔩 Bujes</button>
+    <button class="fb" onclick="fcat('fluidos',this)">💧 Fluidos</button>
     <span class="fc" id="fcnt">188 productos</span>
   </div>
   <div class="grid" id="grid"></div>
@@ -490,11 +490,11 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
 <!-- BANNER PRECIO DIRECTO -->
 <div style="background:linear-gradient(135deg,var(--nv),var(--nv2));padding:14px 20px;text-align:center">
   <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;font-size:13px">
-    <span style="color:rgba(255,255,255,.6)">ð¡ <b style="color:#fff">Â¿Por quÃ© comprar en lesbleuscars.com?</b></span>
-    <span style="color:rgba(255,255,255,.55)">â Precio de distribuidor directo</span>
-    <span style="color:rgba(255,255,255,.55)">â Sin comisiones de terceros</span>
-    <span style="color:rgba(255,255,255,.55)">â El ahorro es tuyo</span>
-    <span style="color:rgba(255,255,255,.55)">â AtenciÃ³n directa con nosotros</span>
+    <span style="color:rgba(255,255,255,.6)">💡 <b style="color:#fff">¿Por qué comprar en lesbleuscars.com?</b></span>
+    <span style="color:rgba(255,255,255,.55)">✅ Precio de distribuidor directo</span>
+    <span style="color:rgba(255,255,255,.55)">✅ Sin comisiones de terceros</span>
+    <span style="color:rgba(255,255,255,.55)">✅ El ahorro es tuyo</span>
+    <span style="color:rgba(255,255,255,.55)">✅ Atención directa con nosotros</span>
   </div>
 </div>
 
@@ -502,9 +502,9 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
 <section style="background:#fff;padding:3rem 1.5rem;border-top:1px solid var(--bd)">
 <div style="max-width:1200px;margin:0 auto">
   <div style="margin-bottom:1.75rem">
-    <div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#DC2626,#EF4444);color:#fff;font-size:10px;font-weight:900;padding:4px 13px;border-radius:99px;letter-spacing:.07em;text-transform:uppercase;margin-bottom:.5rem">ð¥ -20% OFF</div>
-    <div style="font-family:'Cinzel',serif;font-size:24px;font-weight:600;color:var(--nv)">Combos MÃ¡s Populares</div>
-    <div style="font-size:13.5px;color:var(--tx2);margin-top:3px">Los conjuntos mÃ¡s vendidos Â· Precio especial por combo Â· +5% si transferÃ­s</div>
+    <div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#DC2626,#EF4444);color:#fff;font-size:10px;font-weight:900;padding:4px 13px;border-radius:99px;letter-spacing:.07em;text-transform:uppercase;margin-bottom:.5rem">🔥 -20% OFF</div>
+    <div style="font-family:'Cinzel',serif;font-size:24px;font-weight:600;color:var(--nv)">Combos Más Populares</div>
+    <div style="font-size:13.5px;color:var(--tx2);margin-top:3px">Los conjuntos más vendidos · Precio especial por combo · +5% si transferís</div>
   </div>
   <div id="combos-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px"></div>
 </div>
@@ -514,62 +514,62 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
 <section class="prs">
 <div class="pri">
   <div class="prh">
-    <div><div class="prpill">ð¥ Ofertas</div><div class="sct">Promociones y Descuentos</div><div class="scs">Las mejores ofertas del mes</div></div>
-    <a style="font-size:13px;font-weight:700;color:var(--nv);border-bottom:1.5px solid var(--gd);cursor:pointer;text-decoration:none">Ver todas â</a>
+    <div><div class="prpill">🔥 Ofertas</div><div class="sct">Promociones y Descuentos</div><div class="scs">Las mejores ofertas del mes</div></div>
+    <a style="font-size:13px;font-weight:700;color:var(--nv);border-bottom:1.5px solid var(--gd);cursor:pointer;text-decoration:none">Ver todas →</a>
   </div>
   <div class="prg">
     <div class="pc">
       <div class="pci" style="background:linear-gradient(135deg,#0D1B3E,#1B3A7A)">
         <span style="position:absolute;top:12px;left:12px;background:var(--rd);color:#fff;font-size:13px;font-weight:900;padding:4px 11px;border-radius:7px;font-family:'DM Mono',monospace">-20%</span>
-        <span style="position:absolute;top:12px;right:12px;background:var(--gd);color:var(--nv);font-size:9.5px;font-weight:900;padding:3px 9px;border-radius:99px;text-transform:uppercase">â± Limitada</span>
-        <span style="font-size:58px;opacity:.85">ðª</span>
+        <span style="position:absolute;top:12px;right:12px;background:var(--gd);color:var(--nv);font-size:9.5px;font-weight:900;padding:3px 9px;border-radius:99px;text-transform:uppercase">⏱ Limitada</span>
+        <span style="font-size:58px;opacity:.85">🪞</span>
       </div>
       <div class="pcb">
-        <div class="pcbr">Giving Â· Espejos</div>
-        <div class="pcn">Espejo Exterior ElÃ©ctrico Con Control â Peugeot / Renault / Ford</div>
-        <div class="pcp"><span class="pcnew">$106.513</span><span class="pcold">$133.141</span><span class="pcsave">AhorrÃ¡s $26.628</span></div>
-        <button class="btp" style="width:100%;padding:10px;font-size:13px" onclick="addC(123224099)">Agregar al carrito â</button>
+        <div class="pcbr">Giving · Espejos</div>
+        <div class="pcn">Espejo Exterior Eléctrico Con Control — Peugeot / Renault / Ford</div>
+        <div class="pcp"><span class="pcnew">$106.513</span><span class="pcold">$133.141</span><span class="pcsave">Ahorrás $26.628</span></div>
+        <button class="btp" style="width:100%;padding:10px;font-size:13px" onclick="addC(123224099)">Agregar al carrito →</button>
       </div>
     </div>
     <div class="pc">
       <div class="pci" style="background:linear-gradient(135deg,#1a0a00,#3d1f00)">
         <span style="position:absolute;top:12px;left:12px;background:var(--rd);color:#fff;font-size:13px;font-weight:900;padding:4px 11px;border-radius:7px;font-family:'DM Mono',monospace">2x1</span>
-        <span style="font-size:58px;opacity:.85">ð</span>
+        <span style="font-size:58px;opacity:.85">🚗</span>
       </div>
       <div class="pcb">
-        <div class="pcbr">Monroe Â· Amortiguadores</div>
-        <div class="pcn">Pack x2 Amortiguador Monroe â VW Fox / Suran Delantero</div>
+        <div class="pcbr">Monroe · Amortiguadores</div>
+        <div class="pcn">Pack x2 Amortiguador Monroe — VW Fox / Suran Delantero</div>
         <div class="pcp"><span class="pcnew">$107.315</span><span class="pcold">$214.630</span><span class="pcsave">Pack completo</span></div>
-        <button class="btp" style="width:100%;padding:10px;font-size:13px" onclick="addC(90004)">Agregar al carrito â</button>
+        <button class="btp" style="width:100%;padding:10px;font-size:13px" onclick="addC(90004)">Agregar al carrito →</button>
       </div>
     </div>
     <div class="prco">
-      <div style="font-size:40px;margin-bottom:.75rem;opacity:.4">ð·ï¸</div>
-      <div style="font-family:'Cinzel',serif;font-size:17px;font-weight:600;color:var(--tx2);margin-bottom:.4rem">PrÃ³xima PromociÃ³n</div>
-      <div style="font-size:12.5px;color:var(--tx3);line-height:1.6;margin-bottom:1.25rem">Seguinos en redes para enterarte primero de las prÃ³ximas ofertas exclusivas.</div>
+      <div style="font-size:40px;margin-bottom:.75rem;opacity:.4">🏷️</div>
+      <div style="font-family:'Cinzel',serif;font-size:17px;font-weight:600;color:var(--tx2);margin-bottom:.4rem">Próxima Promoción</div>
+      <div style="font-size:12.5px;color:var(--tx3);line-height:1.6;margin-bottom:1.25rem">Seguinos en redes para enterarte primero de las próximas ofertas exclusivas.</div>
       <div style="display:flex;gap:7px;justify-content:center;flex-wrap:wrap">
-        <a href="https://instagram.com/lesbleuscars" target="_blank" style="font-size:11.5px;font-weight:700;color:var(--nv);border:1.5px solid var(--bd);border-radius:99px;padding:5px 13px;text-decoration:none;cursor:pointer">ð¸ @lesbleuscars</a>
-        <a href="https://tiktok.com/@lesbleuscars" target="_blank" style="font-size:11.5px;font-weight:700;color:var(--nv);border:1.5px solid var(--bd);border-radius:99px;padding:5px 13px;text-decoration:none;cursor:pointer">ðµ @lesbleuscars</a>
+        <a href="https://instagram.com/lesbleuscars" target="_blank" style="font-size:11.5px;font-weight:700;color:var(--nv);border:1.5px solid var(--bd);border-radius:99px;padding:5px 13px;text-decoration:none;cursor:pointer">📸 @lesbleuscars</a>
+        <a href="https://tiktok.com/@lesbleuscars" target="_blank" style="font-size:11.5px;font-weight:700;color:var(--nv);border:1.5px solid var(--bd);border-radius:99px;padding:5px 13px;text-decoration:none;cursor:pointer">🎵 @lesbleuscars</a>
       </div>
     </div>
   </div>
   <div class="ban">
-    <div style="position:relative;z-index:1"><div style="font-family:'Cinzel',serif;font-size:11px;color:rgba(201,168,76,.7);letter-spacing:.18em;text-transform:uppercase;margin-bottom:5px">ð EnvÃ­o Gratis</div><div style="font-family:'Cinzel',serif;font-size:21px;font-weight:600;color:#fff;line-height:1.2;margin-bottom:5px">ComprÃ¡s mÃ¡s de <span style="color:var(--gd)">$150.000</span><br>y el envÃ­o por VÃ­aBleu es <span style="color:var(--gd)">gratis</span></div><div style="font-size:12px;color:rgba(255,255,255,.42)">VÃ¡lido para todo el paÃ­s Â· CombinÃ¡ categorÃ­as</div></div>
-    <button class="btp" style="position:relative;z-index:1;flex-shrink:0" onclick="document.querySelector('.grid').scrollIntoView({behavior:'smooth'})">Ver productos â</button>
+    <div style="position:relative;z-index:1"><div style="font-family:'Cinzel',serif;font-size:11px;color:rgba(201,168,76,.7);letter-spacing:.18em;text-transform:uppercase;margin-bottom:5px">🚚 Envío Gratis</div><div style="font-family:'Cinzel',serif;font-size:21px;font-weight:600;color:#fff;line-height:1.2;margin-bottom:5px">Comprás más de <span style="color:var(--gd)">$150.000</span><br>y el envío por VíaBleu es <span style="color:var(--gd)">gratis</span></div><div style="font-size:12px;color:rgba(255,255,255,.42)">Válido para todo el país · Combiná categorías</div></div>
+    <button class="btp" style="position:relative;z-index:1;flex-shrink:0" onclick="document.querySelector('.grid').scrollIntoView({behavior:'smooth'})">Ver productos →</button>
   </div>
 </div>
 </section>
 
-<!-- CÃMO FUNCIONA -->
+<!-- CÓMO FUNCIONA -->
 <section class="how">
 <div class="howi">
-  <div class="howt">Simple, RÃ¡pido y Para Todos</div>
-  <div class="hows">Porque mantener el auto no deberÃ­a ser complicado ni caro</div>
+  <div class="howt">Simple, Rápido y Para Todos</div>
+  <div class="hows">Porque mantener el auto no debería ser complicado ni caro</div>
   <div class="howg">
-    <div class="howst"><div class="hown">1</div><div class="howico">ð</div><div class="howtt">EncontrÃ¡ Tu Repuesto</div><div class="howsd">BuscÃ¡ por vehÃ­culo, categorÃ­a o marca. CÃ³digo exacto de fabricante.</div></div>
-    <div class="howst"><div class="hown">2</div><div class="howico">ð</div><div class="howtt">AgregÃ¡ al Carrito</div><div class="howsd">SeleccionÃ¡ los productos y confirmÃ¡ en segundos.</div></div>
-    <div class="howst"><div class="hown">3</div><div class="howico">ð³</div><div class="howtt">ElegÃ­ CÃ³mo Pagar</div><div class="howsd">Transferencia Brubank (alias lesbleuscars) o tarjeta en cuotas vÃ­a Mercado Pago. SubÃ­s el comprobante.</div></div>
-    <div class="howst"><div class="hown">4</div><div class="howico">ð</div><div class="howtt">VÃ­aBleu Entrega</div><div class="howsd">Juntamos los pedidos y enviamos por lote cada 3 dÃ­as. RecibÃ­s tu repuesto en 3 dÃ­as hÃ¡biles desde el despacho.</div></div>
+    <div class="howst"><div class="hown">1</div><div class="howico">🔍</div><div class="howtt">Encontrá Tu Repuesto</div><div class="howsd">Buscá por vehículo, categoría o marca. Código exacto de fabricante.</div></div>
+    <div class="howst"><div class="hown">2</div><div class="howico">🛒</div><div class="howtt">Agregá al Carrito</div><div class="howsd">Seleccioná los productos y confirmá en segundos.</div></div>
+    <div class="howst"><div class="hown">3</div><div class="howico">💳</div><div class="howtt">Elegí Cómo Pagar</div><div class="howsd">Transferencia Brubank (alias lesbleuscars) o tarjeta en cuotas vía Mercado Pago. Subís el comprobante.</div></div>
+    <div class="howst"><div class="hown">4</div><div class="howico">🚚</div><div class="howtt">VíaBleu Entrega</div><div class="howsd">Juntamos los pedidos y enviamos por lote cada 3 días. Recibís tu repuesto en 3 días hábiles desde el despacho.</div></div>
   </div>
 </div>
 </section>
@@ -577,67 +577,67 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
 <!-- PAGOS -->
 <section class="pag">
 <div class="pagi">
-  <div style="text-align:center"><div class="sct" style="text-align:center">MÃ©todos de Pago</div><div class="scs" style="text-align:center">ElegÃ­s cÃ³mo pagar Â· 100% seguro</div></div>
+  <div style="text-align:center"><div class="sct" style="text-align:center">Métodos de Pago</div><div class="scs" style="text-align:center">Elegís cómo pagar · 100% seguro</div></div>
   <div class="pagg">
-    <div class="pagc"><div class="pagico">ð</div><div class="pagnm">Brubank Â· Transferencia</div><div class="pagds">CBU o Alias <strong>lesbleuscars</strong>. Pesos o dÃ³lares. Sin costo adicional.</div></div>
-    <div class="pagc"><div class="pagico">ð³</div><div class="pagnm">Mercado Pago Â· Tarjeta</div><div class="pagds">PagÃ¡ con tarjeta de crÃ©dito, dÃ©bito o en cuotas. Link enviado por WhatsApp.</div></div>
-    <div class="pagc"><div class="pagico">ð¬</div><div class="pagnm">ConsultÃ¡ por WhatsApp</div><div class="pagds">Coordinamos el mÃ©todo de pago que mejor te convenga. Respuesta inmediata.</div></div>
+    <div class="pagc"><div class="pagico">💜</div><div class="pagnm">Brubank · Transferencia</div><div class="pagds">CBU o Alias <strong>lesbleuscars</strong>. Pesos o dólares. Sin costo adicional.</div></div>
+    <div class="pagc"><div class="pagico">💳</div><div class="pagnm">Mercado Pago · Tarjeta</div><div class="pagds">Pagá con tarjeta de crédito, débito o en cuotas. Link enviado por WhatsApp.</div></div>
+    <div class="pagc"><div class="pagico">💬</div><div class="pagnm">Consultá por WhatsApp</div><div class="pagds">Coordinamos el método de pago que mejor te convenga. Respuesta inmediata.</div></div>
   </div>
 </div>
 </section>
 
 <!-- FOOTER -->
-<!-- VIABLEU LOGÃSTICA -->
+<!-- VIABLEU LOGÍSTICA -->
 <section style="background:var(--of);padding:2.5rem 1.5rem;border-top:1px solid var(--bd)">
 <div style="max-width:1200px;margin:0 auto">
   <div style="text-align:center;margin-bottom:1.75rem">
     <div style="display:inline-flex;align-items:center;gap:8px;background:var(--nv);border-radius:10px;padding:6px 16px;margin-bottom:12px">
-      <span style="font-family:'Cinzel',serif;font-size:16px;font-weight:700;color:var(--gd)">VÃ­aBleu</span>
-      <span style="font-size:10px;color:rgba(255,255,255,.5);letter-spacing:.1em">LOGÃSTICA</span>
+      <span style="font-family:'Cinzel',serif;font-size:16px;font-weight:700;color:var(--gd)">VíaBleu</span>
+      <span style="font-size:10px;color:rgba(255,255,255,.5);letter-spacing:.1em">LOGÍSTICA</span>
     </div>
-    <div style="font-family:'Cinzel',serif;font-size:22px;font-weight:600;color:var(--nv);margin-bottom:6px">Tu envÃ­o coordinado por VÃ­aBleu</div>
-    <div style="font-size:13.5px;color:var(--tx2);max-width:560px;margin:0 auto;line-height:1.7">VÃ­aBleu es nuestro operador logÃ­stico exclusivo. Recolectan todos los pedidos, los agrupan en lotes especiales y los despachan cada 3 dÃ­as con los mejores correos de Argentina â asÃ­ te garantizamos el envÃ­o gratis y el mejor precio.</div>
+    <div style="font-family:'Cinzel',serif;font-size:22px;font-weight:600;color:var(--nv);margin-bottom:6px">Tu envío coordinado por VíaBleu</div>
+    <div style="font-size:13.5px;color:var(--tx2);max-width:560px;margin:0 auto;line-height:1.7">VíaBleu es nuestro operador logístico exclusivo. Recolectan todos los pedidos, los agrupan en lotes especiales y los despachan cada 3 días con los mejores correos de Argentina — así te garantizamos el envío gratis y el mejor precio.</div>
   </div>
 
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:1.75rem">
     <div style="background:#fff;border:1px solid var(--bd);border-radius:12px;padding:16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05)">
-      <div style="font-size:28px;margin-bottom:6px">ð </div>
+      <div style="font-size:28px;margin-bottom:6px">🟠</div>
       <div style="font-weight:700;color:var(--tx);font-size:13px">Andreani</div>
-      <div style="font-size:10px;color:var(--tx3);margin-top:2px">Todo el paÃ­s</div>
+      <div style="font-size:10px;color:var(--tx3);margin-top:2px">Todo el país</div>
     </div>
     <div style="background:#fff;border:1px solid var(--bd);border-radius:12px;padding:16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05)">
-      <div style="font-size:28px;margin-bottom:6px">ðµ</div>
+      <div style="font-size:28px;margin-bottom:6px">🔵</div>
       <div style="font-weight:700;color:var(--tx);font-size:13px">OCA</div>
-      <div style="font-size:10px;color:var(--tx3);margin-top:2px">Todo el paÃ­s</div>
+      <div style="font-size:10px;color:var(--tx3);margin-top:2px">Todo el país</div>
     </div>
     <div style="background:#fff;border:1px solid var(--bd);border-radius:12px;padding:16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05)">
-      <div style="font-size:28px;margin-bottom:6px">ð¡</div>
+      <div style="font-size:28px;margin-bottom:6px">🟡</div>
       <div style="font-weight:700;color:var(--tx);font-size:13px">Correo Argentino</div>
-      <div style="font-size:10px;color:var(--tx3);margin-top:2px">Todo el paÃ­s</div>
+      <div style="font-size:10px;color:var(--tx3);margin-top:2px">Todo el país</div>
     </div>
     <div style="background:#fff;border:1px solid var(--bd);border-radius:12px;padding:16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05)">
-      <div style="font-size:28px;margin-bottom:6px">ð¢</div>
+      <div style="font-size:28px;margin-bottom:6px">🟢</div>
       <div style="font-weight:700;color:var(--tx);font-size:13px">Rappi</div>
-      <div style="font-size:10px;color:var(--tx3);margin-top:2px">AMBA Â· Mismo dÃ­a</div>
+      <div style="font-size:10px;color:var(--tx3);margin-top:2px">AMBA · Mismo día</div>
     </div>
     <div style="background:#fff;border:1px solid var(--bd);border-radius:12px;padding:16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05)">
-      <div style="font-size:28px;margin-bottom:6px">ðµ</div>
-      <div style="font-weight:700;color:var(--tx);font-size:13px">PedidosYa EnvÃ­os</div>
-      <div style="font-size:10px;color:var(--tx3);margin-top:2px">AMBA Â· Express</div>
+      <div style="font-size:28px;margin-bottom:6px">🛵</div>
+      <div style="font-weight:700;color:var(--tx);font-size:13px">PedidosYa Envíos</div>
+      <div style="font-size:10px;color:var(--tx3);margin-top:2px">AMBA · Express</div>
     </div>
     <div style="background:#fff;border:1px solid var(--bd);border-radius:12px;padding:16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05)">
-      <div style="font-size:28px;margin-bottom:6px">ðï¸</div>
-      <div style="font-weight:700;color:var(--tx);font-size:13px">CadeterÃ­a Propia</div>
-      <div style="font-size:10px;color:var(--tx3);margin-top:2px">Villa Martelli Â· GBA</div>
+      <div style="font-size:28px;margin-bottom:6px">🏍️</div>
+      <div style="font-weight:700;color:var(--tx);font-size:13px">Cadetería Propia</div>
+      <div style="font-size:10px;color:var(--tx3);margin-top:2px">Villa Martelli · GBA</div>
     </div>
   </div>
 
   <div style="background:var(--nv);border-radius:14px;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px">
     <div>
-      <div style="font-family:'Cinzel',serif;font-size:15px;color:#fff;margin-bottom:4px">ð EnvÃ­o GRATIS en compras mayores a <span style="color:var(--gd)">$150.000</span></div>
-      <div style="font-size:12px;color:rgba(255,255,255,.45)">Recolectamos pedidos y enviamos por lote cada 3 dÃ­as Â· Entrega estimada: 3 dÃ­as hÃ¡biles desde el envÃ­o</div>
+      <div style="font-family:'Cinzel',serif;font-size:15px;color:#fff;margin-bottom:4px">🚚 Envío GRATIS en compras mayores a <span style="color:var(--gd)">$150.000</span></div>
+      <div style="font-size:12px;color:rgba(255,255,255,.45)">Recolectamos pedidos y enviamos por lote cada 3 días · Entrega estimada: 3 días hábiles desde el envío</div>
     </div>
-    <a href="https://viableu.com.ar" target="_blank" style="background:var(--gd);color:var(--nv);font-size:13px;font-weight:900;padding:10px 20px;border-radius:9px;text-decoration:none;white-space:nowrap;font-family:'Lato',sans-serif">ConocÃ© VÃ­aBleu â</a>
+    <a href="https://viableu.com.ar" target="_blank" style="background:var(--gd);color:var(--nv);font-size:13px;font-weight:900;padding:10px 20px;border-radius:9px;text-decoration:none;white-space:nowrap;font-family:'Lato',sans-serif">Conocé VíaBleu →</a>
   </div>
 </div>
 </section>
@@ -647,13 +647,13 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
 <div style="max-width:1200px;margin:0 auto">
   <div style="text-align:center;margin-bottom:1.75rem">
     <div style="font-family:'Cinzel',serif;font-size:20px;font-weight:600;color:#fff;margin-bottom:4px">Medios de Pago</div>
-    <div style="font-size:13px;color:rgba(255,255,255,.45)">ElegÃ­s cÃ³mo pagar Â· 100% seguro Â· AcreditaciÃ³n inmediata</div>
+    <div style="font-size:13px;color:rgba(255,255,255,.45)">Elegís cómo pagar · 100% seguro · Acreditación inmediata</div>
   </div>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:1.5rem">
     <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:18px">
-      <div style="font-size:26px;margin-bottom:8px">ð³</div>
-      <div style="font-weight:700;color:#fff;margin-bottom:4px">Tarjeta de CrÃ©dito</div>
-      <div style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.6">Visa Â· Mastercard Â· American Express Â· Naranja Â· Cabal</div>
+      <div style="font-size:26px;margin-bottom:8px">💳</div>
+      <div style="font-weight:700;color:#fff;margin-bottom:4px">Tarjeta de Crédito</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.6">Visa · Mastercard · American Express · Naranja · Cabal</div>
       <div style="margin-top:10px;display:flex;gap:5px;flex-wrap:wrap">
         <span style="background:rgba(201,168,76,.15);color:var(--gd);font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;border:1px solid rgba(201,168,76,.25)">3 cuotas</span>
         <span style="background:rgba(201,168,76,.15);color:var(--gd);font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;border:1px solid rgba(201,168,76,.25)">6 cuotas</span>
@@ -662,19 +662,19 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
       </div>
     </div>
     <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:18px">
-      <div style="font-size:26px;margin-bottom:8px">ð¦</div>
-      <div style="font-weight:700;color:#fff;margin-bottom:4px">Tarjeta de DÃ©bito</div>
-      <div style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.6">Visa DÃ©bito Â· Mastercard DÃ©bito Â· Maestro</div>
-      <div style="margin-top:10px"><span style="background:rgba(5,150,105,.2);color:#34D399;font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;border:1px solid rgba(5,150,105,.3)">Pago en 1 cuota Â· Sin recargo</span></div>
+      <div style="font-size:26px;margin-bottom:8px">🏦</div>
+      <div style="font-weight:700;color:#fff;margin-bottom:4px">Tarjeta de Débito</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.6">Visa Débito · Mastercard Débito · Maestro</div>
+      <div style="margin-top:10px"><span style="background:rgba(5,150,105,.2);color:#34D399;font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;border:1px solid rgba(5,150,105,.3)">Pago en 1 cuota · Sin recargo</span></div>
     </div>
     <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:18px">
-      <div style="font-size:26px;margin-bottom:8px">ð</div>
+      <div style="font-size:26px;margin-bottom:8px">💜</div>
       <div style="font-weight:700;color:#fff;margin-bottom:4px">Transferencia Brubank</div>
-      <div style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.6">Alias: <b style="color:var(--gd)">lesbleuscars</b> Â· AcreditaciÃ³n inmediata</div>
-      <div style="margin-top:10px"><span style="background:rgba(109,40,217,.3);color:#C4B5FD;font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;border:1px solid rgba(109,40,217,.4)">ð 5% OFF en productos +$250.000</span></div>
+      <div style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.6">Alias: <b style="color:var(--gd)">lesbleuscars</b> · Acreditación inmediata</div>
+      <div style="margin-top:10px"><span style="background:rgba(109,40,217,.3);color:#C4B5FD;font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;border:1px solid rgba(109,40,217,.4)">💜 5% OFF en productos +$250.000</span></div>
     </div>
     <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:18px">
-      <div style="font-size:26px;margin-bottom:8px">ð±</div>
+      <div style="font-size:26px;margin-bottom:8px">📱</div>
       <div style="font-weight:700;color:#fff;margin-bottom:4px">Mercado Pago</div>
       <div style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.6">Link de pago enviado por WhatsApp. Todas las tarjetas y billeteras.</div>
       <div style="margin-top:10px"><span style="background:rgba(0,158,227,.2);color:#7DD3FC;font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;border:1px solid rgba(0,158,227,.3)">Hasta 18 cuotas</span></div>
@@ -682,7 +682,7 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
   </div>
   <!-- Calculadora de cuotas -->
   <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:20px;max-width:600px;margin:0 auto;text-align:center">
-    <div style="font-family:'Cinzel',serif;font-size:15px;color:#fff;margin-bottom:14px">ð§® CalculÃ¡ tus cuotas</div>
+    <div style="font-family:'Cinzel',serif;font-size:15px;color:#fff;margin-bottom:14px">🧮 Calculá tus cuotas</div>
     <div style="display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap">
       <div style="display:flex;flex-direction:column;gap:4px">
         <label style="font-size:10px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.05em">Monto ($)</label>
@@ -691,15 +691,15 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
       <div style="display:flex;flex-direction:column;gap:4px">
         <label style="font-size:10px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.05em">Cuotas</label>
         <select id="calc-cuotas" onchange="calcCuotas()" style="padding:9px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:rgba(0,13,62,.8);color:#fff;font-size:14px;outline:none;font-family:'Lato',sans-serif">
-          <option value="1,0">1 cuota (sin interÃ©s)</option>
-          <option value="3,0">3 cuotas (sin interÃ©s)</option>
-          <option value="6,15">6 cuotas (~15% interÃ©s)</option>
-          <option value="12,30">12 cuotas (~30% interÃ©s)</option>
-          <option value="18,50">18 cuotas (~50% interÃ©s)</option>
+          <option value="1,0">1 cuota (sin interés)</option>
+          <option value="3,0">3 cuotas (sin interés)</option>
+          <option value="6,15">6 cuotas (~15% interés)</option>
+          <option value="12,30">12 cuotas (~30% interés)</option>
+          <option value="18,50">18 cuotas (~50% interés)</option>
         </select>
       </div>
     </div>
-    <div id="calc-result" style="margin-top:14px;font-size:13px;color:rgba(255,255,255,.7)">IngresÃ¡ el monto para ver las cuotas</div>
+    <div id="calc-result" style="margin-top:14px;font-size:13px;color:rgba(255,255,255,.7)">Ingresá el monto para ver las cuotas</div>
   </div>
 </div>
 </section>
@@ -712,13 +712,13 @@ function calcCuotas(){
   const total=m*(1+int/100);
   const cuota=total/n;
   const r=document.getElementById('calc-result');
-  if(!m){r.textContent='IngresÃ¡ el monto para ver las cuotas';return;}
-  r.innerHTML=`<span style="color:var(--gd);font-size:18px;font-weight:700;font-family:'Cinzel',serif">${n}x $${Math.round(cuota).toLocaleString('es-AR')}</span><br><span style="font-size:11px;color:rgba(255,255,255,.5)">Total: $${Math.round(total).toLocaleString('es-AR')}${int>0?' (incluye interÃ©s bancario)':' Â· Sin interÃ©s'}</span>`;
+  if(!m){r.textContent='Ingresá el monto para ver las cuotas';return;}
+  r.innerHTML=`<span style="color:var(--gd);font-size:18px;font-weight:700;font-family:'Cinzel',serif">${n}x $${Math.round(cuota).toLocaleString('es-AR')}</span><br><span style="font-size:11px;color:rgba(255,255,255,.5)">Total: $${Math.round(total).toLocaleString('es-AR')}${int>0?' (incluye interés bancario)':' · Sin interés'}</span>`;
 }
 </script>
 
 
-<!-- SECCIÃN ARGENTINA -->
+<!-- SECCIÓN ARGENTINA -->
 <section style="background:linear-gradient(135deg,#0a1628 0%,#0d1f3c 50%,#0a1628 100%);padding:48px 20px;text-align:center;position:relative;overflow:hidden">
   <!-- Estrellas decorativas -->
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(108,169,255,.08) 0%,transparent 70%);pointer-events:none"></div>
@@ -728,12 +728,12 @@ function calcCuotas(){
   <div style="position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#74ACDF 33%,#fff 33%,#fff 66%,#74ACDF 66%)"></div>
 
   <!-- Frase -->
-  <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:.25em;color:#74ACDF;margin-bottom:10px;text-transform:uppercase">LESBLEUS Â· PARA TODOS LOS ARGENTINOS</div>
+  <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:.25em;color:#74ACDF;margin-bottom:10px;text-transform:uppercase">LESBLEUS · PARA TODOS LOS ARGENTINOS</div>
   <h2 style="font-family:'Cinzel',serif;font-size:clamp(18px,4vw,30px);font-weight:700;color:#fff;line-height:1.3;margin-bottom:6px">
-    Te bancamos para que vayas a la cancha ðï¸
+    Te bancamos para que vayas a la cancha 🏟️
   </h2>
   <p style="color:rgba(255,255,255,.45);font-size:13px;max-width:460px;margin:0 auto 32px;line-height:1.6">
-    Tu auto listo. Tu hinchada tambiÃ©n. Porque los repuestos no esperan, y el partido tampoco.
+    Tu auto listo. Tu hinchada también. Porque los repuestos no esperan, y el partido tampoco.
   </p>
 
   <!-- Escudos SVG simplificados -->
@@ -769,28 +769,28 @@ function calcCuotas(){
       <span style="font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.05em">INDEPENDIENTE</span>
     </div>
 
-    <!-- VÃ©lez -->
+    <!-- Vélez -->
     <div style="display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.75;transition:opacity .2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity='.75'">
-      <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#1B4D9C" stroke="#fff" stroke-width="2"/><path d="M16 14 L32 14 L26 28 L32 42 L16 42 L22 28 Z" fill="#fff"/><text x="24" y="11" text-anchor="middle" font-family="serif" font-size="5" font-weight="bold" fill="#fff">VÃLEZ</text></svg>
-      <span style="font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.05em">VÃLEZ</span>
+      <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#1B4D9C" stroke="#fff" stroke-width="2"/><path d="M16 14 L32 14 L26 28 L32 42 L16 42 L22 28 Z" fill="#fff"/><text x="24" y="11" text-anchor="middle" font-family="serif" font-size="5" font-weight="bold" fill="#fff">VÉLEZ</text></svg>
+      <span style="font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.05em">VÉLEZ</span>
     </div>
 
-    <!-- HuracÃ¡n -->
+    <!-- Huracán -->
     <div style="display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.75;transition:opacity .2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity='.75'">
-      <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#fff" stroke="#888" stroke-width="1"/><path d="M24 6 Q36 15 36 24 Q36 36 24 42 Q12 36 12 24 Q12 15 24 6Z" fill="#CC0000" opacity=".15"/><path d="M14 24 Q20 18 24 24 Q28 30 34 24" stroke="#CC0000" stroke-width="3" fill="none"/><text x="24" y="39" text-anchor="middle" font-family="serif" font-size="6" font-weight="bold" fill="#CC0000">HURACÃN</text></svg>
-      <span style="font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.05em">HURACÃN</span>
+      <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#fff" stroke="#888" stroke-width="1"/><path d="M24 6 Q36 15 36 24 Q36 36 24 42 Q12 36 12 24 Q12 15 24 6Z" fill="#CC0000" opacity=".15"/><path d="M14 24 Q20 18 24 24 Q28 30 34 24" stroke="#CC0000" stroke-width="3" fill="none"/><text x="24" y="39" text-anchor="middle" font-family="serif" font-size="6" font-weight="bold" fill="#CC0000">HURACÁN</text></svg>
+      <span style="font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.05em">HURACÁN</span>
     </div>
 
     <!-- Bandera Argentina -->
     <div style="display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.9" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity='.9'">
       <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#74ACDF" stroke="#fff" stroke-width="1.5"/><rect x="2" y="18" width="44" height="12" fill="#fff"/><circle cx="24" cy="24" r="5" fill="#F6B40E"/><path d="M24 18 L25.5 22.5 L24 24 L22.5 22.5 Z M24 30 L25.5 25.5 L24 24 L22.5 25.5 Z M18 24 L22.5 22.5 L24 24 L22.5 25.5 Z M30 24 L25.5 22.5 L24 24 L25.5 25.5 Z" fill="#F6B40E"/></svg>
-      <span style="font-size:9px;color:rgba(255,255,255,.55);letter-spacing:.05em;font-weight:600">ARG ð¦ð·</span>
+      <span style="font-size:9px;color:rgba(255,255,255,.55);letter-spacing:.05em;font-weight:600">ARG 🇦🇷</span>
     </div>
 
   </div>
 
   <p style="margin-top:28px;font-size:11px;color:rgba(255,255,255,.2);letter-spacing:.1em">
-    SIN INTERMEDIARIOS Â· HECHO EN ARGENTINA Â· PARA TODOS LOS HINCHAS
+    SIN INTERMEDIARIOS · HECHO EN ARGENTINA · PARA TODOS LOS HINCHAS
   </p>
 </section>
 
@@ -799,59 +799,59 @@ function calcCuotas(){
   <div class="ftg">
     <div>
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem"><div style="width:34px;height:34px;background:linear-gradient(135deg,var(--gd3),var(--gd));border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="font-family:'Cinzel',serif;font-size:13px;font-weight:700;color:var(--nv)">LB</span></div><div><div style="font-family:'Cinzel',serif;font-size:16px;font-weight:600;letter-spacing:.1em;color:#fff">LESBLEUS CARS</div><div style="font-family:'DM Mono',monospace;font-size:7px;color:rgba(201,168,76,.5);letter-spacing:.15em;margin-top:1px">S.A.</div></div></div>
-      <p style="font-size:12.5px;color:rgba(255,255,255,.33);line-height:1.7;max-width:260px">NaciÃ³ en Villa Martelli con un propÃ³sito claro: que ningÃºn argentino deje su auto parado por no conseguir el repuesto o no poder pagarlo. Sin intermediarios. Directo a vos.</p>
-      <div style="margin-top:1rem;font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,.18);line-height:1.9">Colombia 104 Â· Villa Martelli Â· 1603 Â· Bs.As.<br>CUIT: 30-71172591-8<br>lesbleuscars.com Â· lesbleuscars.store</div>
+      <p style="font-size:12.5px;color:rgba(255,255,255,.33);line-height:1.7;max-width:260px">Nació en Villa Martelli con un propósito claro: que ningún argentino deje su auto parado por no conseguir el repuesto o no poder pagarlo. Sin intermediarios. Directo a vos.</p>
+      <div style="margin-top:1rem;font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,.18);line-height:1.9">Colombia 104 · Villa Martelli · 1603 · Bs.As.<br>CUIT: 30-71172591-8<br>lesbleuscars.com · lesbleuscars.store</div>
     </div>
-    <div><div class="ftt">CatÃ¡logo</div><a class="fta" onclick="fcat('opticas')">Ãpticas y Faros</a><a class="fta" onclick="fcat('espejos')">Espejos</a><a class="fta" onclick="fcat('amortiguadores')">Amortiguadores</a><a class="fta" onclick="fcat('frenos')">Frenos y Discos</a><a class="fta" onclick="fcat('filtros')">Filtros</a><a class="fta" onclick="fcat('rodamientos')">Rodamientos SKF</a></div>
-    <div><div class="ftt">InformaciÃ³n</div><a class="fta">CÃ³mo Comprar</a><a class="fta">MÃ©todos de Pago</a><a class="fta" href="portal_cliente.html" target="_blank">Seguir Mi Pedido</a><a class="fta">PolÃ­tica de Cambios</a><a class="fta">Preguntas Frecuentes</a></div>
-    <div><div class="ftt">Contacto</div><a class="fta">ð Colombia 104, Villa Martelli</a><a class="fta" href="https://wa.me/541136525215" target="_blank">ð¬ WhatsApp LesBleus</a><a class="fta">ð§ ventas@lesbleuscars.com</a><div style="margin-top:1rem"><div class="ftt">Portal</div><a class="fta" href="portal_cliente.html" target="_blank" style="color:rgba(201,168,76,.45)">ð¦ SeguÃ­ tu pedido</a></div></div>
+    <div><div class="ftt">Catálogo</div><a class="fta" onclick="fcat('opticas')">Ópticas y Faros</a><a class="fta" onclick="fcat('espejos')">Espejos</a><a class="fta" onclick="fcat('amortiguadores')">Amortiguadores</a><a class="fta" onclick="fcat('frenos')">Frenos y Discos</a><a class="fta" onclick="fcat('filtros')">Filtros</a><a class="fta" onclick="fcat('rodamientos')">Rodamientos SKF</a></div>
+    <div><div class="ftt">Información</div><a class="fta">Cómo Comprar</a><a class="fta">Métodos de Pago</a><a class="fta" href="portal_cliente.html" target="_blank">Seguir Mi Pedido</a><a class="fta">Política de Cambios</a><a class="fta">Preguntas Frecuentes</a></div>
+    <div><div class="ftt">Contacto</div><a class="fta">📍 Colombia 104, Villa Martelli</a><a class="fta" href="https://wa.me/541136525215" target="_blank">💬 WhatsApp LesBleus</a><a class="fta">📧 ventas@lesbleuscars.com</a><div style="margin-top:1rem"><div class="ftt">Portal</div><a class="fta" href="portal_cliente.html" target="_blank" style="color:rgba(201,168,76,.45)">📦 Seguí tu pedido</a></div></div>
   </div>
-  <div class="ftbot"><div class="ftcp">Â© 2026 LesBleus S.A. Â· Todos los derechos reservados Â· lesbleuscars.com</div><div class="ftvb">LogÃ­stica: VÃ­aBleu Â· viableu.com.ar Â· ð¸ðµ @lesbleuscars</div></div>
+  <div class="ftbot"><div class="ftcp">© 2026 LesBleus S.A. · Todos los derechos reservados · lesbleuscars.com</div><div class="ftvb">Logística: VíaBleu · viableu.com.ar · 📸🎵 @lesbleuscars</div></div>
 </div>
 </footer>
 
 <!-- CART DRAWER -->
 <div class="ov" id="ov" onclick="cCart()"></div>
 <div class="drw" id="drw">
-  <div class="drh"><div class="drt">ð Mi Carrito</div><button class="drx" onclick="cCart()">â</button></div>
+  <div class="drh"><div class="drt">🛒 Mi Carrito</div><button class="drx" onclick="cCart()">✕</button></div>
   <div class="drbd" id="drbd"></div>
-  <div class="drft" id="drft" style="display:none"><div class="totr"><span class="totl">Total del pedido</span><span class="totv" id="totv">$0</span></div><button class="bco" onclick="aModal()">Confirmar Pedido â</button></div>
+  <div class="drft" id="drft" style="display:none"><div class="totr"><span class="totl">Total del pedido</span><span class="totv" id="totv">$0</span></div><button class="bco" onclick="aModal()">Confirmar Pedido →</button></div>
 </div>
 
 <!-- CHECKOUT MODAL -->
 <div class="mov" id="mov">
 <div class="mdl">
-  <div class="mhd"><div class="mtt" id="mtt">Finalizar Pedido</div><button class="mxx" onclick="cModal()">â</button></div>
+  <div class="mhd"><div class="mtt" id="mtt">Finalizar Pedido</div><button class="mxx" onclick="cModal()">✕</button></div>
   <div class="mbd">
     <div class="mst on" id="ms1">
-      <div style="font-size:12.5px;color:var(--tx2);margin-bottom:1rem;padding:9px 12px;background:var(--bg);border-radius:var(--r);border-left:3px solid var(--nv)">ComprÃ¡s directo con <strong>LesBleus S.A.</strong> â sin intermediarios, sin comisiones extra. El precio que ves es lo que pagÃ¡s.</div>
+      <div style="font-size:12.5px;color:var(--tx2);margin-bottom:1rem;padding:9px 12px;background:var(--bg);border-radius:var(--r);border-left:3px solid var(--nv)">Comprás directo con <strong>LesBleus S.A.</strong> — sin intermediarios, sin comisiones extra. El precio que ves es lo que pagás.</div>
       <div class="frow"><div class="fld"><label>Nombre *</label><input type="text" placeholder="Tu nombre"></div><div class="fld"><label>WhatsApp *</label><input type="text" placeholder="+54 11..."></div></div>
       <div class="fld"><label>Email</label><input type="email" placeholder="tu@email.com"></div>
-      <div class="fld"><label>DirecciÃ³n de entrega *</label><input type="text" placeholder="Calle, nÃºmero, piso, depto"></div>
+      <div class="fld"><label>Dirección de entrega *</label><input type="text" placeholder="Calle, número, piso, depto"></div>
       <div class="frow"><div class="fld"><label>Ciudad *</label><input type="text" placeholder="Buenos Aires"></div><div class="fld"><label>Provincia</label><input type="text" placeholder="CABA"></div></div>
-      <button class="bf" onclick="iPaso(2)">Continuar â MÃ©todo de Pago</button>
+      <button class="bf" onclick="iPaso(2)">Continuar → Método de Pago</button>
     </div>
     <div class="mst" id="ms2">
-      <div class="po on" onclick="sPago(this)"><div class="pot"><div class="poico">ð</div><div><div class="ponm">Brubank Â· Transferencia</div><div class="pods">â ObtenÃ© 5% extra en productos +$250.000</div></div><div class="porb"></div></div><div class="pod"><strong>Alias:</strong> <span style="color:var(--nv);font-weight:700">lesbleuscars</span> Â· <strong>CBU:</strong> 1430000172504840794001<br><strong>Titular:</strong> LESBLEUS S.A. Â· <strong>CUIT:</strong> 30-71172591-8</div></div>
-      <div id="desc5-banner" style="background:#F5F3FF;border:1px solid #DDD6FE;border-radius:9px;padding:10px 14px;margin:-6px 0 10px;font-size:12px;color:#5B21B6;font-weight:700">ð Â¡Pagando por transferencia obtenÃ©s un 5% adicional en productos de mÃ¡s de $250.000!</div>
-      <div class="po" onclick="sPago(this)"><div class="pot"><div class="poico">ð³</div><div><div class="ponm">Mercado Pago Â· Tarjeta / Cuotas</div><div class="pods">Link enviado por WhatsApp tras confirmar</div></div><div class="porb"></div></div><div class="pod">PagÃ¡ con tarjeta de crÃ©dito o dÃ©bito. <strong>Cuotas disponibles.</strong></div></div>
-      <button class="bf" onclick="iPaso(3)">Continuar â Subir Comprobante</button>
-      <button class="bfo" onclick="iPaso(1)">â Volver</button>
+      <div class="po on" onclick="sPago(this)"><div class="pot"><div class="poico">💜</div><div><div class="ponm">Brubank · Transferencia</div><div class="pods">✅ Obtené 5% extra en productos +$250.000</div></div><div class="porb"></div></div><div class="pod"><strong>Alias:</strong> <span style="color:var(--nv);font-weight:700">lesbleuscars</span> · <strong>CBU:</strong> 1430000172504840794001<br><strong>Titular:</strong> LESBLEUS S.A. · <strong>CUIT:</strong> 30-71172591-8</div></div>
+      <div id="desc5-banner" style="background:#F5F3FF;border:1px solid #DDD6FE;border-radius:9px;padding:10px 14px;margin:-6px 0 10px;font-size:12px;color:#5B21B6;font-weight:700">💜 ¡Pagando por transferencia obtenés un 5% adicional en productos de más de $250.000!</div>
+      <div class="po" onclick="sPago(this)"><div class="pot"><div class="poico">💳</div><div><div class="ponm">Mercado Pago · Tarjeta / Cuotas</div><div class="pods">Link enviado por WhatsApp tras confirmar</div></div><div class="porb"></div></div><div class="pod">Pagá con tarjeta de crédito o débito. <strong>Cuotas disponibles.</strong></div></div>
+      <button class="bf" onclick="iPaso(3)">Continuar → Subir Comprobante</button>
+      <button class="bfo" onclick="iPaso(1)">← Volver</button>
     </div>
     <div class="mst" id="ms3">
-      <div class="notok">â <span>Datos y mÃ©todo de pago registrados.</span></div>
-      <div class="fld"><label>Comprobante *</label><div class="upz" id="upz" onclick="simUp()"><div style="font-size:26px;margin-bottom:5px" id="upico">ð</div><div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:3px" id="uptxt">TocÃ¡ para subir el comprobante</div><div style="font-size:11px;color:var(--tx3)">Foto, captura o PDF Â· mÃ¡x 10MB</div></div></div>
+      <div class="notok">✅ <span>Datos y método de pago registrados.</span></div>
+      <div class="fld"><label>Comprobante *</label><div class="upz" id="upz" onclick="simUp()"><div style="font-size:26px;margin-bottom:5px" id="upico">📄</div><div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:3px" id="uptxt">Tocá para subir el comprobante</div><div style="font-size:11px;color:var(--tx3)">Foto, captura o PDF · máx 10MB</div></div></div>
       <div class="fld"><label>Notas (opcional)</label><textarea placeholder="Referencias del domicilio..."></textarea></div>
-      <button class="bf" id="bconf" onclick="confirmar()" style="opacity:.5;pointer-events:none">Confirmar Pedido â</button>
-      <button class="bfo" onclick="iPaso(2)">â Volver</button>
+      <button class="bf" id="bconf" onclick="confirmar()" style="opacity:.5;pointer-events:none">Confirmar Pedido →</button>
+      <button class="bfo" onclick="iPaso(2)">← Volver</button>
     </div>
     <div class="mst" id="ms4">
-      <div style="text-align:center;margin-bottom:1.25rem"><div style="font-size:48px;margin-bottom:.75rem">ð</div><div style="font-family:'Cinzel',serif;font-size:21px;font-weight:600;color:var(--nv);margin-bottom:5px">Â¡Pedido Confirmado!</div><div style="font-size:13px;color:var(--tx2)">Tu cÃ³digo de compra LesBleus Cars:</div></div>
-      <div class="lbb"><div style="font-size:10px;font-weight:700;color:var(--nv2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">ð·ï¸ CÃ³digo LesBleus</div><div class="lbc" id="lbcode">LB-2026-000001</div><div style="font-size:11.5px;color:var(--tx3)">Usalo en lesbleuscars.com para seguir tu envÃ­o</div><button class="cpb" onclick="cpyCod()">ð Copiar cÃ³digo</button></div>
+      <div style="text-align:center;margin-bottom:1.25rem"><div style="font-size:48px;margin-bottom:.75rem">🎉</div><div style="font-family:'Cinzel',serif;font-size:21px;font-weight:600;color:var(--nv);margin-bottom:5px">¡Pedido Confirmado!</div><div style="font-size:13px;color:var(--tx2)">Tu código de compra LesBleus Cars:</div></div>
+      <div class="lbb"><div style="font-size:10px;font-weight:700;color:var(--nv2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">🏷️ Código LesBleus</div><div class="lbc" id="lbcode">LB-2026-000001</div><div style="font-size:11.5px;color:var(--tx3)">Usalo en lesbleuscars.com para seguir tu envío</div><button class="cpb" onclick="cpyCod()">📋 Copiar código</button></div>
       <div id="lb-creds"></div>
-      <div style="font-size:12.5px;color:var(--tx2);margin-bottom:1rem;text-align:center;line-height:1.6">Te avisamos por WhatsApp cuando el pedido estÃ© verificado y en camino.</div>
-      <a class="wab" id="lb-wa" href="#" target="_blank" style="display:none">ð¬ Recibir datos por WhatsApp</a>
-      <a class="bf" style="display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;margin-top:8px" href="portal_cliente.html" target="_blank">ð Seguir mi pedido â</a>
+      <div style="font-size:12.5px;color:var(--tx2);margin-bottom:1rem;text-align:center;line-height:1.6">Te avisamos por WhatsApp cuando el pedido esté verificado y en camino.</div>
+      <a class="wab" id="lb-wa" href="#" target="_blank" style="display:none">💬 Recibir datos por WhatsApp</a>
+      <a class="bf" style="display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;margin-top:8px" href="portal_cliente.html" target="_blank">🚚 Seguir mi pedido →</a>
       <button class="bfo" onclick="cModal();rCart()">Hacer otro pedido</button>
     </div>
   </div>
@@ -860,196 +860,196 @@ function calcCuotas(){
 
 <script>
 const PP=[
-  {id:123224098,ml:'MLA2692130086',n:'Faro delantero d22',m:'TYC',cat:'opticas',e:'ð¡',p:76782,pf:'$76.782',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692130086',t:1},
-  {id:123224105,ml:'MLA2692181474',n:'Optica Izquierdo/Conductor TYC',m:'TYC',cat:'opticas',e:'ð¡',p:244501,pf:'$244.501',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692181474',t:2},
-  {id:123224107,ml:'MLA2691897116',n:'Optica Izquierdo/Conductor Chevrolet Astra 03/10',m:'TYC',cat:'opticas',e:'ð¡',p:244501,pf:'$244.501',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691897116',t:3},
-  {id:123224124,ml:'MLA2691857496',n:'Optica Derecho/Pasajero TYC',m:'TYC',cat:'opticas',e:'ð¡',p:244501,pf:'$244.501',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691857496',t:4},
-  {id:123224126,ml:'MLA2692169538',n:'Optica Derecho/Pasajero Chevrolet Astra 03/11',m:'TYC',cat:'opticas',e:'ð¡',p:244501,pf:'$244.501',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692169538',t:5},
-  {id:123224139,ml:'MLA2692116846',n:'Optica fondo negro ls lt Izquierdo/Conductor TYC',m:'TYC',cat:'opticas',e:'ð¡',p:472482,pf:'$472.482',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692116846',t:1},
-  {id:123224081,ml:'MLA2692027028',n:'Optica fondo gris giro blanco Izquierdo/Conductor Chevrolet',m:'TYC',cat:'opticas',e:'ð¡',p:274271,pf:'$274.271',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692027028',t:2},
-  {id:123224075,ml:'MLA2692168824',n:'Optica fondo gris giro blanco Izquierdo/Conductor TYC',m:'TYC',cat:'opticas',e:'ð¡',p:252087,pf:'$252.087',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692168824',t:3},
-  {id:123224168,ml:'MLA2691883384',n:'Faro trasero exterior Derecho TYC',m:'TYC',cat:'opticas',e:'ð¡',p:212567,pf:'$212.567',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691883384',t:4},
-  {id:123224170,ml:'MLA2692104606',n:'Faro trasero exterior Derecho Toyota Corolla 00/02',m:'TYC',cat:'opticas',e:'ð¡',p:231273,pf:'$231.273',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692104606',t:5},
-  {id:123224190,ml:'MLA2692181478',n:'Faro delantero',m:'TYC',cat:'opticas',e:'ð¡',p:91411,pf:'$91.411',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692181478',t:1},
-  {id:123224203,ml:'MLA2692000296',n:'Faro delantero',m:'TYC',cat:'opticas',e:'ð¡',p:91411,pf:'$91.411',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692000296',t:2},
-  {id:123224212,ml:'MLA2692026230',n:'Faro delantero',m:'TYC',cat:'opticas',e:'ð¡',p:71392,pf:'$71.392',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692026230',t:3},
-  {id:123224248,ml:'MLA2691896400',n:'Faro delantero japon 4 puertas',m:'TYC',cat:'opticas',e:'ð¡',p:76210,pf:'$76.210',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691896400',t:4},
-  {id:123224261,ml:'MLA2691857510',n:'Faro delantero',m:'TYC',cat:'opticas',e:'ð¡',p:64606,pf:'$64.606',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691857510',t:5},
-  {id:123224268,ml:'MLA2691883408',n:'Faro trasero 4 puertas Derecho TYC',m:'TYC',cat:'opticas',e:'ð¡',p:220597,pf:'$220.597',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691883408',t:1},
-  {id:123224270,ml:'MLA2692104628',n:'Faro trasero 4 puertas Derecho Ford Focus III 13/15',m:'TYC',cat:'opticas',e:'ð¡',p:240010,pf:'$240.010',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692104628',t:2},
-  {id:123224272,ml:'MLA2692104630',n:'Faro trasero 4 puertas Derecho Ford Focus 2 13/15',m:'TYC',cat:'opticas',e:'ð¡',p:240010,pf:'$240.010',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692104630',t:3},
-  {id:123224285,ml:'MLA2692000308',n:'Faro delantero duty',m:'TYC',cat:'opticas',e:'ð¡',p:165252,pf:'$165.252',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692000308',t:4},
-  {id:123224291,ml:'MLA2692116864',n:'Faro delantero duty',m:'TYC',cat:'opticas',e:'ð¡',p:165252,pf:'$165.252',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692116864',t:5},
-  {id:123224083,ml:'MLA2692090954',n:'Espejo exterior manual Derecho Giving',m:'Giving',cat:'espejos',e:'ðª',p:69370,pf:'$69.370',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692090954',t:1},
-  {id:123224084,ml:'MLA2692130848',n:'Espejo exterior 5 puertas electrico chico Derecho Audi A3',m:'Giving',cat:'espejos',e:'ðª',p:113584,pf:'$113.584',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692130848',t:2},
-  {id:123224099,ml:'MLA2692130090',n:'ESPEJO EXTERIOR CON CONTROL Izquierdo Giving',m:'Giving',cat:'espejos',e:'ðª',p:133141,pf:'$133.141',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692130090',t:3},
-  {id:123224101,ml:'MLA2692130852',n:'ESPEJO EXTERIOR CON CONTROL Izquierdo Peugeot Expert 99/06',m:'Giving',cat:'espejos',e:'ðª',p:146456,pf:'$146.456',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692130852',t:4},
-  {id:123224109,ml:'MLA2692130102',n:'ESPEJO EXTERIOR CON CONTROL Derecho Giving',m:'Giving',cat:'espejos',e:'ðª',p:122054,pf:'$122.054',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692130102',t:5},
-  {id:123224111,ml:'MLA2691884220',n:'ESPEJO EXTERIOR CON CONTROL Derecho Peugeot Expert 00/06',m:'Giving',cat:'espejos',e:'ðª',p:134260,pf:'$134.260',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691884220',t:1},
-  {id:123224128,ml:'MLA2692052236',n:'Espejo exterior electrico Derecho Giving',m:'Giving',cat:'espejos',e:'ðª',p:100369,pf:'$100.369',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692052236',t:2},
-  {id:123224130,ml:'MLA2692130862',n:'Espejo exterior electrico Derecho CitroÃ«n C3 03/13',m:'Giving',cat:'espejos',e:'ðª',p:100369,pf:'$100.369',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692130862',t:3},
-  {id:123224133,ml:'MLA2692000288',n:'Espejo exterior electrico Derecho Spj-Orig.',m:'Spj-Orig.',cat:'espejos',e:'ðª',p:263301,pf:'$263.301',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692000288',t:4},
-  {id:123224135,ml:'MLA2691857506',n:'Espejo exterior manual Izquierdo Giving',m:'Giving',cat:'espejos',e:'ðª',p:69370,pf:'$69.370',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691857506',t:5},
-  {id:123224137,ml:'MLA2692130866',n:'Espejo exterior electrico Derecho Peugeot 2008 16/21',m:'Spj-Orig.',cat:'espejos',e:'ðª',p:286472,pf:'$286.472',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692130866',t:1},
-  {id:123224138,ml:'MLA2691884232',n:'Espejo exterior manual Izquierdo Toyota Hilux Chassi 08/09',m:'Giving',cat:'espejos',e:'ðª',p:75475,pf:'$75.475',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691884232',t:2},
-  {id:123224141,ml:'MLA2692027040',n:'Espejo exterior electrico Derecho Peugeot 208 13/16',m:'Spj-Orig.',cat:'espejos',e:'ðª',p:286472,pf:'$286.472',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692027040',t:3},
-  {id:123224143,ml:'MLA2691897126',n:'Espejo exterior manual Izquierdo Toyota Hilux 05/15',m:'Giving',cat:'espejos',e:'ðª',p:75475,pf:'$75.475',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691897126',t:4},
-  {id:123224149,ml:'MLA2692027042',n:'Espejo exterior manual Izquierdo Toyota Hilux S/C 2005',m:'Giving',cat:'espejos',e:'ðª',p:75475,pf:'$75.475',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692027042',t:5},
-  {id:123224076,ml:'MLA2691883364',n:'Espejo exterior 5 puertas electrico chico Derecho Giving',m:'Giving',cat:'espejos',e:'ðª',p:103258,pf:'$103.258',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691883364',t:1},
-  {id:123224150,ml:'MLA2692104608',n:'Espejo exterior manual Izquierdo Toyota Hilux Pick-Up 08/15',m:'Giving',cat:'espejos',e:'ðª',p:75475,pf:'$75.475',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692104608',t:2},
-  {id:123224187,ml:'MLA2691857508',n:'Espejo exterior con control Izquierdo Giving',m:'Giving',cat:'espejos',e:'ðª',p:73474,pf:'$73.474',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691857508',t:3},
-  {id:123224192,ml:'MLA2691858238',n:'Espejo exterior con control Izquierdo Ford Focus 99/10',m:'Giving',cat:'espejos',e:'ðª',p:73474,pf:'$73.474',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691858238',t:4},
-  {id:123224193,ml:'MLA2692090966',n:'Espejo exterior manual Derecho Giving',m:'Giving',cat:'espejos',e:'ðª',p:95627,pf:'$95.627',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692090966',t:5},
-  {id:123224176,ml:'MLA2691896390',n:'Maquina levanta cristal 4 o 5 puertas delantera Delantero Ve',m:'Vespoli',cat:'levanta-cristal',e:'ð§',p:63780,pf:'$63.780',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691896390',t:1},
-  {id:123224179,ml:'MLA2692001034',n:'Maquina levanta cristal 4 o 5 puertas delantera Delantero Re',m:'Vespoli',cat:'levanta-cristal',e:'ð§',p:69392,pf:'$69.392',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692001034',t:2},
-  {id:123224210,ml:'MLA2692026232',n:'Maquina levanta cristal delantera Delantero Vespoli',m:'Vespoli',cat:'levanta-cristal',e:'ð§',p:57187,pf:'$57.187',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692026232',t:3},
-  {id:123224216,ml:'MLA2691897134',n:'Maquina levanta cristal delantera Delantero Volkswagen Point',m:'Vespoli',cat:'levanta-cristal',e:'ð§',p:62220,pf:'$62.220',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691897134',t:4},
-  {id:123224219,ml:'MLA2692001040',n:'Maquina levanta cristal delantera Delantero Ford Orion 94/97',m:'Vespoli',cat:'levanta-cristal',e:'ð§',p:62220,pf:'$62.220',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692001040',t:5},
-  {id:123224251,ml:'MLA2692116860',n:'Maquina levanta cristal delantera Delantero Vespoli',m:'Vespoli',cat:'levanta-cristal',e:'ð§',p:59627,pf:'$59.627',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692116860',t:1},
-  {id:123224254,ml:'MLA2692169558',n:'Maquina levanta cristal delantera Delantero Volkswagen Point',m:'Vespoli',cat:'levanta-cristal',e:'ð§',p:64874,pf:'$64.874',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692169558',t:2},
-  {id:123224257,ml:'MLA2692130884',n:'Maquina levanta cristal delantera Delantero Ford Orion 94/97',m:'Vespoli',cat:'levanta-cristal',e:'ð§',p:64874,pf:'$64.874',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692130884',t:3},
-  {id:123224267,ml:'MLA2692052246',n:'Maquina levanta cristal 5 puertas delantera Delantero Vespol',m:'Vespoli',cat:'levanta-cristal',e:'ð§',p:75161,pf:'$75.161',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692052246',t:4},
-  {id:123224269,ml:'MLA2692117620',n:'Maquina levanta cristal 5 puertas delantera Delantero Ford F',m:'Vespoli',cat:'levanta-cristal',e:'ð§',p:81775,pf:'$81.775',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692117620',t:5},
-  {id:123224276,ml:'MLA2692116866',n:'Maquina levanta cristal electrica con motor Delantero Taiwan',m:'Taiwan',cat:'levanta-cristal',e:'ð§',p:137183,pf:'$137.183',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692116866',t:1},
-  {id:123224277,ml:'MLA2692001060',n:'Maquina levanta cristal electrica con motor Delantero Citroe',m:'Taiwan',cat:'levanta-cristal',e:'ð§',p:125050,pf:'$125.050',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692001060',t:2},
-  {id:123224279,ml:'MLA2692117626',n:'Maquina levanta cristal electrica con motor Delantero Peugeo',m:'Taiwan',cat:'levanta-cristal',e:'ð§',p:150901,pf:'$150.901',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692117626',t:3},
-  {id:123224280,ml:'MLA2692117624',n:'Maquina levanta cristal electrica con motor Delantero CitroÃ«',m:'Taiwan',cat:'levanta-cristal',e:'ð§',p:150901,pf:'$150.901',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692117624',t:4},
-  {id:123224281,ml:'MLA2692109636',n:'Maquina levanta cristal 5 puertas delantera Delantero Vespol',m:'Vespoli',cat:'levanta-cristal',e:'ð§',p:75161,pf:'$75.161',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692109636',t:5},
-  {id:123224282,ml:'MLA2692032074',n:'Maquina levanta cristal 5 puertas delantera Delantero Ford F',m:'Vespoli',cat:'levanta-cristal',e:'ð§',p:81775,pf:'$81.775',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692032074',t:1},
-  {id:123224286,ml:'MLA2692168864',n:'Maquina levanta cristal 5 puertas delantera Delantero C-Orig',m:'C-Orig.',cat:'levanta-cristal',e:'ð§',p:133162,pf:'$133.162',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692168864',t:2},
-  {id:123224288,ml:'MLA2692104634',n:'Maquina levanta cristal 5 puertas delantera Delantero Peugeo',m:'C-Orig.',cat:'levanta-cristal',e:'ð§',p:146479,pf:'$146.479',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692104634',t:3},
-  {id:123224297,ml:'MLA2692181492',n:'Maquina levanta cristal delantera sin motor Delantero Taiwan',m:'Taiwan',cat:'levanta-cristal',e:'ð§',p:102279,pf:'$102.279',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692181492',t:4},
-  {id:123224298,ml:'MLA2692000314',n:'Maquina levanta cristal 5 puertas delantera Delantero Vespol',m:'Vespoli',cat:'levanta-cristal',e:'ð§',p:56159,pf:'$56.159',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692000314',t:5},
-  {id:123224100,ml:'MLA2692052230',n:'Manija interior color negro de metal Izquierdo Taiwan',m:'Taiwan',cat:'manijas',e:'ðª',p:21148,pf:'$21.148',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692052230',t:1},
-  {id:123224102,ml:'MLA2692117592',n:'Manija interior color negro de metal Izquierdo Ford F-150',m:'Taiwan',cat:'manijas',e:'ðª',p:23009,pf:'$23.009',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692117592',t:2},
-  {id:123224104,ml:'MLA2692053080',n:'Manija interior color negro de metal Izquierdo Ford F-100',m:'Taiwan',cat:'manijas',e:'ðª',p:23009,pf:'$23.009',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692053080',t:3},
-  {id:123224118,ml:'MLA2691857492',n:'Manija de puerta exterior duty Izquierdo Taiwan',m:'Taiwan',cat:'manijas',e:'ðª',p:59318,pf:'$59.318',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691857492',t:4},
-  {id:123224120,ml:'MLA2692182274',n:'Manija de puerta exterior duty Izquierdo Ford F-100 99/12',m:'Taiwan',cat:'manijas',e:'ðª',p:59318,pf:'$59.318',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692182274',t:5},
-  {id:123224121,ml:'MLA2692130860',n:'Manija de puerta exterior duty Izquierdo Ford F-150 00/03',m:'Taiwan',cat:'manijas',e:'ðª',p:59318,pf:'$59.318',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692130860',t:1},
-  {id:123224151,ml:'MLA2691883374',n:'Manija de puerta exterior cromado sin agujero Derecho Taiwan',m:'Taiwan',cat:'manijas',e:'ðª',p:54676,pf:'$54.676',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691883374',t:2},
-  {id:123224152,ml:'MLA2692130868',n:'Manija de puerta exterior cromado sin agujero Derecho Chevro',m:'Taiwan',cat:'manijas',e:'ðª',p:59488,pf:'$59.488',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692130868',t:3},
-  {id:123224158,ml:'MLA2692181476',n:'Manija de puerta exterior delantera Derecho Taiwan',m:'Taiwan',cat:'manijas',e:'ðª',p:71581,pf:'$71.581',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692181476',t:4},
-  {id:123224162,ml:'MLA2692169546',n:'Manija de puerta exterior delantera Derecho Fiat Punto 07/15',m:'Taiwan',cat:'manijas',e:'ðª',p:78739,pf:'$78.739',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692169546',t:5},
-  {id:123225076,ml:'MLA2692026384',n:'Manija de porton lateral Taiwan',m:'Taiwan',cat:'manijas',e:'ðª',p:44570,pf:'$44.570',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692026384',t:1},
-  {id:123225079,ml:'MLA2692169826',n:'Manija de porton lateral Peugeot Boxer 95/03',m:'Taiwan',cat:'manijas',e:'ðª',p:48492,pf:'$48.492',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692169826',t:2},
-  {id:123225082,ml:'MLA2692027306',n:'Manija de porton lateral Fiat Ducato 96/04',m:'Taiwan',cat:'manijas',e:'ðª',p:48492,pf:'$48.492',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692027306',t:3},
-  {id:123225103,ml:'MLA2692000414',n:'Manija interior Izquierdo Taiwan',m:'Taiwan',cat:'manijas',e:'ðª',p:9981,pf:'$9.981',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692000414',t:4},
-  {id:123225105,ml:'MLA2692001284',n:'Manija interior Izquierdo Toyota Corolla 00/02',m:'Taiwan',cat:'manijas',e:'ðª',p:10860,pf:'$10.860',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692001284',t:5},
-  {id:123225114,ml:'MLA2692104042',n:'Manija interior gris Derecho C-Orig.',m:'C-Orig.',cat:'manijas',e:'ðª',p:19716,pf:'$19.716',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692104042',t:1},
-  {id:123225117,ml:'MLA2691858528',n:'Manija interior gris Derecho Ford Ecosport 03/13',m:'C-Orig.',cat:'manijas',e:'ðª',p:21451,pf:'$21.451',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691858528',t:2},
-  {id:123225120,ml:'MLA2692117900',n:'Manija interior gris Derecho Ford Fiesta 07/14',m:'C-Orig.',cat:'manijas',e:'ðª',p:21451,pf:'$21.451',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692117900',t:3},
-  {id:123225131,ml:'MLA2692181618',n:'Manija interior color negro Izquierdo C-Orig.',m:'C-Orig.',cat:'manijas',e:'ðª',p:14164,pf:'$14.164',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692181618',t:4},
-  {id:123225133,ml:'MLA2692092080',n:'Manija interior color negro Izquierdo Ford Fiesta 07/14',m:'C-Orig.',cat:'manijas',e:'ðª',p:15411,pf:'$15.411',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692092080',t:5},
-  {id:90000,ml:'FUE271-92',n:'FUELLE RENAULT CLIO 94/99 CLIO II 00/03 KANGOO 98/03 EXPRESS MEGA',m:'GRIFFO',cat:'amortiguadores',e:'ð',p:8791,pf:'$8.791',ok:true,url:'https://www.lesbleuscars.com/producto/FUE271-92',t:1},
-  {id:90001,ml:'FRI334071MM',n:'AMORTIGUADOR VW GACEL SENDA GOL SAVEIRO 83/95 GOL COUNTRY 95/.. D',m:'FRIC ROT MONROE',cat:'amortiguadores',e:'ð',p:56421,pf:'$56.421',ok:true,url:'https://www.lesbleuscars.com/producto/FRI334071MM',t:2},
-  {id:90002,ml:'FRI38040MI',n:'AMORTIGUADOR CHEVROLET CLASSIC 10/.. CORSA 94/.. CORSA II 02/.. C',m:'FRIC ROT MONROE',cat:'amortiguadores',e:'ð',p:49849,pf:'$49.849',ok:true,url:'https://www.lesbleuscars.com/producto/FRI38040MI',t:3},
-  {id:90003,ml:'FRI38205MI',n:'AMORTIGUADOR VW GOL SOFT COUNTRY 95/.. TRASERO REEMPLAZA A FRI334',m:'FRIC ROT MONROE',cat:'amortiguadores',e:'ð',p:60291,pf:'$60.291',ok:true,url:'https://www.lesbleuscars.com/producto/FRI38205MI',t:4},
-  {id:90004,ml:'MON749166SP',n:'AMORTIGUADOR VW FOX 1.0 1.6 04/.. SURAN 05/.. DELANTERO CON BARRA',m:'MONROE',cat:'amortiguadores',e:'ð',p:107315,pf:'$107.315',ok:true,url:'https://www.lesbleuscars.com/producto/MON749166SP',t:5},
-  {id:90005,ml:'FRI334068MM',n:'AMORTIGUADOR PEUGEOT 206 206 SW 207 99/.. TRASERO MATIC REEMPLAZA',m:'FRIC ROT MONROE',cat:'amortiguadores',e:'ð',p:68157,pf:'$68.157',ok:true,url:'https://www.lesbleuscars.com/producto/FRI334068MM',t:1},
-  {id:90006,ml:'MONSP003',n:'AMORTIGUADOR TOYOTA ETIOS 12/.. DELANTERO REEMPLAZA A FRI94245MI',m:'MONROE',cat:'amortiguadores',e:'ð',p:110525,pf:'$110.525',ok:true,url:'https://www.lesbleuscars.com/producto/MONSP003',t:2},
-  {id:90007,ml:'MON749355SP',n:'AMORTIGUADOR CHEVROLET CORSA 94/.. WAGON 91/.. CLASSIC 10/.. CELT',m:'MONROE',cat:'amortiguadores',e:'ð',p:88998,pf:'$88.998',ok:true,url:'https://www.lesbleuscars.com/producto/MON749355SP',t:3},
-  {id:90008,ml:'FRI808178MM',n:'AMORTIGUADOR FIAT PALIO SIENA 01/.. DELANTERO MATIC REEMPLAZA A F',m:'FRIC ROT MONROE',cat:'amortiguadores',e:'ð',p:103694,pf:'$103.694',ok:true,url:'https://www.lesbleuscars.com/producto/FRI808178MM',t:4},
-  {id:90009,ml:'AXI044.2588',n:'CAZOLETA CHEVROLET COBALT 11/.. ONIX 12/.. PRISMA 13/.. SPIN 12/.',m:'AXIOS',cat:'amortiguadores',e:'ð',p:35989,pf:'$35.989',ok:true,url:'https://www.lesbleuscars.com/producto/AXI044.2588',t:5},
-  {id:90010,ml:'FRI334554IMM',n:'AMORTIGUADOR PEUGEOT PARTNER CITROEN BERLINGO 98/..TRASERO MATIC',m:'FRIC ROT MONROE',cat:'amortiguadores',e:'ð',p:57810,pf:'$57.810',ok:true,url:'https://www.lesbleuscars.com/producto/FRI334554IMM',t:1},
-  {id:90011,ml:'FRI334171MM',n:'AMORTIGUADOR FIAT PALIO SIENA 97/.. ALFA ROMEO 145 146 94/.. TRAS',m:'FRIC ROT MONROE',cat:'amortiguadores',e:'ð',p:64473,pf:'$64.473',ok:true,url:'https://www.lesbleuscars.com/producto/FRI334171MM',t:2},
-  {id:90012,ml:'WD84750',n:'DISCO FRENO CITROEN C3 02/.. C4 09/.. DS3 XSARA 01/.. XANTIA BREA',m:'WILDBRAKE',cat:'frenos',e:'ð',p:49144,pf:'$49.144',ok:true,url:'https://www.lesbleuscars.com/producto/WD84750',t:3},
-  {id:90013,ml:'WD81440',n:'DISCO FRENO CHEVROLET CORSA 1.6 SW COMBO PICK UP ../02 AGILE KADE',m:'WILDBRAKE',cat:'frenos',e:'ð',p:35429,pf:'$35.429',ok:true,url:'https://www.lesbleuscars.com/producto/WD81440',t:4},
-  {id:90014,ml:'WD83550',n:'DISCO FRENO RENAULT R19 CLIO WILLIAMS CLIO ABS SCENIC 1.4I 1.6I K',m:'WILDBRAKE',cat:'frenos',e:'ð',p:46858,pf:'$46.858',ok:true,url:'https://www.lesbleuscars.com/producto/WD83550',t:5},
-  {id:90015,ml:'COQ0252',n:'PASTILLA FRENO AUDI A3 97/.. SEATLEON 99/.. VW NEW BEETLE POLO BO',m:'COBREQ',cat:'frenos',e:'ð',p:47757,pf:'$47.757',ok:true,url:'https://www.lesbleuscars.com/producto/COQ0252',t:1},
-  {id:90016,ml:'WD83975',n:'DISCO FRENO VW POLO CADDY CARAT GOL GOL POWER SAVEIRO QUANTUM SAN',m:'WILDBRAKE',cat:'frenos',e:'ð',p:38344,pf:'$38.344',ok:true,url:'https://www.lesbleuscars.com/producto/WD83975',t:2},
-  {id:90017,ml:'WD80178',n:'DISCO FRENO FIAT PALIO 16V WEEKEND SIENA 96/.. UNO TURBO 95/.. DE',m:'WILDBRAKE',cat:'frenos',e:'ð',p:39239,pf:'$39.239',ok:true,url:'https://www.lesbleuscars.com/producto/WD80178',t:3},
-  {id:90018,ml:'WD85297',n:'DISCO FRENO VW GOL TREND VOYAGE SAVEIRO 1.6 8V 08/.. DELANTERO VE',m:'WILDBRAKE',cat:'frenos',e:'ð',p:45715,pf:'$45.715',ok:true,url:'https://www.lesbleuscars.com/producto/WD85297',t:4},
-  {id:90019,ml:'WD85602',n:'DISCO FRENO AUDI A3 A1 SEAT LEON TOLEDO II 99/.. VW BORA 00/.. CR',m:'WILDBRAKE',cat:'frenos',e:'ð',p:50668,pf:'$50.668',ok:true,url:'https://www.lesbleuscars.com/producto/WD85602',t:5},
-  {id:90020,ml:'WD84113',n:'DISCO FRENO TOYOTA HILUX SW4 2.5 3.0 TURBO 05/.. DELANTERO VENTIL',m:'WILDBRAKE',cat:'frenos',e:'ð',p:93335,pf:'$93.335',ok:true,url:'https://www.lesbleuscars.com/producto/WD84113',t:1},
-  {id:90021,ml:'WD84752',n:'DISCO FRENO PEUGEOT 307 308 408 208 16/17 CITROEN C5 SEDAN 01/..',m:'WILDBRAKE',cat:'frenos',e:'ð',p:69715,pf:'$69.715',ok:true,url:'https://www.lesbleuscars.com/producto/WD84752',t:2},
-  {id:90022,ml:'COQ1375',n:'PASTILLA FRENO MITSUBISHI MONTERO III 06/.. TOYOTA RUNER HILUX SW',m:'COBREQ',cat:'frenos',e:'ð',p:63184,pf:'$63.184',ok:true,url:'https://www.lesbleuscars.com/producto/COQ1375',t:3},
-  {id:90023,ml:'COQ0547',n:'PASTILLA FRENO FIAT ARGO CRONOS 18/.. DOBLO 09/.. GRAND SIENA PUN',m:'COBREQ',cat:'frenos',e:'ð',p:41247,pf:'$41.247',ok:true,url:'https://www.lesbleuscars.com/producto/COQ0547',t:4},
-  {id:90024,ml:'SKF-BB1-0624 AG',n:'RODAMIENTO BOLAS RÃGIDO SELLOS REFORZADOS RS1 60-80% DE GRASA JAU',m:'SKF AGRO',cat:'rodamientos',e:'âï¸',p:8623,pf:'$8.623',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-BB1-0624 AG',t:5},
-  {id:90025,ml:'SKF-VKBA 4529',n:'KIT RODAMIENTO TRAS VW CADDY GOL GOLF PASSAT POLO SAVEIRO SENDA F',m:'SKF',cat:'rodamientos',e:'âï¸',p:39064,pf:'$39.064',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-VKBA 4529',t:1},
-  {id:90026,ml:'SKF-6203-2RSH/C3',n:'RODAMIENTO BOLAS APLICACION MIXTA JAULA CHAPA METALICA JUEGO RADI',m:'SKF',cat:'rodamientos',e:'âï¸',p:7349,pf:'$7.349',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-6203-2RSH/C3',t:2},
-  {id:90027,ml:'SKF-6202-2RSH/C3',n:'RODAMIENTO ALTERNADOR RENAULT 4 6 9 11 12 18 19 21 EXPRESS KANGOO',m:'SKF',cat:'rodamientos',e:'âï¸',p:6766,pf:'$6.766',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-6202-2RSH/C3',t:3},
-  {id:90028,ml:'SKF-VKBA 4544',n:'KIT RODAMIENTO RUEDA CHEVROLET CORSA CELTA CLASSIC MERIVA KADETT',m:'SKF',cat:'rodamientos',e:'âï¸',p:39064,pf:'$39.064',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-VKBA 4544',t:4},
-  {id:90029,ml:'SKF-BB1-0623 AG',n:'RODAMIENTO BOLAS RÃGIDO SELLOS REFORZADOS RS1 60-80% DE GRASA JAU',m:'SKF AGRO',cat:'rodamientos',e:'âï¸',p:6267,pf:'$6.267',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-BB1-0623 AG',t:5},
-  {id:90030,ml:'SKF-6204-2RSH/C3',n:'RODAMIENTO BOLAS APLICACION MIXTA DODGE D100 D200 DP200 BOMBA AGU',m:'SKF',cat:'rodamientos',e:'âï¸',p:10116,pf:'$10.116',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-6204-2RSH/C3',t:1},
-  {id:90031,ml:'SKF-BB1-0625 AG',n:'RODAMIENTO BOLAS RÃGIDO SELLOS REFORZADOS RS1 60-80% DE GRASA JAU',m:'SKF AGRO',cat:'rodamientos',e:'âï¸',p:10487,pf:'$10.487',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-BB1-0625 AG',t:2},
-  {id:90032,ml:'AXI022.1280',n:'CAZOLETA VW GOL 02/.. COUNTRY DELANTERA CON RODAMIENTO',m:'AXIOS',cat:'rodamientos',e:'âï¸',p:34354,pf:'$34.354',ok:true,url:'https://www.lesbleuscars.com/producto/AXI022.1280',t:3},
-  {id:90033,ml:'SKF-VKBC 41036',n:'RODAMIENTO RUEDA VW FOX CROSS FOX SURAN GOL POINTER SAVEIRO SENDA',m:'SKF',cat:'rodamientos',e:'âï¸',p:60920,pf:'$60.920',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-VKBC 41036',t:4},
-  {id:90034,ml:'SKF-6205-2RSH/C3',n:'RODAMIENTO BOLAS APLICACION MIXTA DAIHATSU CHARADE G200 G201 DAEW',m:'SKF',cat:'rodamientos',e:'âï¸',p:12312,pf:'$12.312',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-6205-2RSH/C3',t:5},
-  {id:90035,ml:'SKF-VKBC 20212',n:'RODAMIENTO RUEDA RENAULT LOGAN MEGANE R9 11 19 CLIO DUSTER KANGOO',m:'SKF',cat:'rodamientos',e:'âï¸',p:54435,pf:'$54.435',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-VKBC 20212',t:1},
-  {id:90036,ml:'CH0185',n:'BUJIA PRECALENTAMIENTO CITROEN AX SAXO XSARA 1.5D MOTOR TUD5 0250',m:'CHAMPION',cat:'bujias',e:'â¡',p:15116,pf:'$15.116',ok:true,url:'https://www.lesbleuscars.com/producto/CH0185',t:2},
-  {id:90037,ml:'CHRN9YC',n:'BUJIA ENCENDIDO CHEVROLET FIAT FORD RENAULT VOLKSWAGEN MOTOR 1.4',m:'CHAMPION',cat:'bujias',e:'â¡',p:5255,pf:'$5.255',ok:true,url:'https://www.lesbleuscars.com/producto/CHRN9YC',t:3},
-  {id:90038,ml:'CH0189',n:'BUJIA PRECALENTAMIENTO ALFA ROMEO 145  146  1,9 2,0 TD CHYSLER CI',m:'CHAMPION',cat:'bujias',e:'â¡',p:10206,pf:'$10.206',ok:true,url:'https://www.lesbleuscars.com/producto/CH0189',t:4},
-  {id:90039,ml:'CH0260',n:'BUJIA PRECALENTAMIENTO VW GOL 1.6D GOLF 1.9D TD POLO 1.9D SENDA 1',m:'CHAMPION',cat:'bujias',e:'â¡',p:9868,pf:'$9.868',ok:true,url:'https://www.lesbleuscars.com/producto/CH0260',t:5},
-  {id:90040,ml:'MACV0700001',n:'CABLE BUJIA VW VOYAGE SURAN SAVEIRO POLO CLASSIC GOLF 1.6 8V EA 1',m:'MAHLE',cat:'bujias',e:'â¡',p:45985,pf:'$45.985',ok:true,url:'https://www.lesbleuscars.com/producto/MACV0700001',t:1},
-  {id:90041,ml:'H1865RC',n:'BUJIA ENCENDIDO CHEVROLET AGILE 1.4 ASTRA 1.8 2.0 BLAZER 2.2 CELT',m:'HESCHER',cat:'bujias',e:'â¡',p:3799,pf:'$3.799',ok:true,url:'https://www.lesbleuscars.com/producto/H1865RC',t:2},
-  {id:90042,ml:'MACV0250002',n:'CABLE BUJIA CHEVROLET AGILE 1.4 8V 09/.. CELTA 1.4 8V COBALT 1.8',m:'MAHLE',cat:'bujias',e:'â¡',p:42162,pf:'$42.162',ok:true,url:'https://www.lesbleuscars.com/producto/MACV0250002',t:3},
-  {id:90043,ml:'H1763RC',n:'BUJIA ENCENDIDO AGILE 1.4 8V ASTRA 2.0 COBALT 1.8 CORSA 1.6 MERIV',m:'HESCHER',cat:'bujias',e:'â¡',p:3799,pf:'$3.799',ok:true,url:'https://www.lesbleuscars.com/producto/H1763RC',t:4},
-  {id:90044,ml:'H1743RC',n:'BUJIA ENCENDIDO CHEVROLET AVEO 1.6 AX 1.1BERLINGO 1.4 C3 1.4 DUNA',m:'HESCHER',cat:'bujias',e:'â¡',p:4066,pf:'$4.066',ok:true,url:'https://www.lesbleuscars.com/producto/H1743RC',t:5},
-  {id:90045,ml:'CHF14YC',n:'BUJIA ENCENDIDO FORD FALCON 3.0 3.6 6 CIL. F100 3.6 4.9 F150 F250',m:'CHAMPION',cat:'bujias',e:'â¡',p:5059,pf:'$5.059',ok:true,url:'https://www.lesbleuscars.com/producto/CHF14YC',t:1},
-  {id:90046,ml:'CHL92YC',n:'BUJIA ENCENDIDO IKA TORINO TORNADO RENAULT 4 S GTL R5 L R6 GTL 12',m:'CHAMPION',cat:'bujias',e:'â¡',p:5079,pf:'$5.079',ok:true,url:'https://www.lesbleuscars.com/producto/CHL92YC',t:2},
-  {id:90047,ml:'CH0217',n:'BUJIA PRECALENTAMIENTO RENAULT TRAFIC 1.9D KANGOO 1.9D F8Q-662  6',m:'CHAMPION',cat:'bujias',e:'â¡',p:15120,pf:'$15.120',ok:true,url:'https://www.lesbleuscars.com/producto/CH0217',t:3},
-  {id:90048,ml:'MAFOC90',n:'FILTRO DE ACEITE FIAT PALIO SIENA PUNTO STILO1.8 8V 16V DAEWO ESP',m:'MAHLE',cat:'filtros',e:'ð©',p:7401,pf:'$7.401',ok:true,url:'https://www.lesbleuscars.com/producto/MAFOC90',t:4},
-  {id:90049,ml:'MAFOC250',n:'FILTRO DE ACEITE VOLKSWAGEN FOX CROSS FOX SURAN 1.6 GOL 1.0 GOL T',m:'MAHLE',cat:'filtros',e:'ð©',p:8496,pf:'$8.496',ok:true,url:'https://www.lesbleuscars.com/producto/MAFOC250',t:5},
-  {id:90050,ml:'MAFOC47',n:'FILTRO DE ACEITE VOLKSWAGEN VOYAGE 1.6 GOL 1.4 MI SEAT IBIZA 1.8',m:'MAHLE',cat:'filtros',e:'ð©',p:9733,pf:'$9.733',ok:true,url:'https://www.lesbleuscars.com/producto/MAFOC47',t:1},
-  {id:90051,ml:'MAFOC309',n:'FILTRO DE ACEITE RENAULT SANDERO STEPWAY SYMBOL KANGOO DUSTER ORO',m:'MAHLE',cat:'filtros',e:'ð©',p:8337,pf:'$8.337',ok:true,url:'https://www.lesbleuscars.com/producto/MAFOC309',t:2},
-  {id:90052,ml:'MAFKL583',n:'FILTRO DE COMBUSTIBLE PSA 106 205 206 BERLINGO 207 TU5J4 TU3JP 20',m:'MAHLE',cat:'filtros',e:'ð©',p:11553,pf:'$11.553',ok:true,url:'https://www.lesbleuscars.com/producto/MAFKL583',t:3},
-  {id:90053,ml:'MAFOX339/2D',n:'FILTRO DE ACEITE PEUGEOT 407 2.0 207 5008 PARTNER 1.6 208 1.5 CIT',m:'MAHLE',cat:'filtros',e:'ð©',p:14841,pf:'$14.841',ok:true,url:'https://www.lesbleuscars.com/producto/MAFOX339/2D',t:4},
-  {id:90054,ml:'MAFOC100',n:'FILTRO DE ACEITE CITROEN C4 2.0 VTS EW10J4S 04 10 XANTIA XSARA PI',m:'MAHLE',cat:'filtros',e:'ð©',p:9089,pf:'$9.089',ok:true,url:'https://www.lesbleuscars.com/producto/MAFOC100',t:5},
-  {id:90055,ml:'MAFOC259',n:'FILTRO DE ACEITE FIAT NEW UNO 1.4L EVO MOBI 1.0L 8V FIRE HCIVIC E',m:'MAHLE',cat:'filtros',e:'ð©',p:8461,pf:'$8.461',ok:true,url:'https://www.lesbleuscars.com/producto/MAFOC259',t:1},
-  {id:90056,ml:'MAFOC1608',n:'FILTRO DE ACEITE FORD ECOSPORT COURIER FIESTA 1.4 ECOSPORT 1.5 TI',m:'MAHLE',cat:'filtros',e:'ð©',p:9051,pf:'$9.051',ok:true,url:'https://www.lesbleuscars.com/producto/MAFOC1608',t:2},
-  {id:90057,ml:'MAFOC196',n:'FILTRO DE ACEITE FIAT 500 1.4 16V 595 TURISMO 165 CV 500X 1.4 POP',m:'MAHLE',cat:'filtros',e:'ð©',p:8713,pf:'$8.713',ok:true,url:'https://www.lesbleuscars.com/producto/MAFOC196',t:3},
-  {id:90058,ml:'MAFOX388D',n:'FILTRO DE ACEITE VOLKSWAGEN PASSAT CC TD AMAROK 4X4 AT 2.0 TDI BI',m:'MAHLE',cat:'filtros',e:'ð©',p:18539,pf:'$18.539',ok:true,url:'https://www.lesbleuscars.com/producto/MAFOX388D',t:4},
-  {id:90059,ml:'MAFOC988',n:'FILTRO DE ACEITE TOYOTA CAMRI 300 NAFTA V6 HILUX S C 4X2 4X4 2.4',m:'MAHLE',cat:'filtros',e:'ð©',p:11368,pf:'$11.368',ok:true,url:'https://www.lesbleuscars.com/producto/MAFOC988',t:5},
-  {id:90060,ml:'VKMC 01107 A1',n:'KIT DISTRIBUCION VW FOX 03/.. GOL TREND VOYAGE SURAN 1.6 BAH 08/.',m:'SKF',cat:'correas',e:'ð',p:201897,pf:'$201.897',ok:true,url:'https://www.lesbleuscars.com/producto/VKMC 01107 A1',t:1},
-  {id:90061,ml:'VKMA 91711 A',n:'KIT DISTRIBUCION TOYOTA HILUX 05/.. 3.0 D4D 1KDFTV 2KD 1KD SIN PI',m:'SKF',cat:'correas',e:'ð',p:145719,pf:'$145.719',ok:true,url:'https://www.lesbleuscars.com/producto/VKMA 91711 A',t:2},
-  {id:90062,ml:'VKMA 01107 A1',n:'KIT DISTRIBUCION VW FOX 03/.. GOL TREND VOYAGE SURAN 1.6 BAH 08/.',m:'SKF',cat:'correas',e:'ð',p:136517,pf:'$136.517',ok:true,url:'https://www.lesbleuscars.com/producto/VKMA 01107 A1',t:3},
-  {id:90063,ml:'VKM 26102 H',n:'TENSOR DISTRIBUCION RENAULT CLIO KANGOO EXPRESS 1.9 D MEGANE 2.0',m:'SKF',cat:'correas',e:'ð',p:111958,pf:'$111.958',ok:true,url:'https://www.lesbleuscars.com/producto/VKM 26102 H',t:4},
-  {id:90064,ml:'VKMA 06503',n:'KIT DISTRIBUCION RENAULT MASTER 2.5 DCI G9U 06/..CORREA REFORZADA',m:'SKF',cat:'correas',e:'ð',p:257994,pf:'$257.994',ok:true,url:'https://www.lesbleuscars.com/producto/VKMA 06503',t:5},
-  {id:90065,ml:'VKMA 06021 A1',n:'KIT DISTRIBUCION RENAULT FLUENCE 1.6 16V 10/17 NAFTA K4M-838 (VKM',m:'SKF',cat:'correas',e:'ð',p:273030,pf:'$273.030',ok:true,url:'https://www.lesbleuscars.com/producto/VKMA 06021 A1',t:1},
-  {id:90066,ml:'VKMA 97501',n:'KIT DISTRIBUCION DAIHATSU APLAUSSE 91/01 CHARADE 94/97 FEROZA 91/',m:'SKF',cat:'correas',e:'ð',p:112658,pf:'$112.658',ok:true,url:'https://www.lesbleuscars.com/producto/VKMA 97501',t:2},
-  {id:90067,ml:'SKF-109SHP+250H',n:'CORREA SINCRONICA CHEVROLET SPARK 1.0 08/..DISTRIBUCION OUTLET2',m:'SKF',cat:'correas',e:'ð',p:71644,pf:'$71.644',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-109SHP+250H',t:3},
-  {id:90068,ml:'VKMA 04304',n:'KIT CORREA DISTRIBUCIÃN FORD TRANSIT 2.5 TDI 96/01 . (130SHDN254H',m:'SKF',cat:'correas',e:'ð',p:181202,pf:'$181.202',ok:true,url:'https://www.lesbleuscars.com/producto/VKMA 04304',t:4},
-  {id:90069,ml:'SKF-162STP8M200H',n:'CORREA SINCRÃNICA DISTRIBUCIÃN MERIVA 1.8 8V 16V',m:'SKF',cat:'correas',e:'ð',p:122493,pf:'$122.493',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-162STP8M200H',t:5},
-  {id:90070,ml:'SKF-131SP+250HT',n:'CORREA SINCRÃNICA DISTRIBUCIÃN CHEVROLET ASTRA CORSA MERIVA 1.7 T',m:'SKF',cat:'correas',e:'ð',p:307587,pf:'$307.587',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-131SP+250HT',t:1},
-  {id:90071,ml:'SKF-193SHPN240H',n:'CORREA SINCRÃNICA DISTRIBUCIÃN FIAT MAREA 1.9 TDI',m:'SKF',cat:'correas',e:'ð',p:146189,pf:'$146.189',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-193SHPN240H',t:2},
-  {id:90072,ml:'VTH7707',n:'BIELETA RENAULT CLIO II MEGANE KANGOO LOGAN SANDERO SYMBOL DELANT',m:'VTH',cat:'bieletas',e:'ð§',p:13777,pf:'$13.777',ok:true,url:'https://www.lesbleuscars.com/producto/VTH7707',t:3},
-  {id:90073,ml:'NANB4825',n:'BIELETA VW GOL TREND VOYAGE SAVEIRO SURAN FOX CROSS FOX UP FIAT B',m:'NAKATA',cat:'bieletas',e:'ð§',p:25948,pf:'$25.948',ok:true,url:'https://www.lesbleuscars.com/producto/NANB4825',t:4},
-  {id:90074,ml:'VTH1207',n:'BIELETA VW GOL TREND VOYAGE SAVEIRO FOX SURAN NIVUS T-CROSS DELAN',m:'VTH',cat:'bieletas',e:'ð§',p:33489,pf:'$33.489',ok:true,url:'https://www.lesbleuscars.com/producto/VTH1207',t:5},
-  {id:90075,ml:'TEKSK-407',n:'BIELETA GOL TREND SAVEIRO 10/13 VOYAGE POLO SURAN FOX CROSSFOX 03',m:'TEKNOROT',cat:'bieletas',e:'ð§',p:17748,pf:'$17.748',ok:true,url:'https://www.lesbleuscars.com/producto/TEKSK-407',t:1},
-  {id:90076,ml:'BU0416',n:'BIELETA PEUGEOT 306 95/03  PARTNER  RANCH 96/.. PARTNER DELANTERA',m:'UNDERCAR',cat:'bieletas',e:'ð§',p:17010,pf:'$17.010',ok:true,url:'https://www.lesbleuscars.com/producto/BU0416',t:2},
-  {id:90077,ml:'BU0611',n:'BIELETA VOLSKWAGEN GOL TREND GOLTREND UP 08/..  VOYAGE - CADDY 98',m:'UNDERCAR',cat:'bieletas',e:'ð§',p:19202,pf:'$19.202',ok:true,url:'https://www.lesbleuscars.com/producto/BU0611',t:3},
-  {id:90078,ml:'AXI531.2132',n:'BIELETA VW POLO 03/.. SURAN CROSS FOX FIAT MAREA GOL TREND VOYAGE',m:'AXIOS',cat:'bieletas',e:'ð§',p:29613,pf:'$29.613',ok:true,url:'https://www.lesbleuscars.com/producto/AXI531.2132',t:4},
-  {id:90079,ml:'AXI531.2685',n:'BIELETA CHEVROLET COBALT 11/.. ONIX 12/.. SONIC 12/.. SPIN 12/..',m:'AXIOS',cat:'bieletas',e:'ð§',p:23118,pf:'$23.118',ok:true,url:'https://www.lesbleuscars.com/producto/AXI531.2685',t:5},
-  {id:90080,ml:'TEKCI-210',n:'BIELETA PEUGEOT 306 PARTNER CITROEN BERLINGO XSARA DELANTERA LARG',m:'TEKNOROT',cat:'bieletas',e:'ð§',p:18206,pf:'$18.206',ok:true,url:'https://www.lesbleuscars.com/producto/TEKCI-210',t:1},
-  {id:90081,ml:'VTH1201',n:'BIELETA PEUGEOT 206 207 CITROEN C3 C3 11/.. C3 PICASSO C3 AIRCROS',m:'VTH',cat:'bieletas',e:'ð§',p:32020,pf:'$32.020',ok:true,url:'https://www.lesbleuscars.com/producto/VTH1201',t:2},
-  {id:90082,ml:'VTH7727',n:'BIELETA RENAULT CLIO II MEGANE KANGOO LOGAN SANDERO DELANTERA CON',m:'VTH',cat:'bieletas',e:'ð§',p:13777,pf:'$13.777',ok:true,url:'https://www.lesbleuscars.com/producto/VTH7727',t:3},
-  {id:90083,ml:'NANB4898',n:'BIELETA PEUGEOT 206 207 208 CITROEN C3 II DS3 DELANTERA 335MM ROS',m:'NAKATA',cat:'bieletas',e:'ð§',p:25943,pf:'$25.943',ok:true,url:'https://www.lesbleuscars.com/producto/NANB4898',t:4},
-  {id:90084,ml:'VTH5613',n:'BUJE BARRA ESTABILIZADORA CHEVROLET CORSA 97/.. PRISMA CELTA CLAS',m:'VTH',cat:'bujes',e:'ð©',p:3498,pf:'$3.498',ok:true,url:'https://www.lesbleuscars.com/producto/VTH5613',t:5},
-  {id:90085,ml:'VTH5640',n:'BUJE TENSOR CHEVROLET AGILE CORSA WAGON 98/03 CELTA PRISMA 98/..',m:'VTH',cat:'bujes',e:'ð©',p:15881,pf:'$15.881',ok:true,url:'https://www.lesbleuscars.com/producto/VTH5640',t:1},
-  {id:90086,ml:'VTH5785',n:'BUJE BARRA ESTABILIZADORA RENAULT R19 MEGANE CLIO EXPRESS CLIO II',m:'VTH',cat:'bujes',e:'ð©',p:4461,pf:'$4.461',ok:true,url:'https://www.lesbleuscars.com/producto/VTH5785',t:2},
-  {id:90087,ml:'VTH5473',n:'BUJE PARRILLA VW POLO CLASSIC 97/00 GOLF 98/.. CADDY BORA VOYAGE',m:'VTH',cat:'bujes',e:'ð©',p:11470,pf:'$11.470',ok:true,url:'https://www.lesbleuscars.com/producto/VTH5473',t:3},
-  {id:90088,ml:'AXI011.1266',n:'BUJE TENSOR CHEVROLET AGILE CORSA WAGON 98/03 CELTA PRISMA 98/..',m:'AXIOS',cat:'bujes',e:'ð©',p:14745,pf:'$14.745',ok:true,url:'https://www.lesbleuscars.com/producto/AXI011.1266',t:4},
-  {id:90089,ml:'VTH5474-12',n:'BUJE PARRILLA VW POLO GOLF 99/..BORA GOL TREND VOYAGE UP14/.. NEW',m:'VTH',cat:'bujes',e:'ð©',p:24449,pf:'$24.449',ok:true,url:'https://www.lesbleuscars.com/producto/VTH5474-12',t:5},
-  {id:90090,ml:'AXI041.1040',n:'BUJE BARRA ESTABILIZADORA CHEVROLET CORSA 97/.. CELTA CHEVETTE SU',m:'AXIOS',cat:'bujes',e:'ð©',p:2653,pf:'$2.653',ok:true,url:'https://www.lesbleuscars.com/producto/AXI041.1040',t:1},
-  {id:90091,ml:'AXI011.1247',n:'BUJE PARRILLA VW POLO GOLF 99/..BORA GOL TREND SAVEIRO VOYAGE UP1',m:'AXIOS',cat:'bujes',e:'ð©',p:18434,pf:'$18.434',ok:true,url:'https://www.lesbleuscars.com/producto/AXI011.1247',t:2},
-  {id:90092,ml:'VTH8496',n:'BUJE BARRA ESTABILIZADORA VW FOX SURAN GOL TREND VOYAGE UP DELANT',m:'VTH',cat:'bujes',e:'ð©',p:5731,pf:'$5.731',ok:true,url:'https://www.lesbleuscars.com/producto/VTH8496',t:3},
-  {id:90093,ml:'VTH5798',n:'BUJE PARRILLA RENAULT KANGOO CLIO II SYMBOL DELANTERA INFERIOR RE',m:'VTH',cat:'bujes',e:'ð©',p:17222,pf:'$17.222',ok:true,url:'https://www.lesbleuscars.com/producto/VTH5798',t:4},
-  {id:90094,ml:'AXI011.1249',n:'BUJE PARRILLA VW POLO CLASSIC 97/00 GOLF 98/.. CADDY BORA VOYAGE',m:'AXIOS',cat:'bujes',e:'ð©',p:10650,pf:'$10.650',ok:true,url:'https://www.lesbleuscars.com/producto/AXI011.1249',t:5},
-  {id:90095,ml:'VTH8410',n:'BUJE PARRILLA VW FOX SURAN VENTO 06/.. POLO 02/.. CADDY TIGUAN KI',m:'VTH',cat:'bujes',e:'ð©',p:21773,pf:'$21.773',ok:true,url:'https://www.lesbleuscars.com/producto/VTH8410',t:1},
-  {id:90096,ml:'WAG130024',n:'LIQUIDO FRENO DOT3 - 500 CC SERVICIO PESADO',m:'WAGNER LOCKHEED',cat:'fluidos',e:'ð§',p:18532,pf:'$18.532',ok:true,url:'https://www.lesbleuscars.com/producto/WAG130024',t:2},
-  {id:90097,ml:'WAG41114',n:'LIQUIDO FRENO DOT3 - 1 LT SERVICIO PESADO',m:'WAGNER LOCKHEED',cat:'fluidos',e:'ð§',p:33358,pf:'$33.358',ok:true,url:'https://www.lesbleuscars.com/producto/WAG41114',t:3},
-  {id:90098,ml:'WLO1R',n:'REFRIGERANTE ANTICONGELANTE 1L ORGANICO ROJO PACK 12 UNIDADES',m:'WILDBRAKE',cat:'fluidos',e:'ð§',p:10589,pf:'$10.589',ok:true,url:'https://www.lesbleuscars.com/producto/WLO1R',t:4},
-  {id:90099,ml:'WAG130501',n:'LIQUIDO FRENO DOT 4 - 500CC. ALTA PERFORMANCE',m:'WAGNER LOCKHEED',cat:'fluidos',e:'ð§',p:31548,pf:'$31.548',ok:true,url:'https://www.lesbleuscars.com/producto/WAG130501',t:5},
-  {id:90100,ml:'WAG109360',n:'LIQUIDO FRENO DOT3 - 200 CC SERVICIO PESADO',m:'WAGNER LOCKHEED',cat:'fluidos',e:'ð§',p:9863,pf:'$9.863',ok:true,url:'https://www.lesbleuscars.com/producto/WAG109360',t:1},
-  {id:90101,ml:'WAG67262',n:'LIQUIDO FRENO DOT4 - 1 LT ALTA PERFORMANCE',m:'WAGNER LOCKHEED',cat:'fluidos',e:'ð§',p:50135,pf:'$50.135',ok:true,url:'https://www.lesbleuscars.com/producto/WAG67262',t:2},
-  {id:90102,ml:'WAG130702',n:'LIQUIDO REFRIGERANTE ANTICONGELANTE  ANTICORR.  1 L ORGANICO ROJO',m:'WAGNER LOCKHEED',cat:'fluidos',e:'ð§',p:21706,pf:'$21.706',ok:true,url:'https://www.lesbleuscars.com/producto/WAG130702',t:3},
-  {id:90103,ml:'WAG130500',n:'LIQUIDO FRENO DOT4 - 200 CC ALTA PERFORMANCE',m:'WAGNER LOCKHEED',cat:'fluidos',e:'ð§',p:11523,pf:'$11.523',ok:true,url:'https://www.lesbleuscars.com/producto/WAG130500',t:4},
-  {id:90104,ml:'SKF-LACF 1 R',n:'LIQUIDO REFRIGERANTE 1 LITRO ORGANICO ROJO',m:'SKF',cat:'fluidos',e:'ð§',p:14231,pf:'$14.231',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-LACF 1 R',t:5},
-  {id:90105,ml:'WAG130680',n:'LIQUIDO REFRIGERANTE ANTICONGELANTE  ANTICORR.  1 LT INORG. ROJO',m:'WAGNER LOCKHEED',cat:'fluidos',e:'ð§',p:20199,pf:'$20.199',ok:true,url:'https://www.lesbleuscars.com/producto/WAG130680',t:1},
-  {id:90106,ml:'WLO1A',n:'REFRIGERANTE ANTICONGELANTE 1L ORGANICO AMARILLO PACK 12 UNIDADES',m:'WILDBRAKE',cat:'fluidos',e:'ð§',p:10589,pf:'$10.589',ok:true,url:'https://www.lesbleuscars.com/producto/WLO1A',t:2},
-  {id:90107,ml:'WLR1',n:'REFRIGERANTE ANTICONGELANTE 1L INORGANICO VERDE PACK 12 UNIDADES',m:'WILDBRAKE',cat:'fluidos',e:'ð§',p:10138,pf:'$10.138',ok:true,url:'https://www.lesbleuscars.com/producto/WLR1',t:3}
+  {id:123224098,ml:'MLA2692130086',n:'Faro delantero d22',m:'TYC',cat:'opticas',e:'💡',p:76782,pf:'$76.782',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692130086',t:1},
+  {id:123224105,ml:'MLA2692181474',n:'Optica Izquierdo/Conductor TYC',m:'TYC',cat:'opticas',e:'💡',p:244501,pf:'$244.501',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692181474',t:2},
+  {id:123224107,ml:'MLA2691897116',n:'Optica Izquierdo/Conductor Chevrolet Astra 03/10',m:'TYC',cat:'opticas',e:'💡',p:244501,pf:'$244.501',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691897116',t:3},
+  {id:123224124,ml:'MLA2691857496',n:'Optica Derecho/Pasajero TYC',m:'TYC',cat:'opticas',e:'💡',p:244501,pf:'$244.501',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691857496',t:4},
+  {id:123224126,ml:'MLA2692169538',n:'Optica Derecho/Pasajero Chevrolet Astra 03/11',m:'TYC',cat:'opticas',e:'💡',p:244501,pf:'$244.501',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692169538',t:5},
+  {id:123224139,ml:'MLA2692116846',n:'Optica fondo negro ls lt Izquierdo/Conductor TYC',m:'TYC',cat:'opticas',e:'💡',p:472482,pf:'$472.482',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692116846',t:1},
+  {id:123224081,ml:'MLA2692027028',n:'Optica fondo gris giro blanco Izquierdo/Conductor Chevrolet',m:'TYC',cat:'opticas',e:'💡',p:274271,pf:'$274.271',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692027028',t:2},
+  {id:123224075,ml:'MLA2692168824',n:'Optica fondo gris giro blanco Izquierdo/Conductor TYC',m:'TYC',cat:'opticas',e:'💡',p:252087,pf:'$252.087',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692168824',t:3},
+  {id:123224168,ml:'MLA2691883384',n:'Faro trasero exterior Derecho TYC',m:'TYC',cat:'opticas',e:'💡',p:212567,pf:'$212.567',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691883384',t:4},
+  {id:123224170,ml:'MLA2692104606',n:'Faro trasero exterior Derecho Toyota Corolla 00/02',m:'TYC',cat:'opticas',e:'💡',p:231273,pf:'$231.273',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692104606',t:5},
+  {id:123224190,ml:'MLA2692181478',n:'Faro delantero',m:'TYC',cat:'opticas',e:'💡',p:91411,pf:'$91.411',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692181478',t:1},
+  {id:123224203,ml:'MLA2692000296',n:'Faro delantero',m:'TYC',cat:'opticas',e:'💡',p:91411,pf:'$91.411',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692000296',t:2},
+  {id:123224212,ml:'MLA2692026230',n:'Faro delantero',m:'TYC',cat:'opticas',e:'💡',p:71392,pf:'$71.392',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692026230',t:3},
+  {id:123224248,ml:'MLA2691896400',n:'Faro delantero japon 4 puertas',m:'TYC',cat:'opticas',e:'💡',p:76210,pf:'$76.210',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691896400',t:4},
+  {id:123224261,ml:'MLA2691857510',n:'Faro delantero',m:'TYC',cat:'opticas',e:'💡',p:64606,pf:'$64.606',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691857510',t:5},
+  {id:123224268,ml:'MLA2691883408',n:'Faro trasero 4 puertas Derecho TYC',m:'TYC',cat:'opticas',e:'💡',p:220597,pf:'$220.597',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691883408',t:1},
+  {id:123224270,ml:'MLA2692104628',n:'Faro trasero 4 puertas Derecho Ford Focus III 13/15',m:'TYC',cat:'opticas',e:'💡',p:240010,pf:'$240.010',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692104628',t:2},
+  {id:123224272,ml:'MLA2692104630',n:'Faro trasero 4 puertas Derecho Ford Focus 2 13/15',m:'TYC',cat:'opticas',e:'💡',p:240010,pf:'$240.010',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692104630',t:3},
+  {id:123224285,ml:'MLA2692000308',n:'Faro delantero duty',m:'TYC',cat:'opticas',e:'💡',p:165252,pf:'$165.252',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692000308',t:4},
+  {id:123224291,ml:'MLA2692116864',n:'Faro delantero duty',m:'TYC',cat:'opticas',e:'💡',p:165252,pf:'$165.252',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692116864',t:5},
+  {id:123224083,ml:'MLA2692090954',n:'Espejo exterior manual Derecho Giving',m:'Giving',cat:'espejos',e:'🪞',p:69370,pf:'$69.370',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692090954',t:1},
+  {id:123224084,ml:'MLA2692130848',n:'Espejo exterior 5 puertas electrico chico Derecho Audi A3',m:'Giving',cat:'espejos',e:'🪞',p:113584,pf:'$113.584',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692130848',t:2},
+  {id:123224099,ml:'MLA2692130090',n:'ESPEJO EXTERIOR CON CONTROL Izquierdo Giving',m:'Giving',cat:'espejos',e:'🪞',p:133141,pf:'$133.141',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692130090',t:3},
+  {id:123224101,ml:'MLA2692130852',n:'ESPEJO EXTERIOR CON CONTROL Izquierdo Peugeot Expert 99/06',m:'Giving',cat:'espejos',e:'🪞',p:146456,pf:'$146.456',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692130852',t:4},
+  {id:123224109,ml:'MLA2692130102',n:'ESPEJO EXTERIOR CON CONTROL Derecho Giving',m:'Giving',cat:'espejos',e:'🪞',p:122054,pf:'$122.054',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692130102',t:5},
+  {id:123224111,ml:'MLA2691884220',n:'ESPEJO EXTERIOR CON CONTROL Derecho Peugeot Expert 00/06',m:'Giving',cat:'espejos',e:'🪞',p:134260,pf:'$134.260',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691884220',t:1},
+  {id:123224128,ml:'MLA2692052236',n:'Espejo exterior electrico Derecho Giving',m:'Giving',cat:'espejos',e:'🪞',p:100369,pf:'$100.369',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692052236',t:2},
+  {id:123224130,ml:'MLA2692130862',n:'Espejo exterior electrico Derecho Citroën C3 03/13',m:'Giving',cat:'espejos',e:'🪞',p:100369,pf:'$100.369',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692130862',t:3},
+  {id:123224133,ml:'MLA2692000288',n:'Espejo exterior electrico Derecho Spj-Orig.',m:'Spj-Orig.',cat:'espejos',e:'🪞',p:263301,pf:'$263.301',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692000288',t:4},
+  {id:123224135,ml:'MLA2691857506',n:'Espejo exterior manual Izquierdo Giving',m:'Giving',cat:'espejos',e:'🪞',p:69370,pf:'$69.370',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691857506',t:5},
+  {id:123224137,ml:'MLA2692130866',n:'Espejo exterior electrico Derecho Peugeot 2008 16/21',m:'Spj-Orig.',cat:'espejos',e:'🪞',p:286472,pf:'$286.472',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692130866',t:1},
+  {id:123224138,ml:'MLA2691884232',n:'Espejo exterior manual Izquierdo Toyota Hilux Chassi 08/09',m:'Giving',cat:'espejos',e:'🪞',p:75475,pf:'$75.475',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691884232',t:2},
+  {id:123224141,ml:'MLA2692027040',n:'Espejo exterior electrico Derecho Peugeot 208 13/16',m:'Spj-Orig.',cat:'espejos',e:'🪞',p:286472,pf:'$286.472',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692027040',t:3},
+  {id:123224143,ml:'MLA2691897126',n:'Espejo exterior manual Izquierdo Toyota Hilux 05/15',m:'Giving',cat:'espejos',e:'🪞',p:75475,pf:'$75.475',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691897126',t:4},
+  {id:123224149,ml:'MLA2692027042',n:'Espejo exterior manual Izquierdo Toyota Hilux S/C 2005',m:'Giving',cat:'espejos',e:'🪞',p:75475,pf:'$75.475',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692027042',t:5},
+  {id:123224076,ml:'MLA2691883364',n:'Espejo exterior 5 puertas electrico chico Derecho Giving',m:'Giving',cat:'espejos',e:'🪞',p:103258,pf:'$103.258',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691883364',t:1},
+  {id:123224150,ml:'MLA2692104608',n:'Espejo exterior manual Izquierdo Toyota Hilux Pick-Up 08/15',m:'Giving',cat:'espejos',e:'🪞',p:75475,pf:'$75.475',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692104608',t:2},
+  {id:123224187,ml:'MLA2691857508',n:'Espejo exterior con control Izquierdo Giving',m:'Giving',cat:'espejos',e:'🪞',p:73474,pf:'$73.474',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691857508',t:3},
+  {id:123224192,ml:'MLA2691858238',n:'Espejo exterior con control Izquierdo Ford Focus 99/10',m:'Giving',cat:'espejos',e:'🪞',p:73474,pf:'$73.474',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691858238',t:4},
+  {id:123224193,ml:'MLA2692090966',n:'Espejo exterior manual Derecho Giving',m:'Giving',cat:'espejos',e:'🪞',p:95627,pf:'$95.627',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692090966',t:5},
+  {id:123224176,ml:'MLA2691896390',n:'Maquina levanta cristal 4 o 5 puertas delantera Delantero Ve',m:'Vespoli',cat:'levanta-cristal',e:'🔧',p:63780,pf:'$63.780',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691896390',t:1},
+  {id:123224179,ml:'MLA2692001034',n:'Maquina levanta cristal 4 o 5 puertas delantera Delantero Re',m:'Vespoli',cat:'levanta-cristal',e:'🔧',p:69392,pf:'$69.392',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692001034',t:2},
+  {id:123224210,ml:'MLA2692026232',n:'Maquina levanta cristal delantera Delantero Vespoli',m:'Vespoli',cat:'levanta-cristal',e:'🔧',p:57187,pf:'$57.187',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692026232',t:3},
+  {id:123224216,ml:'MLA2691897134',n:'Maquina levanta cristal delantera Delantero Volkswagen Point',m:'Vespoli',cat:'levanta-cristal',e:'🔧',p:62220,pf:'$62.220',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691897134',t:4},
+  {id:123224219,ml:'MLA2692001040',n:'Maquina levanta cristal delantera Delantero Ford Orion 94/97',m:'Vespoli',cat:'levanta-cristal',e:'🔧',p:62220,pf:'$62.220',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692001040',t:5},
+  {id:123224251,ml:'MLA2692116860',n:'Maquina levanta cristal delantera Delantero Vespoli',m:'Vespoli',cat:'levanta-cristal',e:'🔧',p:59627,pf:'$59.627',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692116860',t:1},
+  {id:123224254,ml:'MLA2692169558',n:'Maquina levanta cristal delantera Delantero Volkswagen Point',m:'Vespoli',cat:'levanta-cristal',e:'🔧',p:64874,pf:'$64.874',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692169558',t:2},
+  {id:123224257,ml:'MLA2692130884',n:'Maquina levanta cristal delantera Delantero Ford Orion 94/97',m:'Vespoli',cat:'levanta-cristal',e:'🔧',p:64874,pf:'$64.874',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692130884',t:3},
+  {id:123224267,ml:'MLA2692052246',n:'Maquina levanta cristal 5 puertas delantera Delantero Vespol',m:'Vespoli',cat:'levanta-cristal',e:'🔧',p:75161,pf:'$75.161',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692052246',t:4},
+  {id:123224269,ml:'MLA2692117620',n:'Maquina levanta cristal 5 puertas delantera Delantero Ford F',m:'Vespoli',cat:'levanta-cristal',e:'🔧',p:81775,pf:'$81.775',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692117620',t:5},
+  {id:123224276,ml:'MLA2692116866',n:'Maquina levanta cristal electrica con motor Delantero Taiwan',m:'Taiwan',cat:'levanta-cristal',e:'🔧',p:137183,pf:'$137.183',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692116866',t:1},
+  {id:123224277,ml:'MLA2692001060',n:'Maquina levanta cristal electrica con motor Delantero Citroe',m:'Taiwan',cat:'levanta-cristal',e:'🔧',p:125050,pf:'$125.050',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692001060',t:2},
+  {id:123224279,ml:'MLA2692117626',n:'Maquina levanta cristal electrica con motor Delantero Peugeo',m:'Taiwan',cat:'levanta-cristal',e:'🔧',p:150901,pf:'$150.901',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692117626',t:3},
+  {id:123224280,ml:'MLA2692117624',n:'Maquina levanta cristal electrica con motor Delantero Citroë',m:'Taiwan',cat:'levanta-cristal',e:'🔧',p:150901,pf:'$150.901',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692117624',t:4},
+  {id:123224281,ml:'MLA2692109636',n:'Maquina levanta cristal 5 puertas delantera Delantero Vespol',m:'Vespoli',cat:'levanta-cristal',e:'🔧',p:75161,pf:'$75.161',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692109636',t:5},
+  {id:123224282,ml:'MLA2692032074',n:'Maquina levanta cristal 5 puertas delantera Delantero Ford F',m:'Vespoli',cat:'levanta-cristal',e:'🔧',p:81775,pf:'$81.775',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692032074',t:1},
+  {id:123224286,ml:'MLA2692168864',n:'Maquina levanta cristal 5 puertas delantera Delantero C-Orig',m:'C-Orig.',cat:'levanta-cristal',e:'🔧',p:133162,pf:'$133.162',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692168864',t:2},
+  {id:123224288,ml:'MLA2692104634',n:'Maquina levanta cristal 5 puertas delantera Delantero Peugeo',m:'C-Orig.',cat:'levanta-cristal',e:'🔧',p:146479,pf:'$146.479',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692104634',t:3},
+  {id:123224297,ml:'MLA2692181492',n:'Maquina levanta cristal delantera sin motor Delantero Taiwan',m:'Taiwan',cat:'levanta-cristal',e:'🔧',p:102279,pf:'$102.279',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692181492',t:4},
+  {id:123224298,ml:'MLA2692000314',n:'Maquina levanta cristal 5 puertas delantera Delantero Vespol',m:'Vespoli',cat:'levanta-cristal',e:'🔧',p:56159,pf:'$56.159',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692000314',t:5},
+  {id:123224100,ml:'MLA2692052230',n:'Manija interior color negro de metal Izquierdo Taiwan',m:'Taiwan',cat:'manijas',e:'🚪',p:21148,pf:'$21.148',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692052230',t:1},
+  {id:123224102,ml:'MLA2692117592',n:'Manija interior color negro de metal Izquierdo Ford F-150',m:'Taiwan',cat:'manijas',e:'🚪',p:23009,pf:'$23.009',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692117592',t:2},
+  {id:123224104,ml:'MLA2692053080',n:'Manija interior color negro de metal Izquierdo Ford F-100',m:'Taiwan',cat:'manijas',e:'🚪',p:23009,pf:'$23.009',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692053080',t:3},
+  {id:123224118,ml:'MLA2691857492',n:'Manija de puerta exterior duty Izquierdo Taiwan',m:'Taiwan',cat:'manijas',e:'🚪',p:59318,pf:'$59.318',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691857492',t:4},
+  {id:123224120,ml:'MLA2692182274',n:'Manija de puerta exterior duty Izquierdo Ford F-100 99/12',m:'Taiwan',cat:'manijas',e:'🚪',p:59318,pf:'$59.318',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692182274',t:5},
+  {id:123224121,ml:'MLA2692130860',n:'Manija de puerta exterior duty Izquierdo Ford F-150 00/03',m:'Taiwan',cat:'manijas',e:'🚪',p:59318,pf:'$59.318',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692130860',t:1},
+  {id:123224151,ml:'MLA2691883374',n:'Manija de puerta exterior cromado sin agujero Derecho Taiwan',m:'Taiwan',cat:'manijas',e:'🚪',p:54676,pf:'$54.676',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691883374',t:2},
+  {id:123224152,ml:'MLA2692130868',n:'Manija de puerta exterior cromado sin agujero Derecho Chevro',m:'Taiwan',cat:'manijas',e:'🚪',p:59488,pf:'$59.488',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692130868',t:3},
+  {id:123224158,ml:'MLA2692181476',n:'Manija de puerta exterior delantera Derecho Taiwan',m:'Taiwan',cat:'manijas',e:'🚪',p:71581,pf:'$71.581',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692181476',t:4},
+  {id:123224162,ml:'MLA2692169546',n:'Manija de puerta exterior delantera Derecho Fiat Punto 07/15',m:'Taiwan',cat:'manijas',e:'🚪',p:78739,pf:'$78.739',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692169546',t:5},
+  {id:123225076,ml:'MLA2692026384',n:'Manija de porton lateral Taiwan',m:'Taiwan',cat:'manijas',e:'🚪',p:44570,pf:'$44.570',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692026384',t:1},
+  {id:123225079,ml:'MLA2692169826',n:'Manija de porton lateral Peugeot Boxer 95/03',m:'Taiwan',cat:'manijas',e:'🚪',p:48492,pf:'$48.492',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692169826',t:2},
+  {id:123225082,ml:'MLA2692027306',n:'Manija de porton lateral Fiat Ducato 96/04',m:'Taiwan',cat:'manijas',e:'🚪',p:48492,pf:'$48.492',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692027306',t:3},
+  {id:123225103,ml:'MLA2692000414',n:'Manija interior Izquierdo Taiwan',m:'Taiwan',cat:'manijas',e:'🚪',p:9981,pf:'$9.981',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692000414',t:4},
+  {id:123225105,ml:'MLA2692001284',n:'Manija interior Izquierdo Toyota Corolla 00/02',m:'Taiwan',cat:'manijas',e:'🚪',p:10860,pf:'$10.860',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692001284',t:5},
+  {id:123225114,ml:'MLA2692104042',n:'Manija interior gris Derecho C-Orig.',m:'C-Orig.',cat:'manijas',e:'🚪',p:19716,pf:'$19.716',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692104042',t:1},
+  {id:123225117,ml:'MLA2691858528',n:'Manija interior gris Derecho Ford Ecosport 03/13',m:'C-Orig.',cat:'manijas',e:'🚪',p:21451,pf:'$21.451',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2691858528',t:2},
+  {id:123225120,ml:'MLA2692117900',n:'Manija interior gris Derecho Ford Fiesta 07/14',m:'C-Orig.',cat:'manijas',e:'🚪',p:21451,pf:'$21.451',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692117900',t:3},
+  {id:123225131,ml:'MLA2692181618',n:'Manija interior color negro Izquierdo C-Orig.',m:'C-Orig.',cat:'manijas',e:'🚪',p:14164,pf:'$14.164',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692181618',t:4},
+  {id:123225133,ml:'MLA2692092080',n:'Manija interior color negro Izquierdo Ford Fiesta 07/14',m:'C-Orig.',cat:'manijas',e:'🚪',p:15411,pf:'$15.411',ok:true,url:'https://articulo.mercadolibre.com.ar/MLA-2692092080',t:5},
+  {id:90000,ml:'FUE271-92',n:'FUELLE RENAULT CLIO 94/99 CLIO II 00/03 KANGOO 98/03 EXPRESS MEGA',m:'GRIFFO',cat:'amortiguadores',e:'🚗',p:8791,pf:'$8.791',ok:true,url:'https://www.lesbleuscars.com/producto/FUE271-92',t:1},
+  {id:90001,ml:'FRI334071MM',n:'AMORTIGUADOR VW GACEL SENDA GOL SAVEIRO 83/95 GOL COUNTRY 95/.. D',m:'FRIC ROT MONROE',cat:'amortiguadores',e:'🚗',p:56421,pf:'$56.421',ok:true,url:'https://www.lesbleuscars.com/producto/FRI334071MM',t:2},
+  {id:90002,ml:'FRI38040MI',n:'AMORTIGUADOR CHEVROLET CLASSIC 10/.. CORSA 94/.. CORSA II 02/.. C',m:'FRIC ROT MONROE',cat:'amortiguadores',e:'🚗',p:49849,pf:'$49.849',ok:true,url:'https://www.lesbleuscars.com/producto/FRI38040MI',t:3},
+  {id:90003,ml:'FRI38205MI',n:'AMORTIGUADOR VW GOL SOFT COUNTRY 95/.. TRASERO REEMPLAZA A FRI334',m:'FRIC ROT MONROE',cat:'amortiguadores',e:'🚗',p:60291,pf:'$60.291',ok:true,url:'https://www.lesbleuscars.com/producto/FRI38205MI',t:4},
+  {id:90004,ml:'MON749166SP',n:'AMORTIGUADOR VW FOX 1.0 1.6 04/.. SURAN 05/.. DELANTERO CON BARRA',m:'MONROE',cat:'amortiguadores',e:'🚗',p:107315,pf:'$107.315',ok:true,url:'https://www.lesbleuscars.com/producto/MON749166SP',t:5},
+  {id:90005,ml:'FRI334068MM',n:'AMORTIGUADOR PEUGEOT 206 206 SW 207 99/.. TRASERO MATIC REEMPLAZA',m:'FRIC ROT MONROE',cat:'amortiguadores',e:'🚗',p:68157,pf:'$68.157',ok:true,url:'https://www.lesbleuscars.com/producto/FRI334068MM',t:1},
+  {id:90006,ml:'MONSP003',n:'AMORTIGUADOR TOYOTA ETIOS 12/.. DELANTERO REEMPLAZA A FRI94245MI',m:'MONROE',cat:'amortiguadores',e:'🚗',p:110525,pf:'$110.525',ok:true,url:'https://www.lesbleuscars.com/producto/MONSP003',t:2},
+  {id:90007,ml:'MON749355SP',n:'AMORTIGUADOR CHEVROLET CORSA 94/.. WAGON 91/.. CLASSIC 10/.. CELT',m:'MONROE',cat:'amortiguadores',e:'🚗',p:88998,pf:'$88.998',ok:true,url:'https://www.lesbleuscars.com/producto/MON749355SP',t:3},
+  {id:90008,ml:'FRI808178MM',n:'AMORTIGUADOR FIAT PALIO SIENA 01/.. DELANTERO MATIC REEMPLAZA A F',m:'FRIC ROT MONROE',cat:'amortiguadores',e:'🚗',p:103694,pf:'$103.694',ok:true,url:'https://www.lesbleuscars.com/producto/FRI808178MM',t:4},
+  {id:90009,ml:'AXI044.2588',n:'CAZOLETA CHEVROLET COBALT 11/.. ONIX 12/.. PRISMA 13/.. SPIN 12/.',m:'AXIOS',cat:'amortiguadores',e:'🚗',p:35989,pf:'$35.989',ok:true,url:'https://www.lesbleuscars.com/producto/AXI044.2588',t:5},
+  {id:90010,ml:'FRI334554IMM',n:'AMORTIGUADOR PEUGEOT PARTNER CITROEN BERLINGO 98/..TRASERO MATIC',m:'FRIC ROT MONROE',cat:'amortiguadores',e:'🚗',p:57810,pf:'$57.810',ok:true,url:'https://www.lesbleuscars.com/producto/FRI334554IMM',t:1},
+  {id:90011,ml:'FRI334171MM',n:'AMORTIGUADOR FIAT PALIO SIENA 97/.. ALFA ROMEO 145 146 94/.. TRAS',m:'FRIC ROT MONROE',cat:'amortiguadores',e:'🚗',p:64473,pf:'$64.473',ok:true,url:'https://www.lesbleuscars.com/producto/FRI334171MM',t:2},
+  {id:90012,ml:'WD84750',n:'DISCO FRENO CITROEN C3 02/.. C4 09/.. DS3 XSARA 01/.. XANTIA BREA',m:'WILDBRAKE',cat:'frenos',e:'🛑',p:49144,pf:'$49.144',ok:true,url:'https://www.lesbleuscars.com/producto/WD84750',t:3},
+  {id:90013,ml:'WD81440',n:'DISCO FRENO CHEVROLET CORSA 1.6 SW COMBO PICK UP ../02 AGILE KADE',m:'WILDBRAKE',cat:'frenos',e:'🛑',p:35429,pf:'$35.429',ok:true,url:'https://www.lesbleuscars.com/producto/WD81440',t:4},
+  {id:90014,ml:'WD83550',n:'DISCO FRENO RENAULT R19 CLIO WILLIAMS CLIO ABS SCENIC 1.4I 1.6I K',m:'WILDBRAKE',cat:'frenos',e:'🛑',p:46858,pf:'$46.858',ok:true,url:'https://www.lesbleuscars.com/producto/WD83550',t:5},
+  {id:90015,ml:'COQ0252',n:'PASTILLA FRENO AUDI A3 97/.. SEATLEON 99/.. VW NEW BEETLE POLO BO',m:'COBREQ',cat:'frenos',e:'🛑',p:47757,pf:'$47.757',ok:true,url:'https://www.lesbleuscars.com/producto/COQ0252',t:1},
+  {id:90016,ml:'WD83975',n:'DISCO FRENO VW POLO CADDY CARAT GOL GOL POWER SAVEIRO QUANTUM SAN',m:'WILDBRAKE',cat:'frenos',e:'🛑',p:38344,pf:'$38.344',ok:true,url:'https://www.lesbleuscars.com/producto/WD83975',t:2},
+  {id:90017,ml:'WD80178',n:'DISCO FRENO FIAT PALIO 16V WEEKEND SIENA 96/.. UNO TURBO 95/.. DE',m:'WILDBRAKE',cat:'frenos',e:'🛑',p:39239,pf:'$39.239',ok:true,url:'https://www.lesbleuscars.com/producto/WD80178',t:3},
+  {id:90018,ml:'WD85297',n:'DISCO FRENO VW GOL TREND VOYAGE SAVEIRO 1.6 8V 08/.. DELANTERO VE',m:'WILDBRAKE',cat:'frenos',e:'🛑',p:45715,pf:'$45.715',ok:true,url:'https://www.lesbleuscars.com/producto/WD85297',t:4},
+  {id:90019,ml:'WD85602',n:'DISCO FRENO AUDI A3 A1 SEAT LEON TOLEDO II 99/.. VW BORA 00/.. CR',m:'WILDBRAKE',cat:'frenos',e:'🛑',p:50668,pf:'$50.668',ok:true,url:'https://www.lesbleuscars.com/producto/WD85602',t:5},
+  {id:90020,ml:'WD84113',n:'DISCO FRENO TOYOTA HILUX SW4 2.5 3.0 TURBO 05/.. DELANTERO VENTIL',m:'WILDBRAKE',cat:'frenos',e:'🛑',p:93335,pf:'$93.335',ok:true,url:'https://www.lesbleuscars.com/producto/WD84113',t:1},
+  {id:90021,ml:'WD84752',n:'DISCO FRENO PEUGEOT 307 308 408 208 16/17 CITROEN C5 SEDAN 01/..',m:'WILDBRAKE',cat:'frenos',e:'🛑',p:69715,pf:'$69.715',ok:true,url:'https://www.lesbleuscars.com/producto/WD84752',t:2},
+  {id:90022,ml:'COQ1375',n:'PASTILLA FRENO MITSUBISHI MONTERO III 06/.. TOYOTA RUNER HILUX SW',m:'COBREQ',cat:'frenos',e:'🛑',p:63184,pf:'$63.184',ok:true,url:'https://www.lesbleuscars.com/producto/COQ1375',t:3},
+  {id:90023,ml:'COQ0547',n:'PASTILLA FRENO FIAT ARGO CRONOS 18/.. DOBLO 09/.. GRAND SIENA PUN',m:'COBREQ',cat:'frenos',e:'🛑',p:41247,pf:'$41.247',ok:true,url:'https://www.lesbleuscars.com/producto/COQ0547',t:4},
+  {id:90024,ml:'SKF-BB1-0624 AG',n:'RODAMIENTO BOLAS RÍGIDO SELLOS REFORZADOS RS1 60-80% DE GRASA JAU',m:'SKF AGRO',cat:'rodamientos',e:'⚙️',p:8623,pf:'$8.623',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-BB1-0624 AG',t:5},
+  {id:90025,ml:'SKF-VKBA 4529',n:'KIT RODAMIENTO TRAS VW CADDY GOL GOLF PASSAT POLO SAVEIRO SENDA F',m:'SKF',cat:'rodamientos',e:'⚙️',p:39064,pf:'$39.064',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-VKBA 4529',t:1},
+  {id:90026,ml:'SKF-6203-2RSH/C3',n:'RODAMIENTO BOLAS APLICACION MIXTA JAULA CHAPA METALICA JUEGO RADI',m:'SKF',cat:'rodamientos',e:'⚙️',p:7349,pf:'$7.349',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-6203-2RSH/C3',t:2},
+  {id:90027,ml:'SKF-6202-2RSH/C3',n:'RODAMIENTO ALTERNADOR RENAULT 4 6 9 11 12 18 19 21 EXPRESS KANGOO',m:'SKF',cat:'rodamientos',e:'⚙️',p:6766,pf:'$6.766',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-6202-2RSH/C3',t:3},
+  {id:90028,ml:'SKF-VKBA 4544',n:'KIT RODAMIENTO RUEDA CHEVROLET CORSA CELTA CLASSIC MERIVA KADETT',m:'SKF',cat:'rodamientos',e:'⚙️',p:39064,pf:'$39.064',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-VKBA 4544',t:4},
+  {id:90029,ml:'SKF-BB1-0623 AG',n:'RODAMIENTO BOLAS RÍGIDO SELLOS REFORZADOS RS1 60-80% DE GRASA JAU',m:'SKF AGRO',cat:'rodamientos',e:'⚙️',p:6267,pf:'$6.267',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-BB1-0623 AG',t:5},
+  {id:90030,ml:'SKF-6204-2RSH/C3',n:'RODAMIENTO BOLAS APLICACION MIXTA DODGE D100 D200 DP200 BOMBA AGU',m:'SKF',cat:'rodamientos',e:'⚙️',p:10116,pf:'$10.116',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-6204-2RSH/C3',t:1},
+  {id:90031,ml:'SKF-BB1-0625 AG',n:'RODAMIENTO BOLAS RÍGIDO SELLOS REFORZADOS RS1 60-80% DE GRASA JAU',m:'SKF AGRO',cat:'rodamientos',e:'⚙️',p:10487,pf:'$10.487',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-BB1-0625 AG',t:2},
+  {id:90032,ml:'AXI022.1280',n:'CAZOLETA VW GOL 02/.. COUNTRY DELANTERA CON RODAMIENTO',m:'AXIOS',cat:'rodamientos',e:'⚙️',p:34354,pf:'$34.354',ok:true,url:'https://www.lesbleuscars.com/producto/AXI022.1280',t:3},
+  {id:90033,ml:'SKF-VKBC 41036',n:'RODAMIENTO RUEDA VW FOX CROSS FOX SURAN GOL POINTER SAVEIRO SENDA',m:'SKF',cat:'rodamientos',e:'⚙️',p:60920,pf:'$60.920',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-VKBC 41036',t:4},
+  {id:90034,ml:'SKF-6205-2RSH/C3',n:'RODAMIENTO BOLAS APLICACION MIXTA DAIHATSU CHARADE G200 G201 DAEW',m:'SKF',cat:'rodamientos',e:'⚙️',p:12312,pf:'$12.312',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-6205-2RSH/C3',t:5},
+  {id:90035,ml:'SKF-VKBC 20212',n:'RODAMIENTO RUEDA RENAULT LOGAN MEGANE R9 11 19 CLIO DUSTER KANGOO',m:'SKF',cat:'rodamientos',e:'⚙️',p:54435,pf:'$54.435',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-VKBC 20212',t:1},
+  {id:90036,ml:'CH0185',n:'BUJIA PRECALENTAMIENTO CITROEN AX SAXO XSARA 1.5D MOTOR TUD5 0250',m:'CHAMPION',cat:'bujias',e:'⚡',p:15116,pf:'$15.116',ok:true,url:'https://www.lesbleuscars.com/producto/CH0185',t:2},
+  {id:90037,ml:'CHRN9YC',n:'BUJIA ENCENDIDO CHEVROLET FIAT FORD RENAULT VOLKSWAGEN MOTOR 1.4',m:'CHAMPION',cat:'bujias',e:'⚡',p:5255,pf:'$5.255',ok:true,url:'https://www.lesbleuscars.com/producto/CHRN9YC',t:3},
+  {id:90038,ml:'CH0189',n:'BUJIA PRECALENTAMIENTO ALFA ROMEO 145  146  1,9 2,0 TD CHYSLER CI',m:'CHAMPION',cat:'bujias',e:'⚡',p:10206,pf:'$10.206',ok:true,url:'https://www.lesbleuscars.com/producto/CH0189',t:4},
+  {id:90039,ml:'CH0260',n:'BUJIA PRECALENTAMIENTO VW GOL 1.6D GOLF 1.9D TD POLO 1.9D SENDA 1',m:'CHAMPION',cat:'bujias',e:'⚡',p:9868,pf:'$9.868',ok:true,url:'https://www.lesbleuscars.com/producto/CH0260',t:5},
+  {id:90040,ml:'MACV0700001',n:'CABLE BUJIA VW VOYAGE SURAN SAVEIRO POLO CLASSIC GOLF 1.6 8V EA 1',m:'MAHLE',cat:'bujias',e:'⚡',p:45985,pf:'$45.985',ok:true,url:'https://www.lesbleuscars.com/producto/MACV0700001',t:1},
+  {id:90041,ml:'H1865RC',n:'BUJIA ENCENDIDO CHEVROLET AGILE 1.4 ASTRA 1.8 2.0 BLAZER 2.2 CELT',m:'HESCHER',cat:'bujias',e:'⚡',p:3799,pf:'$3.799',ok:true,url:'https://www.lesbleuscars.com/producto/H1865RC',t:2},
+  {id:90042,ml:'MACV0250002',n:'CABLE BUJIA CHEVROLET AGILE 1.4 8V 09/.. CELTA 1.4 8V COBALT 1.8',m:'MAHLE',cat:'bujias',e:'⚡',p:42162,pf:'$42.162',ok:true,url:'https://www.lesbleuscars.com/producto/MACV0250002',t:3},
+  {id:90043,ml:'H1763RC',n:'BUJIA ENCENDIDO AGILE 1.4 8V ASTRA 2.0 COBALT 1.8 CORSA 1.6 MERIV',m:'HESCHER',cat:'bujias',e:'⚡',p:3799,pf:'$3.799',ok:true,url:'https://www.lesbleuscars.com/producto/H1763RC',t:4},
+  {id:90044,ml:'H1743RC',n:'BUJIA ENCENDIDO CHEVROLET AVEO 1.6 AX 1.1BERLINGO 1.4 C3 1.4 DUNA',m:'HESCHER',cat:'bujias',e:'⚡',p:4066,pf:'$4.066',ok:true,url:'https://www.lesbleuscars.com/producto/H1743RC',t:5},
+  {id:90045,ml:'CHF14YC',n:'BUJIA ENCENDIDO FORD FALCON 3.0 3.6 6 CIL. F100 3.6 4.9 F150 F250',m:'CHAMPION',cat:'bujias',e:'⚡',p:5059,pf:'$5.059',ok:true,url:'https://www.lesbleuscars.com/producto/CHF14YC',t:1},
+  {id:90046,ml:'CHL92YC',n:'BUJIA ENCENDIDO IKA TORINO TORNADO RENAULT 4 S GTL R5 L R6 GTL 12',m:'CHAMPION',cat:'bujias',e:'⚡',p:5079,pf:'$5.079',ok:true,url:'https://www.lesbleuscars.com/producto/CHL92YC',t:2},
+  {id:90047,ml:'CH0217',n:'BUJIA PRECALENTAMIENTO RENAULT TRAFIC 1.9D KANGOO 1.9D F8Q-662  6',m:'CHAMPION',cat:'bujias',e:'⚡',p:15120,pf:'$15.120',ok:true,url:'https://www.lesbleuscars.com/producto/CH0217',t:3},
+  {id:90048,ml:'MAFOC90',n:'FILTRO DE ACEITE FIAT PALIO SIENA PUNTO STILO1.8 8V 16V DAEWO ESP',m:'MAHLE',cat:'filtros',e:'🔩',p:7401,pf:'$7.401',ok:true,url:'https://www.lesbleuscars.com/producto/MAFOC90',t:4},
+  {id:90049,ml:'MAFOC250',n:'FILTRO DE ACEITE VOLKSWAGEN FOX CROSS FOX SURAN 1.6 GOL 1.0 GOL T',m:'MAHLE',cat:'filtros',e:'🔩',p:8496,pf:'$8.496',ok:true,url:'https://www.lesbleuscars.com/producto/MAFOC250',t:5},
+  {id:90050,ml:'MAFOC47',n:'FILTRO DE ACEITE VOLKSWAGEN VOYAGE 1.6 GOL 1.4 MI SEAT IBIZA 1.8',m:'MAHLE',cat:'filtros',e:'🔩',p:9733,pf:'$9.733',ok:true,url:'https://www.lesbleuscars.com/producto/MAFOC47',t:1},
+  {id:90051,ml:'MAFOC309',n:'FILTRO DE ACEITE RENAULT SANDERO STEPWAY SYMBOL KANGOO DUSTER ORO',m:'MAHLE',cat:'filtros',e:'🔩',p:8337,pf:'$8.337',ok:true,url:'https://www.lesbleuscars.com/producto/MAFOC309',t:2},
+  {id:90052,ml:'MAFKL583',n:'FILTRO DE COMBUSTIBLE PSA 106 205 206 BERLINGO 207 TU5J4 TU3JP 20',m:'MAHLE',cat:'filtros',e:'🔩',p:11553,pf:'$11.553',ok:true,url:'https://www.lesbleuscars.com/producto/MAFKL583',t:3},
+  {id:90053,ml:'MAFOX339/2D',n:'FILTRO DE ACEITE PEUGEOT 407 2.0 207 5008 PARTNER 1.6 208 1.5 CIT',m:'MAHLE',cat:'filtros',e:'🔩',p:14841,pf:'$14.841',ok:true,url:'https://www.lesbleuscars.com/producto/MAFOX339/2D',t:4},
+  {id:90054,ml:'MAFOC100',n:'FILTRO DE ACEITE CITROEN C4 2.0 VTS EW10J4S 04 10 XANTIA XSARA PI',m:'MAHLE',cat:'filtros',e:'🔩',p:9089,pf:'$9.089',ok:true,url:'https://www.lesbleuscars.com/producto/MAFOC100',t:5},
+  {id:90055,ml:'MAFOC259',n:'FILTRO DE ACEITE FIAT NEW UNO 1.4L EVO MOBI 1.0L 8V FIRE HCIVIC E',m:'MAHLE',cat:'filtros',e:'🔩',p:8461,pf:'$8.461',ok:true,url:'https://www.lesbleuscars.com/producto/MAFOC259',t:1},
+  {id:90056,ml:'MAFOC1608',n:'FILTRO DE ACEITE FORD ECOSPORT COURIER FIESTA 1.4 ECOSPORT 1.5 TI',m:'MAHLE',cat:'filtros',e:'🔩',p:9051,pf:'$9.051',ok:true,url:'https://www.lesbleuscars.com/producto/MAFOC1608',t:2},
+  {id:90057,ml:'MAFOC196',n:'FILTRO DE ACEITE FIAT 500 1.4 16V 595 TURISMO 165 CV 500X 1.4 POP',m:'MAHLE',cat:'filtros',e:'🔩',p:8713,pf:'$8.713',ok:true,url:'https://www.lesbleuscars.com/producto/MAFOC196',t:3},
+  {id:90058,ml:'MAFOX388D',n:'FILTRO DE ACEITE VOLKSWAGEN PASSAT CC TD AMAROK 4X4 AT 2.0 TDI BI',m:'MAHLE',cat:'filtros',e:'🔩',p:18539,pf:'$18.539',ok:true,url:'https://www.lesbleuscars.com/producto/MAFOX388D',t:4},
+  {id:90059,ml:'MAFOC988',n:'FILTRO DE ACEITE TOYOTA CAMRI 300 NAFTA V6 HILUX S C 4X2 4X4 2.4',m:'MAHLE',cat:'filtros',e:'🔩',p:11368,pf:'$11.368',ok:true,url:'https://www.lesbleuscars.com/producto/MAFOC988',t:5},
+  {id:90060,ml:'VKMC 01107 A1',n:'KIT DISTRIBUCION VW FOX 03/.. GOL TREND VOYAGE SURAN 1.6 BAH 08/.',m:'SKF',cat:'correas',e:'🔄',p:201897,pf:'$201.897',ok:true,url:'https://www.lesbleuscars.com/producto/VKMC 01107 A1',t:1},
+  {id:90061,ml:'VKMA 91711 A',n:'KIT DISTRIBUCION TOYOTA HILUX 05/.. 3.0 D4D 1KDFTV 2KD 1KD SIN PI',m:'SKF',cat:'correas',e:'🔄',p:145719,pf:'$145.719',ok:true,url:'https://www.lesbleuscars.com/producto/VKMA 91711 A',t:2},
+  {id:90062,ml:'VKMA 01107 A1',n:'KIT DISTRIBUCION VW FOX 03/.. GOL TREND VOYAGE SURAN 1.6 BAH 08/.',m:'SKF',cat:'correas',e:'🔄',p:136517,pf:'$136.517',ok:true,url:'https://www.lesbleuscars.com/producto/VKMA 01107 A1',t:3},
+  {id:90063,ml:'VKM 26102 H',n:'TENSOR DISTRIBUCION RENAULT CLIO KANGOO EXPRESS 1.9 D MEGANE 2.0',m:'SKF',cat:'correas',e:'🔄',p:111958,pf:'$111.958',ok:true,url:'https://www.lesbleuscars.com/producto/VKM 26102 H',t:4},
+  {id:90064,ml:'VKMA 06503',n:'KIT DISTRIBUCION RENAULT MASTER 2.5 DCI G9U 06/..CORREA REFORZADA',m:'SKF',cat:'correas',e:'🔄',p:257994,pf:'$257.994',ok:true,url:'https://www.lesbleuscars.com/producto/VKMA 06503',t:5},
+  {id:90065,ml:'VKMA 06021 A1',n:'KIT DISTRIBUCION RENAULT FLUENCE 1.6 16V 10/17 NAFTA K4M-838 (VKM',m:'SKF',cat:'correas',e:'🔄',p:273030,pf:'$273.030',ok:true,url:'https://www.lesbleuscars.com/producto/VKMA 06021 A1',t:1},
+  {id:90066,ml:'VKMA 97501',n:'KIT DISTRIBUCION DAIHATSU APLAUSSE 91/01 CHARADE 94/97 FEROZA 91/',m:'SKF',cat:'correas',e:'🔄',p:112658,pf:'$112.658',ok:true,url:'https://www.lesbleuscars.com/producto/VKMA 97501',t:2},
+  {id:90067,ml:'SKF-109SHP+250H',n:'CORREA SINCRONICA CHEVROLET SPARK 1.0 08/..DISTRIBUCION OUTLET2',m:'SKF',cat:'correas',e:'🔄',p:71644,pf:'$71.644',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-109SHP+250H',t:3},
+  {id:90068,ml:'VKMA 04304',n:'KIT CORREA DISTRIBUCIÓN FORD TRANSIT 2.5 TDI 96/01 . (130SHDN254H',m:'SKF',cat:'correas',e:'🔄',p:181202,pf:'$181.202',ok:true,url:'https://www.lesbleuscars.com/producto/VKMA 04304',t:4},
+  {id:90069,ml:'SKF-162STP8M200H',n:'CORREA SINCRÓNICA DISTRIBUCIÓN MERIVA 1.8 8V 16V',m:'SKF',cat:'correas',e:'🔄',p:122493,pf:'$122.493',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-162STP8M200H',t:5},
+  {id:90070,ml:'SKF-131SP+250HT',n:'CORREA SINCRÓNICA DISTRIBUCIÓN CHEVROLET ASTRA CORSA MERIVA 1.7 T',m:'SKF',cat:'correas',e:'🔄',p:307587,pf:'$307.587',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-131SP+250HT',t:1},
+  {id:90071,ml:'SKF-193SHPN240H',n:'CORREA SINCRÓNICA DISTRIBUCIÓN FIAT MAREA 1.9 TDI',m:'SKF',cat:'correas',e:'🔄',p:146189,pf:'$146.189',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-193SHPN240H',t:2},
+  {id:90072,ml:'VTH7707',n:'BIELETA RENAULT CLIO II MEGANE KANGOO LOGAN SANDERO SYMBOL DELANT',m:'VTH',cat:'bieletas',e:'🔧',p:13777,pf:'$13.777',ok:true,url:'https://www.lesbleuscars.com/producto/VTH7707',t:3},
+  {id:90073,ml:'NANB4825',n:'BIELETA VW GOL TREND VOYAGE SAVEIRO SURAN FOX CROSS FOX UP FIAT B',m:'NAKATA',cat:'bieletas',e:'🔧',p:25948,pf:'$25.948',ok:true,url:'https://www.lesbleuscars.com/producto/NANB4825',t:4},
+  {id:90074,ml:'VTH1207',n:'BIELETA VW GOL TREND VOYAGE SAVEIRO FOX SURAN NIVUS T-CROSS DELAN',m:'VTH',cat:'bieletas',e:'🔧',p:33489,pf:'$33.489',ok:true,url:'https://www.lesbleuscars.com/producto/VTH1207',t:5},
+  {id:90075,ml:'TEKSK-407',n:'BIELETA GOL TREND SAVEIRO 10/13 VOYAGE POLO SURAN FOX CROSSFOX 03',m:'TEKNOROT',cat:'bieletas',e:'🔧',p:17748,pf:'$17.748',ok:true,url:'https://www.lesbleuscars.com/producto/TEKSK-407',t:1},
+  {id:90076,ml:'BU0416',n:'BIELETA PEUGEOT 306 95/03  PARTNER  RANCH 96/.. PARTNER DELANTERA',m:'UNDERCAR',cat:'bieletas',e:'🔧',p:17010,pf:'$17.010',ok:true,url:'https://www.lesbleuscars.com/producto/BU0416',t:2},
+  {id:90077,ml:'BU0611',n:'BIELETA VOLSKWAGEN GOL TREND GOLTREND UP 08/..  VOYAGE - CADDY 98',m:'UNDERCAR',cat:'bieletas',e:'🔧',p:19202,pf:'$19.202',ok:true,url:'https://www.lesbleuscars.com/producto/BU0611',t:3},
+  {id:90078,ml:'AXI531.2132',n:'BIELETA VW POLO 03/.. SURAN CROSS FOX FIAT MAREA GOL TREND VOYAGE',m:'AXIOS',cat:'bieletas',e:'🔧',p:29613,pf:'$29.613',ok:true,url:'https://www.lesbleuscars.com/producto/AXI531.2132',t:4},
+  {id:90079,ml:'AXI531.2685',n:'BIELETA CHEVROLET COBALT 11/.. ONIX 12/.. SONIC 12/.. SPIN 12/..',m:'AXIOS',cat:'bieletas',e:'🔧',p:23118,pf:'$23.118',ok:true,url:'https://www.lesbleuscars.com/producto/AXI531.2685',t:5},
+  {id:90080,ml:'TEKCI-210',n:'BIELETA PEUGEOT 306 PARTNER CITROEN BERLINGO XSARA DELANTERA LARG',m:'TEKNOROT',cat:'bieletas',e:'🔧',p:18206,pf:'$18.206',ok:true,url:'https://www.lesbleuscars.com/producto/TEKCI-210',t:1},
+  {id:90081,ml:'VTH1201',n:'BIELETA PEUGEOT 206 207 CITROEN C3 C3 11/.. C3 PICASSO C3 AIRCROS',m:'VTH',cat:'bieletas',e:'🔧',p:32020,pf:'$32.020',ok:true,url:'https://www.lesbleuscars.com/producto/VTH1201',t:2},
+  {id:90082,ml:'VTH7727',n:'BIELETA RENAULT CLIO II MEGANE KANGOO LOGAN SANDERO DELANTERA CON',m:'VTH',cat:'bieletas',e:'🔧',p:13777,pf:'$13.777',ok:true,url:'https://www.lesbleuscars.com/producto/VTH7727',t:3},
+  {id:90083,ml:'NANB4898',n:'BIELETA PEUGEOT 206 207 208 CITROEN C3 II DS3 DELANTERA 335MM ROS',m:'NAKATA',cat:'bieletas',e:'🔧',p:25943,pf:'$25.943',ok:true,url:'https://www.lesbleuscars.com/producto/NANB4898',t:4},
+  {id:90084,ml:'VTH5613',n:'BUJE BARRA ESTABILIZADORA CHEVROLET CORSA 97/.. PRISMA CELTA CLAS',m:'VTH',cat:'bujes',e:'🔩',p:3498,pf:'$3.498',ok:true,url:'https://www.lesbleuscars.com/producto/VTH5613',t:5},
+  {id:90085,ml:'VTH5640',n:'BUJE TENSOR CHEVROLET AGILE CORSA WAGON 98/03 CELTA PRISMA 98/..',m:'VTH',cat:'bujes',e:'🔩',p:15881,pf:'$15.881',ok:true,url:'https://www.lesbleuscars.com/producto/VTH5640',t:1},
+  {id:90086,ml:'VTH5785',n:'BUJE BARRA ESTABILIZADORA RENAULT R19 MEGANE CLIO EXPRESS CLIO II',m:'VTH',cat:'bujes',e:'🔩',p:4461,pf:'$4.461',ok:true,url:'https://www.lesbleuscars.com/producto/VTH5785',t:2},
+  {id:90087,ml:'VTH5473',n:'BUJE PARRILLA VW POLO CLASSIC 97/00 GOLF 98/.. CADDY BORA VOYAGE',m:'VTH',cat:'bujes',e:'🔩',p:11470,pf:'$11.470',ok:true,url:'https://www.lesbleuscars.com/producto/VTH5473',t:3},
+  {id:90088,ml:'AXI011.1266',n:'BUJE TENSOR CHEVROLET AGILE CORSA WAGON 98/03 CELTA PRISMA 98/..',m:'AXIOS',cat:'bujes',e:'🔩',p:14745,pf:'$14.745',ok:true,url:'https://www.lesbleuscars.com/producto/AXI011.1266',t:4},
+  {id:90089,ml:'VTH5474-12',n:'BUJE PARRILLA VW POLO GOLF 99/..BORA GOL TREND VOYAGE UP14/.. NEW',m:'VTH',cat:'bujes',e:'🔩',p:24449,pf:'$24.449',ok:true,url:'https://www.lesbleuscars.com/producto/VTH5474-12',t:5},
+  {id:90090,ml:'AXI041.1040',n:'BUJE BARRA ESTABILIZADORA CHEVROLET CORSA 97/.. CELTA CHEVETTE SU',m:'AXIOS',cat:'bujes',e:'🔩',p:2653,pf:'$2.653',ok:true,url:'https://www.lesbleuscars.com/producto/AXI041.1040',t:1},
+  {id:90091,ml:'AXI011.1247',n:'BUJE PARRILLA VW POLO GOLF 99/..BORA GOL TREND SAVEIRO VOYAGE UP1',m:'AXIOS',cat:'bujes',e:'🔩',p:18434,pf:'$18.434',ok:true,url:'https://www.lesbleuscars.com/producto/AXI011.1247',t:2},
+  {id:90092,ml:'VTH8496',n:'BUJE BARRA ESTABILIZADORA VW FOX SURAN GOL TREND VOYAGE UP DELANT',m:'VTH',cat:'bujes',e:'🔩',p:5731,pf:'$5.731',ok:true,url:'https://www.lesbleuscars.com/producto/VTH8496',t:3},
+  {id:90093,ml:'VTH5798',n:'BUJE PARRILLA RENAULT KANGOO CLIO II SYMBOL DELANTERA INFERIOR RE',m:'VTH',cat:'bujes',e:'🔩',p:17222,pf:'$17.222',ok:true,url:'https://www.lesbleuscars.com/producto/VTH5798',t:4},
+  {id:90094,ml:'AXI011.1249',n:'BUJE PARRILLA VW POLO CLASSIC 97/00 GOLF 98/.. CADDY BORA VOYAGE',m:'AXIOS',cat:'bujes',e:'🔩',p:10650,pf:'$10.650',ok:true,url:'https://www.lesbleuscars.com/producto/AXI011.1249',t:5},
+  {id:90095,ml:'VTH8410',n:'BUJE PARRILLA VW FOX SURAN VENTO 06/.. POLO 02/.. CADDY TIGUAN KI',m:'VTH',cat:'bujes',e:'🔩',p:21773,pf:'$21.773',ok:true,url:'https://www.lesbleuscars.com/producto/VTH8410',t:1},
+  {id:90096,ml:'WAG130024',n:'LIQUIDO FRENO DOT3 - 500 CC SERVICIO PESADO',m:'WAGNER LOCKHEED',cat:'fluidos',e:'💧',p:18532,pf:'$18.532',ok:true,url:'https://www.lesbleuscars.com/producto/WAG130024',t:2},
+  {id:90097,ml:'WAG41114',n:'LIQUIDO FRENO DOT3 - 1 LT SERVICIO PESADO',m:'WAGNER LOCKHEED',cat:'fluidos',e:'💧',p:33358,pf:'$33.358',ok:true,url:'https://www.lesbleuscars.com/producto/WAG41114',t:3},
+  {id:90098,ml:'WLO1R',n:'REFRIGERANTE ANTICONGELANTE 1L ORGANICO ROJO PACK 12 UNIDADES',m:'WILDBRAKE',cat:'fluidos',e:'💧',p:10589,pf:'$10.589',ok:true,url:'https://www.lesbleuscars.com/producto/WLO1R',t:4},
+  {id:90099,ml:'WAG130501',n:'LIQUIDO FRENO DOT 4 - 500CC. ALTA PERFORMANCE',m:'WAGNER LOCKHEED',cat:'fluidos',e:'💧',p:31548,pf:'$31.548',ok:true,url:'https://www.lesbleuscars.com/producto/WAG130501',t:5},
+  {id:90100,ml:'WAG109360',n:'LIQUIDO FRENO DOT3 - 200 CC SERVICIO PESADO',m:'WAGNER LOCKHEED',cat:'fluidos',e:'💧',p:9863,pf:'$9.863',ok:true,url:'https://www.lesbleuscars.com/producto/WAG109360',t:1},
+  {id:90101,ml:'WAG67262',n:'LIQUIDO FRENO DOT4 - 1 LT ALTA PERFORMANCE',m:'WAGNER LOCKHEED',cat:'fluidos',e:'💧',p:50135,pf:'$50.135',ok:true,url:'https://www.lesbleuscars.com/producto/WAG67262',t:2},
+  {id:90102,ml:'WAG130702',n:'LIQUIDO REFRIGERANTE ANTICONGELANTE  ANTICORR.  1 L ORGANICO ROJO',m:'WAGNER LOCKHEED',cat:'fluidos',e:'💧',p:21706,pf:'$21.706',ok:true,url:'https://www.lesbleuscars.com/producto/WAG130702',t:3},
+  {id:90103,ml:'WAG130500',n:'LIQUIDO FRENO DOT4 - 200 CC ALTA PERFORMANCE',m:'WAGNER LOCKHEED',cat:'fluidos',e:'💧',p:11523,pf:'$11.523',ok:true,url:'https://www.lesbleuscars.com/producto/WAG130500',t:4},
+  {id:90104,ml:'SKF-LACF 1 R',n:'LIQUIDO REFRIGERANTE 1 LITRO ORGANICO ROJO',m:'SKF',cat:'fluidos',e:'💧',p:14231,pf:'$14.231',ok:true,url:'https://www.lesbleuscars.com/producto/SKF-LACF 1 R',t:5},
+  {id:90105,ml:'WAG130680',n:'LIQUIDO REFRIGERANTE ANTICONGELANTE  ANTICORR.  1 LT INORG. ROJO',m:'WAGNER LOCKHEED',cat:'fluidos',e:'💧',p:20199,pf:'$20.199',ok:true,url:'https://www.lesbleuscars.com/producto/WAG130680',t:1},
+  {id:90106,ml:'WLO1A',n:'REFRIGERANTE ANTICONGELANTE 1L ORGANICO AMARILLO PACK 12 UNIDADES',m:'WILDBRAKE',cat:'fluidos',e:'💧',p:10589,pf:'$10.589',ok:true,url:'https://www.lesbleuscars.com/producto/WLO1A',t:2},
+  {id:90107,ml:'WLR1',n:'REFRIGERANTE ANTICONGELANTE 1L INORGANICO VERDE PACK 12 UNIDADES',m:'WILDBRAKE',cat:'fluidos',e:'💧',p:10138,pf:'$10.138',ok:true,url:'https://www.lesbleuscars.com/producto/WLR1',t:3}
 ];
-// ââ COLORES POR CATEGORÃA ââ
+// ══ COLORES POR CATEGORÍA ══
 const CC={
   espejos:{bg:'#EFF6FF',br:'#BFDBFE',tx:'#1D4ED8',sd:'#3B82F6'},
   opticas:{bg:'#FFFBEB',br:'#FDE68A',tx:'#92400E',sd:'#D97706'},
@@ -1067,7 +1067,7 @@ const CC={
 };
 function gc(cat){return CC[cat]||CC.espejos;}
 
-// ââ IMÃGENES â BATCH LOAD ââ
+// ══ IMÁGENES — BATCH LOAD ══
 let imgCache={};
 
 const CAT_SVG={
@@ -1145,7 +1145,7 @@ async function initImageLoading(){
 
 
 
-// ââ DESCUENTOS ââ
+// ══ DESCUENTOS ══
 function getDesc(p){
   if(p.cat==='amortiguadores') return 20;
   if(p.p>250000) return 20;
@@ -1171,10 +1171,10 @@ function precioHtml(p,colorClass){
   return `<div style="font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:${col}">${p.pf}</div>`;
 }
 
-// ââ 5 CARD TYPES ââ
+// ══ 5 CARD TYPES ══
 function card(p){
   const c=gc(p.cat);
-  const stk=p.ok?`<span class="sok">â Stock</span>`:`<span class="sno">Sin stock</span>`;
+  const stk=p.ok?`<span class="sok">✓ Stock</span>`:`<span class="sno">Sin stock</span>`;
   const btnA=p.ok?`<button class="ba" onclick="addC(${p.id})">+ Carrito</button>`:'';
   const btnG=p.ok?`<button class="bag" onclick="addC(${p.id})">+ Carrito</button>`:'';
   const btnW=p.ok?`<button class="baw" onclick="addC(${p.id})">+ Carrito</button>`:'';
@@ -1222,7 +1222,7 @@ function card(p){
     case 4:return`<div class="c4">
       <div class="c4st" style="background:linear-gradient(90deg,${c.sd},${c.tx})"></div>
       <div class="c4i">
-        <span style="position:absolute;top:9px;right:9px;background:${c.bg};color:${c.tx};border:1px solid ${c.br};font-size:9px;font-weight:700;padding:2px 8px;border-radius:99px;font-family:'DM Mono',monospace">${p.ok?'â Stock':'Consultar'}</span>
+        <span style="position:absolute;top:9px;right:9px;background:${c.bg};color:${c.tx};border:1px solid ${c.br};font-size:9px;font-weight:700;padding:2px 8px;border-radius:99px;font-family:'DM Mono',monospace">${p.ok?'✓ Stock':'Consultar'}</span>
         ${imgHtml(p,56)}
       </div>
       <div class="c4b">
@@ -1246,52 +1246,52 @@ function card(p){
   }
 }
 
-// ââ COMBOS ââ
+// ══ COMBOS ══
 const COMBOS=[
   {
-    id:'CB001',nombre:'Frenos Completos VW',emoji:'ð',
+    id:'CB001',nombre:'Frenos Completos VW',emoji:'🛑',
     desc:'Disco + Pastillas para VW Gol, Polo, Saveiro, Voyage',
     ids:[90016,90015],// WD83975 disco VW + COQ0252 pastilla VW
     cat:'frenos'
   },
   {
-    id:'CB002',nombre:'Frenos Completos Peugeot/CitroÃ«n',emoji:'ð',
-    desc:'Disco + Pastillas para Peugeot 307/308 y CitroÃ«n C4/C5',
+    id:'CB002',nombre:'Frenos Completos Peugeot/Citroën',emoji:'🛑',
+    desc:'Disco + Pastillas para Peugeot 307/308 y Citroën C4/C5',
     ids:[90021,90015],// WD84752 disco Peugeot + pastilla
     cat:'frenos'
   },
   {
-    id:'CB003',nombre:'Amortiguadores Par Fox/Suran',emoji:'ð',
+    id:'CB003',nombre:'Amortiguadores Par Fox/Suran',emoji:'🚗',
     desc:'Par delantero Monroe para VW Fox y Suran (x2 unidades)',
     ids:[90004,90004],// MON749166SP x2
     cat:'amortiguadores'
   },
   {
-    id:'CB004',nombre:'Amortiguadores Par Chevrolet',emoji:'ð',
+    id:'CB004',nombre:'Amortiguadores Par Chevrolet',emoji:'🚗',
     desc:'Par delantero Monroe para Corsa, Celta, Classic y Meriva',
     ids:[90007,90007],// MON749355SP x2
     cat:'amortiguadores'
   },
   {
-    id:'CB005',nombre:'Kit Encendido Completo',emoji:'â¡',
-    desc:'BujÃ­as Champion + Cables Mahle para motores 1.6 / 1.8',
-    ids:[90037,90040],// CHRN9YC bujÃ­as + MACV0700001 cables
+    id:'CB005',nombre:'Kit Encendido Completo',emoji:'⚡',
+    desc:'Bujías Champion + Cables Mahle para motores 1.6 / 1.8',
+    ids:[90037,90040],// CHRN9YC bujías + MACV0700001 cables
     cat:'bujias'
   },
   {
-    id:'CB006',nombre:'Rodamientos Par Chevrolet',emoji:'âï¸',
+    id:'CB006',nombre:'Rodamientos Par Chevrolet',emoji:'⚙️',
     desc:'Par de rodamientos SKF para Corsa, Celta, Classic y Meriva',
     ids:[90028,90028],// SKF-VKBA 4544 x2
     cat:'rodamientos'
   },
   {
-    id:'CB007',nombre:'Espejos Par ElÃ©ctrico Giving',emoji:'ðª',
-    desc:'Espejo izquierdo + derecho elÃ©ctrico con control Giving',
+    id:'CB007',nombre:'Espejos Par Eléctrico Giving',emoji:'🪞',
+    desc:'Espejo izquierdo + derecho eléctrico con control Giving',
     ids:[123224099,123224109],// Espejo izq + der Giving con control
     cat:'espejos'
   },
   {
-    id:'CB008',nombre:'SuspensiÃ³n Delantera VW',emoji:'ð§',
+    id:'CB008',nombre:'Suspensión Delantera VW',emoji:'🔧',
     desc:'Bieleta + Buje parrilla para VW Polo, Golf, Gol Trend',
     ids:[90078,90087],// Bieleta VW + Buje VW
     cat:'suspension'
@@ -1309,7 +1309,7 @@ function renderCombos(){
     const desc=cb.cat==='amortiguadores'||totalOrig>250000?20:0;
     const totalDesc=desc>0?Math.round(totalOrig*(1-desc/100)):totalOrig;
     const ahorro=totalOrig-totalDesc;
-    const prodList=unique.map(p=>`<div style="font-size:11px;color:var(--tx2);padding:3px 0;border-bottom:1px solid var(--bd)">â¢ ${counts[p.id]>1?counts[p.id]+'x ':''}<b>${p.m}</b> â ${p.n.slice(0,45)}${p.n.length>45?'...':''}</div>`).join('');
+    const prodList=unique.map(p=>`<div style="font-size:11px;color:var(--tx2);padding:3px 0;border-bottom:1px solid var(--bd)">• ${counts[p.id]>1?counts[p.id]+'x ':''}<b>${p.m}</b> — ${p.n.slice(0,45)}${p.n.length>45?'...':''}</div>`).join('');
     return`<div style="background:#fff;border:1px solid var(--bd);border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07);transition:all .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 28px rgba(0,0,0,.13)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(0,0,0,.07)'">
       <div style="background:linear-gradient(135deg,var(--nv),var(--nv2));padding:16px 18px;display:flex;align-items:center;gap:12px">
         <span style="font-size:32px">${cb.emoji}</span>
@@ -1324,10 +1324,10 @@ function renderCombos(){
           <div>
             ${desc>0?`<div style="font-size:10px;color:var(--tx3);text-decoration:line-through;font-family:'DM Mono',monospace">$${totalOrig.toLocaleString('es-AR')}</div>`:''}
             <div style="font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:var(--nv)">$${totalDesc.toLocaleString('es-AR')}</div>
-            ${desc>0?`<div style="font-size:10px;color:var(--gn);font-weight:700">AhorrÃ¡s $${ahorro.toLocaleString('es-AR')} (${desc}% off)</div>`:''}
-            ${totalOrig>250000||cb.cat==='amortiguadores'?`<div style="font-size:10px;color:#6C2BD9;font-weight:700">ð +5% si transferÃ­s</div>`:''}
+            ${desc>0?`<div style="font-size:10px;color:var(--gn);font-weight:700">Ahorrás $${ahorro.toLocaleString('es-AR')} (${desc}% off)</div>`:''}
+            ${totalOrig>250000||cb.cat==='amortiguadores'?`<div style="font-size:10px;color:#6C2BD9;font-weight:700">💜 +5% si transferís</div>`:''}
           </div>
-          <button onclick="addCombo('${cb.id}')" style="background:var(--gd);color:var(--nv);font-size:13px;font-weight:900;padding:10px 16px;border-radius:9px;border:none;cursor:pointer;font-family:'Lato',sans-serif;white-space:nowrap">ð Agregar combo</button>
+          <button onclick="addCombo('${cb.id}')" style="background:var(--gd);color:var(--nv);font-size:13px;font-weight:900;padding:10px 16px;border-radius:9px;border:none;cursor:pointer;font-family:'Lato',sans-serif;white-space:nowrap">🛒 Agregar combo</button>
         </div>
       </div>
     </div>`;
@@ -1353,11 +1353,11 @@ if(typeof firebase!=='undefined'){try{firebase.initializeApp(FB_CONFIG);db=fireb
 
 function hsh(s){let x=0;for(let c of s){x=((x<<5)-x)+c.charCodeAt(0);x|=0;}return x;}
 
-// ââ ESTADO ââ
+// ══ ESTADO ══
 let lista=[...PP],cart=[],lbN=1,upDone=false;
 
 async function confirmar(){
-  if(!upDone){alert('SubÃ­ el comprobante primero');return;}
+  if(!upDone){alert('Subí el comprobante primero');return;}
   // Validar campos obligatorios del paso 1
   const inps=document.querySelectorAll('#ms1 input');
   const nombre=inps[0]?.value.trim()||'';
@@ -1365,7 +1365,7 @@ async function confirmar(){
   const dir=inps[3]?.value.trim()||'';
   if(!nombre||!watel||!dir){
     iPaso(1);
-    setTimeout(()=>alert('CompletÃ¡ Nombre, WhatsApp y DirecciÃ³n antes de confirmar.'),100);
+    setTimeout(()=>alert('Completá Nombre, WhatsApp y Dirección antes de confirmar.'),100);
     return;
   }
   const email=inps[2]?.value.trim()||'';
@@ -1378,12 +1378,12 @@ async function confirmar(){
   const fecha=new Date().toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'});
   const cod='LB-2026-'+String(lbN++).padStart(6,'0');
 
-  // Generar usuario y contraseÃ±a para el cliente
+  // Generar usuario y contraseña para el cliente
   const base = nombre.toLowerCase().replace(/\s+/g,'').replace(/[^a-z0-9]/g,'').slice(0,10)||'cliente';
   const clienteUser = 'lb_'+base+'_'+String(Date.now()).slice(-4);
   const clientePass = Math.random().toString(36).slice(-8);
 
-  // Guardar en Firebase si estÃ¡ conectado
+  // Guardar en Firebase si está conectado
   if(db){
     try{
       const orderData = {
@@ -1416,23 +1416,23 @@ async function confirmar(){
     }catch(e){ console.warn('Firebase error:', e); }
   }
 
-  // Mostrar confirmaciÃ³n
+  // Mostrar confirmación
   document.getElementById('lbcode').textContent = cod;
   // Credenciales en el paso 4
   const credsEl = document.getElementById('lb-creds');
   if(credsEl){
     credsEl.innerHTML = `<div style="background:#EFF6FF;border:1px solid #BFDBFE;border-radius:10px;padding:14px;margin:12px 0;font-size:12.5px">
-      <div style="font-weight:700;color:#1E3A5F;margin-bottom:8px">ð¤ Tu acceso al portal de seguimiento:</div>
+      <div style="font-weight:700;color:#1E3A5F;margin-bottom:8px">👤 Tu acceso al portal de seguimiento:</div>
       <div style="font-family:'DM Mono',monospace;margin-bottom:4px">Usuario: <b style="color:#0D1B3E">${clienteUser}</b></div>
-      <div style="font-family:'DM Mono',monospace;margin-bottom:10px">ContraseÃ±a: <b style="color:#0D1B3E">${clientePass}</b></div>
-      <div style="font-size:11px;color:#475569">â ï¸ GuardÃ¡ estas credenciales. AccedÃ© en <a href="portal_cliente.html" style="color:#2563EB;font-weight:700">lesbleuscars.com</a></div>
+      <div style="font-family:'DM Mono',monospace;margin-bottom:10px">Contraseña: <b style="color:#0D1B3E">${clientePass}</b></div>
+      <div style="font-size:11px;color:#475569">⚠️ Guardá estas credenciales. Accedé en <a href="portal_cliente.html" style="color:#2563EB;font-weight:700">lesbleuscars.com</a></div>
     </div>`;
       const waEl=document.getElementById('lb-wa');
       if(waEl){
         const telCliente=watel.replace(/\D/g,'');
         const waNumLesbleus='541136525215';
         const telDestino=telCliente||waNumLesbleus;
-        const msg=encodeURIComponent(`Â¡Hola ${nombre}! ð Tu pedido *${cod}* de LesBleus Cars fue confirmado.\n\nð¦ Productos: ${items}\nð° Total: $${total.toLocaleString('es-AR')}\n\nð¤ Para seguir tu envÃ­o:\nUsuario: *${clienteUser}*\nContraseÃ±a: *${clientePass}*\n\nÂ¡Gracias por tu compra!`);
+        const msg=encodeURIComponent(`¡Hola ${nombre}! 🎉 Tu pedido *${cod}* de LesBleus Cars fue confirmado.\n\n📦 Productos: ${items}\n💰 Total: $${total.toLocaleString('es-AR')}\n\n👤 Para seguir tu envío:\nUsuario: *${clienteUser}*\nContraseña: *${clientePass}*\n\n¡Gracias por tu compra!`);
         waEl.href=`https://wa.me/${telDestino}?text=${msg}`;
         waEl.style.display='flex';
       }
@@ -1442,7 +1442,7 @@ async function confirmar(){
 
 function renderGrid(arr){
   const g=document.getElementById('grid');
-  if(!arr.length){g.innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--tx3)"><div style="font-size:48px;margin-bottom:1rem">ð</div><div style="font-size:16px;font-weight:700">Sin resultados</div><div style="font-size:13px;margin-top:5px">IntentÃ¡ con otra bÃºsqueda</div></div>`;return;}
+  if(!arr.length){g.innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--tx3)"><div style="font-size:48px;margin-bottom:1rem">🔍</div><div style="font-size:16px;font-weight:700">Sin resultados</div><div style="font-size:13px;margin-top:5px">Intentá con otra búsqueda</div></div>`;return;}
   g.innerHTML=arr.map(card).join('');
   document.getElementById('cnt').textContent=arr.length;
   document.getElementById('fcnt').textContent=arr.length+' productos';
@@ -1471,7 +1471,7 @@ function busTxt(){const t=(document.getElementById('stxt')?.value||'').toLowerCa
 function busVeh(){
   const marca=document.getElementById('smk').value;
   const modelo=document.getElementById('smd').value;
-  if(!marca){alert('SeleccionÃ¡ la marca del auto');return;}
+  if(!marca){alert('Seleccioná la marca del auto');return;}
   const terms=MARCA_MAP[marca]||[marca.toLowerCase()];
   const modeloLow=(modelo||'').toLowerCase();
   lista=PP.filter(p=>{
@@ -1493,14 +1493,14 @@ const MARCA_MAP={
   'Chevrolet':['chevrolet','onix','cruze','tracker','s10','astra','corsa','meriva','spin','cobalt','celta','classic','agile','kadett','prisma','blazer'],
   'Renault':['renault','sandero','megane','logan','duster','kwid','kangoo','master','clio','symbol','scenic','r19','trafic','express'],
   'Peugeot':['peugeot','206','207','208','307','308','2008','3008','partner','expert','boxer','407','5008','106'],
-  'CitroÃ«n':['citroen','c3 ','c4 ','c5 ','berlingo','jumper','xsara','saxo','xantia','ds3'],
+  'Citroën':['citroen','c3 ','c4 ','c5 ','berlingo','jumper','xsara','saxo','xantia','ds3'],
   'Fiat':['fiat','palio','siena',' uno ','strada','fiorino','ducato','punto','marea','argo','cronos','doblo','mobi'],
   'Honda':['honda','civic','cr-v','hr-v',' fit ','city'],
   'Nissan':['nissan','frontier','kicks','sentra','march'],
   'Isuzu':['isuzu','d-max'],
   'Mercedes-Benz':['mercedes','sprinter','vito'],
 };
-const MOD={Toyota:['Corolla','Yaris','Hilux','Hilux Pick-Up','RAV4','Etios','SW4'],Volkswagen:['Gol','Polo','Vento','Golf','Amarok','Suran','Voyage','Fox','Caddy','Bora','Saveiro','Senda'],Ford:['EcoSport','Focus','Fiesta','Ranger','Ka','F-100','F-150','Orion','Courier','Transit','Falcon'],Chevrolet:['Onix','Cruze','Tracker','S10','Astra','Corsa','Meriva','Spin','Cobalt','Celta','Classic','Agile','Prisma','Blazer'],Renault:['Sandero','Megane','Logan','Duster','Kwid','Kangoo','Master','Clio','Symbol','Scenic','R19','Trafic'],Peugeot:['208','308','2008','3008','Partner','Expert','Boxer','206','207','307','407','5008'],CitroÃ«n:['C3','C4','C5','Berlingo','Jumper','Xsara','Saxo','Xantia'],Fiat:['Cronos','Palio','Siena','Uno','Strada','Fiorino','Ducato','Punto','Marea','Argo','Doblo','Mobi'],Honda:['Civic','CR-V','HR-V','Fit','City'],Nissan:['Frontier','Kicks','Sentra','March'],Isuzu:['Pick-Up','D-Max'],'Mercedes-Benz':['Sprinter','Vito']};
+const MOD={Toyota:['Corolla','Yaris','Hilux','Hilux Pick-Up','RAV4','Etios','SW4'],Volkswagen:['Gol','Polo','Vento','Golf','Amarok','Suran','Voyage','Fox','Caddy','Bora','Saveiro','Senda'],Ford:['EcoSport','Focus','Fiesta','Ranger','Ka','F-100','F-150','Orion','Courier','Transit','Falcon'],Chevrolet:['Onix','Cruze','Tracker','S10','Astra','Corsa','Meriva','Spin','Cobalt','Celta','Classic','Agile','Prisma','Blazer'],Renault:['Sandero','Megane','Logan','Duster','Kwid','Kangoo','Master','Clio','Symbol','Scenic','R19','Trafic'],Peugeot:['208','308','2008','3008','Partner','Expert','Boxer','206','207','307','407','5008'],Citroën:['C3','C4','C5','Berlingo','Jumper','Xsara','Saxo','Xantia'],Fiat:['Cronos','Palio','Siena','Uno','Strada','Fiorino','Ducato','Punto','Marea','Argo','Doblo','Mobi'],Honda:['Civic','CR-V','HR-V','Fit','City'],Nissan:['Frontier','Kicks','Sentra','March'],Isuzu:['Pick-Up','D-Max'],'Mercedes-Benz':['Sprinter','Vito']};
 function loadMod(){
   const m=document.getElementById('smk').value;
   const s=document.getElementById('smd');
@@ -1508,7 +1508,7 @@ function loadMod(){
   if(MOD[m])MOD[m].forEach(mod=>{const o=document.createElement('option');o.value=mod;o.textContent=mod;s.appendChild(o);});
 }
 
-// ââ CART ââ
+// ══ CART ══
 function addC(id){
   const p=PP.find(x=>x.id===id);if(!p)return;
   const ex=cart.find(x=>x.id===id);
@@ -1521,29 +1521,29 @@ function updCart(){
   const ENVIO_GRATIS=150000;
   const n=cart.reduce((s,i)=>s+i.qty,0);document.getElementById('cn').textContent=n;
   const bd=document.getElementById('drbd');const ft=document.getElementById('drft');
-  if(!cart.length){bd.innerHTML=`<div class="cmt"><div style="font-size:44px;opacity:.4;margin-bottom:.5rem">ð</div><div style="font-size:14px;font-weight:700;color:var(--tx2)">Tu carrito estÃ¡ vacÃ­o</div><div style="font-size:12px;color:var(--tx3);margin-top:4px">AgregÃ¡ productos para comenzar</div></div>`;ft.style.display='none';return;}
+  if(!cart.length){bd.innerHTML=`<div class="cmt"><div style="font-size:44px;opacity:.4;margin-bottom:.5rem">🛒</div><div style="font-size:14px;font-weight:700;color:var(--tx2)">Tu carrito está vacío</div><div style="font-size:12px;color:var(--tx3);margin-top:4px">Agregá productos para comenzar</div></div>`;ft.style.display='none';return;}
   const tot=cart.reduce((s,i)=>s+i.p*i.qty,0);
   const falta=Math.max(0,ENVIO_GRATIS-tot);
   const pct=Math.min(100,Math.round(tot/ENVIO_GRATIS*100));
   const envioBar=falta>0
     ?`<div style="background:var(--blb);border-radius:8px;padding:10px 12px;margin-bottom:10px;font-size:12px">
-        <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span>ð FaltÃ¡n <b>$${falta.toLocaleString('es-AR')}</b> para envÃ­o gratis</span><span>${pct}%</span></div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span>🚚 Faltán <b>$${falta.toLocaleString('es-AR')}</b> para envío gratis</span><span>${pct}%</span></div>
         <div style="background:#ddd;border-radius:99px;height:6px"><div style="background:var(--nv);width:${pct}%;height:6px;border-radius:99px;transition:width .4s"></div></div>
       </div>`
-    :`<div style="background:#ECFDF5;border-radius:8px;padding:10px 12px;margin-bottom:10px;font-size:12px;color:var(--gn);font-weight:700">ð Â¡EnvÃ­o gratis desbloqueado!</div>`;
-  bd.innerHTML=envioBar+cart.map(i=>`<div class="ci"><div class="cii">${i.e}</div><div class="cin"><div class="cibr">${i.m}</div><div class="cinm">${i.n}</div><div class="cipr">$${(i.p*i.qty).toLocaleString('es-AR')}</div><div class="ciqty"><button class="qb" onclick="chQ(${i.id},-1)">â</button><span class="qn">${i.qty}</span><button class="qb" onclick="chQ(${i.id},1)">+</button><button class="rm" onclick="rmC(${i.id})">â Quitar</button></div></div></div>`).join('');
+    :`<div style="background:#ECFDF5;border-radius:8px;padding:10px 12px;margin-bottom:10px;font-size:12px;color:var(--gn);font-weight:700">🎉 ¡Envío gratis desbloqueado!</div>`;
+  bd.innerHTML=envioBar+cart.map(i=>`<div class="ci"><div class="cii">${i.e}</div><div class="cin"><div class="cibr">${i.m}</div><div class="cinm">${i.n}</div><div class="cipr">$${(i.p*i.qty).toLocaleString('es-AR')}</div><div class="ciqty"><button class="qb" onclick="chQ(${i.id},-1)">−</button><span class="qn">${i.qty}</span><button class="qb" onclick="chQ(${i.id},1)">+</button><button class="rm" onclick="rmC(${i.id})">✕ Quitar</button></div></div></div>`).join('');
   document.getElementById('totv').textContent='$'+tot.toLocaleString('es-AR');
   // Mostrar cuotas estimadas
   const c3=Math.round(tot/3),c6=Math.round(tot*1.15/6),c12=Math.round(tot*1.30/12);
   const cuotasHtml=`<div style="background:#F5F3FF;border-radius:8px;padding:10px 12px;margin-top:8px;font-size:11px">
-    <div style="font-weight:700;color:#5B21B6;margin-bottom:5px">ð³ PagÃ¡ en cuotas (estimado)</div>
+    <div style="font-weight:700;color:#5B21B6;margin-bottom:5px">💳 Pagá en cuotas (estimado)</div>
     <div style="display:flex;gap:6px;flex-wrap:wrap">
       <span style="background:#fff;border:1px solid #DDD6FE;border-radius:6px;padding:3px 8px;color:#4C1D95;font-weight:700">3x $${c3.toLocaleString('es-AR')}</span>
       <span style="background:#fff;border:1px solid #DDD6FE;border-radius:6px;padding:3px 8px;color:#4C1D95;font-weight:700">6x $${c6.toLocaleString('es-AR')}</span>
       <span style="background:#fff;border:1px solid #DDD6FE;border-radius:6px;padding:3px 8px;color:#4C1D95;font-weight:700">12x $${c12.toLocaleString('es-AR')}</span>
     </div>
   </div>`;
-  ft.innerHTML=`<div class="totr"><span class="totl">Total del pedido</span><span class="totv">$${tot.toLocaleString('es-AR')}</span></div>${cuotasHtml}<button class="bco" onclick="aModal()">Confirmar Pedido â</button>`;
+  ft.innerHTML=`<div class="totr"><span class="totl">Total del pedido</span><span class="totv">$${tot.toLocaleString('es-AR')}</span></div>${cuotasHtml}<button class="bco" onclick="aModal()">Confirmar Pedido →</button>`;
   ft.style.display='block';
 }
 function chQ(id,d){const i=cart.find(x=>x.id===id);if(!i)return;i.qty+=d;if(i.qty<=0)cart=cart.filter(x=>x.id!==id);updCart();}
@@ -1551,10 +1551,10 @@ function rmC(id){cart=cart.filter(x=>x.id!==id);updCart();}
 function aCart(){document.getElementById('ov').classList.add('on');document.getElementById('drw').classList.add('on');document.body.style.overflow='hidden';}
 function cCart(){document.getElementById('ov').classList.remove('on');document.getElementById('drw').classList.remove('on');document.body.style.overflow='';}
 
-// ââ MODAL ââ
+// ══ MODAL ══
 function aModal(){if(!cart.length)return;cCart();iPaso(1);document.getElementById('mov').classList.add('on');document.body.style.overflow='hidden';}
 function cModal(){document.getElementById('mov').classList.remove('on');document.body.style.overflow='';}
-function iPaso(n){document.querySelectorAll('.mst').forEach(s=>s.classList.remove('on'));document.getElementById('ms'+n).classList.add('on');const T={1:'Tus Datos',2:'MÃ©todo de Pago',3:'Subir Comprobante',4:'Â¡Pedido Confirmado!'};document.getElementById('mtt').textContent=T[n];}
+function iPaso(n){document.querySelectorAll('.mst').forEach(s=>s.classList.remove('on'));document.getElementById('ms'+n).classList.add('on');const T={1:'Tus Datos',2:'Método de Pago',3:'Subir Comprobante',4:'¡Pedido Confirmado!'};document.getElementById('mtt').textContent=T[n];}
 function sPago(el){
   document.querySelectorAll('.po').forEach(o=>o.classList.remove('on'));
   el.classList.add('on');
@@ -1563,18 +1563,18 @@ function sPago(el){
   const desc5El=document.getElementById('desc5-banner');
   if(desc5El) desc5El.style.display=isTransf?'block':'none';
 }
-function simUp(){document.getElementById('upz').classList.add('ok');document.getElementById('upico').textContent='â';document.getElementById('uptxt').textContent='Comprobante subido correctamente';upDone=true;const b=document.getElementById('bconf');b.style.opacity='1';b.style.pointerEvents='all';}
-function cpyCod(){navigator.clipboard.writeText(document.getElementById('lbcode').textContent).then(()=>{const b=document.querySelector('.cpb');b.textContent='â Copiado!';setTimeout(()=>b.textContent='ð Copiar cÃ³digo',2000);});}
+function simUp(){document.getElementById('upz').classList.add('ok');document.getElementById('upico').textContent='✅';document.getElementById('uptxt').textContent='Comprobante subido correctamente';upDone=true;const b=document.getElementById('bconf');b.style.opacity='1';b.style.pointerEvents='all';}
+function cpyCod(){navigator.clipboard.writeText(document.getElementById('lbcode').textContent).then(()=>{const b=document.querySelector('.cpb');b.textContent='✅ Copiado!';setTimeout(()=>b.textContent='📋 Copiar código',2000);});}
 function rCart(){cart=[];upDone=false;updCart();cModal();}
 
-// ââ AUTO-CORRECTOR TIENDA ââ
+// ══ AUTO-CORRECTOR TIENDA ══
 const STORE_CHECKS=[
-  {id:'pp',desc:'CatÃ¡logo de productos',fn:()=>typeof PP==='undefined'||!PP.length?'El catÃ¡logo PP no estÃ¡ cargado.':null},
+  {id:'pp',desc:'Catálogo de productos',fn:()=>typeof PP==='undefined'||!PP.length?'El catálogo PP no está cargado.':null},
   {id:'grid',desc:'Grid de productos',fn:()=>!document.getElementById('grid')?'El contenedor de productos no existe en el DOM.':null},
-  {id:'cart',desc:'Carrito',fn:()=>typeof cart==='undefined'?'El carrito no estÃ¡ inicializado.':null},
-  {id:'countdown',desc:'Countdown inauguraciÃ³n',fn:()=>{const el=document.getElementById('countdown-bar');return el&&el.style.display==='none'?'El countdown expirÃ³ â las ofertas de inauguraciÃ³n terminaron.':null;}},
-  {id:'combos',desc:'Combos',fn:()=>typeof COMBOS==='undefined'||!COMBOS.length?'Los combos no estÃ¡n definidos.':null},
-  {id:'descuentos',desc:'Sistema de descuentos',fn:()=>typeof getDesc!=='function'?'La funciÃ³n de descuentos no estÃ¡ disponible.':null},
+  {id:'cart',desc:'Carrito',fn:()=>typeof cart==='undefined'?'El carrito no está inicializado.':null},
+  {id:'countdown',desc:'Countdown inauguración',fn:()=>{const el=document.getElementById('countdown-bar');return el&&el.style.display==='none'?'El countdown expiró — las ofertas de inauguración terminaron.':null;}},
+  {id:'combos',desc:'Combos',fn:()=>typeof COMBOS==='undefined'||!COMBOS.length?'Los combos no están definidos.':null},
+  {id:'descuentos',desc:'Sistema de descuentos',fn:()=>typeof getDesc!=='function'?'La función de descuentos no está disponible.':null},
   {id:'firebase',desc:'Firebase tienda',fn:()=>typeof db==='undefined'?'Firebase no inicializado en la tienda.':null},
 ];
 
@@ -1583,33 +1583,33 @@ async function autoCorrectorTienda(){
   const now=new Date().toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});
 
   if(!errores.length){
-    console.log(`[${now}] â Auto-corrector tienda: todo OK`);
+    console.log(`[${now}] ✅ Auto-corrector tienda: todo OK`);
     return;
   }
 
   // Auto-corregir lo que se puede
   for(const e of errores){
     if(e.id==='grid'&&typeof PP!=='undefined'){
-      // Re-renderizar si el grid estÃ¡ vacÃ­o
+      // Re-renderizar si el grid está vacío
       const g=document.getElementById('grid');
       if(g&&!g.innerHTML.trim()){
         renderGrid(PP);
         renderCombos();
-        console.log(`[${now}] ð§ Auto-corrector: re-renderizÃ³ el catÃ¡logo`);
+        console.log(`[${now}] 🔧 Auto-corrector: re-renderizó el catálogo`);
       }
     }
     if(e.id==='cart'&&typeof cart==='undefined'){
       window.cart=[];
       updCart();
-      console.log(`[${now}] ð§ Auto-corrector: reiniciÃ³ el carrito`);
+      console.log(`[${now}] 🔧 Auto-corrector: reinició el carrito`);
     }
   }
 
   // Reportar errores no corregibles en consola
-  errores.forEach(e=>console.warn(`[${now}] â ï¸ Tienda: ${e.error}`));
+  errores.forEach(e=>console.warn(`[${now}] ⚠️ Tienda: ${e.error}`));
 }
 
-// ââ INIT ââ
+// ══ INIT ══
 loadImgCache();
 renderGrid(PP);
 renderCombos();
