@@ -294,7 +294,6 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
 @media(max-width:768px){.nav-links{display:none}.ftg{grid-template-columns:1fr 1fr}.grid{grid-template-columns:repeat(auto-fill,minmax(165px,1fr))}.c3{flex-direction:column}.c3s{width:100%;height:110px;min-height:unset}}
 @media(max-width:480px){.ftg{grid-template-columns:1fr}.howg{grid-template-columns:1fr}.howst::after{display:none}.pagg{grid-template-columns:1fr}}
 
-/* ===== MODAL DETALLE PRODUCTO ===== */
 #pdModal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:16px}
 #pdModal.on{display:flex}
 #pdOverlay{position:absolute;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px)}
@@ -313,9 +312,9 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
 .pdProv{display:flex;align-items:center;gap:10px;background:#f8f9fa;border-radius:10px;padding:10px 13px;margin-bottom:12px}
 .pdProvName{font-size:13px;font-weight:700;color:#0D1B3E}
 .pdProvSub{font-size:11px;color:#6b7280}
-.pdGar{display:flex;align-items:center;gap:8px;font-size:12px;color:#059669;background:#f0fdf4;border-radius:8px;padding:8px 12px;margin-bottom:14px}
-.pdBtnAdd{width:100%;padding:13px;background:#C9A84C;color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:8px}
-.pdBtnML{width:100%;padding:11px;background:transparent;color:#0D1B3E;border:1.5px solid #e5e7eb;border-radius:12px;font-size:13px;font-weight:600;cursor:pointer}
+.pdGar{font-size:12px;color:#059669;background:#f0fdf4;border-radius:8px;padding:8px 12px;margin-bottom:14px}
+.pdBtnAdd{width:100%;padding:13px;background:#C9A84C;color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:8px;display:block}
+.pdBtnML{width:100%;padding:11px;background:transparent;color:#0D1B3E;border:1.5px solid #e5e7eb;border-radius:12px;font-size:13px;font-weight:600;cursor:pointer;display:block}
 #pdClose{position:sticky;top:10px;float:right;margin:10px 10px 0 0;width:30px;height:30px;border-radius:50%;background:#f3f4f6;border:none;cursor:pointer;font-size:16px;color:#374151;display:flex;align-items:center;justify-content:center;z-index:2}
 </style>
 </head>
@@ -1476,8 +1475,7 @@ function fcat(cat,btn){
   if(btn){document.querySelectorAll('.fb,.na').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
   lista=cat==='todos'?[...PP]:PP.filter(p=>p.cat===cat);
   renderGrid(lista);
-  const _fbar=document.querySelector('.fbar');
-  if(_fbar) setTimeout(()=>_fbar.scrollIntoView({behavior:'smooth',block:'start'}),60);
+  var _f=document.querySelector('.fbar');if(_f)setTimeout(function(){_f.scrollIntoView({behavior:'smooth',block:'start'});},60);
 }
 function fmarca(m){lista=m==='todos'?[...PP]:PP.filter(p=>p.m===m);renderGrid(lista);}
 function busCod(){
@@ -1642,29 +1640,60 @@ updCart();
 
 </script>
 <script src="/lesbleus-imgs.js" onload="if(typeof lista!=='undefined'&&typeof renderGrid==='function')renderGrid(lista)"></script>
-<div id="pdModal" onclick="if(event.target===this||event.target.id==='pdOverlay')closePD()">
+<div id="pdModal" onclick="if(event.target.id==='pdModal'||event.target.id==='pdOverlay')closePD()">
   <div id="pdOverlay"></div>
   <div id="pdBox"></div>
 </div>
-
 <script>
-function getProdDescText(p){const m=p.m||'',cat=p.cat||'';const DB={'Monroe':'Amortiguador Monroe de gas presurizado fabricado en Argentina bajo estándares internacionales. Tecnología Reflex para máximo control y confort. Restaura la estabilidad original del vehículo.','SKF':'Rodamiento SKF de origen sueco, sellado de por vida. Alta resistencia al desgaste y temperatura. Garantiza precisión en el movimiento y mayor durabilidad.','TYC':'Óptica TYC fabricada en conformidad con estándares OEM. Máxima transmisión lumínica, resistencia UV y sellado hermético. Compatible con múltiples años del modelo.','Giving':'Espejo retrovisor Giving con terminación premium. Motor eléctrico silencioso y resistencia a la corrosión. Repuesto de referencia en el mercado argentino.','Vespoli':'Regulador de ventanilla Vespoli con mecanismo reforzado. Motor de bajo consumo y larga vida útil. Instalación directa sin modificaciones.','Mahle':'Filtro Mahle de ingeniería alemana. Alta eficiencia que protege el motor de partículas y contaminantes. Recomendado por fabricantes OEM en todo el mundo.','Champion':'Bujía Champion con electrodo de níquel de alta pureza. Encendido preciso, bajo consumo y arranque confiable en frío y con GNC.','Cobreq':'Pastillas y discos Cobreq fabricados en Brasil con compuesto de fricción de alto rendimiento. Frenada progresiva, baja generación de polvo.','Wildbrake':'Pastillas Wildbrake con formulación semi-metálica. Excelente rendimiento a alta temperatura. Duración superior a la pastilla estándar.','Nakata':'Bieleta Nakata con rótula de acero templado. Elimina ruidos en suspensión. Fabricación brasilera con control de calidad ISO.','Axios':'Silent block Axios con caucho vulcanizado de alta densidad. Absorbe vibraciones, mejora el comportamiento de la dirección.','Teknorot':'Terminal de dirección Teknorot de acero forjado homologado. Rótula sellada de por vida. Máxima precisión en la dirección.','VTH':'Cubo de rueda VTH con rodamiento integrado. Alta resistencia a la carga y sellado de por vida. Instalación directa.','Wagner Lockheed':'Pastillas Wagner ThermoQuiet. Frenada silenciosa, sin ruido, sin polvo. El estándar de las mejores gomeras profesionales.'};if(DB[m])return DB[m];const CAT={opticas:'Óptica de reemplazo con especificaciones OEM. Alta resistencia UV, sellado hermético y máxima claridad lumínica.',espejos:'Espejo retrovisor de reemplazo con ajuste exacto. Motor eléctrico de alta durabilidad y acabado resistente a la intemperie.',amortiguadores:'Amortiguador que restaura el confort y la estabilidad de conducción. Instalación directa en el lugar del original.',frenos:'Repuesto de frenos de alta prestación. Material de fricción certificado para frenada progresiva, segura y duradera.',rodamientos:'Rodamiento de rueda sellado de por vida. Alta precisión dimensional y resistencia para mayor seguridad.',bujias:'Bujía de alta eficiencia. Encendido preciso, menor consumo y arranque confiable en todas las condiciones.',filtros:'Filtro de alta eficiencia que protege los sistemas críticos. Materiales de larga duración certificados.',correas:'Correa de caucho sintético reforzado para larga vida útil. Resistente a altas temperaturas y aceites.',levantacristales:'Regulador eléctrico de reemplazo directo. Motor silencioso de alto torque y larga vida útil.',manijas:'Manija de puerta con ajuste exacto al original. Material resistente a UV y desgaste diario.',bieletas:'Bieleta con rótula reforzada. Elimina ruidos, mejora la estabilidad y restituye la geometría original.',bujes:'Buje con caucho de alta densidad. Absorbe vibraciones y ruidos, mejora el comportamiento en curva.',fluidos:'Fluido de alta prestación para sistemas críticos. Formulación certificada según estándares del fabricante.'};return CAT[cat]||'Repuesto de calidad con instalación directa. Stock real en Villa Martelli, Buenos Aires.';}
-function getProdGar(p){const m=p.m||'';if(['Monroe','SKF','Mahle','Champion'].includes(m))return '12 meses de garantía de fábrica';if(['TYC','Giving','Vespoli','Cobreq'].includes(m))return '6 meses de garantía';return '3 meses de garantía LesBleus';}
-function getProdOrigen(p){const O={Monroe:'Argentina',SKF:'Suecia',TYC:'Taiwan',Giving:'Argentina',Mahle:'Alemania',Champion:'EEUU',Cobreq:'Brasil',Nakata:'Brasil',Axios:'Argentina',Teknorot:'Turquía',VTH:'Brasil',Wildbrake:'Brasil','Wagner Lockheed':'EEUU',Vespoli:'Argentina'};return O[p.m||'']||'Importado';}
+function getProdDescText(p){
+  var m=p.m||'',cat=p.cat||'';
+  var DB={Monroe:'Amortiguador Monroe de gas presurizado fabricado en Argentina. Tecnología Reflex para máximo control y confort. Restaura la estabilidad original del vehículo.',SKF:'Rodamiento SKF de origen sueco, sellado de por vida. Alta resistencia al desgaste y temperatura. Mayor durabilidad y precisión.',TYC:'Óptica TYC con estándares OEM. Máxima transmisión lumínica, resistencia UV y sellado hermético. Compatible con múltiples versiones del modelo.',Giving:'Espejo retrovisor Giving con motor eléctrico silencioso y resistencia a la corrosión. Referencia del mercado argentino.',Vespoli:'Regulador de ventanilla Vespoli con mecanismo reforzado. Motor de bajo consumo y larga vida útil. Instalación directa.',Mahle:'Filtro Mahle de ingeniería alemana. Alta eficiencia contra partículas y contaminantes. Recomendado por fabricantes OEM.',Champion:'Bujía Champion con electrodo de níquel de alta pureza. Encendido preciso, bajo consumo, compatible con GNC.',Cobreq:'Pastillas Cobreq con compuesto de fricción de alto rendimiento. Frenada progresiva y baja generación de polvo.',Wildbrake:'Pastillas Wildbrake semi-metálicas. Excelente rendimiento a alta temperatura. Mayor duración.',Nakata:'Bieleta Nakata con rótula de acero templado. Elimina ruidos en suspensión. Fabricación brasilera ISO.',Axios:'Silent block Axios con caucho vulcanizado de alta densidad. Absorbe vibraciones, mejora la dirección.',Teknorot:'Terminal Teknorot de acero forjado homologado. Rótula sellada de por vida. Máxima precisión en dirección.',VTH:'Cubo de rueda VTH con rodamiento integrado. Alta resistencia y sellado de por vida.','Wagner Lockheed':'Pastillas Wagner ThermoQuiet. Frenada silenciosa, sin ruido, sin polvo.'};
+  if(DB[m])return DB[m];
+  var CAT={opticas:'Óptica de reemplazo OEM. Resistencia UV, sellado hermético y máxima claridad.',espejos:'Espejo retrovisor de reemplazo con ajuste exacto. Motor eléctrico de alta durabilidad.',amortiguadores:'Amortiguador que restaura el confort y estabilidad. Instalación directa.',frenos:'Repuesto de frenos certificado para frenada progresiva y duradera.',rodamientos:'Rodamiento sellado de por vida. Alta precisión y resistencia.',bujias:'Bujía de alta eficiencia. Encendido preciso y arranque confiable.',filtros:'Filtro de alta eficiencia que protege los sistemas críticos.',correas:'Correa de caucho sintético reforzado. Alta resistencia térmica.',levantacristales:'Regulador eléctrico de reemplazo directo. Motor silencioso.',manijas:'Manija con ajuste exacto al original. Resistente a UV y desgaste.',bieletas:'Bieleta con rótula reforzada. Elimina ruidos y restituye la geometría.',bujes:'Buje con caucho de alta densidad. Absorbe vibraciones en curva.',fluidos:'Fluido de alta prestación certificado para sistemas críticos.'};
+  return CAT[cat]||'Repuesto de calidad con instalación directa. Stock real en Villa Martelli, Bs.As.';
+}
+function getProdGar(p){var m=p.m||'';if(['Monroe','SKF','Mahle','Champion'].indexOf(m)>-1)return '12 meses garantía de fábrica';if(['TYC','Giving','Vespoli','Cobreq'].indexOf(m)>-1)return '6 meses de garantía';return '3 meses garantía LesBleus';}
+function getProdOrigen(p){var O={Monroe:'Argentina',SKF:'Suecia',TYC:'Taiwan',Giving:'Argentina',Mahle:'Alemania',Champion:'EEUU',Cobreq:'Brasil',Nakata:'Brasil',Axios:'Argentina',Teknorot:'Turquía',VTH:'Brasil',Wildbrake:'Brasil','Wagner Lockheed':'EEUU',Vespoli:'Argentina'};return O[p.m||'']||'Importado';}
 function openPD(pid){
-  const p=PP.find(x=>x.id===pid);if(!p)return;
-  const disc=getDesc(p),pF=precioDesc(p),hD=disc>0;
-  const img=getProdImg(p.id)||(window.LB_CAT_IMGS&&window.LB_CAT_IMGS[p.cat])||'';
-  const iStr=img?'<img src="'+img+'" style="max-height:150px;max-width:75%;object-fit:contain" onerror="this.style.display='none'">':catSvg(p.cat,100);
-  document.getElementById('pdBox').innerHTML='<button id="pdClose" onclick="closePD()">✕</button><div class="pdImg">'+iStr+'</div><div class="pdBody"><div class="pdCat">'+p.cat.toUpperCase()+'</div><div class="pdName">'+p.n+'</div><div class="pdCode">'+(p.ml||'')+'</div><div style="margin-bottom:10px">'+(hD?'<span class="pdPriceOld">
+  var p=PP.find(function(x){return x.id===pid;});
+  if(!p)return;
+  var disc=getDesc(p),pF=precioDesc(p),hD=disc>0;
+  var img=getProdImg(p.id)||(window.LB_CAT_IMGS&&window.LB_CAT_IMGS[p.cat])||'';
+  var iStr=img?('<img src="'+img+'" style="max-height:150px;max-width:75%;object-fit:contain">'):catSvg(p.cat,100);
+  var ph=(hD?'<span class="pdPriceOld">
 </html>
-+p.p.toLocaleString("es-AR")+'</span>':'')+'<span class="pdPrice">
++p.p.toLocaleString("es-AR")+'</span>':'')+
+         '<span class="pdPrice">
 </html>
-+pF.toLocaleString("es-AR")+'</span>'+(hD?'<span class="pdPriceBadge">-'+disc+'%</span>':'')+'</div>'+(p.ok?'<div style="font-size:12px;color:#059669;margin-bottom:10px">✓ En stock · Villa Martelli</div>':'<div style="font-size:12px;color:#dc2626;margin-bottom:10px">Sin stock disponible</div>')+'<hr class="pdDivider"><div class="pdLabel">Descripción</div><div class="pdDesc">'+getProdDescText(p)+'</div><div class="pdLabel">Proveedor / Marca</div><div class="pdProv"><div style="width:34px;height:34px;background:#0D1B3E;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#C9A84C;font-size:9px;font-weight:700;flex-shrink:0">'+((p.m||'LB').substring(0,3).toUpperCase())+'</div><div><div class="pdProvName">'+(p.m||'LesBleus')+'</div><div class="pdProvSub">Origen: '+getProdOrigen(p)+' · Distribuidor oficial</div></div></div><div class="pdGar">✅ '+getProdGar(p)+'</div>'+(p.ok?'<button class="pdBtnAdd" onclick="addC('+p.id+');closePD()">🛒 Agregar al carrito</button>':'')+(p.ml?'<button class="pdBtnML" onclick="window.open('https://www.mercadolibre.com.ar/p/'+p.ml+'','_blank')">Ver en Mercado Libre →</button>':'')+'</div>';
++pF.toLocaleString("es-AR")+'</span>'+
+         (hD?'<span class="pdPriceBadge">-'+disc+'%</span>':'');
+  var sk=p.ok?'<div style="font-size:12px;color:#059669;margin-bottom:10px">✓ En stock · Villa Martelli</div>':'<div style="font-size:12px;color:#dc2626;margin-bottom:10px">Sin stock</div>';
+  var pi=(p.m||'LB').substring(0,3).toUpperCase();
+  var ba=p.ok?'<button class="pdBtnAdd" onclick="addC('+p.id+');closePD()">🛒 Agregar al carrito</button>':'';
+  var bm=p.ml?'<button class="pdBtnML" onclick="window.open('https://www.mercadolibre.com.ar/p/'+p.ml+'','_blank')">Ver en Mercado Libre &rarr;</button>':'';
+  document.getElementById('pdBox').innerHTML=
+    '<button id="pdClose" onclick="closePD()">✕</button>'+
+    '<div class="pdImg">'+iStr+'</div>'+
+    '<div class="pdBody">'+
+      '<div class="pdCat">'+p.cat.toUpperCase()+'</div>'+
+      '<div class="pdName">'+p.n+'</div>'+
+      '<div class="pdCode">'+(p.ml||'')+'</div>'+
+      '<div style="margin-bottom:10px">'+ph+'</div>'+sk+
+      '<hr class="pdDivider">'+
+      '<div class="pdLabel">Descripción</div>'+
+      '<div class="pdDesc">'+getProdDescText(p)+'</div>'+
+      '<div class="pdLabel">Proveedor / Marca</div>'+
+      '<div class="pdProv"><div style="width:34px;height:34px;background:#0D1B3E;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#C9A84C;font-size:9px;font-weight:700;flex-shrink:0">'+pi+'</div>'+
+      '<div><div class="pdProvName">'+(p.m||'LesBleus')+'</div>'+
+      '<div class="pdProvSub">Origen: '+getProdOrigen(p)+' · Distribuidor oficial</div></div></div>'+
+      '<div class="pdGar">✅ '+getProdGar(p)+'</div>'+
+      ba+bm+
+    '</div>';
   document.getElementById('pdModal').classList.add('on');
   document.body.style.overflow='hidden';
 }
 function closePD(){document.getElementById('pdModal').classList.remove('on');document.body.style.overflow='';}
 </script>
+
 </body>
 </html>
