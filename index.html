@@ -709,7 +709,7 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
   <div class="howg">
     <div class="howst"><div class="hown">1</div><div class="howico">🔍</div><div class="howtt">Encontrá Tu Repuesto</div><div class="howsd">Buscá por vehículo, categoría o marca. Código exacto de fabricante.</div></div>
     <div class="howst"><div class="hown">2</div><div class="howico">🛒</div><div class="howtt">Agregá al Carrito</div><div class="howsd">Seleccioná los productos y confirmá en segundos.</div></div>
-    <div class="howst"><div class="hown">3</div><div class="howico">💳</div><div class="howtt">Elegí Cómo Pagar</div><div class="howsd">Transferencia Brubank (alias lesbleuscars) o tarjeta en cuotas vía Mercado Pago. Subís el comprobante.</div></div>
+    <div class="howst"><div class="hown">3</div><div class="howico">💳</div><div class="howtt">Elegí Cómo Pagar</div><div class="howsd">Transferencia bancaria o QR Brubank (alias lesbleuscars). Subís el comprobante desde cualquier banco.</div></div>
     <div class="howst"><div class="hown">4</div><div class="howico">🚚</div><div class="howtt">VíaBleu Entrega</div><div class="howsd">Juntamos los pedidos y enviamos por lote cada 3 días. Recibís tu repuesto en 3 días hábiles desde el despacho.</div></div>
   </div>
 </div>
@@ -721,7 +721,7 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
   <div style="text-align:center"><div class="sct" style="text-align:center">Métodos de Pago</div><div class="scs" style="text-align:center">Elegís cómo pagar · 100% seguro</div></div>
   <div class="pagg">
     <div class="pagc"><div class="pagico">💜</div><div class="pagnm">Brubank · Transferencia</div><div class="pagds">CBU o Alias <strong>lesbleuscars</strong>. Pesos o dólares. Sin costo adicional.</div></div>
-    <div class="pagc"><div class="pagico">💳</div><div class="pagnm">Mercado Pago · Tarjeta</div><div class="pagds">Pagá con tarjeta de crédito, débito o en cuotas. Link enviado por WhatsApp.</div></div>
+    <div class="pagc"><div class="pagico">📱</div><div class="pagnm">QR Brubank · Escaneá y pagá</div><div class="pagds">Desde cualquier app bancaria. Sin comisiones. Acreditación inmediata.</div></div>
     <div class="pagc"><div class="pagico">💬</div><div class="pagnm">Consultá por WhatsApp</div><div class="pagds">Coordinamos el método de pago que mejor te convenga. Respuesta inmediata.</div></div>
   </div>
 </div>
@@ -816,8 +816,8 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
     </div>
     <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:18px">
       <div style="font-size:26px;margin-bottom:8px">📱</div>
-      <div style="font-weight:700;color:#fff;margin-bottom:4px">Mercado Pago</div>
-      <div style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.6">Link de pago enviado por WhatsApp. Todas las tarjetas y billeteras.</div>
+      <div style="font-weight:700;color:#fff;margin-bottom:4px">QR Brubank</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.6">Escaneá el QR desde cualquier banco. Sin comisiones, acreditación inmedilleteras.</div>
       <div style="margin-top:10px"><span style="background:rgba(0,158,227,.2);color:#7DD3FC;font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;border:1px solid rgba(0,158,227,.3)">Hasta 18 cuotas</span></div>
     </div>
   </div>
@@ -975,7 +975,8 @@ function calcCuotas(){
     <div class="mst" id="ms2">
       <div class="po on" onclick="sPago(this)"><div class="pot"><div class="poico">💜</div><div><div class="ponm">Brubank · Transferencia</div><div class="pods">✅ Obtené 5% extra en productos +$250.000</div></div><div class="porb"></div></div><div class="pod"><strong>Alias:</strong> <span style="color:var(--nv);font-weight:700">lesbleuscars</span> · <strong>CBU:</strong> 1430000172504840794001<br><strong>Titular:</strong> LESBLEUS S.A. · <strong>CUIT:</strong> 30-71172591-8</div></div>
       <div id="desc5-banner" style="background:#F5F3FF;border:1px solid #DDD6FE;border-radius:9px;padding:10px 14px;margin:-6px 0 10px;font-size:12px;color:#5B21B6;font-weight:700">💜 ¡Pagando por transferencia obtenés un 5% adicional en productos de más de $250.000!</div>
-      <div class="po" onclick="sPago(this)"><div class="pot"><div class="poico">💳</div><div><div class="ponm">Mercado Pago · Tarjeta / Cuotas</div><div class="pods">Link enviado por WhatsApp tras confirmar</div></div><div class="porb"></div></div><div class="pod">Pagá con tarjeta de crédito o débito. <strong>Cuotas disponibles.</strong></div></div>
+      <div class="po" onclick="sPago(this);document.getElementById('qr-box').style.display='block'"><div class="pot"><div class="poico">📱</div><div><div class="ponm">QR Brubank · Escaneá y pagá</div><div class="pods">✅ Más rápido · Sin datos bancarios · Inmediato</div></div><div class="porb"></div></div><div class="pod" id="qr-box" style="display:none;text-align:center;padding:8px 0"><img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=lesbleuscars" style="width:140px;height:140px;border-radius:8px;margin-bottom:6px"><br><span style="font-size:11px;color:#6b7280">Escaneá con cualquier app bancaria · Alias: <strong>lesbleuscars</strong></span></div></div>
+      <div class="po" onclick="sPago(this);document.getElementById('qr-box').style.display='none'"><div class="pot"><div class="poico">🏦</div><div><div class="ponm">Transferencia · Otro banco</div><div class="pods">CBU · Santander · BBVA · Galicia · Macro y más</div></div><div class="porb"></div></div><div class="pod"><strong>CBU:</strong> 1430000172504840794001<br><strong>Alias:</strong> lesbleuscars · <strong>Titular:</strong> LESBLEUS S.A.<br><span style="font-size:11px;color:#6b7280">Funciona con cualquier banco de Argentina</span></div></div>
       <button class="bf" onclick="iPaso(3)">Continuar → Subir Comprobante</button>
       <button class="bfo" onclick="iPaso(1)">← Volver</button>
     </div>
@@ -1755,9 +1756,6 @@ renderGrid(PP);
 renderCombos();
 initImageLoading();
 updCart();
-// Auto-corrector activo
-autoCorrectorTienda();
-window._correctorInterval = setInterval(autoCorrectorTienda, 30000);
 
 </script>
 <script src="/lesbleus-imgs.js" onload="if(typeof lista!=='undefined'&&typeof renderGrid==='function')renderGrid(lista)"></script>
