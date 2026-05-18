@@ -1,4 +1,4 @@
-// lesbleus-imgs.js v11 â Les Bleus Cars
+// lesbleus-imgs.js v12 â Les Bleus Cars
 // Rutas corregidas + getProdImg + botones WhatsApp en productos
 
 window.LB_CAT_IMGS={
@@ -79,7 +79,7 @@ function getProdImg(p){
 window.getProdImg=getProdImg;
 
 // === WHATSAPP BUTTONS ===
-var LB_WA='541136525215';
+var LB_WA='541123221233';
 
 function lbAddWAButtons(){
   if(typeof PP==='undefined') return;
