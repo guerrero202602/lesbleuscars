@@ -1,5 +1,5 @@
-// lesbleus-imgs.js v10 â Les Bleus Cars
-// Rutas corregidas: imgs en raiz del repo, no en /images/
+// lesbleus-imgs.js v11 â Les Bleus Cars
+// Rutas corregidas + getProdImg + botones WhatsApp en productos
 
 window.LB_CAT_IMGS={
   opticas:'/faro-delantero.png',
@@ -78,5 +78,51 @@ function getProdImg(p){
 }
 window.getProdImg=getProdImg;
 
-// Auto-render si la tienda ya cargo
+// === WHATSAPP BUTTONS ===
+var LB_WA='541136525215';
+
+function lbAddWAButtons(){
+  if(typeof PP==='undefined') return;
+  var style=document.createElement('style');
+  style.textContent='.wa-btn{display:inline-flex;align-items:center;gap:4px;padding:8px 12px;background:#25d366;color:#fff;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;cursor:pointer;border:none;transition:background .2s}.wa-btn:hover{background:#1da851}';
+  document.head.appendChild(style);
+
+  var btns=document.querySelectorAll('button.ba');
+  btns.forEach(function(btn){
+    var txt=btn.textContent;
+    if(txt.indexOf('Carrito')<0&&txt.indexOf('Agregar')<0) return;
+    var onclick=btn.getAttribute('onclick')||'';
+    var match=onclick.match(/addC\((\d+)\)/);
+    if(!match) return;
+    var pid=parseInt(match[1]);
+    var prod=PP.find(function(p){return p.id===pid;});
+    if(!prod) return;
+    if(btn.parentElement.querySelector('.wa-btn')) return;
+
+    var msg='Hola! Me interesa: '+prod.n+' ($'+prod.p.toLocaleString('es-AR')+'). Cod: '+(prod.ml||prod.id);
+    var a=document.createElement('a');
+    a.href='https://wa.me/'+LB_WA+'?text='+encodeURIComponent(msg);
+    a.target='_blank';
+    a.className='wa-btn';
+    a.innerHTML='ð¬ Comprar';
+    a.onclick=function(e){e.stopPropagation();};
+    btn.parentElement.appendChild(a);
+  });
+}
+
+// Run after page loads and products render
+if(document.readyState==='complete'){
+  setTimeout(lbAddWAButtons,500);
+}else{
+  window.addEventListener('load',function(){setTimeout(lbAddWAButtons,500);});
+}
+
+// Re-run when filters change (MutationObserver on grid)
+var _lbObs=new MutationObserver(function(){setTimeout(lbAddWAButtons,200);});
+document.addEventListener('DOMContentLoaded',function(){
+  var grid=document.querySelector('[class*="grid"]')||document.body;
+  _lbObs.observe(grid,{childList:true,subtree:true});
+});
+
+// Auto-render if store already loaded
 if(typeof renderGrid==='function') renderGrid();
