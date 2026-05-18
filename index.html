@@ -356,7 +356,7 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
 .bat-old{font-size:12px;color:#9ca3af;text-decoration:line-through}
 .bat-new{font-size:18px;font-weight:900;color:#C9A84C}
 .bat-badge{background:#DC2626;color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:99px}
-.bat-cta{width:100%;padding:8px;background:#0D1B3E;color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer}</style>
+.bat-cta{width:100%;padding:8px;background:#0D1B3E;color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer}.bat-section{padding:1rem 1rem 2rem;max-width:1100px;margin:0 auto}.bat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}.bat-card{background:#fff;border:.5px solid #e5e7eb;border-radius:14px;padding:1rem;cursor:pointer;transition:box-shadow .2s,transform .2s;display:flex;flex-direction:column;align-items:center;text-align:center}.bat-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.1);transform:translateY(-2px)}.bat-icon{font-size:48px;margin-bottom:.5rem}.bat-marca{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#6366f1;margin-bottom:3px}.bat-nom{font-size:14px;font-weight:700;color:#0D1B3E;margin-bottom:3px}.bat-spec{font-size:11px;color:#9ca3af;margin-bottom:6px}.bat-desc{font-size:11px;color:#6b7280;line-height:1.4;margin-bottom:8px}.bat-gar{font-size:10px;color:#059669;background:#f0fdf4;border-radius:6px;padding:3px 8px;margin-bottom:10px;display:inline-block}.bat-precio{display:flex;align-items:center;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:10px}.bat-old{font-size:12px;color:#9ca3af;text-decoration:line-through}.bat-new{font-size:18px;font-weight:900;color:#C9A84C}.bat-badge{background:#DC2626;color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:99px}.bat-cta{width:100%;padding:8px;background:#0D1B3E;color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer}</style>
 </head>
 <body>
 
@@ -665,9 +665,11 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
     </div>
   </div>
 </div>
+<div class="bat-section"><div class="cau-title">🔋 Baterías — Semana de Inauguración</div><div class="cau-sub">Bosch · Moura · Willard · Con -20% esta semana · Instalación en el local</div><div class="bat-grid"><div class="bat-card" onclick="openWA('Batería Bosch S4 12V 60Ah')"><div class="bat-icon">🔋</div><div class="bat-marca">Bosch</div><div class="bat-nom">S4 Silver</div><div class="bat-spec">12V · 60Ah · 540A · Auto mediano</div><div class="bat-desc">Tecnología Silver alemana. Mayor duración y arranque confiable en frío.</div><div class="bat-gar">✅ 18 meses de garantía</div><div class="bat-precio"><span class="bat-old">$185.000</span><span class="bat-new">$148.000</span><span class="bat-badge">-20%</span></div><button class="bat-cta">💬 Consultar por WhatsApp</button></div><div class="bat-card" onclick="openWA('Batería Bosch S5 AGM 12V 74Ah')"><div class="bat-icon">🔋</div><div class="bat-marca">Bosch</div><div class="bat-nom">S5 AGM</div><div class="bat-spec">12V · 74Ah · 750A · SUV y pickup</div><div class="bat-desc">Tecnología AGM para vehículos con Start-Stop. Alta descarga profunda y recarga rápida.</div><div class="bat-gar">✅ 24 meses de garantía</div><div class="bat-precio"><span class="bat-old">$280.000</span><span class="bat-new">$224.000</span><span class="bat-badge">-20%</span></div><button class="bat-cta">💬 Consultar por WhatsApp</button></div><div class="bat-card" onclick="openWA('Batería Moura MF60 12V 60Ah')"><div class="bat-icon">🔋</div><div class="bat-marca">Moura</div><div class="bat-nom">MF 60</div><div class="bat-spec">12V · 60Ah · 500A · Libre mantenimiento</div><div class="bat-desc">Fabricación brasilera. Sin mantenimiento, la más vendida en Argentina.</div><div class="bat-gar">✅ 12 meses de garantía</div><div class="bat-precio"><span class="bat-old">$145.000</span><span class="bat-new">$116.000</span><span class="bat-badge">-20%</span></div><button class="bat-cta">💬 Consultar por WhatsApp</button></div><div class="bat-card" onclick="openWA('Batería Willard Xtreme 75 12V 75Ah')"><div class="bat-icon">🔋</div><div class="bat-marca">Willard</div><div class="bat-nom">Xtreme 75</div><div class="bat-spec">12V · 75Ah · 620A · Camioneta y 4x4</div><div class="bat-desc">Fabricación nacional. Diseñada para el clima argentino.</div><div class="bat-gar">✅ 12 meses de garantía</div><div class="bat-precio"><span class="bat-old">$165.000</span><span class="bat-new">$132.000</span><span class="bat-badge">-20%</span></div><button class="bat-cta">💬 Consultar por WhatsApp</button></div></div></div>
 <div class="fbar">
     <button class="fb on" onclick="fcat('todos',this)">Todos</button>
     <button class="fb" onclick="document.getElementById('cauchos-section').scrollIntoView({behavior:'smooth'})">🛞 Cauchos</button>
+    <button class="fb" onclick="document.querySelector('.bat-section').scrollIntoView({behavior:'smooth'})">🔋 Baterías</button>
     <button class="fb" onclick="fcat('opticas',this)">💡 Ópticas</button>
     <button class="fb" onclick="fcat('espejos',this)">🪞 Espejos</button>
     <button class="fb" onclick="fcat('levanta-cristal',this)">🔧 Levanta Cristal</button>
@@ -1040,13 +1042,7 @@ function calcCuotas(){
     </div>
     <div class="mst" id="ms3">
       <div class="notok">✅ <span>Datos y método de pago registrados.</span></div>
-      <div class="fld"><label>Comprobante *</label><div class="upz" id="upz" onclick="document.getElementById('compInput').click()">
-  <input type="file" id="compInput" accept="image/*,application/pdf" capture="environment" style="display:none" onchange="handleComp(this)">
-  <div style="font-size:26px;margin-bottom:5px" id="upico">📷</div>
-  <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:3px" id="uptxt">Tocá para subir o sacar foto</div>
-  <div style="font-size:11px;color:var(--tx3)">Foto del comprobante · captura de pantalla · PDF</div>
-  <img id="compPreview" style="display:none;max-width:100%;max-height:180px;object-fit:contain;border-radius:8px;margin-top:10px" alt="Vista previa">
-</div></div>
+      <div class="fld"><label>Comprobante *</label><div class="upz" id="upz" onclick="document.getElementById('compInput').click()"><input type="file" id="compInput" accept="image/*,application/pdf" capture="environment" style="display:none" onchange="handleComp(this)"><div style="font-size:26px;margin-bottom:5px" id="upico">📄</div><div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:3px" id="uptxt">Tocá para subir el comprobante</div><div style="font-size:11px;color:var(--tx3)">Foto del comprobante · captura de pantalla · PDF</div><img id="compPreview" style="display:none;max-width:100%;max-height:150px;object-fit:contain;border-radius:8px;margin-top:8px"></div></div>
       <div class="fld"><label>Notas (opcional)</label><textarea placeholder="Referencias del domicilio..."></textarea></div>
       <button class="bf" id="bconf" onclick="confirmar()" style="opacity:.5;pointer-events:none">Confirmar Pedido →</button>
       <button class="bfo" onclick="iPaso(2)">← Volver</button>
@@ -1551,6 +1547,8 @@ function addCombo(cbId){
   });
   updCart();
 window._correctorInterval=setInterval(autoCorrectorTienda,30000);
+autoCorrectorTienda();
+window._correctorInterval=setInterval(autoCorrectorTienda,30000);
 autoCorrectorTienda();aCart();
 }
 
@@ -1594,20 +1592,6 @@ async function confirmar(){
   // Guardar en Firebase si está conectado
   if(db){
     try{
-      // Comprimir comprobante
-      let compData = '';
-      if(window._compBase64) {
-        try {
-          const img = new Image();
-          img.src = window._compBase64;
-          await new Promise(r=>{img.onload=r;img.onerror=r;});
-          const cv = document.createElement('canvas');
-          const MAX=600, r=Math.min(MAX/img.width,MAX/img.height,1);
-          cv.width=img.width*r; cv.height=img.height*r;
-          cv.getContext('2d').drawImage(img,0,0,cv.width,cv.height);
-          compData = cv.toDataURL('image/jpeg',0.6);
-        } catch(e){ compData = ''; }
-      }
       const orderData = {
         id: cod,
         producto: items,
@@ -1616,328 +1600,14 @@ async function confirmar(){
         clienteNombre: nombre,
         tel: watel.replace(/\D/g,''),
         email, direccion: dir+', '+ciudad+', '+prov,
-        monto: '
-      await db.collection('clients').add({
-        username: clienteUser,
-        name: nombre,
-        passHash: hsh(clientePass),
-        tel: watel.replace(/\D/g,''),
-        email,
-        activo: true,
-      });
-    }catch(e){ console.warn('Firebase error:', e); }
-  }
-
-  // Mostrar confirmación
-  document.getElementById('lbcode').textContent = cod;
-  // Credenciales en el paso 4
-  const credsEl = document.getElementById('lb-creds');
-  if(credsEl){
-    credsEl.innerHTML = `<div style="background:#EFF6FF;border:1px solid #BFDBFE;border-radius:10px;padding:14px;margin:12px 0;font-size:12.5px">
-      <div style="font-weight:700;color:#1E3A5F;margin-bottom:8px">👤 Tu acceso al portal de seguimiento:</div>
-      <div style="font-family:'DM Mono',monospace;margin-bottom:4px">Usuario: <b style="color:#0D1B3E">${clienteUser}</b></div>
-      <div style="font-family:'DM Mono',monospace;margin-bottom:10px">Contraseña: <b style="color:#0D1B3E">${clientePass}</b></div>
-      <div style="font-size:11px;color:#475569">⚠️ Guardá estas credenciales. Accedé en <a href="portal_cliente.html" style="color:#2563EB;font-weight:700">lesbleuscars.com</a></div>
-    </div>`;
-      const waEl=document.getElementById('lb-wa');
-      if(waEl){
-        const telCliente=watel.replace(/\D/g,'');
-        const waNumLesbleus='541136525215';
-        const telDestino=telCliente||waNumLesbleus;
-        const msg=encodeURIComponent(`¡Hola ${nombre}! 🎉 Tu pedido *${cod}* de LesBleus Cars fue confirmado.\n\n📦 Productos: ${items}\n💰 Total: $${total.toLocaleString('es-AR')}\n\n👤 Para seguir tu envío:\nUsuario: *${clienteUser}*\nContraseña: *${clientePass}*\n\n¡Gracias por tu compra!`);
-        waEl.href=`https://wa.me/${telDestino}?text=${msg}`;
-        waEl.style.display='flex';
-      }
-  }
-  iPaso(4);
-}
-
-function renderGrid(arr){
-  const g=document.getElementById('grid');
-  if(!arr.length){g.innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--tx3)"><div style="font-size:48px;margin-bottom:1rem">🔍</div><div style="font-size:16px;font-weight:700">Sin resultados</div><div style="font-size:13px;margin-top:5px">Intentá con otra búsqueda</div></div>`;return;}
-  g.innerHTML=arr.map(card).join('');
-  document.getElementById('cnt').textContent=arr.length;
-  document.getElementById('fcnt').textContent=arr.length+' productos';
-}
-
-function fcat(cat,btn){
-  if(btn){document.querySelectorAll('.fb,.na').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
-  lista=cat==='todos'?[...PP]:PP.filter(p=>p.cat===cat);
-  renderGrid(lista);
-  var _f=document.querySelector('.fbar');if(_f)setTimeout(function(){_f.scrollIntoView({behavior:'smooth',block:'start'});},60);
-}
-function fmarca(m){lista=m==='todos'?[...PP]:PP.filter(p=>p.m===m);renderGrid(lista);}
-function busCod(){
-  const cod=(document.getElementById('sinp-cod')?.value||'').trim().toLowerCase();
-  const marca=document.getElementById('sel-marca')?.value||'todos';
-  lista=PP.filter(p=>{
-    const matchCod=!cod||p.ml.toLowerCase().includes(cod)||p.n.toLowerCase().includes(cod);
-    const matchMarca=marca==='todos'||p.m===marca;
-    return matchCod&&matchMarca;
-  });
-  renderGrid(lista);
-  document.querySelector('.grid').scrollIntoView({behavior:'smooth'});
-}
-function busTxt(){const t=(document.getElementById('stxt')?.value||'').toLowerCase();lista=PP.filter(p=>p.n.toLowerCase().includes(t)||p.m.toLowerCase().includes(t));renderGrid(lista);}
-function busVeh(){
-  const marca=document.getElementById('smk').value;
-  const modelo=document.getElementById('smd').value;
-  if(!marca){alert('Seleccioná la marca del auto');return;}
-  const terms=MARCA_MAP[marca]||[marca.toLowerCase()];
-  const modeloLow=(modelo||'').toLowerCase();
-  lista=PP.filter(p=>{
-    const name=p.n.toLowerCase();
-    const matchMarca=terms.some(t=>name.includes(t));
-    const matchModelo=!modeloLow||name.includes(modeloLow);
-    return matchMarca&&matchModelo;
-  });
-  if(!lista.length) lista=PP.filter(p=>MARCA_MAP[marca]?.some(t=>p.n.toLowerCase().includes(t)));
-  renderGrid(lista);
-  document.querySelector('.grid').scrollIntoView({behavior:'smooth'});
-}
-function swSrch(id,btn){document.querySelectorAll('.stab').forEach(t=>t.classList.remove('on'));document.querySelectorAll('.sp').forEach(p=>p.classList.remove('on'));btn.classList.add('on');document.getElementById('sp'+id).classList.add('on');}
-
-const MARCA_MAP={
-  'Toyota':['toyota','etios','hilux','corolla','yaris','rav4','sw4'],
-  'Volkswagen':['vw ','volkswagen',' gol ','polo','golf','amarok','suran','voyage','fox','caddy','bora','vento','saveiro','senda','quantum'],
-  'Ford':['ford','ecosport','focus','fiesta','ranger','orion','courier','transit','falcon'],
-  'Chevrolet':['chevrolet','onix','cruze','tracker','s10','astra','corsa','meriva','spin','cobalt','celta','classic','agile','kadett','prisma','blazer'],
-  'Renault':['renault','sandero','megane','logan','duster','kwid','kangoo','master','clio','symbol','scenic','r19','trafic','express'],
-  'Peugeot':['peugeot','206','207','208','307','308','2008','3008','partner','expert','boxer','407','5008','106'],
-  'Citroën':['citroen','c3 ','c4 ','c5 ','berlingo','jumper','xsara','saxo','xantia','ds3'],
-  'Fiat':['fiat','palio','siena',' uno ','strada','fiorino','ducato','punto','marea','argo','cronos','doblo','mobi'],
-  'Honda':['honda','civic','cr-v','hr-v',' fit ','city'],
-  'Nissan':['nissan','frontier','kicks','sentra','march'],
-  'Isuzu':['isuzu','d-max'],
-  'Mercedes-Benz':['mercedes','sprinter','vito'],
-};
-const MOD={Toyota:['Corolla','Yaris','Hilux','Hilux Pick-Up','RAV4','Etios','SW4'],Volkswagen:['Gol','Polo','Vento','Golf','Amarok','Suran','Voyage','Fox','Caddy','Bora','Saveiro','Senda'],Ford:['EcoSport','Focus','Fiesta','Ranger','Ka','F-100','F-150','Orion','Courier','Transit','Falcon'],Chevrolet:['Onix','Cruze','Tracker','S10','Astra','Corsa','Meriva','Spin','Cobalt','Celta','Classic','Agile','Prisma','Blazer'],Renault:['Sandero','Megane','Logan','Duster','Kwid','Kangoo','Master','Clio','Symbol','Scenic','R19','Trafic'],Peugeot:['208','308','2008','3008','Partner','Expert','Boxer','206','207','307','407','5008'],Citroën:['C3','C4','C5','Berlingo','Jumper','Xsara','Saxo','Xantia'],Fiat:['Cronos','Palio','Siena','Uno','Strada','Fiorino','Ducato','Punto','Marea','Argo','Doblo','Mobi'],Honda:['Civic','CR-V','HR-V','Fit','City'],Nissan:['Frontier','Kicks','Sentra','March'],Isuzu:['Pick-Up','D-Max'],'Mercedes-Benz':['Sprinter','Vito']};
-function loadMod(){
-  const m=document.getElementById('smk').value;
-  const s=document.getElementById('smd');
-  s.innerHTML='<option value="">-- Todos los modelos --</option>';
-  if(MOD[m])MOD[m].forEach(mod=>{const o=document.createElement('option');o.value=mod;o.textContent=mod;s.appendChild(o);});
-}
-
-// ══ CART ══
-function addC(id){
-  const p=PP.find(x=>x.id===id);if(!p)return;
-  const ex=cart.find(x=>x.id===id);
-  const pDesc=precioDesc(p);
-  if(ex)ex.qty++;
-  else cart.push({...p,p:pDesc,pOrig:p.p,qty:1});
-  updCart();aCart();
-}
-function updCart(){
-  const ENVIO_GRATIS=150000;
-  const n=cart.reduce((s,i)=>s+i.qty,0);document.getElementById('cn').textContent=n;
-  const bd=document.getElementById('drbd');const ft=document.getElementById('drft');
-  if(!cart.length){bd.innerHTML=`<div class="cmt"><div style="font-size:44px;opacity:.4;margin-bottom:.5rem">🛒</div><div style="font-size:14px;font-weight:700;color:var(--tx2)">Tu carrito está vacío</div><div style="font-size:12px;color:var(--tx3);margin-top:4px">Agregá productos para comenzar</div></div>`;ft.style.display='none';return;}
-  const tot=cart.reduce((s,i)=>s+i.p*i.qty,0);
-  const falta=Math.max(0,ENVIO_GRATIS-tot);
-  const pct=Math.min(100,Math.round(tot/ENVIO_GRATIS*100));
-  const envioBar=falta>0
-    ?`<div style="background:var(--blb);border-radius:8px;padding:10px 12px;margin-bottom:10px;font-size:12px">
-        <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span>🚚 Faltán <b>$${falta.toLocaleString('es-AR')}</b> para envío gratis</span><span>${pct}%</span></div>
-        <div style="background:#ddd;border-radius:99px;height:6px"><div style="background:var(--nv);width:${pct}%;height:6px;border-radius:99px;transition:width .4s"></div></div>
-      </div>`
-    :`<div style="background:#ECFDF5;border-radius:8px;padding:10px 12px;margin-bottom:10px;font-size:12px;color:var(--gn);font-weight:700">🎉 ¡Envío gratis desbloqueado!</div>`;
-  bd.innerHTML=envioBar+cart.map(i=>`<div class="ci"><div class="cii">${i.e}</div><div class="cin"><div class="cibr">${i.m}</div><div class="cinm">${i.n}</div><div class="cipr">$${(i.p*i.qty).toLocaleString('es-AR')}</div><div class="ciqty"><button class="qb" onclick="chQ(${i.id},-1)">−</button><span class="qn">${i.qty}</span><button class="qb" onclick="chQ(${i.id},1)">+</button><button class="rm" onclick="rmC(${i.id})">✕ Quitar</button></div></div></div>`).join('');
-  document.getElementById('totv').textContent='$'+tot.toLocaleString('es-AR');
-  // Mostrar cuotas estimadas
-  const c3=Math.round(tot/3),c6=Math.round(tot*1.15/6),c12=Math.round(tot*1.30/12);
-  const cuotasHtml=`<div style="background:#F5F3FF;border-radius:8px;padding:10px 12px;margin-top:8px;font-size:11px">
-    <div style="font-weight:700;color:#5B21B6;margin-bottom:5px">💳 Pagá en cuotas (estimado)</div>
-    <div style="display:flex;gap:6px;flex-wrap:wrap">
-      <span style="background:#fff;border:1px solid #DDD6FE;border-radius:6px;padding:3px 8px;color:#4C1D95;font-weight:700">3x $${c3.toLocaleString('es-AR')}</span>
-      <span style="background:#fff;border:1px solid #DDD6FE;border-radius:6px;padding:3px 8px;color:#4C1D95;font-weight:700">6x $${c6.toLocaleString('es-AR')}</span>
-      <span style="background:#fff;border:1px solid #DDD6FE;border-radius:6px;padding:3px 8px;color:#4C1D95;font-weight:700">12x $${c12.toLocaleString('es-AR')}</span>
-    </div>
-  </div>`;
-  ft.innerHTML=`<div class="totr"><span class="totl">Total del pedido</span><span class="totv">$${tot.toLocaleString('es-AR')}</span></div>${cuotasHtml}<button class="bco" onclick="aModal()">Confirmar Pedido →</button>`;
-  ft.style.display='block';
-}
-function chQ(id,d){const i=cart.find(x=>x.id===id);if(!i)return;i.qty+=d;if(i.qty<=0)cart=cart.filter(x=>x.id!==id);updCart();}
-function rmC(id){cart=cart.filter(x=>x.id!==id);updCart();}
-function aCart(){document.getElementById('ov').classList.add('on');document.getElementById('drw').classList.add('on');document.body.style.overflow='hidden';}
-function cCart(){document.getElementById('ov').classList.remove('on');document.getElementById('drw').classList.remove('on');document.body.style.overflow='';}
-
-// ══ MODAL ══
-function aModal(){if(!cart.length)return;cCart();iPaso(1);document.getElementById('mov').classList.add('on');document.body.style.overflow='hidden';}
-function cModal(){document.getElementById('mov').classList.remove('on');document.body.style.overflow='';}
-function iPaso(n){document.querySelectorAll('.mst').forEach(s=>s.classList.remove('on'));document.getElementById('ms'+n).classList.add('on');const T={1:'Tus Datos',2:'Método de Pago',3:'Subir Comprobante',4:'¡Pedido Confirmado!'};document.getElementById('mtt').textContent=T[n];}
-function sPago(el){
-  document.querySelectorAll('.po').forEach(o=>o.classList.remove('on'));
-  el.classList.add('on');
-  // Mostrar/ocultar descuento 5% transferencia
-  const isTransf=el.querySelector('.ponm')?.textContent?.includes('Brubank')||el.querySelector('.ponm')?.textContent?.includes('Transferencia');
-  const desc5El=document.getElementById('desc5-banner');
-  if(desc5El) desc5El.style.display=isTransf?'block':'none';
-}
-function simUp(){} // legado
-function handleComp(input){
-  const file = input.files[0];
-  if(!file) return;
-  const maxMB = 10;
-  if(file.size > maxMB*1024*1024) { alert('El archivo es muy grande. M\u00e1ximo 10MB.'); return; }
-  
-  // Mostrar preview si es imagen
-  if(file.type.startsWith('image/')) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      const prev = document.getElementById('compPreview');
-      prev.src = e.target.result;
-      prev.style.display = 'block';
-      window._compBase64 = e.target.result;
-      window._compFile = file;
-    };
-    reader.readAsDataURL(file);
-  }
-  
-  // Marcar como listo
-  document.getElementById('upz').classList.add('ok');
-  document.getElementById('upico').textContent = '\u2705';
-  document.getElementById('uptxt').textContent = file.name + ' (' + (file.size/1024).toFixed(0) + ' KB) \u2014 listo';
-  window._compFile = file;
-  upDone = true;
-  const b = document.getElementById('bconf');
-  if(b){ b.style.opacity='1'; b.style.pointerEvents='all'; }
-}
-function cpyCod(){navigator.clipboard.writeText(document.getElementById('lbcode').textContent).then(()=>{const b=document.querySelector('.cpb');b.textContent='✅ Copiado!';setTimeout(()=>b.textContent='📋 Copiar código',2000);});}
-function rCart(){cart=[];upDone=false;updCart();cModal();}
-
-// ══ AUTO-CORRECTOR TIENDA ══
-const STORE_CHECKS=[
-  {id:'pp',desc:'Catálogo de productos',fn:()=>typeof PP==='undefined'||!PP.length?'El catálogo PP no está cargado.':null},
-  {id:'grid',desc:'Grid de productos',fn:()=>!document.getElementById('grid')?'El contenedor de productos no existe en el DOM.':null},
-  {id:'cart',desc:'Carrito',fn:()=>typeof cart==='undefined'?'El carrito no está inicializado.':null},
-  {id:'countdown',desc:'Countdown inauguración',fn:()=>{const el=document.getElementById('countdown-bar');return el&&el.style.display==='none'?'El countdown expiró — las ofertas de inauguración terminaron.':null;}},
-  {id:'combos',desc:'Combos',fn:()=>typeof COMBOS==='undefined'||!COMBOS.length?'Los combos no están definidos.':null},
-  {id:'descuentos',desc:'Sistema de descuentos',fn:()=>typeof getDesc!=='function'?'La función de descuentos no está disponible.':null},
-  {id:'firebase',desc:'Firebase tienda',fn:()=>typeof db==='undefined'?'Firebase no inicializado en la tienda.':null},
-];
-
-async function autoCorrectorTienda(){
-  const errores=STORE_CHECKS.map(c=>({...c,error:c.fn()})).filter(c=>c.error);
-  const now=new Date().toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});
-
-  if(!errores.length){
-    console.log(`[${now}] ✅ Auto-corrector tienda: todo OK`);
-    return;
-  }
-
-  // Auto-corregir lo que se puede
-  for(const e of errores){
-    if(e.id==='grid'&&typeof PP!=='undefined'){
-      // Re-renderizar si el grid está vacío
-      const g=document.getElementById('grid');
-      if(g&&!g.innerHTML.trim()){
-        renderGrid(PP);
-        renderCombos();
-        console.log(`[${now}] 🔧 Auto-corrector: re-renderizó el catálogo`);
-      }
-    }
-    if(e.id==='cart'&&typeof cart==='undefined'){
-      window.cart=[];
-      updCart();
-      console.log(`[${now}] 🔧 Auto-corrector: reinició el carrito`);
-    }
-  }
-
-  // Reportar errores no corregibles en consola
-  errores.forEach(e=>console.warn(`[${now}] ⚠️ Tienda: ${e.error}`));
-}
-
-// ══ INIT ══
-loadImgCache();
-renderGrid(PP);
-renderCombos();
-initImageLoading();
-updCart();
-
-</script>
-<script src="/lesbleus-imgs.js" onload="if(typeof lista!=='undefined'&&typeof renderGrid==='function')renderGrid(lista)"></script>
-<div id="pdModal" onclick="if(event.target.id==='pdModal'||event.target.id==='pdOverlay')closePD()">
-  <div id="pdOverlay"></div>
-  <div id="pdBox"></div>
-</div>
-<script>
-function getProdDescText(p){
-  var m=p.m||'',cat=p.cat||'';
-  var DB={Monroe:'Amortiguador Monroe de gas presurizado fabricado en Argentina. Tecnología Reflex para máximo control y confort. Restaura la estabilidad original del vehículo.',SKF:'Rodamiento SKF de origen sueco, sellado de por vida. Alta resistencia al desgaste y temperatura. Mayor durabilidad y precisión.',TYC:'Óptica TYC con estándares OEM. Máxima transmisión lumínica, resistencia UV y sellado hermético. Compatible con múltiples versiones del modelo.',Giving:'Espejo retrovisor Giving con motor eléctrico silencioso y resistencia a la corrosión. Referencia del mercado argentino.',Vespoli:'Regulador de ventanilla Vespoli con mecanismo reforzado. Motor de bajo consumo y larga vida útil. Instalación directa.',Mahle:'Filtro Mahle de ingeniería alemana. Alta eficiencia contra partículas y contaminantes. Recomendado por fabricantes OEM.',Champion:'Bujía Champion con electrodo de níquel de alta pureza. Encendido preciso, bajo consumo, compatible con GNC.',Cobreq:'Pastillas Cobreq con compuesto de fricción de alto rendimiento. Frenada progresiva y baja generación de polvo.',Wildbrake:'Pastillas Wildbrake semi-metálicas. Excelente rendimiento a alta temperatura. Mayor duración.',Nakata:'Bieleta Nakata con rótula de acero templado. Elimina ruidos en suspensión. Fabricación brasilera ISO.',Axios:'Silent block Axios con caucho vulcanizado de alta densidad. Absorbe vibraciones, mejora la dirección.',Teknorot:'Terminal Teknorot de acero forjado homologado. Rótula sellada de por vida. Máxima precisión en dirección.',VTH:'Cubo de rueda VTH con rodamiento integrado. Alta resistencia y sellado de por vida.','Wagner Lockheed':'Pastillas Wagner ThermoQuiet. Frenada silenciosa, sin ruido, sin polvo.'};
-  if(DB[m])return DB[m];
-  var CAT={opticas:'Óptica de reemplazo OEM. Resistencia UV, sellado hermético y máxima claridad.',espejos:'Espejo retrovisor de reemplazo con ajuste exacto. Motor eléctrico de alta durabilidad.',amortiguadores:'Amortiguador que restaura el confort y estabilidad. Instalación directa.',frenos:'Repuesto de frenos certificado para frenada progresiva y duradera.',rodamientos:'Rodamiento sellado de por vida. Alta precisión y resistencia.',bujias:'Bujía de alta eficiencia. Encendido preciso y arranque confiable.',filtros:'Filtro de alta eficiencia que protege los sistemas críticos.',correas:'Correa de caucho sintético reforzado. Alta resistencia térmica.',levantacristales:'Regulador eléctrico de reemplazo directo. Motor silencioso.',manijas:'Manija con ajuste exacto al original. Resistente a UV y desgaste.',bieletas:'Bieleta con rótula reforzada. Elimina ruidos y restituye la geometría.',bujes:'Buje con caucho de alta densidad. Absorbe vibraciones en curva.',fluidos:'Fluido de alta prestación certificado para sistemas críticos.'};
-  return CAT[cat]||'Repuesto de calidad con instalación directa. Stock real en Villa Martelli, Bs.As.';
-}
-function getProdGar(p){var m=p.m||'';if(['Monroe','SKF','Mahle','Champion'].indexOf(m)>-1)return '12 meses garantía de fábrica';if(['TYC','Giving','Vespoli','Cobreq'].indexOf(m)>-1)return '6 meses de garantía';return '3 meses garantía LesBleus';}
-function getProdOrigen(p){var O={Monroe:'Argentina',SKF:'Suecia',TYC:'Taiwan',Giving:'Argentina',Mahle:'Alemania',Champion:'EEUU',Cobreq:'Brasil',Nakata:'Brasil',Axios:'Argentina',Teknorot:'Turquía',VTH:'Brasil',Wildbrake:'Brasil','Wagner Lockheed':'EEUU',Vespoli:'Argentina'};return O[p.m||'']||'Importado';}
-function openPD(pid){
-  var p=PP.find(function(x){return x.id===pid;});
-  if(!p)return;
-  var disc=getDesc(p),pF=precioDesc(p),hD=disc>0;
-  var img=getProdImg(p.id)||(window.LB_CAT_IMGS&&window.LB_CAT_IMGS[p.cat])||'';
-  var iStr=img?('<img src="'+img+'" style="max-height:150px;max-width:75%;object-fit:contain">'):catSvg(p.cat,100);
-  var ph=(hD?'<span class="pdPriceOld">
-</html>
-+p.p.toLocaleString("es-AR")+'</span>':'')+
-         '<span class="pdPrice">
-</html>
-+pF.toLocaleString("es-AR")+'</span>'+
-         (hD?'<span class="pdPriceBadge">-'+disc+'%</span>':'');
-  var sk=p.ok?'<div style="font-size:12px;color:#059669;margin-bottom:10px">✓ En stock · Villa Martelli</div>':'<div style="font-size:12px;color:#dc2626;margin-bottom:10px">Sin stock</div>';
-  var pi=(p.m||'LB').substring(0,3).toUpperCase();
-  var ba=p.ok?'<button class="pdBtnAdd" onclick="addC('+p.id+');closePD()">🛒 Agregar al carrito</button>':'';
-  var bm=p.ml?'<button class="pdBtnML" onclick="window.open('https://www.mercadolibre.com.ar/p/'+p.ml+'','_blank')">Ver en Mercado Libre &rarr;</button>':'';
-  document.getElementById('pdBox').innerHTML=
-    '<button id="pdClose" onclick="closePD()">✕</button>'+
-    '<div class="pdImg">'+iStr+'</div>'+
-    '<div class="pdBody">'+
-      '<div class="pdCat">'+p.cat.toUpperCase()+'</div>'+
-      '<div class="pdName">'+p.n+'</div>'+
-      '<div class="pdCode">'+(p.ml||'')+'</div>'+
-      '<div style="margin-bottom:10px">'+ph+'</div>'+sk+
-      '<hr class="pdDivider">'+
-      '<div class="pdLabel">Descripción</div>'+
-      '<div class="pdDesc">'+getProdDescText(p)+'</div>'+
-      '<div class="pdLabel">Proveedor / Marca</div>'+
-      '<div class="pdProv"><div style="width:34px;height:34px;background:#0D1B3E;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#C9A84C;font-size:9px;font-weight:700;flex-shrink:0">'+pi+'</div>'+
-      '<div><div class="pdProvName">'+(p.m||'LesBleus')+'</div>'+
-      '<div class="pdProvSub">Origen: '+getProdOrigen(p)+' · Distribuidor oficial</div></div></div>'+
-      '<div class="pdGar">✅ '+getProdGar(p)+'</div>'+
-      ba+bm+
-    '</div>';
-  document.getElementById('pdModal').classList.add('on');
-  document.body.style.overflow='hidden';
-}
-function closePD(){document.getElementById('pdModal').classList.remove('on');document.body.style.overflow='';}
-</script>
-
-
-<a id="waBtn" href="https://wa.me/541136525215?text=Hola%20LesBleus!%20Quiero%20consultar%20sobre%20un%20producto" target="_blank" title="Consultar por WhatsApp">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  <div id="waPulse">1</div>
-</a>
-
-
-<script>
-function openWA(producto) {
-  var msg = producto
-    ? 'Hola LesBleus! Quiero consultar sobre: ' + producto + ' (Semana de inauguración -20%)'
-    : 'Hola LesBleus! Quiero consultar sobre un producto';
-  window.open('https://wa.me/541136525215?text=' + encodeURIComponent(msg), '_blank');
-}
-</script>
-
-</body>
-</html>
-+total.toLocaleString('es-AR'),
+        monto: '$'+total.toLocaleString('es-AR'),
         estado: 'pendiente',
         agente: '',
         linkPago: '',
         pagado: false,
         metodoPago: pago,
         facturaEmitida: false,
-        comprobante: compData,
+        comprobante: window._compBase64||'',
         createdAt: firebase.firestore.Timestamp.now(),
         fecha,
       };
@@ -2099,34 +1769,26 @@ function sPago(el){
   const desc5El=document.getElementById('desc5-banner');
   if(desc5El) desc5El.style.display=isTransf?'block':'none';
 }
-function simUp(){} // legado
+function simUp(){}
 function handleComp(input){
-  const file = input.files[0];
-  if(!file) return;
-  const maxMB = 10;
-  if(file.size > maxMB*1024*1024) { alert('El archivo es muy grande. M\u00e1ximo 10MB.'); return; }
-  
-  // Mostrar preview si es imagen
-  if(file.type.startsWith('image/')) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      const prev = document.getElementById('compPreview');
-      prev.src = e.target.result;
-      prev.style.display = 'block';
-      window._compBase64 = e.target.result;
-      window._compFile = file;
+  var file=input.files[0]; if(!file)return;
+  if(file.size>10*1024*1024){alert('M\u00e1ximo 10MB');return;}
+  if(file.type.startsWith('image/')){
+    var reader=new FileReader();
+    reader.onload=function(e){
+      var prev=document.getElementById('compPreview');
+      if(prev){prev.src=e.target.result;prev.style.display='block';}
+      window._compBase64=e.target.result;
     };
     reader.readAsDataURL(file);
   }
-  
-  // Marcar como listo
+  window._compFile=file;
   document.getElementById('upz').classList.add('ok');
-  document.getElementById('upico').textContent = '\u2705';
-  document.getElementById('uptxt').textContent = file.name + ' (' + (file.size/1024).toFixed(0) + ' KB) \u2014 listo';
-  window._compFile = file;
-  upDone = true;
-  const b = document.getElementById('bconf');
-  if(b){ b.style.opacity='1'; b.style.pointerEvents='all'; }
+  document.getElementById('upico').textContent='\u2705';
+  document.getElementById('uptxt').textContent=file.name+' ('+Math.round(file.size/1024)+'KB) listo';
+  upDone=true;
+  var b=document.getElementById('bconf');
+  if(b){b.style.opacity='1';b.style.pointerEvents='all';}
 }
 function cpyCod(){navigator.clipboard.writeText(document.getElementById('lbcode').textContent).then(()=>{const b=document.querySelector('.cpb');b.textContent='✅ Copiado!';setTimeout(()=>b.textContent='📋 Copiar código',2000);});}
 function rCart(){cart=[];upDone=false;updCart();cModal();}
