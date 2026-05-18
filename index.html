@@ -1375,9 +1375,9 @@ function precioHtml(p,colorClass){
 function card(p){
   const c=gc(p.cat);
   const stk=p.ok?`<span class="sok">✓ Stock</span>`:`<span class="sno">Sin stock</span>`;
-  const btnA=p.ok?`<button class="ba" onclick="addC(${p.id})">+ Carrito</button>`:'';
-  const btnG=p.ok?`<button class="bag" onclick="addC(${p.id})">+ Carrito</button>`:'';
-  const btnW=p.ok?`<button class="baw" onclick="addC(${p.id})">+ Carrito</button>`:'';
+  const btnA=p.ok?`<button class="ba" onclick="event.stopPropagation();addC(${p.id})">+ Carrito</button>`:'';
+  const btnG=p.ok?`<button class="bag" onclick="event.stopPropagation();addC(${p.id})">+ Carrito</button>`:'';
+  const btnW=p.ok?`<button class="baw" onclick="event.stopPropagation();addC(${p.id})">+ Carrito</button>`:'';
   const bd=badgeDesc(p);
 
   switch(p.t){
@@ -1439,7 +1439,7 @@ function card(p){
         <div class="c5n">${p.n}</div>
         <div class="c5r"><span class="c5br" style="color:${c.tx}">${p.m}</span>${stk}</div>
         ${bd}${precioHtml(p,c.sd)}
-        <div class="c5f">${p.ok?`<button class="ba" style="flex:1" onclick="addC(${p.id})">+ Agregar</button>`:''}</div>
+        <div class="c5f">${p.ok?`<button class="ba" style="flex:1" onclick="event.stopPropagation();addC(${p.id})">+ Agregar</button>`:''}</div>
       </div></div>`;
 
     default:return'';
