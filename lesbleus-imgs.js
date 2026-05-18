@@ -1,5 +1,5 @@
-// lesbleus-imgs.js v10 — Les Bleus Cars
-// Rutas corregidas: imgs en raiz del repo
+// lesbleus-imgs.js v10 â Les Bleus Cars
+// Rutas corregidas: imgs en raiz del repo, no en /images/
 
 window.LB_CAT_IMGS={
   opticas:'/faro-delantero.png',
@@ -78,4 +78,5 @@ function getProdImg(p){
 }
 window.getProdImg=getProdImg;
 
+// Auto-render si la tienda ya cargo
 if(typeof renderGrid==='function') renderGrid();
