@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
 <style>
 :root{
   --nv:#0D1B3E;--nv2:#1B3A7A;--gd:#C9A84C;--gd2:#E8C96A;--gd3:#A8861E;
@@ -1040,7 +1041,13 @@ function calcCuotas(){
     </div>
     <div class="mst" id="ms3">
       <div class="notok">✅ <span>Datos y método de pago registrados.</span></div>
-      <div class="fld"><label>Comprobante *</label><div class="upz" id="upz" onclick="simUp()"><div style="font-size:26px;margin-bottom:5px" id="upico">📄</div><div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:3px" id="uptxt">Tocá para subir el comprobante</div><div style="font-size:11px;color:var(--tx3)">Foto, captura o PDF · máx 10MB</div></div></div>
+      <div class="fld"><label>Comprobante *</label><div class="upz" id="upz" onclick="document.getElementById('compInput').click()">
+  <input type="file" id="compInput" accept="image/*,application/pdf" capture="environment" style="display:none" onchange="handleComp(this)">
+  <div style="font-size:26px;margin-bottom:5px" id="upico">📷</div>
+  <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:3px" id="uptxt">Tocá para subir o sacar foto</div>
+  <div style="font-size:11px;color:var(--tx3)">Foto del comprobante · captura de pantalla · PDF</div>
+  <img id="compPreview" style="display:none;max-width:100%;max-height:180px;object-fit:contain;border-radius:8px;margin-top:10px" alt="Vista previa">
+</div></div>
       <div class="fld"><label>Notas (opcional)</label><textarea placeholder="Referencias del domicilio..."></textarea></div>
       <button class="bf" id="bconf" onclick="confirmar()" style="opacity:.5;pointer-events:none">Confirmar Pedido →</button>
       <button class="bfo" onclick="iPaso(2)">← Volver</button>
@@ -1764,7 +1771,35 @@ function sPago(el){
   const desc5El=document.getElementById('desc5-banner');
   if(desc5El) desc5El.style.display=isTransf?'block':'none';
 }
-function simUp(){document.getElementById('upz').classList.add('ok');document.getElementById('upico').textContent='✅';document.getElementById('uptxt').textContent='Comprobante subido correctamente';upDone=true;const b=document.getElementById('bconf');b.style.opacity='1';b.style.pointerEvents='all';}
+function simUp(){} // legado
+function handleComp(input){
+  const file = input.files[0];
+  if(!file) return;
+  const maxMB = 10;
+  if(file.size > maxMB*1024*1024) { alert('El archivo es muy grande. M\u00e1ximo 10MB.'); return; }
+  
+  // Mostrar preview si es imagen
+  if(file.type.startsWith('image/')) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const prev = document.getElementById('compPreview');
+      prev.src = e.target.result;
+      prev.style.display = 'block';
+      window._compBase64 = e.target.result;
+      window._compFile = file;
+    };
+    reader.readAsDataURL(file);
+  }
+  
+  // Marcar como listo
+  document.getElementById('upz').classList.add('ok');
+  document.getElementById('upico').textContent = '\u2705';
+  document.getElementById('uptxt').textContent = file.name + ' (' + (file.size/1024).toFixed(0) + ' KB) \u2014 listo';
+  window._compFile = file;
+  upDone = true;
+  const b = document.getElementById('bconf');
+  if(b){ b.style.opacity='1'; b.style.pointerEvents='all'; }
+}
 function cpyCod(){navigator.clipboard.writeText(document.getElementById('lbcode').textContent).then(()=>{const b=document.querySelector('.cpb');b.textContent='✅ Copiado!';setTimeout(()=>b.textContent='📋 Copiar código',2000);});}
 function rCart(){cart=[];upDone=false;updCart();cModal();}
 
