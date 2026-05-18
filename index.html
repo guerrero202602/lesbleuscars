@@ -341,7 +341,22 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
 .cau-badge{background:#DC2626;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px}
 .cau-cta{margin-top:12px;width:100%;padding:10px;background:#0D1B3E;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;transition:background .2s}
 .cau-cta:hover{background:#1B3A7A}
-.cau-desc{font-size:12px;color:#6b7280;line-height:1.5;margin-bottom:8px;margin-top:6px}.cau-gar{font-size:11px;color:#059669;background:#f0fdf4;border-radius:6px;padding:5px 10px;margin-bottom:10px}</style>
+.cau-desc{font-size:12px;color:#6b7280;line-height:1.5;margin-bottom:8px;margin-top:6px}.cau-gar{font-size:11px;color:#059669;background:#f0fdf4;border-radius:6px;padding:5px 10px;margin-bottom:10px}
+.bat-section{padding:1rem 1rem 2rem;max-width:1100px;margin:0 auto}
+.bat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.bat-card{background:#fff;border:.5px solid #e5e7eb;border-radius:14px;padding:1rem;cursor:pointer;transition:box-shadow .2s,transform .2s;display:flex;flex-direction:column;align-items:center;text-align:center}
+.bat-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.1);transform:translateY(-2px)}
+.bat-icon{width:70px;height:70px;margin-bottom:.75rem;display:flex;align-items:center;justify-content:center;font-size:48px}
+.bat-marca{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#6366f1;margin-bottom:3px}
+.bat-nom{font-size:14px;font-weight:700;color:#0D1B3E;margin-bottom:3px}
+.bat-spec{font-size:11px;color:#9ca3af;margin-bottom:6px}
+.bat-desc{font-size:11px;color:#6b7280;line-height:1.4;margin-bottom:8px}
+.bat-gar{font-size:10px;color:#059669;background:#f0fdf4;border-radius:6px;padding:3px 8px;margin-bottom:10px;display:inline-block}
+.bat-precio{display:flex;align-items:center;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:10px}
+.bat-old{font-size:12px;color:#9ca3af;text-decoration:line-through}
+.bat-new{font-size:18px;font-weight:900;color:#C9A84C}
+.bat-badge{background:#DC2626;color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:99px}
+.bat-cta{width:100%;padding:8px;background:#0D1B3E;color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer}</style>
 </head>
 <body>
 
@@ -607,6 +622,49 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);overflow
   </div>
 </div>
 
+
+<div class="bat-section">
+  <div class="cau-title">🔋 Baterías — Semana de Inauguración</div>
+  <div class="cau-sub">Bosch · Moura · Willard · Con -20% esta semana · Instalación en el local</div>
+  <div class="bat-grid">
+    <div class="bat-card" onclick="openWA('Batería Bosch S4 12V 60Ah')">
+      <div class="bat-icon">🔋</div>
+      <div class="bat-marca">Bosch</div><div class="bat-nom">S4 Silver</div>
+      <div class="bat-spec">12V · 60Ah · 540A · Auto mediano</div>
+      <div class="bat-desc">Tecnología Silver alemana. Mayor duración y arranque confiable en frío. Compatible con Gol, Corsa, Focus, Clio.</div>
+      <div class="bat-gar">✅ 18 meses de garantía</div>
+      <div class="bat-precio"><span class="bat-old">$185.000</span><span class="bat-new">$148.000</span><span class="bat-badge">-20%</span></div>
+      <button class="bat-cta">💬 Consultar por WhatsApp</button>
+    </div>
+    <div class="bat-card" onclick="openWA('Batería Bosch S5 AGM 12V 74Ah')">
+      <div class="bat-icon">🔋</div>
+      <div class="bat-marca">Bosch</div><div class="bat-nom">S5 AGM</div>
+      <div class="bat-spec">12V · 74Ah · 750A · SUV y pickup</div>
+      <div class="bat-desc">Tecnología AGM para vehículos con Start-Stop. Alta descarga profunda, recarga rápida y larga vida útil.</div>
+      <div class="bat-gar">✅ 24 meses de garantía</div>
+      <div class="bat-precio"><span class="bat-old">$280.000</span><span class="bat-new">$224.000</span><span class="bat-badge">-20%</span></div>
+      <button class="bat-cta">💬 Consultar por WhatsApp</button>
+    </div>
+    <div class="bat-card" onclick="openWA('Batería Moura MF60 12V 60Ah')">
+      <div class="bat-icon">🔋</div>
+      <div class="bat-marca">Moura</div><div class="bat-nom">MF 60</div>
+      <div class="bat-spec">12V · 60Ah · 500A · Libre mantenimiento</div>
+      <div class="bat-desc">Fabricación brasilera. Sin mantenimiento, alta resistencia a vibraciones. La más vendida en Argentina.</div>
+      <div class="bat-gar">✅ 12 meses de garantía</div>
+      <div class="bat-precio"><span class="bat-old">$145.000</span><span class="bat-new">$116.000</span><span class="bat-badge">-20%</span></div>
+      <button class="bat-cta">💬 Consultar por WhatsApp</button>
+    </div>
+    <div class="bat-card" onclick="openWA('Batería Willard Xtreme 75 12V 75Ah')">
+      <div class="bat-icon">🔋</div>
+      <div class="bat-marca">Willard</div><div class="bat-nom">Xtreme 75</div>
+      <div class="bat-spec">12V · 75Ah · 620A · Camioneta y 4x4</div>
+      <div class="bat-desc">Fabricación nacional. Diseñada para el clima argentino, alta resistencia al calor extremo y arranque potente.</div>
+      <div class="bat-gar">✅ 12 meses de garantía</div>
+      <div class="bat-precio"><span class="bat-old">$165.000</span><span class="bat-new">$132.000</span><span class="bat-badge">-20%</span></div>
+      <button class="bat-cta">💬 Consultar por WhatsApp</button>
+    </div>
+  </div>
+</div>
 <div class="fbar">
     <button class="fb on" onclick="fcat('todos',this)">Todos</button>
     <button class="fb" onclick="document.getElementById('cauchos-section').scrollIntoView({behavior:'smooth'})">🛞 Cauchos</button>
@@ -1485,7 +1543,9 @@ function addCombo(cbId){
     if(ex)ex.qty++;
     else cart.push({...p,p:pDesc,pOrig:p.p,qty:1});
   });
-  updCart();aCart();
+  updCart();
+window._correctorInterval=setInterval(autoCorrectorTienda,30000);
+autoCorrectorTienda();aCart();
 }
 
 
