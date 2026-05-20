@@ -1,3 +1,4 @@
+const functions = require("firebase-functions");
 // ============================================================
 // Les Bleus Cars — Agente IA WhatsApp
 // Atiende clientes, cierra ventas y confirma pagos
@@ -85,7 +86,7 @@ async function consultarClaude(historial) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "x-api-key": process.env.ANTHROPIC_API_KEY,
+      "x-api-key": process.env.ANTHROPIC_API_KEY || functions.config()?.anthropic?.key,
       "anthropic-version": "2023-06-01",
     },
     body: JSON.stringify({
